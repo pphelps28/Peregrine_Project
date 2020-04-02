@@ -1,6 +1,8 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
+import 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import InputForm from './components/InputForm'
 import Display from './components/Display'
 class App extends Component {
