@@ -14,6 +14,32 @@ mongoose.connect('mongodb://localhost/schema_practice', {
 })
 mongoose.set('useFindAndModify', false)
 
+//create schemas, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///// FOR TESTING///////////////////
+//second Schema: writes to different collection (EAGLE)
+
 const birdySchema = new mongoose.Schema({
     name: String,
     location: String,
@@ -22,6 +48,8 @@ const birdySchema = new mongoose.Schema({
     notes: String
 })
 const BirdySchema = mongoose.model('BirdySchema', birdySchema)
+
+//additional query parameters, BY SEASON, OR BY SITE
 
 const handlePost = async (req, res) => {
     let name = req.body.name
@@ -45,12 +73,16 @@ const handlePost = async (req, res) => {
         //send back?
     })
 }
+//refine query functions
 const getPosts = async (req, res) => {
     let items = await BirdySchema.find({})
     console.log('Found Documents!')
     console.log(items)
     res.send(JSON.stringify(items))
 }
+
 app.post('/post', handlePost)
+//leave for front end dev
 app.get('/display', getPosts)
+
 app.listen(port, () => console.log(`listening on: ${port}`))
