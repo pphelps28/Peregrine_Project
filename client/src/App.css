@@ -1,0 +1,59 @@
+#root {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 1.5vmin);
+  color: whitesmoke;
+}
+
+#form-input {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+input {
+  text-align: center;
+  margin: 5px;
+}
+
+em {
+  color: rgb(255, 196, 0)
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+#toggle-button {
+  position: fixed;
+  top: 0
+}
+
+#display-list {
+  height: 80vh;
+  max-width: 40vw;
+  padding: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+  border: solid 5px ghostwhite
+}
+
+li {
+  list-style-type: none;
+}
+
+.display-item-container {
+  background-color: rgb(136, 132, 132);
+  border: 1px solid black;
+  padding: 10px;
+  padding-right: 15px;
+}
