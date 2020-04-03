@@ -5,6 +5,7 @@ import { Form, Col } from 'react-bootstrap';
 export default function InputForm(props) {
 	return (
 		<div>
+            {/* include images, audobon and fish and wildlife logos */}
 			<Form>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">

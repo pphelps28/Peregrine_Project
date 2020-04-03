@@ -84,7 +84,7 @@ class App extends Component {
     console.log(this.state.windSpeed)
   }
   observationSummaryChange = (event) => {
-    
+    // breakdown into mutually exclusive radios
     this.state.observationSummary.push(event.target.value)
    
   }
