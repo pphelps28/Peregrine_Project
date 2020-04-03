@@ -157,7 +157,6 @@ class App extends Component {
     let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput } = this
     return (
       <>
-        <button id="toggle-button" onClick={toggleInput}>Toggle</button>
         <div id="wrapper">
           
             <InputForm handleSubmit={handleSubmit}
