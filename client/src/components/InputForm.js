@@ -332,7 +332,7 @@ export default function InputForm(props) {
 				</div>
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
-					<label>'Recorded Observations (include time of observation)' </label>
+					<label>Recorded Observations (include time of observation) </label>
 					<textarea
 						type="text"
 						required
