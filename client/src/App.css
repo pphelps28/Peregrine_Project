@@ -22,4 +22,15 @@
   top: 0
 }
 
+.audubon {
+  background-image: url('/img/audubonvt.png');
+  background-size: contain;
+  background-position: center;
+}
+
+.vtfwd {
+  background-image: url('/img/vtfwd.jpg');
+  background-size: contain;
+  background-position: center;
+}
 
