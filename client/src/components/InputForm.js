@@ -406,8 +406,9 @@ export default function InputForm(props) {
 						rows="6"
 					/>
 				</div>
-				{/* --------------------------Submit-------------------------------- */}
+                {/* ---------------------submission check button for development ------------------ */}
                 <buttonon onClick={props.consoleCheck}>console check</buttonon>
+				{/* --------------------------Submit-------------------------------- */}
 				<input type="submit" value="Submit Form" className="btn btn-primary" />
 			</Form>
 		</div>

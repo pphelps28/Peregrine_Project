@@ -103,6 +103,8 @@ class App extends Component {
   commentsChange = (event) => {
     this.setState({ comments: event.target.value })
   }
+
+  // ---------------------------a button for development to allow a check of the submission without submit ---------
   consoleCheck = (event) => {
     event.preventDefault()
     let submission = {
@@ -154,35 +156,36 @@ class App extends Component {
       observation: this.state.observation,
       comments: this.state.comments,
     }
-    // fetch('/post', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(submission)
-    // })
-    // this.setState({
-    //   name: '',
-    //   email: '',
-    //   bird: '',
-    //   site: ['one', 'two'],
-    //   date_observed: new Date(),
-    //   mileage: '',
-    //   travel: '',
-    //   timeStart: '',
-    //   timeEnd: '',
-    //   totalTime: '',
-    //   temperature: '',
-    //   percipitation: '',
-    //   cloudCover: '',
-    //   windSpeed: '',
-    //   observationSummary: [],
-    //   incubation: '',
-    //   young: '',
-    //   youngAge: '',
-    //   observation: '',
-    //   comments: '',
-    // })
+    
+    fetch('/post', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(submission)
+    })
+    this.setState({
+      name: '',
+      email: '',
+      bird: '',
+      site: ['one', 'two'],
+      date_observed: new Date(),
+      mileage: '',
+      travel: '',
+      timeStart: '',
+      timeEnd: '',
+      totalTime: '',
+      temperature: '',
+      percipitation: '',
+      cloudCover: '',
+      windSpeed: '',
+      observationSummary: [],
+      incubation: '',
+      young: '',
+      youngAge: '',
+      observation: '',
+      comments: '',
+    })
     console.log(submission)
   }
 
