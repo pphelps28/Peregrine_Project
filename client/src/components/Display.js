@@ -2,20 +2,30 @@ import React from 'react'
 
 export default function Display(props) {
     return (
-        
+        <div className="container" >
+        <img src="./src/img/Audubon_H_BLK_VT.png" className="img-fluid"/>
 
-
-
-        <ul id="display-list">
+        <table className="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Observer</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date Observed</th>
+                    <th scope="col">Full Entry</th>
+                </tr>
+            </thead>
+            <tbody>
             {props.displayContent ? props.displayContent.map(e => (
-                <div className="display-item-container">
-                    <li key={e._id}><em>name:</em> {e.name}</li>
-                    <li key={e._id}><em>location:</em> {e.location}</li>
-                    <li key={e._id}><em>notes:</em> {e.notes}</li>
-                    <li key={e._id}><em>date observed:</em> {e.date_observed}</li>
 
-                </div>
+                <tr>
+                    <th scope="row" key={e._id}> {e.name}</th>
+                    <td key={e._id}>{e.location}</td>
+                    <td key={e._id}>{e.date_observed}</td>
+                    <td><a href="">See the full entry</a></td>
+                </tr>
             )) : <em>Loading...</em>}
-        </ul>
+            </tbody>
+        </table>
+        </div>
     )
 }

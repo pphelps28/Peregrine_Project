@@ -168,7 +168,6 @@ class App extends Component {
     let { name, email, bird, site,  date_observed, mileage, travel, timeStart,timeEnd, totalTime, temperature, percipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, displayContent} = this.state
     let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput } = this
     return (
-      <>
         <div id="wrapper">
             <button onClick={toggleInput}>See the Observations</button>
             {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
@@ -180,10 +179,9 @@ class App extends Component {
                cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} observationSummaryChange={observationSummaryChange} 
                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} 
               /> :
-              <Display displayContent={displayContent} />
-           
+            <Display displayContent={displayContent} />}  
         </div>
-      </>
+      
     )
   }
 }
