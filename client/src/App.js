@@ -3,8 +3,8 @@ import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import InputForm from './components/InputForm'
-
+import InputForm from './components/InputForm.js'
+import Display from './components/Display.js'
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +29,9 @@ class App extends Component {
       young: '',
       youngAge: '',
       observation: '',
-      comments: ''
+      comments: '',
+      inputVisible: false,
+      displayContent: []
     }
   }
   nameChange = (event) => {
@@ -149,17 +151,27 @@ class App extends Component {
       comments: '',
     })
   }
+  toggleInput = () => {
+    if (this.state.inputVisible) {
+      fetch('/display').then(res =>{
+        return res.json()
+      }).then(jsonObj => {
+        console.log(jsonObj)
+        this.setState({ displayContent: jsonObj})
+      })
+    }
 
-  
+    this.state.inputVisible ?  this.setState({ inputVisible: false}) : this.setState({ inputVisible: true})
+  }
 
   render() {
-    let { name, email, bird, site,  date_observed, mileage, travel, timeStart,timeEnd, totalTime, temperature, percipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments} = this.state
+    let { name, email, bird, site,  date_observed, mileage, travel, timeStart,timeEnd, totalTime, temperature, percipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, displayContent} = this.state
     let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput } = this
     return (
       <>
         <div id="wrapper">
-          
-            <InputForm handleSubmit={handleSubmit}
+            <button onClick={toggleInput}>See the Observations</button>
+            {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
               name={name} email={email} bird={bird} site={site} 
               date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} percipitation={percipitation} 
               cloudCover={cloudCover} windSpeed={windSpeed} observationSummary={observationSummary} young={young} youngAge={youngAge} incubation={incubation} observation={observation} comments={comments}
@@ -167,7 +179,8 @@ class App extends Component {
                timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} percipitationChange={percipitationChange} 
                cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} observationSummaryChange={observationSummaryChange} 
                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} 
-              />
+              /> :
+              <Display displayContent={displayContent} />
            
         </div>
       </>

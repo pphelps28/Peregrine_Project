@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Display(props) {
     return (
+        
+
+
+
         <ul id="display-list">
             {props.displayContent ? props.displayContent.map(e => (
                 <div className="display-item-container">
