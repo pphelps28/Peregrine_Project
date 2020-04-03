@@ -14,13 +14,9 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
-<<<<<<< HEAD
     "nodemon": "^2.0.2",
     "react-bootstrap": "^1.0.0",
     "react-datepicker": "^2.14.1"
-  }
-=======
-    "nodemon": "^2.0.2"
   },
   "devDependencies": {},
   "repository": {
@@ -31,5 +27,4 @@
     "url": "https://github.com/pphelps28/Peregrine_Project/issues"
   },
   "homepage": "https://github.com/pphelps28/Peregrine_Project#readme"
->>>>>>> 63fc651daf15ecf8dd9e77c5ad2c545152cd0b82
 }
