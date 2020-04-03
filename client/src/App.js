@@ -9,6 +9,7 @@ import InputForm from './components/InputForm'
 class App extends Component {
   constructor(props) {
     super(props)
+    
     this.state = {
       name: '',
       email: '',
@@ -32,11 +33,13 @@ class App extends Component {
       comments: ''
     }
   }
+
+  // ----------------------- apply changes to state ------------------------
   nameChange = (event) => {
     this.setState({ name: event.target.value })
   }
   emailChange = (event) => {
-    this.setState({ name: event.target.value })
+    this.setState({ email: event.target.value })
   }
   siteChange = (event) => {
 
@@ -94,7 +97,7 @@ class App extends Component {
   commentsChange = (event) => {
     this.setState({ comments: event.target.value })
   }
-
+// -------------------------------Submits all values-------------------------
   handleSubmit = (event) => {
     event.preventDefault()
     let submission = {
@@ -154,15 +157,17 @@ class App extends Component {
 
   render() {
     let { name, email, bird, site,  date_observed, mileage, travel, timeStart,timeEnd, totalTime, temperature, percipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments} = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput } = this
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit} = this
     return (
       <>
         <div id="wrapper">
           
-            <InputForm handleSubmit={handleSubmit}
+            <InputForm 
+            // passes variables 
               name={name} email={email} bird={bird} site={site} 
               date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} percipitation={percipitation} 
               cloudCover={cloudCover} windSpeed={windSpeed} observationSummary={observationSummary} young={young} youngAge={youngAge} incubation={incubation} observation={observation} comments={comments}
+              // passes all methods
               nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} percipitationChange={percipitationChange} 
                cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} observationSummaryChange={observationSummaryChange} 
