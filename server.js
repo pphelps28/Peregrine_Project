@@ -4,6 +4,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const port = process.env.PORT || 5000
+require('mongoose-type-email')
 
 app.use(express.static(path.join(__dirname, '/client/build')))
 app.use(bodyParser.json())
@@ -14,31 +15,236 @@ mongoose.connect('mongodb://localhost/schema_practice', {
 })
 mongoose.set('useFindAndModify', false)
 
-//create schemas, 
+// ---------- SCHEMATA ---------- // 
+
+// first Schema (PEREGRINE)
+
+const peregrineSchema = new mongoose.Schema({
+    email: mongoose.SchemaTypes.Email, 
+    location: { type: String, required: true },
+    date_visited: { type: String, require: true },
+    season: { type: Number, require: true },
+    date_entered: Date,
+    mileage: Number,
+    travel_time: Number,
+    start_time: Number,
+    end_time: Number,
+    total_time: Number,
+    temperature: Number,
+    precipitation: String,
+    cloud_coverage: Number,
+    wind_speed: Number,
+    summary: String,
+    eyrie_location: String,
+    number_young: Number,
+    young_age: String,
+    observations: String,
+    remarks: String,
+    researcher_comments_1: String,
+    researcher_comments_2: String
+})
+
+const PeregrineSchema = mongoose.model('PeregrineSchema', peregrineSchema)
+
+// second Schema (EAGLE)
+
+const eagleSchema = new mongoose.Schema({
+    email: mongoose.SchemaTypes.Email, 
+    location: { type: String, required: true },
+    date_visited: { type: String, require: true },
+    season: { type: Number, require: true },
+    date_entered: Date,
+    mileage: Number,
+    travel_time: Number,
+    start_time: Number,
+    end_time: Number,
+    total_time: Number,
+    temperature: Number,
+    precipitation: String,
+    cloud_coverage: Number,
+    wind_speed: Number,
+    summary: String,
+    eyrie_location: String,
+    number_young: Number,
+    young_age: String,
+    observations: String,
+    remarks: String,
+    researcher_comments_1: String,
+    researcher_comments_2: String
+})
+
+const EagleSchema = mongoose.model('EagleSchema', eagleSchema)
+
+// ---------- FUNCTIONS ---------- //
+
+// ---------- PEREGRINE read, write, save functions ---------- //
+
+// write new PEREGRINE data to database
+
+const handlePeregrinePost = async (req, res) => {
+
+    // data inputted by monitor
+
+    let location = req.body.site
+    let email = req.body.email
+    let date_visited = req.body.date_observed // might want to have this as 'visited' since that is how it is on the form 
+    let season = req.body.date_visited.slice(0, 3) // this is not inputted by user
+    let date_entered = req.body.date_entered // don't have this one yet on front end
+    let mileage = req.body.mileage
+    let travel_time = req.body.travel
+    let start_time = req.body.timeStart
+    let end_time = req.body.timeEnd
+    let total_time = req.body.totalTime
+    let temperature = req.body.temperature
+    let precipitation = req.body.precipitation
+    let cloud_coverage = req.body.cloudCover
+    let wind_speed = req.body.windSpeed
+    let summary = req.body.ObservationSummary
+    let eyrie_location = req.body.incubation
+    let number_young = req.body.young
+    let young_age = req.body.youngAge
+    let observations = req.body.observation
+    let remarks = req.body.comments
+
+    // new PEREGRINE data object created with monitor data
+
+    let post = new PeregrineSchema({
+        location: location,
+        email: email,
+        date_visited: date_visited,
+        season: season,
+        date_entered: date_entered,
+        mileage: mileage,
+        travel_time: travel_time,
+        start_time: start_time,
+        end_time: end_time,
+        total_time: total_time,
+        temperature: temperature,
+        precipitation: precipitation,
+        cloud_coverage: cloud_coverage,
+        wind_speed: wind_speed,
+        summary: summary,
+        eyrie_location: eyrie_location,
+        number_young: number_young,
+        young_age: young_age,
+        observations: observations,
+        remarks: remarks,
+    })
+
+    // new PEREGRINE data object written to database
+
+    await post.save((err, doc) => {
+        if (err) {
+            return console.log(err)
+        }
+        console.log('Post Saved: ' + doc)
+    })
+}
+
+// search PEREGRINE database by inputted parameters and send to frontend
+
+const getPeregrinePost = async (req, res) => {
+
+    // search parameters inputted by admin user
+
+    let location = req.body.site
+    let season = req.body.season
+
+    let items = await PeregrineSchema.find({ "location": location, "season": season })
+
+    res.send(items)
+}
+
+// app.post('/post', handlePeregrinePost)
+//leave for front end dev
+// app.get('/display', getPeregrinePost)
+
+// ---------- EAGLE read, write, save functions ---------- //
 
 
 
+// write new EAGLE data to database
 
+const handleEaglePost = async (req, res) => {
 
+    // data inputted by monitor
 
+    let location = req.body.site
+    let email = req.body.email
+    let date_visited = req.body.date_observed // might want to have this as 'visited' since that is how it is on the form 
+    let season = req.body.date_visited.slice(0, 3) // this is not inputted by user
+    let date_entered = req.body.date_entered // don't have this one yet on front end
+    let mileage = req.body.mileage
+    let travel_time = req.body.travel
+    let start_time = req.body.timeStart
+    let end_time = req.body.timeEnd
+    let total_time = req.body.totalTime
+    let temperature = req.body.temperature
+    let precipitation = req.body.precipitation
+    let cloud_coverage = req.body.cloudCover
+    let wind_speed = req.body.windSpeed
+    let summary = req.body.ObservationSummary
+    let eyrie_location = req.body.incubation
+    let number_young = req.body.young
+    let young_age = req.body.youngAge
+    let observations = req.body.observation
+    let remarks = req.body.comments
 
+    // new EAGLE data object created with monitor data
 
+    let post = new EagleSchema({
+        location: location,
+        email: email,
+        date_visited: date_visited,
+        season: season,
+        date_entered: date_entered,
+        mileage: mileage,
+        travel_time: travel_time,
+        start_time: start_time,
+        end_time: end_time,
+        total_time: total_time,
+        temperature: temperature,
+        precipitation: precipitation,
+        cloud_coverage: cloud_coverage,
+        wind_speed: wind_speed,
+        summary: summary,
+        eyrie_location: eyrie_location,
+        number_young: number_young,
+        young_age: young_age,
+        observations: observations,
+        remarks: remarks,
+    })
 
+    // new EAGLE data object written to database
 
+    await post.save((err, doc) => {
+        if (err) {
+            return console.log(err)
+        }
+        console.log('Post Saved: ' + doc)
+    })
+}
 
+// search EAGLE database by inputted parameters and send to frontend
 
+const getEaglePost = async (req, res) => {
 
+    // search parameters inputted by admin user
 
+    let location = req.body.site
+    let season = req.body.season
 
+    let items = await EagleSchema.find({ "location": location, "season": season })
 
+    res.send(items)
+}
 
-
-
-
-
+// app.post('/post', handleEaglePost)
+//leave for front end dev
+// app.get('/display', getEaglePost)
 
 ///// FOR TESTING///////////////////
-//second Schema: writes to different collection (EAGLE)
+
 
 const birdySchema = new mongoose.Schema({
     name: String,
@@ -49,7 +255,7 @@ const birdySchema = new mongoose.Schema({
 })
 const BirdySchema = mongoose.model('BirdySchema', birdySchema)
 
-//additional query parameters, BY SEASON, OR BY SITE
+
 
 const handlePost = async (req, res) => {
     let name = req.body.name
