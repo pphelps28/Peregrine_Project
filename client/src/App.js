@@ -15,7 +15,7 @@ class App extends Component {
       name: '',
       email: '',
       bird: '',
-      site: ['one', 'two'],
+      site: '',
       date_observed: new Date(),
       mileage: '',
       travel: '',

@@ -61,56 +61,56 @@ export default function InputForm(props) {
 						<option>Ball Mountain (Jamaica)</option>
 						<option>Barnet Roadcut (Barnet)</option>
 						<option>Bethel Quarry (Bethel)</option>
-                        <option>Bolton Notch - Upper Upper West (Bolton)</option>
-                        <option>Bone Mt (Bolton)</option>
-                        <option>Bradford Cliff (Bradford)</option>
-                        <option>Bristol Cliff (Bristol)</option>
-                        <option>Brousseau Mountain (Averill)</option>
-                        <option>Camels Hump (Duxbury)</option>
-                        <option>Checkerberry Ledge (Bakersfield)</option>
-                        <option>Crystal Lake (Barton)</option>
-                        <option>5Deer Leap (Bristol)</option>
-                        <option>Eagle Ledge (Vershire)</option>
-                        <option>Eagle Mountain (Milton)</option>
-                        <option>Elephant Mountain (Bristol)</option>
-                        <option>Fairlee Palisades (Fairlee)</option>
-                        <option>Hawk Rock (Newark)</option>
-                         <option>Hawks Mountain (Weathersfield)</option>
-                         <option>Hawkins Pond (Calais)</option>
-                         <option>Haystack Mountain (Pawlet)</option>
-                         <option>Hazen's Notch (Lowell)</option>
-                         <option>Highgate Cliffs (Highgate Springs)</option>
-                         <option>Jobs Mountain(Westmore)</option>
-                         <option>Lamoille River (Milton)</option>
-                         <option>Lone Rock Point (Burlingotn)</option>
-                         <option>Mallet's Bay (Colchester)</option>
-                         <option>Marshfield Mountain (Marshfield)</option>
-                         <option>Mount Equinox (Manchester)</option>
-                         <option>Mount Horrid (Brandon)</option>
-                         <option>Mount Pisgah (Westmore)</option>
-                         <option>Mount Norris (Lowell)</option>
-                         <option>Nebraska Notch (Underhill)</option>
-                         <option>Nichols Ledge (Woodbury)</option>
-                         <option>Pond MOuntain (Wells)</option>
-                         <option>Prospect Rock (Johnson)</option>
-                         <option>Quarry Hill (Pownal)</option>
-                         <option>Rattlesnake Point (Salisbury)</option>
-                         <option>Rattlesnake Ridge (Benson)</option>
-                         <option>Red Rock (Hinesburg)</option>
-                         <option>Red Rocks Park (South Burlington)</option>
-                         <option>Rock of Ages QUarry (Barre)</option>
-                         <option>Ryegate Quarry (Ryegate)</option>
-                         <option>Sawyer Mountain (Fairlee)</option>
-                         <option>Skitchewaug Mountain (Springfield)</option>
-                         <option>Smuggler's Notch (Cambridge)</option>
-                         <option>Snake Mountain (Addison)</option>
-                         <option>Sutherland Quarry/Proctor (Proctor)</option>
-                         <option>Swanton Quarry (Swanton)</option>
-                         <option>Vermont Yankee (Vernon)</option>
-                         <option>Vulture Mountain (Springfield)</option>
-                         <option>Wallace Ledge (Castleton)</option>
-                         <option>Whitcomb Quarry (Colchester)</option>
-                         <option>White Rocks (Wallingford)</option>
+						<option>Bolton Notch - Upper Upper West (Bolton)</option>
+						<option>Bone Mt (Bolton)</option>
+						<option>Bradford Cliff (Bradford)</option>
+						<option>Bristol Cliff (Bristol)</option>
+						<option>Brousseau Mountain (Averill)</option>
+						<option>Camels Hump (Duxbury)</option>
+						<option>Checkerberry Ledge (Bakersfield)</option>
+						<option>Crystal Lake (Barton)</option>
+						<option>Deer Leap (Bristol)</option>
+						<option>Eagle Ledge (Vershire)</option>
+						<option>Eagle Mountain (Milton)</option>
+						<option>Elephant Mountain (Bristol)</option>
+						<option>Fairlee Palisades (Fairlee)</option>
+						<option>Hawk Rock (Newark)</option>
+						<option>Hawks Mountain (Weathersfield)</option>
+						<option>Hawkins Pond (Calais)</option>
+						<option>Haystack Mountain (Pawlet)</option>
+						<option>Hazen's Notch (Lowell)</option>
+						<option>Highgate Cliffs (Highgate Springs)</option>
+						<option>Jobs Mountain(Westmore)</option>
+						<option>Lamoille River (Milton)</option>
+						<option>Lone Rock Point (Burlingotn)</option>
+						<option>Mallet's Bay (Colchester)</option>
+						<option>Marshfield Mountain (Marshfield)</option>
+						<option>Mount Equinox (Manchester)</option>
+						<option>Mount Horrid (Brandon)</option>
+						<option>Mount Pisgah (Westmore)</option>
+						<option>Mount Norris (Lowell)</option>
+						<option>Nebraska Notch (Underhill)</option>
+						<option>Nichols Ledge (Woodbury)</option>
+						<option>Pond MOuntain (Wells)</option>
+						<option>Prospect Rock (Johnson)</option>
+						<option>Quarry Hill (Pownal)</option>
+						<option>Rattlesnake Point (Salisbury)</option>
+						<option>Rattlesnake Ridge (Benson)</option>
+						<option>Red Rock (Hinesburg)</option>
+						<option>Red Rocks Park (South Burlington)</option>
+						<option>Rock of Ages QUarry (Barre)</option>
+						<option>Ryegate Quarry (Ryegate)</option>
+						<option>Sawyer Mountain (Fairlee)</option>
+						<option>Skitchewaug Mountain (Springfield)</option>
+						<option>Smuggler's Notch (Cambridge)</option>
+						<option>Snake Mountain (Addison)</option>
+						<option>Sutherland Quarry/Proctor (Proctor)</option>
+						<option>Swanton Quarry (Swanton)</option>
+						<option>Vermont Yankee (Vernon)</option>
+						<option>Vulture Mountain (Springfield)</option>
+						<option>Wallace Ledge (Castleton)</option>
+						<option>Whitcomb Quarry (Colchester)</option>
+						<option>White Rocks (Wallingford)</option>
 					</Form.Control>
 				</Form.Group>
 				{/* <div className="form-group">
