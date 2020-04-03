@@ -84,7 +84,9 @@ class App extends Component {
     console.log(this.state.windSpeed)
   }
   observationSummaryChange = (event) => {
-    this.setState({ observationSummary: event.target.value })
+    
+    this.state.observationSummary.push(event.target.value)
+   
   }
   youngChange = (event) => {
     this.setState({ young: event.target.value })
@@ -123,7 +125,7 @@ class App extends Component {
       young: this.state.young,
       youngAge: this.state.youngAge,
       observation: this.state.observation,
-      comments: this.state.comment,
+      comments: this.state.comments,
     }
     console.log(submission)
   }
@@ -150,7 +152,7 @@ class App extends Component {
       young: this.state.young,
       youngAge: this.state.youngAge,
       observation: this.state.observation,
-      comments: this.state.comment,
+      comments: this.state.comments,
     }
     // fetch('/post', {
     //   method: 'POST',
