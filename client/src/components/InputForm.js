@@ -8,7 +8,7 @@ export default function InputForm(props) {
 			<Form>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
-					<label>Name </label>
+					<label>Name: </label>
 					<input
 						type="text"
 						required
@@ -19,7 +19,7 @@ export default function InputForm(props) {
 				</div>
 				{/*------------------------- email  -----------------------*/}
 				<div className="form-group">
-					<label>Email </label>
+					<label>Email: </label>
 					<input
 						type="text"
 						required
@@ -31,7 +31,7 @@ export default function InputForm(props) {
 				{/* -----------------------Bird Observed Radio -------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Which Bird did you Observe
+						Which Bird did you Observe:
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -54,7 +54,7 @@ export default function InputForm(props) {
 				</Form.Group>
 				{/*------------------------- Location Site Name ------------------------*/}
 				<Form.Group controlId="exampleForm.SelectCustom">
-					<Form.Label>Select Site</Form.Label>
+					<Form.Label>Select Site:</Form.Label>
 					<Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
 						<option>Arrowhead Mountain (Milton)</option>
 						<option>Bald Mountain (West Haven)</option>
@@ -200,7 +200,7 @@ export default function InputForm(props) {
 				{/* ------------------------- Percipitation ---------------------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Percipitation
+						Percipitation:
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -248,7 +248,7 @@ export default function InputForm(props) {
 				{/* ------------------------------Cloud Cover---------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Cloud Cover
+						Cloud Cover:
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -288,7 +288,7 @@ export default function InputForm(props) {
 				{/* ---------------------------Wind Speed ---------------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Wind Speed
+						Wind Speed:
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -336,7 +336,7 @@ export default function InputForm(props) {
 				{/* ---------------------------------Observation Summary ----------------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Observation Summary (all that apply)
+						Observation Summary (all that apply):
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -440,7 +440,7 @@ export default function InputForm(props) {
 				</div>
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
-					<label>Recorded Observations (include time of observation) </label>
+					<label>Recorded Observations (include time of observation): </label>
 					<textarea
 						type="text"
 						required
@@ -452,7 +452,7 @@ export default function InputForm(props) {
 				</div>
 				{/* ---------------------Remarks Comments --------------------------*/}
 				<div className="form-group">
-					<label>Remarks/Comments </label>
+					<label>Remarks/Comments: </label>
 					<textarea
 						type="text"
 						required
