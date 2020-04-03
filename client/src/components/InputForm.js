@@ -147,7 +147,7 @@ export default function InputForm(props) {
 				{/* ------------------------- Percipitation ---------------------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Percipitation
+						Precipitation
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check type="radio" label="Fog" name="formHorizontalRadios" id="formHorizontalRadios1" />
