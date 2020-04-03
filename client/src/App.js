@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InputForm from './components/InputForm'
+import { sub } from 'date-fns';
 
 
 class App extends Component {
@@ -47,6 +48,7 @@ class App extends Component {
   }
   birdChange = (event) => {
     this.setState({ bird: event.target.value })
+    console.log(this.state.bird)
   }
   dateChange = date => {
 
@@ -58,11 +60,11 @@ class App extends Component {
   travelChange = (event) => {
     this.setState({ travel: event.target.value })
   }
-  timeStartChange = (event) => {
-    this.setState({ timeStart: event.target.value })
+  timeStartChange = timeStart => {
+    this.setState({ timeStart: timeStart })
   }
-  timeEndChange = (event) => {
-    this.setState({ timeEnd: event.target.value })
+  timeEndChange = (timeEnd) => {
+    this.setState({ timeEnd: timeEnd })
   }
   totalTimeChange = (event) => {
     this.setState({ totalTime: event.target.value })
@@ -72,15 +74,19 @@ class App extends Component {
   }
   percipitationChange = (event) => {
     this.setState({ percipitation: event.target.value })
+    
   }
   cloudCoverChange = (event) => {
     this.setState({ cloudCover: event.target.value })
   }
   windSpeedChange = (event) => {
     this.setState({ windSpeed: event.target.value })
+    console.log(this.state.windSpeed)
   }
   observationSummaryChange = (event) => {
-    this.setState({ observationSummary: event.target.value })
+    
+    this.state.observationSummary.push(event.target.value)
+   
   }
   youngChange = (event) => {
     this.setState({ young: event.target.value })
@@ -96,6 +102,32 @@ class App extends Component {
   }
   commentsChange = (event) => {
     this.setState({ comments: event.target.value })
+  }
+  consoleCheck = (event) => {
+    event.preventDefault()
+    let submission = {
+      name: this.state.name,
+      email: this.state.email,
+      bird: this.state.bird,
+      site: this.state.site,
+      date_observed: new Date(),
+      mileage: this.state.mileage,
+      travel: this.state.travel,
+      timeStart: this.state.timeStart,
+      timeEnd: this.state.timeEnd,
+      totalTime: this.state.totalTime,
+      temperature: this.state.temperature,
+      percipitation: this.state.percipitation,
+      cloudCover: this.state.cloudCover,
+      windSpeed: this.state.windSpeed,
+      observationSummary: this.state.observationSummary,
+      incubation: this.state.incubation,
+      young: this.state.young,
+      youngAge: this.state.youngAge,
+      observation: this.state.observation,
+      comments: this.state.comments,
+    }
+    console.log(submission)
   }
 // -------------------------------Submits all values-------------------------
   handleSubmit = (event) => {
@@ -120,44 +152,45 @@ class App extends Component {
       young: this.state.young,
       youngAge: this.state.youngAge,
       observation: this.state.observation,
-      comments: this.state.comment,
+      comments: this.state.comments,
     }
-    fetch('/post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(submission)
-    })
-    this.setState({
-      name: '',
-      email: '',
-      bird: '',
-      site: ['one', 'two'],
-      date_observed: new Date(),
-      mileage: '',
-      travel: '',
-      timeStart: '',
-      timeEnd: '',
-      totalTime: '',
-      temperature: '',
-      percipitation: '',
-      cloudCover: '',
-      windSpeed: '',
-      observationSummary: [],
-      incubation: '',
-      young: '',
-      youngAge: '',
-      observation: '',
-      comments: '',
-    })
+    // fetch('/post', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(submission)
+    // })
+    // this.setState({
+    //   name: '',
+    //   email: '',
+    //   bird: '',
+    //   site: ['one', 'two'],
+    //   date_observed: new Date(),
+    //   mileage: '',
+    //   travel: '',
+    //   timeStart: '',
+    //   timeEnd: '',
+    //   totalTime: '',
+    //   temperature: '',
+    //   percipitation: '',
+    //   cloudCover: '',
+    //   windSpeed: '',
+    //   observationSummary: [],
+    //   incubation: '',
+    //   young: '',
+    //   youngAge: '',
+    //   observation: '',
+    //   comments: '',
+    // })
+    console.log(submission)
   }
 
   
 
   render() {
     let { name, email, bird, site,  date_observed, mileage, travel, timeStart,timeEnd, totalTime, temperature, percipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments} = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit} = this
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, consoleCheck} = this
     return (
       <>
         <div id="wrapper">
@@ -171,7 +204,7 @@ class App extends Component {
               nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} percipitationChange={percipitationChange} 
                cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} observationSummaryChange={observationSummaryChange} 
-               youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} 
+               youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
               />
            
         </div>
