@@ -36,7 +36,7 @@ class App extends Component {
     this.setState({ name: event.target.value })
   }
   emailChange = (event) => {
-    this.setState({ name: event.target.value })
+    this.setState({ email: event.target.value })
   }
   siteChange = (event) => {
 
