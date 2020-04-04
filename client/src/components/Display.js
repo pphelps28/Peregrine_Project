@@ -2,16 +2,31 @@ import React from 'react'
 
 export default function Display(props) {
     return (
-        <ul id="display-list">
-            {props.displayContent ? props.displayContent.map(e => (
-                <div className="display-item-container">
-                    <li key={e._id}><em>name:</em> {e.name}</li>
-                    <li key={e._id}><em>location:</em> {e.location}</li>
-                    <li key={e._id}><em>notes:</em> {e.notes}</li>
-                    <li key={e._id}><em>date observed:</em> {e.date_observed}</li>
+        <div className="container" >
+        <div className="audubonvt" ></div>
 
-                </div>
+
+        <table className="table table-striped">
+            <thead>
+                <tr> {/* //table headers */}
+                    <th scope="col">Observer</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date Observed</th>
+                    <th scope="col">Full Entry</th>
+                </tr>
+            </thead>
+            <tbody>
+                {/* //ternary operator that will iterate through each entry using a key */}
+            {props.displayContent ? props.displayContent.map(e => (
+                <tr key={e._id}>
+                    <th scope="row" > {e.name}</th>
+                    <td >{e.location}</td>
+                    <td >{e.date_observed}</td>
+                    <td>See the full entry | Edit </td>
+                </tr>
             )) : <em>Loading...</em>}
-        </ul>
+            </tbody>
+        </table>
+        </div>
     )
 }

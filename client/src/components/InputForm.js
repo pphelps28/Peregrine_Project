@@ -1,14 +1,17 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import { Form, Col } from 'react-bootstrap';
+import Header from '../components/Header'
 
 export default function InputForm(props) {
 	return (
 		<div>
+            <Header />
 			<Form>
+                <h3 className='title'>Observation Form</h3>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
-					<label>Name </label>
+					<label>Name: </label>
 					<input
 						type="text"
 						required
@@ -19,7 +22,7 @@ export default function InputForm(props) {
 				</div>
 				{/*------------------------- email  -----------------------*/}
 				<div className="form-group">
-					<label>Email </label>
+					<label>Email: </label>
 					<input
 						type="text"
 						required
@@ -31,7 +34,7 @@ export default function InputForm(props) {
 				{/* -----------------------Bird Observed Radio -------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Which Bird did you Observe
+						Which Bird did you Observe:
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -54,7 +57,7 @@ export default function InputForm(props) {
 				</Form.Group>
 				{/*------------------------- Location Site Name ------------------------*/}
 				<Form.Group controlId="exampleForm.SelectCustom">
-					<Form.Label>Select Site</Form.Label>
+					<Form.Label>Select Site:</Form.Label>
 					<Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
 						<option>Arrowhead Mountain (Milton)</option>
 						<option>Bald Mountain (West Haven)</option>
@@ -113,15 +116,6 @@ export default function InputForm(props) {
 						<option>White Rocks (Wallingford)</option>
 					</Form.Control>
 				</Form.Group>
-				{/* <div className="form-group">
-					<label>Select Site </label>
-					<select required className="form-control" value={props.site} onChange={props.siteChange}>
-						
-								
-							;
-						
-					</select>
-				</div> */}
 				{/*-------------------------- Date Observed -------------------------------*/}
 				<div className="form-group">
 					<label>Date: </label>
@@ -197,17 +191,19 @@ export default function InputForm(props) {
 						onChange={props.temperatureChange}
 					/>
 				</div>
-				{/* ------------------------- Percipitation ---------------------------------*/}
+				{/* ------------------------- Precipitation ---------------------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Precipitation
+
+						Precipitation:
+
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
 							type="radio"
 							label="Fog"
 							value="Fog"
-							name="percipitation"
+							name="precipitation"
 							id="formHorizontalRadios1"
 							onChange={props.percipitationChange}
 						/>
@@ -215,7 +211,7 @@ export default function InputForm(props) {
 							type="radio"
 							label="Drizzle"
 							value="Drizzle"
-							name="percipitation"
+							name="precipitation"
 							id="formHorizontalRadios1"
 							onChange={props.percipitationChange}
 						/>
@@ -248,7 +244,7 @@ export default function InputForm(props) {
 				{/* ------------------------------Cloud Cover---------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Cloud Cover
+						Cloud Cover:
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -288,7 +284,7 @@ export default function InputForm(props) {
 				{/* ---------------------------Wind Speed ---------------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Wind Speed
+						Wind Speed:
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -336,72 +332,74 @@ export default function InputForm(props) {
 				{/* ---------------------------------Observation Summary ----------------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Observation Summary (all that apply)
+						Observation Summary (all that apply):
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Single Bird"
 							value="Single Bird"
-							name="obSum"
+							name="relationshipStatus"
 							id="formHorizontalRadios1"
-							onChange={props.observationSummaryChange}
+                            onChange={props.relationshipStatusChange}
+
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Territorial Pair"
 							value="Territorial Pair"
-							name="obSum"
+							name="relationshipStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+                            onChange={props.relationshipStatusChange}
+
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Courtship/Copulation"
 							value="Courtship/Copulation"
-							name="obSum"
+							name="relationshipStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.relationshipStatusChange}
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Incubating"
 							value="Incubating"
-							name="obSum"
+							name="youngStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.youngStatusChange}
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Hatched"
 							value="Hatched"
-							name="obSum"
+							name="youngStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.youngStatusChange}
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Nest Failure"
 							value="Nest Failure"
-							name="obSum"
+							name="youngStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.youngStatusChange}
 						/>
+                            <Form.Check
+                                type="radio"
+                                label="Fledged"
+                                value="Fledged"
+                                name="youngStatus"
+                                id="formHorizontalRadios2"
+                                onChange={props.youngStatusChange}
+                            />
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Human Disturbance"
 							value="Human Disturbance"
-							name="obSum"
+							name="disturbance"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
-						/>
-						<Form.Check
-							type="checkbox"
-							label="Fledged"
-							value="Fledged"
-							name="obSum"
-							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.disturbanceChange}
 						/>
 					</Col>
 				</Form.Group>
@@ -440,7 +438,7 @@ export default function InputForm(props) {
 				</div>
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
-					<label>Recorded Observations (include time of observation) </label>
+					<label>Recorded Observations (include time of observation): </label>
 					<textarea
 						type="text"
 						required
@@ -452,7 +450,7 @@ export default function InputForm(props) {
 				</div>
 				{/* ---------------------Remarks Comments --------------------------*/}
 				<div className="form-group">
-					<label>Remarks/Comments </label>
+					<label>Remarks/Comments: </label>
 					<textarea
 						type="text"
 						required

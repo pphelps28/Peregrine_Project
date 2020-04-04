@@ -3,8 +3,9 @@ import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import InputForm from './components/InputForm'
+import InputForm from './components/InputForm.js'
 import { sub } from 'date-fns';
+import Display from './components/Display.js'
 
 
 class App extends Component {
@@ -26,12 +27,16 @@ class App extends Component {
       precipitation: '',
       cloudCover: '',
       windSpeed: '',
-      observationSummary: [],
+      relationshipStatus: '',
+      youngStatus: '',
+      disturbance : '',
       incubation: '',
       young: '',
       youngAge: '',
       observation: '',
-      comments: ''
+      comments: '',
+      inputVisible: false,
+      displayContent: []
     }
   }
 
@@ -83,12 +88,17 @@ class App extends Component {
   windSpeedChange = (event) => {
     this.setState({ windSpeed: event.target.value })
     console.log(this.state.windSpeed)
+  } 
+  relationshipStatusChange = (event) => {
+    this.setState({ relationshipStatus: event.target.value })
   }
-  observationSummaryChange = (event) => {
-    
-    this.state.observationSummary.push(event.target.value)
-   
+   youngStatusChange = (event) => {
+    this.setState({ youngStatus: event.target.value })
   }
+  disturbanceChange = (event) => {
+    this.setState({ disturbance: event.target.value })
+  }
+  
   youngChange = (event) => {
     this.setState({ young: event.target.value })
   }
@@ -123,7 +133,9 @@ class App extends Component {
       percipitation: this.state.percipitation,
       cloudCover: this.state.cloudCover,
       windSpeed: this.state.windSpeed,
-      observationSummary: this.state.observationSummary,
+      relationshipStatus: this.state.relationshipStatus,
+      youngStatus: this.state.youngStatus,
+      disturbance : this.state.disturbance,
       incubation: this.state.incubation,
       young: this.state.young,
       youngAge: this.state.youngAge,
@@ -150,7 +162,9 @@ class App extends Component {
       precipitation: this.state.precipitation,
       cloudCover: this.state.cloudCover,
       windSpeed: this.state.windSpeed,
-      observationSummary: this.state.observationSummary,
+      relationshipStatus: this.state.relationshipStatus,
+      youngStatus: this.state.youngStatus,
+      disturbance : this.state.disturbance,
       incubation: this.state.incubation,
       young: this.state.young,
       youngAge: this.state.youngAge,
@@ -180,7 +194,9 @@ class App extends Component {
       precipitation: '',
       cloudCover: '',
       windSpeed: '',
-      observationSummary: [],
+      relationshipStatus: '',
+      youngStatus: '',
+      disturbance : '',
       incubation: '',
       young: '',
       youngAge: '',
@@ -190,31 +206,49 @@ class App extends Component {
     console.log(submission)
   }
 
-  
+  //--------switches from input form to display all inputs ----------//
+  toggleInput = () => {
+    if (this.state.inputVisible) {
+      fetch('/display').then(res =>{
+        return res.json()
+      }).then(jsonObj => {
+        console.log(jsonObj)
+        this.setState({ displayContent: jsonObj})
+      })
+    }
+
+    this.state.inputVisible ?  this.setState({ inputVisible: false}) : this.setState({ inputVisible: true})
+  }
 
   render() {
+
 
     let { name, email, bird, site,  date_observed, mileage, travel, timeStart,timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments} = this.state
     let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput } = this
 
+
     return (
-      <>
         <div id="wrapper">
-          
-            <InputForm 
-            // passes variables 
+            <button onClick={toggleInput}>See the Observations</button>
+            {/* //passes variables if the button is true */}
+            {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
               name={name} email={email} bird={bird} site={site} 
-              date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation} 
-              cloudCover={cloudCover} windSpeed={windSpeed} observationSummary={observationSummary} young={young} youngAge={youngAge} incubation={incubation} observation={observation} comments={comments}
+
+              date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} percipitation={percipitation} 
+              cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge} 
+              incubation={incubation} observation={observation} comments={comments}
               // passes all methods
               nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
-               timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange} 
-               cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} observationSummaryChange={observationSummaryChange} 
+               timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} percipitationChange={percipitationChange} 
+               cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange} 
+
                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
-              />
+              /> :
+            <Display displayContent={displayContent} />}  
+               />
            
         </div>
-      </>
+      
     )
   }
 }
