@@ -11,7 +11,7 @@ import Display from './components/Display.js'
 class App extends Component {
   constructor(props) {
     super(props)
-    
+
     this.state = {
       name: '',
       email: '',
@@ -29,7 +29,7 @@ class App extends Component {
       windSpeed: '',
       relationshipStatus: '',
       youngStatus: '',
-      disturbance : '',
+      disturbance: '',
       incubation: '',
       young: '',
       youngAge: '',
@@ -88,17 +88,17 @@ class App extends Component {
   windSpeedChange = (event) => {
     this.setState({ windSpeed: event.target.value })
     console.log(this.state.windSpeed)
-  } 
+  }
   relationshipStatusChange = (event) => {
     this.setState({ relationshipStatus: event.target.value })
   }
-   youngStatusChange = (event) => {
+  youngStatusChange = (event) => {
     this.setState({ youngStatus: event.target.value })
   }
   disturbanceChange = (event) => {
     this.setState({ disturbance: event.target.value })
   }
-  
+
   youngChange = (event) => {
     this.setState({ young: event.target.value })
   }
@@ -135,7 +135,7 @@ class App extends Component {
       windSpeed: this.state.windSpeed,
       relationshipStatus: this.state.relationshipStatus,
       youngStatus: this.state.youngStatus,
-      disturbance : this.state.disturbance,
+      disturbance: this.state.disturbance,
       incubation: this.state.incubation,
       young: this.state.young,
       youngAge: this.state.youngAge,
@@ -144,7 +144,7 @@ class App extends Component {
     }
     console.log(submission)
   }
-// -------------------------------Submits all values-------------------------
+  // -------------------------------Submits all values-------------------------
   handleSubmit = (event) => {
     event.preventDefault()
     let submission = {
@@ -164,14 +164,14 @@ class App extends Component {
       windSpeed: this.state.windSpeed,
       relationshipStatus: this.state.relationshipStatus,
       youngStatus: this.state.youngStatus,
-      disturbance : this.state.disturbance,
+      disturbance: this.state.disturbance,
       incubation: this.state.incubation,
       young: this.state.young,
       youngAge: this.state.youngAge,
       observation: this.state.observation,
       comments: this.state.comments,
     }
-    
+
     fetch('/post', {
       method: 'POST',
       headers: {
@@ -196,7 +196,7 @@ class App extends Component {
       windSpeed: '',
       relationshipStatus: '',
       youngStatus: '',
-      disturbance : '',
+      disturbance: '',
       incubation: '',
       young: '',
       youngAge: '',
@@ -209,46 +209,46 @@ class App extends Component {
   //--------switches from input form to display all inputs ----------//
   toggleInput = () => {
     if (this.state.inputVisible) {
-      fetch('/display').then(res =>{
+      fetch('/display').then(res => {
         return res.json()
       }).then(jsonObj => {
         console.log(jsonObj)
-        this.setState({ displayContent: jsonObj})
+        this.setState({ displayContent: jsonObj })
       })
     }
 
-    this.state.inputVisible ?  this.setState({ inputVisible: false}) : this.setState({ inputVisible: true})
+    this.state.inputVisible ? this.setState({ inputVisible: false }) : this.setState({ inputVisible: true })
   }
 
   render() {
 
 
-    let { name, email, bird, site,  date_observed, mileage, travel, timeStart,timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments} = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange,cloudCoverChange, windSpeedChange, observationChange,observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput } = this
+    let { name, email, bird, site, date_observed, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck } = this
 
 
     return (
-        <div id="wrapper">
-            <button onClick={toggleInput}>See the Observations</button>
-            {/* //passes variables if the button is true */}
-            {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
-              name={name} email={email} bird={bird} site={site} 
+      <div id="wrapper">
+        <button onClick={toggleInput}>See the Observations</button>
+        {/* //passes variables if the button is true */}
+        {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
+          name={name} email={email} bird={bird} site={site}
 
-              date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} percipitation={percipitation} 
-              cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge} 
-              incubation={incubation} observation={observation} comments={comments}
-              // passes all methods
-              nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
-               timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} percipitationChange={percipitationChange} 
-               cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange} 
+          date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
+          cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+          incubation={incubation} observation={observation} comments={comments}
+          // passes all methods
+          nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
+          timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
+          cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
 
-               youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
-              /> :
-            <Display displayContent={displayContent} />}  
+          youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
+        /> :
+          <Display displayContent={displayContent} />}
                />
-           
-        </div>
-      
+
+      </div>
+
     )
   }
 }
