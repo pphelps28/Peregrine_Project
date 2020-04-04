@@ -191,17 +191,19 @@ export default function InputForm(props) {
 						onChange={props.temperatureChange}
 					/>
 				</div>
-				{/* ------------------------- Percipitation ---------------------------------*/}
+				{/* ------------------------- Precipitation ---------------------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Percipitation:
+
+						Precipitation:
+
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
 							type="radio"
 							label="Fog"
 							value="Fog"
-							name="percipitation"
+							name="precipitation"
 							id="formHorizontalRadios1"
 							onChange={props.percipitationChange}
 						/>
@@ -209,7 +211,7 @@ export default function InputForm(props) {
 							type="radio"
 							label="Drizzle"
 							value="Drizzle"
-							name="percipitation"
+							name="precipitation"
 							id="formHorizontalRadios1"
 							onChange={props.percipitationChange}
 						/>
