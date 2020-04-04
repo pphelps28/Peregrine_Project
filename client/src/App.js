@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import InputForm from './components/InputForm.js'
 import { sub } from 'date-fns';
 import Display from './components/Display.js'
-
+import LoginModal from './components/LoginModal.js'
 
 class App extends Component {
   constructor(props) {
@@ -228,27 +228,28 @@ class App extends Component {
 
 
     return (
-      <div id="wrapper">
-        <button onClick={toggleInput}>See the Observations</button>
-        {/* //passes variables if the button is true */}
-        {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
-          name={name} email={email} bird={bird} site={site}
+      <div>
+        {/* To remove modal, set Z-index to negative (needs styling and display trigger) */}
+        <LoginModal />
+        <div id="wrapper">
+          <button onClick={toggleInput}>See the Observations</button>
+          {/* //passes variables if the button is true */}
+          {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
+            name={name} email={email} bird={bird} site={site}
 
-          date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
-          cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
-          incubation={incubation} observation={observation} comments={comments}
-          // passes all methods
-          nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
-          timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
-          cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
+            date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
+            cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+            incubation={incubation} observation={observation} comments={comments}
+            // passes all methods
+            nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
+            timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
+            cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
 
-          youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
-        /> :
-          <Display displayContent={displayContent} />}
-
-
+            youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
+          /> :
+            <Display displayContent={displayContent} />}
+        </div>
       </div>
-
     )
   }
 }
