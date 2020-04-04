@@ -35,7 +35,7 @@ class App extends Component {
       youngAge: '',
       observation: '',
       comments: '',
-      inputVisible: false,
+      inputVisible: true,
       displayContent: []
     }
   }
@@ -245,7 +245,7 @@ class App extends Component {
           youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
         /> :
           <Display displayContent={displayContent} />}
-               />
+
 
       </div>
 
