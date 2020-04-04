@@ -1,11 +1,14 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import { Form, Col } from 'react-bootstrap';
+import Header from '../components/Header'
 
 export default function InputForm(props) {
 	return (
 		<div>
+            <Header />
 			<Form>
+                <h3 className='title'>Observation Form</h3>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
 					<label>Name: </label>
@@ -113,15 +116,6 @@ export default function InputForm(props) {
 						<option>White Rocks (Wallingford)</option>
 					</Form.Control>
 				</Form.Group>
-				{/* <div className="form-group">
-					<label>Select Site </label>
-					<select required className="form-control" value={props.site} onChange={props.siteChange}>
-						
-								
-							;
-						
-					</select>
-				</div> */}
 				{/*-------------------------- Date Observed -------------------------------*/}
 				<div className="form-group">
 					<label>Date: </label>
@@ -340,68 +334,70 @@ export default function InputForm(props) {
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Single Bird"
 							value="Single Bird"
-							name="obSum"
+							name="relationshipStatus"
 							id="formHorizontalRadios1"
-							onChange={props.observationSummaryChange}
+                            onChange={props.relationshipStatusChange}
+
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Territorial Pair"
 							value="Territorial Pair"
-							name="obSum"
+							name="relationshipStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+                            onChange={props.relationshipStatusChange}
+
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Courtship/Copulation"
 							value="Courtship/Copulation"
-							name="obSum"
+							name="relationshipStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.relationshipStatusChange}
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Incubating"
 							value="Incubating"
-							name="obSum"
+							name="youngStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.youngStatusChange}
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Hatched"
 							value="Hatched"
-							name="obSum"
+							name="youngStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.youngStatusChange}
 						/>
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Nest Failure"
 							value="Nest Failure"
-							name="obSum"
+							name="youngStatus"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.youngStatusChange}
 						/>
+                            <Form.Check
+                                type="radio"
+                                label="Fledged"
+                                value="Fledged"
+                                name="youngStatus"
+                                id="formHorizontalRadios2"
+                                onChange={props.youngStatusChange}
+                            />
 						<Form.Check
-							type="checkbox"
+							type="radio"
 							label="Human Disturbance"
 							value="Human Disturbance"
-							name="obSum"
+							name="disturbance"
 							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
-						/>
-						<Form.Check
-							type="checkbox"
-							label="Fledged"
-							value="Fledged"
-							name="obSum"
-							id="formHorizontalRadios2"
-							onChange={props.observationSummaryChange}
+							onChange={props.disturbanceChange}
 						/>
 					</Col>
 				</Form.Group>
