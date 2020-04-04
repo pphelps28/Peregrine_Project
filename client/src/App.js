@@ -221,7 +221,7 @@ class App extends Component {
 
   render() {
     let { name, email, bird, site,  date_observed, mileage, travel, timeStart,timeEnd, totalTime, temperature, percipitation, cloudCover, windSpeed, relationshipStatus, youngStatus, disturbance, young, youngAge, incubation, observation, comments} = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange, relationshipStatusChange, youngStatusChange, disturbanceChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, consoleCheck} = this
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange,travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, percipitationChange,cloudCoverChange, windSpeedChange, observationChange, relationshipStatusChange, youngStatusChange, disturbanceChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, consoleCheck, toggleInput, displayContent} = this
     return (
         <div id="wrapper">
             <button onClick={toggleInput}>See the Observations</button>
