@@ -7,6 +7,7 @@ import InputForm from './components/InputForm.js'
 import { sub } from 'date-fns';
 import Display from './components/Display.js'
 import LoginModal from './components/LoginModal.js'
+import ModalLogIn from './components/ModalLogIn'
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +54,6 @@ class App extends Component {
   }
   birdChange = (event) => {
     this.setState({ bird: event.target.value })
-    console.log(this.state.bird)
   }
   dateChange = date => {
 
@@ -230,7 +230,7 @@ class App extends Component {
     return (
       <div>
         {/* To remove modal, set Z-index to negative (needs styling and display trigger) */}
-        <LoginModal />
+        <ModalLogIn />
         <div id="wrapper">
           <button onClick={toggleInput}>See the Observations</button>
           {/* //passes variables if the button is true */}

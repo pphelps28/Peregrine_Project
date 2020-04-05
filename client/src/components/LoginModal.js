@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form, Button } from "react-bootstrap";
 import firebase from 'firebase'
 
 const firebaseConfig = {
@@ -56,14 +57,32 @@ class LoginModal extends Component {
 
     render() {
         return (
-            <form id="modal-wrapper" onSubmit={this.logIn}>
-                <input className="login-modal" onChange={this.emailChange} placeholder="email" type="email"></input>
-                <input className="login-modal" onChange={this.passwordChange} placeholder="password" type="password"></input>
-                <input className="login-modal" placeholder="submit" type="submit"></input>
-                <button onClick={this.logOut}>Log Out</button>
-            </form>
+            <Form onSubmit={this.logIn}>
+  <Form.Group controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control type="email" placeholder="Enter email" onChange={this.emailChange}/>
+    <Form.Text className="text-muted">
+      We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="Password" onChange={this.passwordChange}/>
+  </Form.Group>
+  <Button variant="primary" type="submit">
+    Submit
+  </Button>
+</Form>
+            // <form id="modal-wrapper" onSubmit={this.logIn}>
+            //     <input className="login-modal" onChange={this.emailChange} placeholder="email" type="email"></input>
+            //     <input className="login-modal" onChange={this.passwordChange} placeholder="password" type="password"></input>
+            //     <input className="login-modal" placeholder="submit" type="submit"></input>
+            //     <button onClick={this.logOut}>Log Out</button>
+            // </form>
         )
     }
 }
 
 export default LoginModal
+
