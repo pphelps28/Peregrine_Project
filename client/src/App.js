@@ -17,6 +17,7 @@ class App extends Component {
       name: '',
       email: '',
       bird: '',
+      prevBird: '',
       site: '',
       date_observed: new Date(),
       season: '',
@@ -54,7 +55,10 @@ class App extends Component {
     this.setState({ site: event.target.value })
   }
   birdChange = (event) => {
-    this.setState({ bird: event.target.value })
+    this.setState({
+      prevBird: this.state.bird,
+      bird: event.target.value
+    })
   }
   dateChange = date => {
     this.setState({ date_observed: date })
@@ -250,7 +254,7 @@ class App extends Component {
     })
 
     this.setState({
-      bird: '',
+      // bird: '',
       site: '',
       season: '',
     })
@@ -259,8 +263,8 @@ class App extends Component {
   render() {
 
 
-    let { name, email, bird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase} = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase } = this
 
 
     return (
@@ -283,7 +287,7 @@ class App extends Component {
 
             youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
           /> :
-            <Display bird={bird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />}
+            <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />}
         </div>
       </div>
     )
