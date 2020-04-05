@@ -55,7 +55,17 @@ class LoginModal extends Component {
         event.preventDefault()
         auth.signOut()
     }
-
+    forgotPassword = (event) => {
+        if (this.state.email === '') {
+            alert('please fill out email field')
+        } else {
+            auth.sendPasswordResetEmail(this.state.email).then(function () {
+                alert('password reset email sent!')
+            }).catch((error) => {
+                console.log(error.message)
+            })
+        }
+    }
     render() {
         return (
             <Form onSubmit={this.logIn}>
@@ -71,13 +81,15 @@ class LoginModal extends Component {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" onChange={this.passwordChange} />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className="modal-button" variant="primary" type="submit">
                     Submit
-  </Button>
-                <Button variant="secondary" onClick={this.logOut}>
+                </Button>
+                <Button className="modal-button" variant="outline-primary" onClick={this.logOut}>
                     Log Out
                 </Button>
-
+                <Button className="modal-button" variant="secondary" onClick={this.forgotPassword}>
+                    Forgot Password
+                </Button>
             </Form>
             // <form id="modal-wrapper" onSubmit={this.logIn}>
             //     <input className="login-modal" onChange={this.emailChange} placeholder="email" type="email"></input>
