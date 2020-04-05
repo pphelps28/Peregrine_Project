@@ -165,30 +165,21 @@ const handleBirdPosts = async (req, res) => {
 
 // search PEREGRINE database by inputted parameters and send to frontend
 
-const getBirdPosts = async (req, res) => {
-    console.log('searching for data')
+const getPeregrinePost = async (req, res) => {
+
     // search parameters inputted by admin user
-    let bird = req.body.bird
+
     let location = req.body.site
     let season = req.body.season
 
-    if (bird === "Bald Eagle") {
-        console.log("got eagle data")
-        let items = await EagleSchema.find({ "location": location, "season": season })
+    let items = await PeregrineSchema.find({ "location": location, "season": season })
 
-        res.send(items)
-    }
-    else {
-        console.log('got peregrine data')
-        let items = await PeregrineSchema.find({ "location": location, "season": season })
-
-        res.send(items)
-    }
+    res.send(items)
 }
 
 app.post('/post', handleBirdPosts)
 //leave for front end dev
-app.post('/display', getBirdPosts)
+app.post('/display', getPeregrinePost)
 
 
 // search EAGLE database by inputted parameters and send to frontend
