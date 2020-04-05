@@ -73,7 +73,7 @@
   height: 50vh;
   width: 60vw;
   background-color: #282c34;
-  z-index: 10000;
+  z-index: -1;
   overflow: hidden;
   border-radius: 20px;
 }
