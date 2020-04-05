@@ -19,6 +19,7 @@ class App extends Component {
       bird: '',
       site: '',
       date_observed: new Date(),
+      season: '',
       mileage: '',
       travel: '',
       timeStart: '',
@@ -56,8 +57,11 @@ class App extends Component {
     this.setState({ bird: event.target.value })
   }
   dateChange = date => {
-
     this.setState({ date_observed: date })
+  }
+  seasonChange = (event) => {
+    console.log("hi!")
+    this.setState({ season: event.target.value })
   }
   mileageChange = (event) => {
     this.setState({ mileage: event.target.value })
@@ -130,7 +134,7 @@ class App extends Component {
       timeEnd: this.state.timeEnd,
       totalTime: this.state.totalTime,
       temperature: this.state.temperature,
-      percipitation: this.state.percipitation,
+      precipitation: this.state.precipitation,
       cloudCover: this.state.cloudCover,
       windSpeed: this.state.windSpeed,
       relationshipStatus: this.state.relationshipStatus,
@@ -208,23 +212,55 @@ class App extends Component {
 
   //--------switches from input form to display all inputs ----------//
   toggleInput = () => {
-    if (this.state.inputVisible) {
-      fetch('/display').then(res => {
-        return res.json()
-      }).then(jsonObj => {
-        console.log(jsonObj)
-        this.setState({ displayContent: jsonObj })
-      })
-    }
+    // if (this.state.inputVisible) {
+    //   fetch('/display').then(res => {
+    //     return res.json()
+    //   }).then(jsonObj => {
+    //     console.log(jsonObj)
+    //     this.setState({ displayContent: jsonObj })
+    //   })
+    // }
 
     this.state.inputVisible ? this.setState({ inputVisible: false }) : this.setState({ inputVisible: true })
+  }
+
+  // ---------- searches database using bird / season / site paramaters and returns observations ---------- //
+
+  searchDataBase = (event) => {
+    event.preventDefault()
+    console.log('getting data')
+    let query = { // this query is coming from the three search input fields
+
+      bird: this.state.bird,
+      site: this.state.site,
+      season: this.state.season
+    }
+
+    fetch(('/display'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(query)
+    }).then(res => {
+
+      return res.json()
+    }).then(jsonObj => {
+      this.setState({ displayContent: jsonObj })
+    })
+
+    this.setState({
+      bird: '',
+      site: '',
+      season: '',
+    })
   }
 
   render() {
 
 
-    let { name, email, bird, site, date_observed, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck } = this
+    let { name, email, bird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase} = this
 
 
     return (
@@ -247,7 +283,7 @@ class App extends Component {
 
             youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
           /> :
-            <Display displayContent={displayContent} />}
+            <Display bird={bird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />}
         </div>
       </div>
     )
