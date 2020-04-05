@@ -34,7 +34,7 @@ export default function InputForm(props) {
 				{/* -----------------------Bird Observed Radio -------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Which Bird did you Observe:
+						Which bird did you observe?
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -59,6 +59,7 @@ export default function InputForm(props) {
 				<Form.Group controlId="exampleForm.SelectCustom">
 					<Form.Label>Select Site:</Form.Label>
 					<Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
+						<option></option>
 						<option>Arrowhead Mountain (Milton)</option>
 						<option>Bald Mountain (West Haven)</option>
 						<option>Ball Mountain (Jamaica)</option>

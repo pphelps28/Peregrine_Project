@@ -52,9 +52,7 @@ const EagleSchema = mongoose.model('EagleSchema', birdSchema)
 
 // ---------- FUNCTIONS ---------- //
 
-// ---------- write + search and read functions ---------- //
-
-// write new bird data to database
+// writes new bird data to database
 
 const handleBirdPosts = async (req, res) => {
     console.log("received request")
@@ -126,6 +124,7 @@ const handleBirdPosts = async (req, res) => {
         // new PEREGRINE data object created from monitor data
 
         console.log('received peregrine data')
+
         let post = new PeregrineSchema({
             monitor_name: name,
             location: location,
@@ -158,94 +157,59 @@ const handleBirdPosts = async (req, res) => {
             console.log('Post Saved: ' + doc)
         })
     }
-
-
-
 }
 
-// search PEREGRINE database by inputted parameters and send to frontend
+// searches BIRD database by inputted parameters and sends to frontend
 
-const getPeregrinePost = async (req, res) => {
+const getBirdPosts = async (req, res) => {
+    console.log('searching for data')
 
     // search parameters inputted by admin user
 
+    let bird = req.body.bird
     let location = req.body.site
     let season = req.body.season
 
-    let items = await PeregrineSchema.find({ "location": location, "season": season })
+    if (location === '') {
+        location = {$exists: true}
+    }
 
-    res.send(items)
+    if (season === '') {
+        season = {$exists: true}
+    }
+
+    // searches EAGLE database
+
+    if (bird === "Bald Eagle") {
+        console.log("got eagle data")
+        let items = await EagleSchema.find({ "location": location, "season": season })
+
+        // and returns documents
+
+        res.send(items)
+    }
+
+    // searches PEREGRINE database
+
+    else if (bird === 'Peregrine Falcon') {
+        console.log('got peregrine data')
+        let items = await PeregrineSchema.find({ "location": location, "season": season })
+
+        // and returns documents
+
+        res.send(items)
+    }
+
+    // sends back a reminder to choose one of the specified birds
+
+    else {
+        console.log('bad entry')
+        let items = [{ season: 'Please choose either "Bald Eagle" or "Peregrine Falcon"' }]
+        res.send(items)
+    }
 }
 
 app.post('/post', handleBirdPosts)
-//leave for front end dev
-app.post('/display', getPeregrinePost)
-
-
-// search EAGLE database by inputted parameters and send to frontend
-
-const getEaglePost = async (req, res) => {
-
-    // search parameters inputted by admin user
-
-    let location = req.body.site
-    let season = req.body.season
-
-    let items = await EagleSchema.find({ "location": location, "season": season })
-
-    res.send(items)
-}
-
-// app.post('/post', handleEaglePost)
-//leave for front end dev
-// app.post('/display', getEaglePost)
-
-///// FOR TESTING///////////////////
-
-
-const birdySchema = new mongoose.Schema({
-    name: String,
-    location: String,
-    date_observed: String,
-    date_entered: String,
-    notes: String
-})
-const BirdySchema = mongoose.model('BirdySchema', birdySchema)
-
-
-
-const handlePost = async (req, res) => {
-    let name = req.body.name
-    let location = req.body.location
-    let date_observed = req.body.date_observed
-    let date_entered = req.body.date_entered
-    let notes = req.body.notes
-    let post = new BirdySchema({
-        name: name,
-        location: location,
-        date_observed: date_observed,
-        date_entered: date_entered,
-        notes: notes
-    })
-
-    await post.save((err, doc) => {
-        if (err) {
-            return console.log(err)
-        }
-        console.log('Post Saved: ' + doc)
-        //send back?
-    })
-}
-//refine query functions
-const getPosts = async (req, res) => {
-    let items = await BirdySchema.find({})
-    console.log('Found Documents!')
-    console.log(items)
-    res.send(JSON.stringify(items))
-}
-
-// app.get('/post', handlePost)
-// //leave for front end dev
-// app.get('/display', getPosts)
+app.post('/display', getBirdPosts)
 
 app.listen(port, () => console.log(`listening on: ${port}`))
