@@ -205,7 +205,7 @@ export default function InputForm(props) {
 							value="Fog"
 							name="precipitation"
 							id="formHorizontalRadios1"
-							onChange={props.percipitationChange}
+							onChange={props.precipitationChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -213,29 +213,29 @@ export default function InputForm(props) {
 							value="Drizzle"
 							name="precipitation"
 							id="formHorizontalRadios1"
-							onChange={props.percipitationChange}
+							onChange={props.precipitationChange}
 						/>
 						<Form.Check
 							type="radio"
 							label="Rain-heavy"
 							value="Rain-heavy"
-							name="percipitation"
+							name="precipitation"
 							id="formHorizontalRadios1"
-							onChange={props.percipitationChange}
+							onChange={props.precipitationChange}
 						/>
 						<Form.Check
 							type="radio"
 							label="Rain-light"
 							value="Rain-light"
-							name="percipitation"
+							name="precipitation"
 							id="formHorizontalRadios1"
-							onChange={props.percipitationChange}
+							onChange={props.precipitationChange}
 						/>
 						<Form.Check
 							type="radio"
 							label="None"
 							value="None"
-							name="percipitation"
+							name="precipitation"
 							id="formHorizontalRadios1"
 							onChange={props.percipitationChange}
 						/>
@@ -463,7 +463,7 @@ export default function InputForm(props) {
 				{/* ---------------------submission check button for development ------------------ */}
 				<button onClick={props.consoleCheck}>console check</button>
 				{/* --------------------------Submit-------------------------------- */}
-				<input type="submit" value="Submit Form" className="btn btn-primary" />
+				<input type="submit" value="Submit Form" className="btn btn-primary" onClick={props.handleSubmit} />
 			</Form>
 		</div>
 	);

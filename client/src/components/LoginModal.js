@@ -30,6 +30,8 @@ class LoginModal extends Component {
                 console.log('logged in! user: ')
                 console.log(user)
 
+            } else {
+                console.log('logged out')
             }
         })
     }
@@ -52,28 +54,43 @@ class LoginModal extends Component {
     logOut = (event) => {
         event.preventDefault()
         auth.signOut()
-        console.log('signed out')
     }
-
+    forgotPassword = (event) => {
+        if (this.state.email === '') {
+            alert('please fill out email field')
+        } else {
+            auth.sendPasswordResetEmail(this.state.email).then(function () {
+                alert('password reset email sent!')
+            }).catch((error) => {
+                console.log(error.message)
+            })
+        }
+    }
     render() {
         return (
             <Form onSubmit={this.logIn}>
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" onChange={this.emailChange}/>
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" onChange={this.emailChange} />
+                    <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
     </Form.Text>
-  </Form.Group>
+                </Form.Group>
 
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" onChange={this.passwordChange}/>
-  </Form.Group>
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" onChange={this.passwordChange} />
+                </Form.Group>
+                <Button className="modal-button" variant="primary" type="submit">
+                    Submit
+                </Button>
+                <Button className="modal-button" variant="outline-primary" onClick={this.logOut}>
+                    Log Out
+                </Button>
+                <Button className="modal-button" variant="secondary" onClick={this.forgotPassword}>
+                    Forgot Password
+                </Button>
+            </Form>
             // <form id="modal-wrapper" onSubmit={this.logIn}>
             //     <input className="login-modal" onChange={this.emailChange} placeholder="email" type="email"></input>
             //     <input className="login-modal" onChange={this.passwordChange} placeholder="password" type="password"></input>
