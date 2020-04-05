@@ -27,7 +27,7 @@ function MyVerticallyCenteredModal(props) {
   }
   
   function ModalLogIn() {
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = React.useState(true);
   
     return (
       <>

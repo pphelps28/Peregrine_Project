@@ -7,7 +7,7 @@ export default function InputForm(props) {
 	return (
 		<div>
             <Header />
-			<Form>
+			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block">
                 <h3 className='title'>Observation Form</h3>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
