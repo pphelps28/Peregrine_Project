@@ -270,7 +270,7 @@ class App extends Component {
 
     return (
       <div>
-        <NavBar toggleInput={toggleInput} />
+      <NavBar toggleInput={toggleInput} />
         
         <div id="wrapper">
           {/* //passes variables if the button is true */}
