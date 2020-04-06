@@ -90,3 +90,8 @@ color: white;
 	height: 30px;
 	width: auto;
 }
+#login-status{
+
+	font-size: 1.15em;
+	margin-bottom: 5px;
+}

@@ -20,18 +20,25 @@ class LoginModal extends Component {
         super()
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            display: '',
+            displayColor: 'red',
+            logoutDisabled: true
         }
     }
 
     componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                console.log('logged in! user: ')
-                console.log(user)
-
+                this.setState({
+                    display: `logged in as ${user.email}`,
+                    displayColor: 'green',
+                    logoutDisabled: false
+                })
             } else {
-                console.log('logged out')
+                this.setState({
+                    logoutDisabled: true
+                })
             }
         })
     }
@@ -49,54 +56,98 @@ class LoginModal extends Component {
         const password = this.state.password
         auth.signInWithEmailAndPassword(email, password).catch((error) => {
             console.log(error.message)
+            if (!auth.currentUser) {
+                this.setState({
+                    display: 'Invalid username or password',
+                    displayColor: 'red'
+                })
+            }
+        })
+        this.setState({
+            email: '',
+            password: ''
         })
     }
     logOut = (event) => {
         event.preventDefault()
-        auth.signOut()
+        if (auth.currentUser) {
+            auth.signOut()
+            this.setState({
+                display: 'Thanks for visiting!',
+                displayColor: 'green'
+            })
+        }
     }
     forgotPassword = (event) => {
         if (this.state.email === '') {
-            alert('please fill out email field')
+            this.setState({
+                display: 'Please fill out email field, then select "Forgot Password"',
+                displayColor: 'orange'
+            })
         } else {
-            auth.sendPasswordResetEmail(this.state.email).then(function () {
-                alert('password reset email sent!')
+            console.log(this.state.email)
+            auth.sendPasswordResetEmail(this.state.email).then(() => {
+                this.setState({
+                    display: 'Check email to reset password',
+                    displayColor: 'green'
+                })
             }).catch((error) => {
                 console.log(error.message)
             })
         }
     }
+    changeEmail = () => {
+        if (!auth.currentUser) {
+            this.setState({
+                display: 'To change email, please sign in first.',
+                displayColor: 'orange'
+            })
+        } else {
+            let oldEmail = auth.currentUser.email
+            let newEmail = prompt('Please enter new email.')
+            auth.currentUser.updateEmail(newEmail).catch(error => {
+                if (error) {
+                    this.setState({
+                        display: error.message,
+                        displayColor: 'red'
+                    })
+                }
+            })
+            this.setState({
+                display: `Email updated!  To undo changes, follow the link sent to ${oldEmail}`,
+                displayColor: 'green'
+            })
+
+        }
+    }
     render() {
         return (
-            <Form onSubmit={this.logIn}>
+            <Form >
                 <Form.Group controlId="formBasicEmail">
+                    <div style={{ color: this.state.displayColor }} id="login-status">{this.state.display}</div>
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" onChange={this.emailChange} />
+                    <Form.Control type="email" placeholder="Enter email" onChange={this.emailChange} value={this.state.email} />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
     </Form.Text>
                 </Form.Group>
-
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" onChange={this.passwordChange} />
+                    <Form.Control type="password" placeholder="Password" onChange={this.passwordChange} value={this.state.password} />
                 </Form.Group>
-                <Button className="modal-button" variant="primary" type="submit">
+                <Button className="modal-button" variant="primary" type="submit" onClick={this.logIn}>
                     Submit
                 </Button>
-                <Button className="modal-button" variant="outline-primary" onClick={this.logOut}>
+                <Button className="modal-button" variant="outline-primary" disabled={this.state.logoutDisabled} style={this.state.logoutDisabled ? { 'opacity': .3 } : { 'opacity': 1 }} onClick={this.logOut}>
                     Log Out
                 </Button>
                 <Button className="modal-button" variant="secondary" onClick={this.forgotPassword}>
-                    Forgot Password
+                    Reset Password
+                </Button>
+                <Button className="modal-button" variant="outline-secondary" onClick={this.changeEmail}>
+                    Change Email
                 </Button>
             </Form>
-            // <form id="modal-wrapper" onSubmit={this.logIn}>
-            //     <input className="login-modal" onChange={this.emailChange} placeholder="email" type="email"></input>
-            //     <input className="login-modal" onChange={this.passwordChange} placeholder="password" type="password"></input>
-            //     <input className="login-modal" placeholder="submit" type="submit"></input>
-            //     <button onClick={this.logOut}>Log Out</button>
-            // </form>
         )
     }
 }
