@@ -123,7 +123,8 @@ export default function Display(props) {
             <div><strong>{bird} Monitor Observation report(s)</strong></div>
             <table className="table table-striped">
                 <thead>
-                    <tr> {/* //table headers */}
+                    <tr> 
+                        {/* //table headers */}
                         <th scope="col">Location</th>
                         <th scope="col">Season</th>
                         <th scope="col">Date Observed</th>
@@ -154,8 +155,6 @@ export default function Display(props) {
         </div >
     )
 }
-
-
 
 {/* <ul >
             {props.displayContent ? props.displayContent.map(e =>

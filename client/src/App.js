@@ -90,7 +90,6 @@ class App extends Component {
 
   precipitationChange = (event) => {
     this.setState({ precipitation: event.target.value })
-
   }
   cloudCoverChange = (event) => {
     this.setState({ cloudCover: event.target.value })
@@ -108,7 +107,6 @@ class App extends Component {
   disturbanceChange = (event) => {
     this.setState({ disturbance: event.target.value })
   }
-
   youngChange = (event) => {
     this.setState({ young: event.target.value })
   }
