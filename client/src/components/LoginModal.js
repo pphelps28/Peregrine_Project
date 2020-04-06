@@ -135,8 +135,8 @@ class LoginModal extends Component {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" onChange={this.passwordChange} value={this.state.password} />
                 </Form.Group>
-                <Button className="modal-button" variant="primary" type="submit" onClick={this.logIn}>
-                    Submit
+                <Button className="modal-button" variant="primary" disabled={!this.state.logoutDisabled} type="submit" onClick={this.logIn}>
+                    Log In
                 </Button>
                 <Button className="modal-button" variant="outline-primary" disabled={this.state.logoutDisabled} style={this.state.logoutDisabled ? { 'opacity': .3 } : { 'opacity': 1 }} onClick={this.logOut}>
                     Log Out
