@@ -52,7 +52,7 @@
 	text-align: center;
 	justify-content: center;
 	align-items: center;
-	padding: 2rem .5rem 2rem .5rem;
+	padding: 4rem .5rem 2rem .5rem;
 }
 
 .headerImage2 {
@@ -66,6 +66,8 @@
 	text-align: center;
 
 }
+
+
 
 .headerImages {
 	height: auto;
@@ -89,4 +91,8 @@ color: white;
 .brandImage {
 	height: 30px;
 	width: auto;
+}
+
+.container {
+	padding-top: 2rem;
 }

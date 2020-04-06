@@ -13,8 +13,8 @@ export class NavBar extends Component {
 	}
 	render() {
 		return (
-			<div>
-				<Navbar bg="primary" variant="dark" className='navContainer'>
+			<div className='navbar'>
+				<Navbar bg="primary" variant="dark" className='navContainer' fixed='top'>
 					<Navbar.Brand><Link to='/' className='link'><img className='brandImage' src='../../img/Audubon_H_BLK_VT.png'></img></Link></Navbar.Brand>
 					<Nav className="mr-auto">
                     <Nav.Link ><Link to='/' className='link'>Submit Forms</Link></Nav.Link>
