@@ -3,6 +3,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
 import { sub } from 'date-fns';
 import Display from './components/Display.js'
@@ -269,10 +270,9 @@ class App extends Component {
 
     return (
       <div>
-        {/* To remove modal, set Z-index to negative (needs styling and display trigger) */}
-        <ModalLogIn />
+        <NavBar toggleInput={toggleInput} />
+        
         <div id="wrapper">
-          <button onClick={toggleInput}>See the Observations</button>
           {/* //passes variables if the button is true */}
           {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
             name={name} email={email} bird={bird} site={site}
