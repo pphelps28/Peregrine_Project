@@ -55,10 +55,12 @@ class App extends Component {
     this.setState({ site: event.target.value })
   }
   birdChange = (event) => {
+
     this.setState({
       prevBird: this.state.bird,
       bird: event.target.value
     })
+
   }
   dateChange = date => {
     this.setState({ date_observed: date })
@@ -233,6 +235,7 @@ class App extends Component {
   searchDataBase = (event) => {
     event.preventDefault()
     console.log('getting data')
+
     let query = { // this query is coming from the three search input fields
 
       bird: this.state.bird,
@@ -240,24 +243,28 @@ class App extends Component {
       season: this.state.season
     }
 
-    fetch(('/display'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(query)
-    }).then(res => {
+    if (query.bird === '') {
+      alert('Please choose either Bald Eagle or Peregrine Falcon.')
+    } else {
+      fetch(('/display'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(query)
+      }).then(res => {
 
-      return res.json()
-    }).then(jsonObj => {
-      this.setState({ displayContent: jsonObj })
-    })
+        return res.json()
+      }).then(jsonObj => {
+        this.setState({ displayContent: jsonObj })
+      })
 
-    this.setState({
-      // bird: '',
-      site: '',
-      season: '',
-    })
+      this.setState({
+        // bird: '',
+        site: '',
+        season: '',
+      })
+    }
   }
 
   render() {
