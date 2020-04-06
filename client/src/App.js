@@ -1,14 +1,13 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
-import { sub } from 'date-fns';
 import Display from './components/Display.js'
-import LoginModal from './components/LoginModal.js'
-import ModalLogIn from './components/ModalLogIn'
+
 
 class App extends Component {
   constructor(props) {
@@ -275,11 +274,13 @@ class App extends Component {
 
     return (
       <div>
+          <Router>
       <NavBar toggleInput={toggleInput} />
         
         <div id="wrapper">
           {/* //passes variables if the button is true */}
-          {this.state.inputVisible ? <InputForm handleSubmit={handleSubmit}
+          <Route  path='/' exact>
+          <InputForm handleSubmit={handleSubmit}
             name={name} email={email} bird={bird} site={site}
 
             date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
@@ -291,9 +292,13 @@ class App extends Component {
             cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
 
             youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
-          /> :
+          /> 
+          </Route>
+          <Route path='/display'>
             <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />}
+            </Route>
         </div>
+            </Router>
       </div>
     )
   }
