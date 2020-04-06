@@ -69,3 +69,9 @@
 .modal-button {
 	margin: 5px;
 }
+
+#login-status{
+
+	font-size: 1.15em;
+	margin-bottom: 5px;
+}
