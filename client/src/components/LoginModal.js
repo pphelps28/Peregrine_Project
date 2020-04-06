@@ -85,10 +85,11 @@ class LoginModal extends Component {
                 displayColor: 'orange'
             })
         } else {
-            auth.sendPasswordResetEmail(this.state.email).then(function () {
+            console.log(this.state.email)
+            auth.sendPasswordResetEmail(this.state.email).then(() => {
                 this.setState({
                     display: 'Check email to reset password',
-                    displayColor: 'orange'
+                    displayColor: 'green'
                 })
             }).catch((error) => {
                 console.log(error.message)
@@ -105,15 +106,20 @@ class LoginModal extends Component {
             let oldEmail = auth.currentUser.email
             let newEmail = prompt('Please enter new email.')
             auth.currentUser.updateEmail(newEmail).catch(error => {
-                console.log(error.message)
+                if (error) {
+                    this.setState({
+                        display: error.message,
+                        displayColor: 'red'
+                    })
+                }
             })
             this.setState({
                 display: `Email updated!  To undo changes, follow the link sent to ${oldEmail}`,
                 displayColor: 'green'
             })
+
         }
     }
-
     render() {
         return (
             <Form >
@@ -136,7 +142,7 @@ class LoginModal extends Component {
                     Log Out
                 </Button>
                 <Button className="modal-button" variant="secondary" onClick={this.forgotPassword}>
-                    Forgot Password
+                    Reset Password
                 </Button>
                 <Button className="modal-button" variant="outline-secondary" onClick={this.changeEmail}>
                     Change Email
