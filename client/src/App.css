@@ -96,3 +96,8 @@ color: white;
 .container {
 	padding-top: 2rem;
 }
+	#login-status{
+
+	font-size: 1.15em;
+	margin-bottom: 5px;
+}
