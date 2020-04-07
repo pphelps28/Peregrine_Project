@@ -6,10 +6,10 @@ export default function ReportModal(props) {
     let data = props.observationReport
     console.log(props.reportVisible)
     return (
-       
+
         <>
-        {props.reportVisible ?
-            
+            {props.reportVisible ?
+
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -42,7 +42,7 @@ export default function ReportModal(props) {
                             <th scope="column">Mileage</th>
                             <td>{data.mileage}</td>
                         </tr>
-                        
+
                         <tr>
                             <th scope="column">Travel Time</th>
                             <td>{data.travel_time}</td>
@@ -59,7 +59,7 @@ export default function ReportModal(props) {
                             <th scope="column">Total Time</th>
                             <td>{data.total_time}</td>
                         </tr>
-                        
+
                         <tr>
                             <th scope="column">Temperature</th>
                             <td>{data.temperature}</td>
@@ -80,7 +80,7 @@ export default function ReportModal(props) {
                             <th scope="column">Summary</th>
                             <td>{data.summary}</td>
                         </tr>
-                        
+
                         <tr>
                             <th scope="column">Temperature</th>
                             <td>{data.temperature}</td>
@@ -102,8 +102,8 @@ export default function ReportModal(props) {
                             <td>{data.remarks}</td>
                         </tr>
                     </tbody>
-                </table> 
-             : null}
+                </table>
+                : null}
         </>
     )
 }
