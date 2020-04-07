@@ -5,10 +5,6 @@ import ReportModal from './ReportModal'
 
 export default function Display(props) {
     let bird
-   
-   const dataCheck = () => {
-        console.log(props.displayContent)
-    }
 
     if (props.bird === 'Bald Eagle') {
         bird = 'Bald Eagle'
@@ -20,7 +16,6 @@ export default function Display(props) {
     else {
         bird = ''
     }
-   
 
     
     return (
@@ -128,16 +123,17 @@ export default function Display(props) {
                     </Form.Group>
                     <input type="submit" value="Search" className="btn btn-primary" onClick={props.searchDataBase} />
                 </Form>
+                
+
             </div>
-            <div>
+            <div> 
                 {/* CSV download react component button */}
-                <CsvDownload data={props.displayContent} filename="birdData.csv" />
-                {/* <button onClick={dataCheck} >Data Check</button> commented out for dev purpooses */}
+                <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary"/>
             </div>
             <div><strong>{bird} Monitor Observation report(s)</strong></div>
             <table className="table table-striped">
                 <thead>
-                    <tr> {/* //table headers */}
+                    <tr>{/* //table headers */}
                         <th scope="col">Season</th>
                         <th scope="col">Location</th>
                         <th scope="col">Date Observed</th>
@@ -152,9 +148,7 @@ export default function Display(props) {
                             <td >{data.location}</td>
                             <td >{data.date_visited}</td>
                             <td><button className="btn btn-primary" value={JSON.stringify(data)} onClick={props.displayFullReport} style={{ cursor: 'pointer' }}>click here</button></td>
-                            
                         </tr>
-
 
                     )) : <em>Loading...</em>}
 

@@ -33,7 +33,7 @@ function ModalLogIn() {
     <>
       <Link className="link" variant="primary" onClick={() => setModalShow(true)}>
         Log In
-        </Link>
+      </Link>
 
       <MyVerticallyCenteredModal
         show={modalShow}

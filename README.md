@@ -14,6 +14,6 @@ Front end interface will use React with the Bootstrap framework, built on an Exp
 	Submission form and monitor interface build.   
 -Week 3 (April 13-17)   
 	Admin interface and data reporting build.   
--Week 4 (April 20-24)
-	Wish List items (?), Demo Day
+-Week 4 (April 20-24)  
+	Wish List items (?), Demo Day  
 
