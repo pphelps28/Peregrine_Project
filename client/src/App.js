@@ -8,6 +8,7 @@ import { sub } from 'date-fns';
 import Display from './components/Display.js'
 import LoginModal from './components/LoginModal.js'
 import ModalLogIn from './components/ModalLogIn'
+import ReportModal from './components/ReportModal'
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +40,9 @@ class App extends Component {
       observation: '',
       comments: '',
       inputVisible: true,
-      displayContent: []
+      displayContent: [],
+      observationReport: '',
+      reportVisible: false
     }
   }
 
@@ -123,6 +126,16 @@ class App extends Component {
   }
   commentsChange = (event) => {
     this.setState({ comments: event.target.value })
+  }
+  displayFullReport = (event) => {
+    event.preventDefault()
+    console.log('preparing report')
+    
+    this.setState({
+      observationReport: JSON.parse(event.target.value)
+    })
+
+    this.state.reportVisible ? this.setState({ reportVisible: false }) : this.setState({ reportVisible: true })
   }
 
   // ---------------------------a button for development to allow a check of the submission without submit ---------
@@ -270,8 +283,8 @@ class App extends Component {
   render() {
 
 
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport } = this.state
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
 
 
     return (
@@ -294,9 +307,15 @@ class App extends Component {
 
             youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
           /> :
-            <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />}
+            <Display bird={bird} prevBird={prevBird} site={site} season={season} reportVisible={reportVisible} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />}
+
+
+
+
         </div>
+        <ReportModal displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />
       </div>
+
     )
   }
 }
