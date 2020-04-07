@@ -2,8 +2,6 @@ import React from 'react';
 import { Form, Col } from 'react-bootstrap';
 import CsvDownload from 'react-json-to-csv'
 
-
-
 export default function Display(props) {
     let bird
    
@@ -130,8 +128,9 @@ export default function Display(props) {
                 </Form>
             </div>
             <div>
+                {/* CSV download react component button */}
                 <CsvDownload data={props.displayContent} filename="birdData.csv" />
-                <button onClick={dataCheck} >Data Check</button>
+                {/* <button onClick={dataCheck} >Data Check</button> commented out for dev purpooses */}
             </div>
             <div><strong>{bird} Monitor Observation report(s)</strong></div>
             <table className="table table-striped">
