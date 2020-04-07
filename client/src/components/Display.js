@@ -147,7 +147,6 @@ export default function Display(props) {
                 <tbody>
                     {/* //ternary operator that will iterate through each entry using a key */}
                     {props.displayContent ? props.displayContent.map(data => (
-
                         <tr key={data._id}>
                             <th scope="column" >{data.season}</th>
                             <td >{data.location}</td>
