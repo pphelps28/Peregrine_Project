@@ -43,7 +43,7 @@ class App extends Component {
       inputVisible: true,
       displayContent: [],
       observationReport: '',
-      reportVisible: false
+      reportVisible: false, 
     }
   }
 
@@ -135,7 +135,6 @@ class App extends Component {
 
     this.state.reportVisible ? this.setState({ reportVisible: false }) : this.setState({ reportVisible: true })
   }
-
 
   // -------------------------------Submits all values-------------------------
   handleSubmit = (event) => {
