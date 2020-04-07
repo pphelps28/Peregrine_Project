@@ -96,7 +96,6 @@ class App extends Component {
   }
   windSpeedChange = (event) => {
     this.setState({ windSpeed: event.target.value })
-    console.log(this.state.windSpeed)
   }
   relationshipStatusChange = (event) => {
     this.setState({ relationshipStatus: event.target.value })
@@ -123,35 +122,7 @@ class App extends Component {
     this.setState({ comments: event.target.value })
   }
 
-  // ---------------------------a button for development to allow a check of the submission without submit ---------
-  consoleCheck = (event) => {
-    event.preventDefault()
-    let submission = {
-      name: this.state.name,
-      email: this.state.email,
-      bird: this.state.bird,
-      site: this.state.site,
-      date_observed: new Date(),
-      mileage: this.state.mileage,
-      travel: this.state.travel,
-      timeStart: this.state.timeStart,
-      timeEnd: this.state.timeEnd,
-      totalTime: this.state.totalTime,
-      temperature: this.state.temperature,
-      precipitation: this.state.precipitation,
-      cloudCover: this.state.cloudCover,
-      windSpeed: this.state.windSpeed,
-      relationshipStatus: this.state.relationshipStatus,
-      youngStatus: this.state.youngStatus,
-      disturbance: this.state.disturbance,
-      incubation: this.state.incubation,
-      young: this.state.young,
-      youngAge: this.state.youngAge,
-      observation: this.state.observation,
-      comments: this.state.comments,
-    }
-    console.log(submission)
-  }
+  
   // -------------------------------Submits all values-------------------------
   handleSubmit = (event) => {
     event.preventDefault()
@@ -291,7 +262,7 @@ class App extends Component {
             timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
             cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
 
-            youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
+            youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
           /> 
           </Route>
           <Route path='/display'>
