@@ -39,7 +39,17 @@ class App extends Component {
       observation: '',
       comments: '',
       inputVisible: true,
-      displayContent: []
+      displayContent: [],
+      birdData: [
+        {bird: "peregrine",
+        location: "red rocks",
+        date: "4/4/2020"},
+        {bird: "peregrine",
+        location: "bald mtn",
+        date: "4/2/2020"},
+        {bird: "peregrine",
+        location: "rattlesnake ridge",
+        date: "4/1/2020"}]
     }
   }
 
@@ -268,7 +278,7 @@ class App extends Component {
   render() {
 
 
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
+    let { birdData, name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
     let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase } = this
 
 

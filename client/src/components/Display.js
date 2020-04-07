@@ -1,8 +1,12 @@
 import React from 'react';
 import { Form, Col } from 'react-bootstrap';
+import CsvDownload from 'react-json-to-csv'
+
 
 export default function Display(props) {
     let bird
+
+
     if (props.bird === 'Bald Eagle') {
         bird = 'Bald Eagle'
 
@@ -119,6 +123,9 @@ export default function Display(props) {
                     </Form.Group>
                     <input type="submit" value="Search" className="btn btn-primary" onClick={props.searchDataBase} />
                 </Form>
+            </div>
+            <div>
+                <CsvDownload data={props.birdData} filename="birdData.csv" />
             </div>
             <div><strong>{bird} Monitor Observation report(s)</strong></div>
             <table className="table table-striped">
