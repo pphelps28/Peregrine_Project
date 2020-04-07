@@ -280,19 +280,15 @@ class App extends Component {
               />
             </Route>
             <Route path='/display'>
-              <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />}
+              <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />
+              <ReportModal displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />
             </Route>
           </div>
         </Router>
-            youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
-          /> :
-        <Display bird={bird} prevBird={prevBird} site={site} season={season} reportVisible={reportVisible} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />}
 
 
 
 
-
-        <ReportModal displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />
       </div >
 
     )
