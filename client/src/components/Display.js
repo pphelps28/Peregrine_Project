@@ -15,8 +15,8 @@ export default function Display(props) {
     }
 
     return (
-        <div className="container" >
-            <div className="audubonvt" ></div>
+        <div>
+            
             <div>
                 <Form>
                     {/* -----------------------Bird Observed Radio -------------------*/}
@@ -155,20 +155,3 @@ export default function Display(props) {
         </div >
     )
 }
-
-{/* <ul >
-            {props.displayContent ? props.displayContent.map(e =>
-                <div key={e._id} className='display-item-container'>
-
-                    <li>season: {e.season}</li>
-                    <li>email: {e.email}</li>
-                    <li>location:  {e.location}</li>
-                    <li>wind speed: {e.wind_speed}</li>
-                    <li>precipitation: {e.precipitation}</li>
-                    <li>Date observed: {e.date_visited}</li>
-                    <li>observations: {e.observations}</li>
-
-                </div>) : "Loading..."}
-
-
-        </ul> */}

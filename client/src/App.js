@@ -273,9 +273,9 @@ class App extends Component {
 
 
     return (
-      <div>
+      <div className="container">
           <Router>
-      <NavBar toggleInput={toggleInput} />
+        <NavBar toggleInput={toggleInput} />
         
         <div id="wrapper">
           {/* //passes variables if the button is true */}
@@ -290,7 +290,6 @@ class App extends Component {
             nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
             timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
             cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
-
             youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} consoleCheck={consoleCheck}
           /> 
           </Route>
