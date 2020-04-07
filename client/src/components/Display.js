@@ -3,9 +3,13 @@ import { Form, Col } from 'react-bootstrap';
 import CsvDownload from 'react-json-to-csv'
 
 
+
 export default function Display(props) {
     let bird
-
+   
+   const dataCheck = () => {
+        console.log(props.displayContent)
+    }
 
     if (props.bird === 'Bald Eagle') {
         bird = 'Bald Eagle'
@@ -17,6 +21,7 @@ export default function Display(props) {
     else {
         bird = ''
     }
+   
 
     return (
         <div>
@@ -125,7 +130,8 @@ export default function Display(props) {
                 </Form>
             </div>
             <div>
-                <CsvDownload data={props.birdData} filename="birdData.csv" />
+                <CsvDownload data={props.displayContent} filename="birdData.csv" />
+                <button onClick={dataCheck} >Data Check</button>
             </div>
             <div><strong>{bird} Monitor Observation report(s)</strong></div>
             <table className="table table-striped">

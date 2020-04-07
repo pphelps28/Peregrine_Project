@@ -40,16 +40,6 @@ class App extends Component {
       comments: '',
       inputVisible: true,
       displayContent: [],
-      birdData: [
-        {bird: "peregrine",
-        location: "red rocks",
-        date: "4/4/2020"},
-        {bird: "peregrine",
-        location: "bald mtn",
-        date: "4/2/2020"},
-        {bird: "peregrine",
-        location: "rattlesnake ridge",
-        date: "4/1/2020"}]
     }
   }
 
@@ -304,8 +294,8 @@ class App extends Component {
           /> 
           </Route>
           <Route path='/display'>
-            <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />}
-            </Route>
+            <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />
+          </Route>
         </div>
             </Router>
       </div>
