@@ -18,6 +18,7 @@ mongoose.set('useFindAndModify', false)
 // ---------- BIRD SCHEMATA ---------- // 
 
 const birdSchema = new mongoose.Schema({
+    bird: String,
     monitor_name: String,
     email: mongoose.SchemaTypes.Email,
     location: { type: String, required: true },
@@ -88,6 +89,7 @@ const handleBirdPosts = async (req, res) => {
         // new EAGLE data object created from monitor data
 
         let post = new EagleSchema({
+            bird: bird,
             monitor_name: name,
             location: location,
             email: email,
@@ -126,6 +128,7 @@ const handleBirdPosts = async (req, res) => {
         console.log('received peregrine data')
 
         let post = new PeregrineSchema({
+            bird: bird,
             monitor_name: name,
             location: location,
             email: email,

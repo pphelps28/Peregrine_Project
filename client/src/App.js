@@ -1,13 +1,15 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
 import Display from './components/Display.js'
-
+import LoginModal from './components/LoginModal.js'
+import ModalLogIn from './components/ModalLogIn'
+import ReportModal from './components/ReportModal'
 
 class App extends Component {
   constructor(props) {
@@ -39,7 +41,9 @@ class App extends Component {
       observation: '',
       comments: '',
       inputVisible: true,
-      displayContent: []
+      displayContent: [],
+      observationReport: '',
+      reportVisible: false
     }
   }
 
@@ -121,8 +125,18 @@ class App extends Component {
   commentsChange = (event) => {
     this.setState({ comments: event.target.value })
   }
+  displayFullReport = (event) => {
+    event.preventDefault()
+    console.log('preparing report')
 
-  
+    this.setState({
+      observationReport: JSON.parse(event.target.value)
+    })
+
+    this.state.reportVisible ? this.setState({ reportVisible: false }) : this.setState({ reportVisible: true })
+  }
+
+
   // -------------------------------Submits all values-------------------------
   handleSubmit = (event) => {
     event.preventDefault()
@@ -239,38 +253,44 @@ class App extends Component {
   render() {
 
 
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent } = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport } = this.state
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
 
 
     return (
       <div>
-          <Router>
-      <NavBar toggleInput={toggleInput}/>
-        
-        <div id="wrapper">
-          {/* //passes variables if the button is true */}
-          <Route  path='/' exact>
-          <InputForm handleSubmit={handleSubmit}
-            name={name} email={email} bird={bird} site={site}
+        <Router>
+          <NavBar toggleInput={toggleInput} />
 
-            date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
-            cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
-            incubation={incubation} observation={observation} comments={comments}
-            // passes all methods
-            nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
-            timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
-            cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
+          <div id="wrapper">
+            {/* //passes variables if the button is true */}
+            <Route path='/' exact>
+              <InputForm handleSubmit={handleSubmit}
+                name={name} email={email} bird={bird} site={site}
 
-            youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
-          /> 
-          </Route>
-          <Route path='/display'>
-            <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />
+                date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
+                cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+                incubation={incubation} observation={observation} comments={comments}
+                // passes all methods
+                nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
+                timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
+                cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
+
+                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
+              />
             </Route>
-        </div>
-            </Router>
-      </div>
+            <Route path='/display'>
+              <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />
+              <ReportModal displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />
+            </Route>
+          </div>
+        </Router>
+
+
+
+
+      </div >
+
     )
   }
 }

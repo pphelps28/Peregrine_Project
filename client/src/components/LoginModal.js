@@ -81,7 +81,7 @@ class LoginModal extends Component {
     forgotPassword = (event) => {
         if (this.state.email === '') {
             this.setState({
-                display: 'Please fill out email field, then select "Forgot Password"',
+                display: 'Please fill out email field, then select "Reset Password"',
                 displayColor: 'orange'
             })
         } else {
