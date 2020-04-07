@@ -266,7 +266,7 @@ class App extends Component {
           /> 
           </Route>
           <Route path='/display'>
-            <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />}
+            <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} />
             </Route>
         </div>
             </Router>
