@@ -461,8 +461,6 @@ export default function InputForm(props) {
 						rows="6"
 					/>
 				</div>
-				{/* ---------------------submission check button for development ------------------ */}
-				<button onClick={props.consoleCheck}>console check</button>
 				{/* --------------------------Submit-------------------------------- */}
 				<input type="submit" value="Submit Form" className="btn btn-primary" onClick={props.handleSubmit} />
 			</Form>
