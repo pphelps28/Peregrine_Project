@@ -42,13 +42,13 @@
 }
 
 .imageContainer {
-  align-items: center;
-  text-align: center;
+	align-items: center;
+	text-align: center;
 }
 
 .Header {
-  width: 100%;
-  height: 10%;
+	width: 100%;
+	height: 10%;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
@@ -64,17 +64,13 @@
 	justify-content: center;
 	align-items: flex-end;
 	text-align: center;
-
 }
-
-
 
 .headerImages {
 	height: auto;
 	width: auto;
-  margin: 1rem;
+	margin: 1rem;
 }
-
 
 .title {
 	text-align: center;
@@ -85,7 +81,7 @@
 }
 
 .link {
-color: white;
+	color: white;
 }
 
 .brandImage {
@@ -96,8 +92,8 @@ color: white;
 .container {
 	padding-top: 2rem;
 }
-	#login-status{
 
+#login-status {
 	font-size: 1.15em;
 	margin-bottom: 5px;
 }
