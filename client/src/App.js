@@ -1,7 +1,7 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
@@ -43,7 +43,8 @@ class App extends Component {
       inputVisible: true,
       displayContent: [],
       observationReport: '',
-      reportVisible: false
+      reportVisible: true,
+      redirect: null
     }
   }
 
@@ -125,19 +126,20 @@ class App extends Component {
   commentsChange = (event) => {
     this.setState({ comments: event.target.value })
   }
+
+  // ---------------- stores single observation report in state and launches observation report page ---------- //
+
   displayFullReport = (event) => {
     event.preventDefault()
     console.log('preparing report')
-
     this.setState({
-      observationReport: JSON.parse(event.target.value)
+      observationReport: JSON.parse(event.target.value),
+      redirect: '/report_modal'
     })
-
-    this.state.reportVisible ? this.setState({ reportVisible: false }) : this.setState({ reportVisible: true })
   }
 
+  // -------------------------------Submits all values------------------------- //
 
-  // -------------------------------Submits all values-------------------------
   handleSubmit = (event) => {
     event.preventDefault()
     let submission = {
@@ -199,21 +201,20 @@ class App extends Component {
     console.log(submission)
   }
 
-  //--------switches from input form to display all inputs ----------//
+  //--------switches between observation and view reports pages and back from observation report page ----------//
+
   toggleInput = () => {
-    // if (this.state.inputVisible) {
-    //   fetch('/display').then(res => {
-    //     return res.json()
-    //   }).then(jsonObj => {
-    //     console.log(jsonObj)
-    //     this.setState({ displayContent: jsonObj })
-    //   })
-    // }
+    if (this.state.redirect === '/report_modal') {
+      this.setState({
+        redirect: null
+      })
+    }
+
 
     this.state.inputVisible ? this.setState({ inputVisible: false }) : this.setState({ inputVisible: true })
   }
 
-  // ---------- searches database using bird / season / site paramaters and returns observations ---------- //
+  // ---------- searches database using bird / season / site paramaters and returns observation sketches ---------- //
 
   searchDataBase = (event) => {
     event.preventDefault()
@@ -253,7 +254,7 @@ class App extends Component {
   render() {
 
 
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport } = this.state
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport, redirect } = this.state
     let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
 
 
@@ -280,8 +281,11 @@ class App extends Component {
               />
             </Route>
             <Route path='/display'>
-              <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
-              <ReportModal displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />
+              <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
+
+            </Route>
+            <Route path='/report_modal' render={(props) =>
+              <ReportModal {...props} displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />} >
             </Route>
           </div>
         </Router>

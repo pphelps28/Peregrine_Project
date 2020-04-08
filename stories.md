@@ -43,6 +43,31 @@ As an Admin,
 I want to be able to delete an entry
 So that I can remove unnecessary entries.
 
+## Entry qualification
+As an admin  
+I want the entries about nesting behavior to be able to be qualified with "confirmed" or "suspected"  
+So I can judge the likelihood of the observation.  
+
+## Eagle Fields  
+As an admin
+I want fields for monitors to record observations on approximate age and band or no-band  
+So I can track these points independently.  
+
+## Weather Notes
+As an admin  
+I want the weather fields consolidated into a "weather notes" field  
+So I can judge whether and how the weather impacted the observation.  
+
+## Site addition
+As an developer
+I want to have a separate schema for observation sites, eagle/falcon,  
+So that I can easily add new sites to the schema. 
+
+## Site Addition, Admin
+As an admin  
+I want to be easily able to add new nesting locations to the form and reports,  
+So that I can accommodate changes to the habits and territory of the birds. 
+
 ---
 
 ## Entry History
@@ -54,6 +79,12 @@ So I can see what I’ve entered previously.
 As a monitor
 I want to be able to review my submission before final submit,
 So that I can be sure it’s accurate.
+
+## Photo 
+As a monitor
+I want to be able to add a photo to my report
+So I can show the nesting site(s)
+
 
 ## /*********** Entry editing
 As a monitor
