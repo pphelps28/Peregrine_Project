@@ -38,6 +38,7 @@ class App extends Component {
       incubation: '',
       young: '',
       youngAge: '',
+      image : '',
       observation: '',
       comments: '',
       inputVisible: true,
@@ -119,6 +120,14 @@ class App extends Component {
   youngAgeChange = (event) => {
     this.setState({ youngAge: event.target.value })
   }
+  imageChange = (event) => {
+let image  = event.target.files[0]
+    let form = new FormData()
+    form.append('image', image)
+    this.setState({
+      image : form
+    })
+  }
   observationChange = (event) => {
     this.setState({ observation: event.target.value })
   }
@@ -161,6 +170,7 @@ class App extends Component {
       incubation: this.state.incubation,
       young: this.state.young,
       youngAge: this.state.youngAge,
+      image: this.state.image,
       observation: this.state.observation,
       comments: this.state.comments,
     }
@@ -193,6 +203,7 @@ class App extends Component {
       incubation: '',
       young: '',
       youngAge: '',
+      image: File(),
       observation: '',
       comments: '',
     })
@@ -253,8 +264,8 @@ class App extends Component {
   render() {
 
 
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport } = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, image, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport } = this.state
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, imageChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
 
 
     return (
@@ -270,13 +281,13 @@ class App extends Component {
 
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
                 cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
-                incubation={incubation} observation={observation} comments={comments}
+                incubation={incubation} image={image} observation={observation} comments={comments}
                 // passes all methods
                 nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                 timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
                 cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
 
-                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
+                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} imageChange={imageChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
               />
             </Route>
             <Route path='/display'>

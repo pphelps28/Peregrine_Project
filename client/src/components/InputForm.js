@@ -437,6 +437,11 @@ export default function InputForm(props) {
 						onChange={props.youngAgeChange}
 					/>
 				</div>
+					{/* -------------------image upload -------------------- */}
+					<label for="img">Select image:</label>
+  						<input value={props.image} onChange={props.imageChange} className="form-control" type="file" id="img" name="img" accept="image/*"></input>
+						<input className="form-control" type="file" id="img" name="img" accept="image/*"></input>
+
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
 					<label>Recorded Observations (include time of observation): </label>
@@ -459,10 +464,10 @@ export default function InputForm(props) {
 						value={props.comments}
 						onChange={props.commentsChange}
 						rows="6"
-					/>
-				</div>
+						/>
+						</div>
 				{/* --------------------------Submit-------------------------------- */}
-				<input type="submit" value="Submit Form" className="btn btn-primary" onClick={props.handleSubmit} />
+				<input  type="submit" value="Submit Form" className="btn btn-primary" onClick={props.handleSubmit} />
 			</Form>
 		</div>
 	);

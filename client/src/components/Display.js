@@ -18,9 +18,7 @@ export default function Display(props) {
     
     return (
 
-
-
-        <div className="container" >
+<div className="container" >
             <div className="audubonvt" ></div>
             <div>
                 <Form>
