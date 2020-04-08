@@ -22,7 +22,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig)
 const auth = firebase.auth()
-
+//
 class App extends Component {
   constructor(props) {
     super(props)
@@ -56,16 +56,25 @@ class App extends Component {
       displayContent: [],
       observationReport: '',
       reportVisible: false,
-      loggedIn: true,
+      loggedIn: false,
       email: '',
       password: '',
       display: '',
       displayColor: '',
-      logoutDisabled: true
+      logoutDisabled: true,
+      modalShow: false,
+      userModalShow: false
+
     }
   }
 
   // ----------------------- apply changes to state ------------------------
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+    console.log()
+  }
   nameChange = (event) => {
     this.setState({ name: event.target.value })
   }
@@ -150,7 +159,6 @@ class App extends Component {
     this.setState({
       observationReport: JSON.parse(event.target.value)
     })
-
     this.state.reportVisible ? this.setState({ reportVisible: false }) : this.setState({ reportVisible: true })
   }
 
@@ -180,6 +188,16 @@ class App extends Component {
     console.log(event.target.value)
     this.setState({ password: event.target.value })
   }
+  ////////////////LOG IN MODAL//////////////
+
+  setModalShow = () => {
+    this.state.modalShow ?
+      this.setState({
+        modalShow: false
+      }) : this.setState({
+        modalShow: true
+      })
+  }
   logIn = (event) => {
     event.preventDefault()
     const email = this.state.email;
@@ -195,27 +213,17 @@ class App extends Component {
     })
     this.setState({
       email: '',
-      password: ''
+      password: '',
+      userModalShow: false
     })
   }
-  logOut = (event) => {
-    event.preventDefault()
-    if (auth.currentUser) {
-      auth.signOut()
-    }
-    this.setState({
-      loggedIn: false,
-      display: ''
-    })
-  }
-  forgotPassword = (event) => {
+  forgotPasswordAtLogIn = (event) => {
     if (this.state.email === '') {
       this.setState({
-        display: 'Please fill out email field, then select "Reset Password"',
+        display: 'Please fill out email field, then select "Forgot Password"',
         displayColor: 'orange'
       })
     } else {
-      console.log(this.state.email)
       auth.sendPasswordResetEmail(this.state.email).then(() => {
         this.setState({
           display: 'Check email to reset password',
@@ -225,6 +233,39 @@ class App extends Component {
         console.log(error.message)
       })
     }
+  }
+
+  //USER SETTINGS MODAL/////////////////////////////////////////
+
+  setUserModalShow = () => {
+    this.state.userModalShow ?
+      this.setState({
+        userModalShow: false
+      }) : this.setState({
+        userModalShow: true
+      })
+  }
+  logOut = (event) => {
+    event.preventDefault()
+    if (auth.currentUser) {
+      auth.signOut()
+    }
+    this.setState({
+      loggedIn: false,
+      modalShow: false,
+      display: ''
+    })
+  }
+  resetPassword = (event) => {
+    let email = (auth.currentUser.email)
+    auth.sendPasswordResetEmail(email).then(() => {
+      this.setState({
+        display: 'Check email to reset password',
+        displayColor: 'green'
+      })
+    }).catch((error) => {
+      console.log(error.message)
+    })
   }
   changeEmail = () => {
     if (!auth.currentUser) {
@@ -247,7 +288,6 @@ class App extends Component {
         display: `Email updated!  To undo changes, follow the link sent to ${oldEmail}`,
         displayColor: 'green'
       })
-
     }
   }
   // -------------------------------Submits all values-------------------------
@@ -311,21 +351,6 @@ class App extends Component {
     })
     console.log(submission)
   }
-
-  //--------switches from input form to display all inputs ----------//
-  toggleInput = () => {
-    // if (this.state.inputVisible) {
-    //   fetch('/display').then(res => {
-    //     return res.json()
-    //   }).then(jsonObj => {
-    //     console.log(jsonObj)
-    //     this.setState({ displayContent: jsonObj })
-    //   })
-    // }
-
-    this.state.inputVisible ? this.setState({ inputVisible: false }) : this.setState({ inputVisible: true })
-  }
-
   // ---------- searches database using bird / season / site paramaters and returns observations ---------- //
 
   searchDataBase = (event) => {
@@ -380,21 +405,26 @@ class App extends Component {
             displayColor={this.state.displayColor}
             logoutDisabled={this.state.logoutDisabled}
             loggedIn={this.state.loggedIn}
+            modalShow={this.state.modalShow}
+            userModalShow={this.state.userModalShow}
             // methods
+            setUserModalShow={this.setUserModalShow}
+            setModalShow={this.setModalShow}
             emailChange={this.emailChange}
             passwordChange={this.passwordChange}
             logIn={this.logIn}
             logOut={this.logOut}
-            forgotPassword={this.forgotPassword}
+            forgotPasswordAtLogIn={this.forgotPasswordAtLogIn}
+            resetPassword={this.resetPassword}
             changeEmail={this.changeEmail}
           />
 
           <div id="wrapper">
             {/* //passes variables if the button is true */}
             <Route path='/' exact>
-              <InputForm handleSubmit={handleSubmit}
+              <InputForm
+                handleSubmit={handleSubmit}
                 name={name} email={email} bird={bird} site={site}
-
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
                 cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
                 incubation={incubation} observation={observation} comments={comments}
@@ -402,14 +432,18 @@ class App extends Component {
                 nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                 timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
                 cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
-
                 youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
               />
             </Route>
             <Route path='/display'>
-              <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
-              <ReportModal displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />
+              {this.state.loggedIn ?
+                <>
+                  <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
+                  <ReportModal displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />
+                </>
+                : "Please log in to see this page"}
             </Route>
+
           </div>
         </Router>
       </div >

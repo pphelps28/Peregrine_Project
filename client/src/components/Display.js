@@ -15,7 +15,7 @@ export default function Display(props) {
         bird = ''
     }
 
-    
+
     return (
 
 
@@ -144,7 +144,7 @@ export default function Display(props) {
                             <td >{data.location}</td>
                             <td >{data.date_visited}</td>
                             <td><button className="btn btn-primary" value={JSON.stringify(data)} onClick={props.displayFullReport} style={{ cursor: 'pointer' }}>click here</button></td>
-                            
+
                         </tr>
 
 

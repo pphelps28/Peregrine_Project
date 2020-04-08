@@ -4,28 +4,17 @@ import { Form, Modal, Button } from 'react-bootstrap'
 class ModalLogIn extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      // props
-      modalShow: false,
-    }
   }
-  setModalShow = () => {
-    this.state.modalShow ?
-      this.setState({
-        modalShow: false
-      }) : this.setState({
-        modalShow: true
-      })
-  }
+
   render() {
     return (
       <>
-        <div className="link" variant="primary" onClick={this.setModalShow}>
+        <div className="link" variant="primary" onClick={this.props.setModalShow}>
           Log In
       </div>
         <Modal
-          show={this.state.modalShow}
-          onHide={this.setModalShow}
+          show={this.props.modalShow}
+          onHide={this.props.setModalShow}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
@@ -49,7 +38,7 @@ class ModalLogIn extends Component {
               passwordChange={this.props.passwordChange}
               logIn={this.props.logIn}
               logOut={this.props.logOut}
-              forgotPassword={this.props.forgotPassword}
+              forgotPasswordAtLogIn={this.props.forgotPasswordAtLogIn}
               changeEmail={this.props.changeEmail}
             />
           </Modal.Body>
@@ -79,15 +68,10 @@ function LoginModal(props) {
       <Button className="modal-button" variant="primary" disabled={!props.logoutDisabled} type="submit" onClick={props.logIn}>
         Log In
                 </Button>
-      <Button className="modal-button" variant="outline-primary" disabled={props.logoutDisabled} style={props.logoutDisabled ? { 'opacity': .3 } : { 'opacity': 1 }} onClick={props.logOut}>
-        Log Out
+      <Button className="modal-button" variant="secondary" onClick={props.forgotPasswordAtLogIn}>
+        Forgot Password
                 </Button>
-      <Button className="modal-button" variant="secondary" onClick={props.forgotPassword}>
-        Reset Password
-                </Button>
-      <Button className="modal-button" variant="outline-secondary" onClick={props.changeEmail}>
-        Change Email
-                </Button>
+
     </Form>
   )
 }

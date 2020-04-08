@@ -82,6 +82,11 @@
 
 .link {
 	color: white;
+	padding-right: 20px;
+}
+
+.link:hover {
+	color: orange
 }
 
 .brandImage {
@@ -96,4 +101,8 @@
 #login-status {
 	font-size: 1.15em;
 	margin-bottom: 5px;
+}
+
+#navbar-display-and-user {
+	display: flex;
 }
