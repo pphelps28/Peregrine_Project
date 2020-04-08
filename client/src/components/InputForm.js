@@ -211,40 +211,45 @@ export default function InputForm(props) {
 							label="Fog"
 							value="Fog"
 							name="precipitation"
+							checked={props.precipitation === "Fog"}
 							id="formHorizontalRadios1"
-							onChange={props.precipitationChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
 							label="Drizzle"
 							value="Drizzle"
 							name="precipitation"
+							checked={props.precipitation === "Drizzle"}
 							id="formHorizontalRadios2"
-							onChange={props.precipitationChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
 							label="Rain-heavy"
 							value="Rain-heavy"
 							name="precipitation"
+							checked={props.precipitation === "Rain-heavy"}
 							id="formHorizontalRadios3"
-							onChange={props.precipitationChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
 							label="Rain-light"
 							value="Rain-light"
 							name="precipitation"
+							checked={props.precipitation === "Rain-light"}
 							id="formHorizontalRadios4"
-							onChange={props.precipitationChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
 							label="None"
 							value="None"
 							name="precipitation"
+							checked={props.precipitation === "None"}
 							id="formHorizontalRadios5"
-							onChange={props.percipitationChange}
+							onChange={props.formChange}
 						/>
 					</Col>
 				</Form.Group>

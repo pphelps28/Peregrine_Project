@@ -1,6 +1,6 @@
 import React from 'react';
 import CsvDownload from 'react-json-to-csv'
-import { Form, Col, Accordion, Card } from 'react-bootstrap';
+import { Form, Col } from 'react-bootstrap';
 import ReportModal from './ReportModal'
 import { Link, Redirect } from 'react-router-dom'
 

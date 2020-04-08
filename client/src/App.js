@@ -60,17 +60,9 @@ class App extends Component {
   // ----------------------- apply changes to state ------------------------
 
 
-  nameChange = (event) => {
-    this.setState({ name: event.target.value })
-  }
-  emailChange = (event) => {
-    this.setState({ email: event.target.value })
-  }
-
   siteChange = (event) => {
     this.setState({ site: event.target.value })
   }
-
 
   birdChange = (event) => {
 
@@ -87,25 +79,13 @@ class App extends Component {
     console.log("hi!")
     this.setState({ season: event.target.value })
   }
-  mileageChange = (event) => {
-    this.setState({ mileage: event.target.value })
-  }
-  travelChange = (event) => {
-    this.setState({ travel: event.target.value })
-  }
+  
   timeStartChange = timeStart => {
     this.setState({ timeStart: timeStart })
   }
   timeEndChange = (timeEnd) => {
     this.setState({ timeEnd: timeEnd })
   }
-  totalTimeChange = (event) => {
-    this.setState({ totalTime: event.target.value })
-  }
-  temperatureChange = (event) => {
-    this.setState({ temperature: event.target.value })
-  }
-
   precipitationChange = (event) => {
     this.setState({ precipitation: event.target.value })
   }
@@ -123,21 +103,6 @@ class App extends Component {
   }
   disturbanceChange = (event) => {
     this.setState({ disturbance: event.target.value })
-  }
-  youngChange = (event) => {
-    this.setState({ young: event.target.value })
-  }
-  incubationChange = (event) => {
-    this.setState({ incubation: event.target.value })
-  }
-  youngAgeChange = (event) => {
-    this.setState({ youngAge: event.target.value })
-  }
-  observationChange = (event) => {
-    this.setState({ observation: event.target.value })
-  }
-  commentsChange = (event) => {
-    this.setState({ comments: event.target.value })
   }
 
   // ---------------- stores single observation report in state and launches observation report page ---------- //
