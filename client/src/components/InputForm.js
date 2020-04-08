@@ -16,8 +16,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="name"
 						value={props.name}
-						onChange={props.nameChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/*------------------------- email  -----------------------*/}
@@ -27,8 +28,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="email"
 						value={props.email}
-						onChange={props.emailChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/* -----------------------Bird Observed Radio -------------------*/}
@@ -131,8 +133,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="mileage"
 						value={props.mileage}
-						onChange={props.mileageChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/* ------------------------------------------ Travel Time ------------------------------*/}
@@ -142,8 +145,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="travel"
 						value={props.travel}
-						onChange={props.travelChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/* --------------------------------------- Observation Start Time ------------------------------*/}
@@ -177,8 +181,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="totalTime"
 						value={props.totalTime}
-						onChange={props.totalTimeChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/* ---------------------------- Temperature --------------------------*/}
@@ -188,8 +193,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="temperature"
 						value={props.temperature}
-						onChange={props.temperatureChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/* ------------------------- Precipitation ---------------------------------*/}
@@ -213,7 +219,7 @@ export default function InputForm(props) {
 							label="Drizzle"
 							value="Drizzle"
 							name="precipitation"
-							id="formHorizontalRadios1"
+							id="formHorizontalRadios2"
 							onChange={props.precipitationChange}
 						/>
 						<Form.Check
@@ -221,7 +227,7 @@ export default function InputForm(props) {
 							label="Rain-heavy"
 							value="Rain-heavy"
 							name="precipitation"
-							id="formHorizontalRadios1"
+							id="formHorizontalRadios3"
 							onChange={props.precipitationChange}
 						/>
 						<Form.Check
@@ -229,7 +235,7 @@ export default function InputForm(props) {
 							label="Rain-light"
 							value="Rain-light"
 							name="precipitation"
-							id="formHorizontalRadios1"
+							id="formHorizontalRadios4"
 							onChange={props.precipitationChange}
 						/>
 						<Form.Check
@@ -237,7 +243,7 @@ export default function InputForm(props) {
 							label="None"
 							value="None"
 							name="precipitation"
-							id="formHorizontalRadios1"
+							id="formHorizontalRadios5"
 							onChange={props.percipitationChange}
 						/>
 					</Col>
@@ -253,7 +259,7 @@ export default function InputForm(props) {
 							label="Clear =<10% cover"
 							value="Clear =<10% cover"
 							name="cloud"
-							id="formHorizontalRadios7"
+							id="formHorizontalRadios6"
 							onChange={props.cloudCoverChange}
 						/>
 						<Form.Check
@@ -261,7 +267,7 @@ export default function InputForm(props) {
 							label="Scattered= 10-50% cover"
 							value="Scattered= 10-50% cover"
 							name="cloud"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios7"
 							onChange={props.cloudCoverChange}
 						/>
 						<Form.Check
@@ -269,7 +275,7 @@ export default function InputForm(props) {
 							label="Broken = 50-90% cover"
 							value="Broken = 50-90% cover"
 							name="cloud"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios8"
 							onChange={props.cloudCoverChange}
 						/>
 						<Form.Check
@@ -277,7 +283,7 @@ export default function InputForm(props) {
 							label="Overcast = >90% cover"
 							value="Overcast = >90% cover"
 							name="cloud"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios9"
 							onChange={props.cloudCoverChange}
 						/>
 					</Col>
@@ -293,7 +299,7 @@ export default function InputForm(props) {
 							label="0-5 mph = low, calm"
 							value="0-5 mph = low, calm"
 							name="wind"
-							id="formHorizontalRadios1"
+							id="formHorizontalRadios10"
 							onChange={props.windSpeedChange}
 						/>
 						<Form.Check
@@ -301,7 +307,7 @@ export default function InputForm(props) {
 							label="5-10 mph = moderate"
 							value="5-10 mph = moderate"
 							name="wind"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios11"
 							onChange={props.windSpeedChange}
 						/>
 						<Form.Check
@@ -309,7 +315,7 @@ export default function InputForm(props) {
 							label="10-15 mph = strong"
 							value="10-15 mph = strong"
 							name="wind"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios12"
 							onChange={props.windSpeedChange}
 						/>
 						<Form.Check
@@ -317,7 +323,7 @@ export default function InputForm(props) {
 							label="15-20 mph = very strong"
 							value="15-20 mph = very strong"
 							name="wind"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios13"
 							onChange={props.windSpeedChange}
 						/>
 						<Form.Check
@@ -325,7 +331,7 @@ export default function InputForm(props) {
 							label=">20 mph not recommended"
 							value=">20 mph not recommended"
 							name="wind"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios14"
 							onChange={props.windSpeedChange}
 						/>
 					</Col>
@@ -341,7 +347,7 @@ export default function InputForm(props) {
 							label="Single Bird"
 							value="Single Bird"
 							name="relationshipStatus"
-							id="formHorizontalRadios1"
+							id="formHorizontalRadios15"
                             onChange={props.relationshipStatusChange}
 
 						/>
@@ -350,7 +356,7 @@ export default function InputForm(props) {
 							label="Territorial Pair"
 							value="Territorial Pair"
 							name="relationshipStatus"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios16"
                             onChange={props.relationshipStatusChange}
 
 						/>
@@ -359,7 +365,7 @@ export default function InputForm(props) {
 							label="Courtship/Copulation"
 							value="Courtship/Copulation"
 							name="relationshipStatus"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios17"
 							onChange={props.relationshipStatusChange}
 						/>
 						<Form.Check
@@ -367,7 +373,7 @@ export default function InputForm(props) {
 							label="Incubating"
 							value="Incubating"
 							name="youngStatus"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios18"
 							onChange={props.youngStatusChange}
 						/>
 						<Form.Check
@@ -375,7 +381,7 @@ export default function InputForm(props) {
 							label="Hatched"
 							value="Hatched"
 							name="youngStatus"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios19"
 							onChange={props.youngStatusChange}
 						/>
 						<Form.Check
@@ -383,7 +389,7 @@ export default function InputForm(props) {
 							label="Nest Failure"
 							value="Nest Failure"
 							name="youngStatus"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios20"
 							onChange={props.youngStatusChange}
 						/>
                             <Form.Check
@@ -391,7 +397,7 @@ export default function InputForm(props) {
                                 label="Fledged"
                                 value="Fledged"
                                 name="youngStatus"
-                                id="formHorizontalRadios2"
+                                id="formHorizontalRadios21"
                                 onChange={props.youngStatusChange}
                             />
 						<Form.Check
@@ -399,7 +405,7 @@ export default function InputForm(props) {
 							label="Human Disturbance"
 							value="Human Disturbance"
 							name="disturbance"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios22"
 							onChange={props.disturbanceChange}
 						/>
 					</Col>
@@ -411,8 +417,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="incubation"
 						value={props.incubation}
-						onChange={props.incubationChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/* -------------------------------Young ----------------- */}
@@ -422,8 +429,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="young"
 						value={props.young}
-						onChange={props.youngChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/* ---------------------------Young ages ---------------------- */}
@@ -433,8 +441,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="youngAge"
 						value={props.youngAge}
-						onChange={props.youngAgeChange}
+						onChange={props.formChange}
 					/>
 				</div>
 				{/* -----------------------------Recorded Observations ------------------- */}
@@ -444,8 +453,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="observation"
 						value={props.observation}
-						onChange={props.observationChange}
+						onChange={props.formChange}
 						rows="6"
 					/>
 				</div>
@@ -456,8 +466,9 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="comments"
 						value={props.comments}
-						onChange={props.commentsChange}
+						onChange={props.formChange}
 						rows="6"
 					/>
 				</div>

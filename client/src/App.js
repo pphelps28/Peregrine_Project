@@ -47,18 +47,31 @@ class App extends Component {
       redirect: null
     }
   }
-
+ 
+  //------------general handler -------------------------------------------//
+  
+  formChange = (event) => {
+    let input = event.target.value;
+    this.setState({
+      [event.target.name]: input
+    })
+  }
+  
   // ----------------------- apply changes to state ------------------------
+
+
   nameChange = (event) => {
     this.setState({ name: event.target.value })
   }
   emailChange = (event) => {
     this.setState({ email: event.target.value })
   }
-  siteChange = (event) => {
 
+  siteChange = (event) => {
     this.setState({ site: event.target.value })
   }
+
+
   birdChange = (event) => {
 
     this.setState({
@@ -253,7 +266,7 @@ render() {
 
 
   let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport, redirect } = this.state
-  let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
+  let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
 
 
   return (
@@ -265,16 +278,20 @@ render() {
           <Route path='/' exact>
             <InputForm handleSubmit={handleSubmit}
               name={name} email={email} bird={bird} site={site}
-
-              date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
-              cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+              date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} 
+              timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
+              cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} 
+              youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
               incubation={incubation} observation={observation} comments={comments}
               // passes all methods
-              nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
-              timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
-              cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
-
-              youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
+              nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} 
+              dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
+              timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} 
+              temperatureChange={temperatureChange} precipitationChange={precipitationChange}
+              cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} 
+              relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
+              youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} 
+              commentsChange={commentsChange} handleSubmit={handleSubmit} formChange={formChange}
             />
           </Route>
           <Route path='/display'>
