@@ -7,7 +7,7 @@ export default function ReportModal(props) {
     console.log(props.reportVisible)
     return (
        
-        <>
+        <div id='report_page'>
         {props.reportVisible ?
             
                 <table className="table table-striped">
@@ -104,7 +104,7 @@ export default function ReportModal(props) {
                     </tbody>
                 </table> 
              : null}
-        </>
+        </div>
     )
 }
 

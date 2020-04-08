@@ -1,9 +1,12 @@
 import React from 'react';
+import CsvDownload from 'react-json-to-csv'
 import { Form, Col, Accordion, Card } from 'react-bootstrap';
 import ReportModal from './ReportModal'
+import { Link, Redirect } from 'react-router-dom'
 
 export default function Display(props) {
     let bird
+
     if (props.bird === 'Bald Eagle') {
         bird = 'Bald Eagle'
 
@@ -14,12 +17,15 @@ export default function Display(props) {
     else {
         bird = ''
     }
+// ---------- redirects to observation report page ---------- //
 
-    
+    if (props.redirect) {
+        return <Redirect to={props.redirect} />
+    }
+
+
     return (
-
-<div className="container" >
-            <div className="audubonvt" ></div>
+        <div className="container" >
             <div>
                 <Form>
                     {/* -----------------------Bird Observed Radio -------------------*/}
@@ -108,7 +114,7 @@ export default function Display(props) {
                             <option>White Rocks (Wallingford)</option>
                         </Form.Control>
                     </Form.Group>
-                    {/*------------------------- Location Site Name ------------------------*/}
+                    {/*------------------------- Season Selector ------------------------*/}
                     <Form.Group controlId="exampleForm.SelectCustom">
                         <Form.Label>Please select a season(year):</Form.Label>
                         <Form.Control as="select" custom value={props.season} onChange={props.seasonChange}>
@@ -122,11 +128,17 @@ export default function Display(props) {
                     </Form.Group>
                     <input type="submit" value="Search" className="btn btn-primary" onClick={props.searchDataBase} />
                 </Form>
+                
+
+            </div>
+            <div> 
+                {/* CSV download react component button */}
+                <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary"/>
             </div>
             <div><strong>{bird} Monitor Observation report(s)</strong></div>
             <table className="table table-striped">
                 <thead>
-                    <tr> {/* //table headers */}
+                    <tr>{/* //table headers */}
                         <th scope="col">Season</th>
                         <th scope="col">Location</th>
                         <th scope="col">Date Observed</th>
@@ -136,41 +148,17 @@ export default function Display(props) {
                 <tbody>
                     {/* //ternary operator that will iterate through each entry using a key */}
                     {props.displayContent ? props.displayContent.map(data => (
-
                         <tr key={data._id}>
                             <th scope="column" >{data.season}</th>
                             <td >{data.location}</td>
                             <td >{data.date_visited}</td>
-                            <td><button className="btn btn-primary" value={JSON.stringify(data)} onClick={props.displayFullReport} style={{ cursor: 'pointer' }}>click here</button></td>
-                            
+                            <td>
+                                <button className="btn btn-primary" value={JSON.stringify(data)} onClick={props.displayFullReport} style={{ cursor: 'pointer' }}>click here</button>
+                            </td>
                         </tr>
-
-
                     )) : <em>Loading...</em>}
-
                 </tbody>
-
             </table>
-            {/* {props.report ? <ReportModal/>: null} */}
-
         </div >
     )
 }
-
-{/* <ul >
-            {props.displayContent ? props.displayContent.map(e =>
-                <div key={e._id} className='display-item-container'>
-
-                    <li>season: {e.season}</li>
-                    <li>email: {e.email}</li>
-                    <li>location:  {e.location}</li>
-                    <li>wind speed: {e.wind_speed}</li>
-                    <li>precipitation: {e.precipitation}</li>
-                    <li>Date observed: {e.date_visited}</li>
-                    <li>observations: {e.observations}</li>
-
-                </div>) : "Loading..."}
-
-
-        </ul> */}
-
