@@ -6,17 +6,9 @@ export default function ReportModal(props) {
     let data = props.observationReport
     console.log(props.reportVisible)
     return (
-<<<<<<< HEAD
-
-        <>
+        <div id='report_page'>
             {props.reportVisible ?
 
-=======
-       
-        <div id='report_page'>
-        {props.reportVisible ?
-            
->>>>>>> 57c2286b849b2a594fb90087ddd7223bdb3cd3f9
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -109,15 +101,9 @@ export default function ReportModal(props) {
                             <td>{data.remarks}</td>
                         </tr>
                     </tbody>
-<<<<<<< HEAD
                 </table>
                 : null}
-        </>
-=======
-                </table> 
-             : null}
         </div>
->>>>>>> 57c2286b849b2a594fb90087ddd7223bdb3cd3f9
     )
 }
 

@@ -17,7 +17,7 @@ export default function Display(props) {
     else {
         bird = ''
     }
-// ---------- redirects to observation report page ---------- //
+    // ---------- redirects to observation report page ---------- //
 
     if (props.redirect) {
         return <Redirect to={props.redirect} />
@@ -128,12 +128,12 @@ export default function Display(props) {
                     </Form.Group>
                     <input type="submit" value="Search" className="btn btn-primary" onClick={props.searchDataBase} />
                 </Form>
-                
+
 
             </div>
-            <div> 
+            <div>
                 {/* CSV download react component button */}
-                <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary"/>
+                <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary" />
             </div>
             <div><strong>{bird} Monitor Observation report(s)</strong></div>
             <table className="table table-striped">

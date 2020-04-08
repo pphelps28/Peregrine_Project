@@ -1,48 +1,78 @@
 import React, { Component } from 'react'
-import { Modal, Button } from 'react-bootstrap'
-import LoginModal from '../components/LoginModal'
-import { Link } from 'react-router-dom'
+import { Form, Modal, Button } from 'react-bootstrap'
 
-function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+class ModalLogIn extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <>
+        <div className="link" variant="primary" onClick={this.props.setModalShow}>
           Log In
+      </div>
+        <Modal
+          show={this.props.modalShow}
+          onHide={this.props.setModalShow}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              Log In
           </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <LoginModal />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
+          </Modal.Header>
+          <Modal.Body>
+            <LoginModal
+              //props
+              email={this.props.email}
+              password={this.props.password}
+              display={this.props.display}
+              displayColor={this.props.displayColor}
+              logoutDisabled={this.props.logoutDisabled}
+              loggedIn={this.props.loggedIn}
+              // methods
+              emailChange={this.props.emailChange}
+              passwordChange={this.props.passwordChange}
+              logIn={this.props.logIn}
+              logOut={this.props.logOut}
+              forgotPasswordAtLogIn={this.props.forgotPasswordAtLogIn}
+              changeEmail={this.props.changeEmail}
+            />
+          </Modal.Body>
+        </Modal>
+      </>
+    )
+  }
 }
-
-function ModalLogIn() {
-  const [modalShow, setModalShow] = React.useState(true);
-
-  return (
-    <>
-      <Link className="link" variant="primary" onClick={() => setModalShow(true)}>
-        Log In
-      </Link>
-
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-    </>
-  );
-}
-
-
 
 export default ModalLogIn
+
+function LoginModal(props) {
+  return (
+    <Form >
+      <Form.Group controlId="formBasicEmail">
+        <div style={{ color: props.displayColor }} id="login-status">{props.display}</div>
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="Enter email" onChange={props.emailChange} value={props.email} />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+    </Form.Text>
+      </Form.Group>
+      <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" onChange={props.passwordChange} value={props.password} />
+      </Form.Group>
+      <Button className="modal-button" variant="primary" disabled={!props.logoutDisabled} type="submit" onClick={props.logIn}>
+        Log In
+                </Button>
+      <Button className="modal-button" variant="secondary" onClick={props.forgotPasswordAtLogIn}>
+        Forgot Password
+                </Button>
+
+    </Form>
+  )
+}
+
