@@ -1,8 +1,7 @@
 import React from 'react';
 import CsvDownload from 'react-json-to-csv'
 import { Form, Col } from 'react-bootstrap';
-import ReportModal from './ReportModal'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 export default function Display(props) {
     let bird

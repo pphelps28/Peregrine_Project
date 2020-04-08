@@ -6,9 +6,9 @@ import Header from '../components/Header'
 export default function InputForm(props) {
 	return (
 		<div>
-            <Header />
+			<Header />
 			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block">
-                <h3 className='title'>Observation Form</h3>
+				<h3 className='title'>Observation Form</h3>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
 					<label>Name: </label>
@@ -44,7 +44,7 @@ export default function InputForm(props) {
 							label="Bald Eagle"
 							value="Bald Eagle"
 							name="birds"
-							id="formHorizontalRadios1"
+							id="formHorizontalRadios25"
 							onChange={props.birdChange}
 						/>
 						<Form.Check
@@ -52,7 +52,7 @@ export default function InputForm(props) {
 							label="Peregrine Falcon"
 							value="Peregrine Falcon"
 							name="birds"
-							id="formHorizontalRadios2"
+							id="formHorizontalRadios26"
 							onChange={props.birdChange}
 						/>
 					</Col>
@@ -353,8 +353,7 @@ export default function InputForm(props) {
 							value="Single Bird"
 							name="relationshipStatus"
 							id="formHorizontalRadios15"
-                            onChange={props.relationshipStatusChange}
-
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -362,7 +361,7 @@ export default function InputForm(props) {
 							value="Territorial Pair"
 							name="relationshipStatus"
 							id="formHorizontalRadios16"
-                            onChange={props.relationshipStatusChange}
+							onChange={props.formChange}
 
 						/>
 						<Form.Check
@@ -371,15 +370,16 @@ export default function InputForm(props) {
 							value="Courtship/Copulation"
 							name="relationshipStatus"
 							id="formHorizontalRadios17"
-							onChange={props.relationshipStatusChange}
+							onChange={props.formChange}
 						/>
+						<hr />
 						<Form.Check
 							type="radio"
 							label="Incubating"
 							value="Incubating"
 							name="youngStatus"
 							id="formHorizontalRadios18"
-							onChange={props.youngStatusChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -387,7 +387,7 @@ export default function InputForm(props) {
 							value="Hatched"
 							name="youngStatus"
 							id="formHorizontalRadios19"
-							onChange={props.youngStatusChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -395,23 +395,24 @@ export default function InputForm(props) {
 							value="Nest Failure"
 							name="youngStatus"
 							id="formHorizontalRadios20"
-							onChange={props.youngStatusChange}
+							onChange={props.formChange}
 						/>
-                            <Form.Check
-                                type="radio"
-                                label="Fledged"
-                                value="Fledged"
-                                name="youngStatus"
-                                id="formHorizontalRadios21"
-                                onChange={props.youngStatusChange}
-                            />
+						<Form.Check
+							type="radio"
+							label="Fledged"
+							value="Fledged"
+							name="youngStatus"
+							id="formHorizontalRadios21"
+							onChange={props.formChange}
+						/>
+						<hr />
 						<Form.Check
 							type="radio"
 							label="Human Disturbance"
 							value="Human Disturbance"
 							name="disturbance"
 							id="formHorizontalRadios22"
-							onChange={props.disturbanceChange}
+							onChange={props.formChange}
 						/>
 					</Col>
 				</Form.Group>
@@ -479,8 +480,8 @@ export default function InputForm(props) {
 				</div>
 				{/* --------------------------Submit-------------------------------- */}
 				<input type="submit" value="Submit Form" className="btn btn-primary" onClick={props.handleSubmit} />
-				
-			</Form> 
+
+			</Form>
 		</div>
 	);
 }

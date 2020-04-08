@@ -1,14 +1,12 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
 import Display from './components/Display.js'
-import LoginModal from './components/LoginModal.js'
-import ModalLogIn from './components/ModalLogIn'
 import ReportModal from './components/ReportModal'
 
 class App extends Component {
@@ -51,10 +49,11 @@ class App extends Component {
   //------------general handler -------------------------------------------//
   
   formChange = (event) => {
-    let input = event.target.value;
+    let input = event.target.value
     this.setState({
       [event.target.name]: input
     })
+    console.log(input)
   }
   
   // ----------------------- apply changes to state ------------------------
@@ -88,12 +87,15 @@ class App extends Component {
   }
   precipitationChange = (event) => {
     this.setState({ precipitation: event.target.value })
+    console.log(this.state.precipitation)
   }
   cloudCoverChange = (event) => {
     this.setState({ cloudCover: event.target.value })
+    console.log(this.state.cloudCover)
   }
   windSpeedChange = (event) => {
     this.setState({ windSpeed: event.target.value })
+    console.log(this.state.windSpeed)
   }
   relationshipStatusChange = (event) => {
     this.setState({ relationshipStatus: event.target.value })
@@ -231,7 +233,7 @@ render() {
 
 
   let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport, redirect } = this.state
-  let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
+  let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, displayFullReport } = this
 
 
   return (
@@ -256,7 +258,7 @@ render() {
               cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} 
               relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
               youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} 
-              commentsChange={commentsChange} handleSubmit={handleSubmit} formChange={formChange}
+              commentsChange={commentsChange} formChange={formChange}
             />
           </Route>
           <Route path='/display'>
