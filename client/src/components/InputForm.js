@@ -34,7 +34,7 @@ export default function InputForm(props) {
 				{/* -----------------------Bird Observed Radio -------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Which bird did you observe?
+						Which species did you observe?
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
