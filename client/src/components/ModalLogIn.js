@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import LoginModal from '../components/LoginModal'
 import { Link } from 'react-router-dom'

@@ -1,8 +1,7 @@
 import React from 'react';
 import CsvDownload from 'react-json-to-csv'
-import { Form, Col, Accordion, Card } from 'react-bootstrap';
-import ReportModal from './ReportModal'
-import { Link, Redirect } from 'react-router-dom'
+import { Form, Col } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom'
 
 export default function Display(props) {
     let bird
@@ -99,7 +98,7 @@ export default function Display(props) {
                             <option>Rattlesnake Ridge (Benson)</option>
                             <option>Red Rock (Hinesburg)</option>
                             <option>Red Rocks Park (South Burlington)</option>
-                            <option>Rock of Ages QUarry (Barre)</option>
+                            <option>Rock of Ages Quarry (Barre)</option>
                             <option>Ryegate Quarry (Ryegate)</option>
                             <option>Sawyer Mountain (Fairlee)</option>
                             <option>Skitchewaug Mountain (Springfield)</option>
