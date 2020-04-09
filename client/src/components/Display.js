@@ -153,7 +153,7 @@ export default function Display(props) {
                             <td >{data.location}</td>
                             <td >{data.date_visited}</td>
                             <td>
-                                <button className="btn btn-primary" value={JSON.stringify(data)} onClick={props.displayFullReport} style={{ cursor: 'pointer' }}>click here</button>
+                                <Link to={`/report_modal/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
                             </td>
                         </tr>
                     )) : <em>Loading...</em>}

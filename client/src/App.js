@@ -55,9 +55,7 @@ class App extends Component {
       inputVisible: true,
       displayContent: [],
       observationReport: '',
-      reportVisible: true,
       redirect: null,
-      reportVisible: false,
       loggedIn: false,
       email: '',
       password: '',
@@ -164,7 +162,6 @@ class App extends Component {
       observationReport: JSON.parse(event.target.value),
       redirect: '/report_modal'
     })
-    this.state.reportVisible ? this.setState({ reportVisible: false }) : this.setState({ reportVisible: true })
   }
 
   componentDidMount = () => {
@@ -410,14 +407,13 @@ class App extends Component {
   render() {
 
 
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport, redirect } = this.state
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, observationReport, redirect } = this.state
     let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
 
     return (
       <div>
         <Router>
           <NavBar
-            toggleInput={toggleInput}
             email={this.state.email}
             password={this.state.password}
             display={this.state.display}
@@ -427,6 +423,7 @@ class App extends Component {
             modalShow={this.state.modalShow}
             userModalShow={this.state.userModalShow}
             // methods
+            toggleInput={toggleInput}
             setUserModalShow={this.setUserModalShow}
             setModalShow={this.setModalShow}
             emailChange={this.emailChange}
@@ -454,20 +451,20 @@ class App extends Component {
                 youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
               />
             </Route>
-            <Route path='/display'>
-              <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
 
-            </Route>
-            <Route path='/report_modal' render={(props) =>
-              <ReportModal {...props} displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />} >
-              {this.state.loggedIn ?
-                <>
-                  <Display bird={bird} prevBird={prevBird} site={site} season={season} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
-                  <ReportModal displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />
-                </>
-                : "Please log in to see this page"}
-            </Route>
 
+            {this.state.loggedIn ?
+              <>
+                <Route path='/display'>
+                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
+                </Route>
+                <Route path='/report_modal/:_id'
+                  component={(props) =>
+                    <ReportModal {...props} displayContent={this.state.displayContent} observationReport={this.state.observationReport} />} >
+                </Route>
+              </>
+
+              : "Please log in to see this page"}
           </div>
         </Router>
       </div >

@@ -14,7 +14,7 @@ class NavBar extends Component {
 				<Navbar fixed="top" bg="primary" variant="dark" className='navContainer'>
 					<Navbar.Brand><Link to='/' className='link'><img className='brandImage' src='../../img/Audubon_H_WHT_VT.png'></img></Link></Navbar.Brand>
 					<Nav className="mr-auto">
-						<Nav.Link ><Link to='/' className='link'>Observation Form</Link></Nav.Link>
+						<Nav.Link ><Link to='/' className='link' onClick={this.props.toggleInput}>Observation Form</Link></Nav.Link>
 						<Nav.Link>
 							{!this.props.loggedIn ?
 								<ModalLogIn
@@ -36,7 +36,7 @@ class NavBar extends Component {
 									changeEmail={this.props.changeEmail}
 								/> : <div id="navbar-display-and-user">
 
-									<Link to="/display" className='link'>View Reports</Link>
+									<Link to="/display" className='link' >View Reports</Link>
 									<UserModal
 										//props
 										display={this.props.display}
