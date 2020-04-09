@@ -5,8 +5,8 @@ import CsvDownload from 'react-json-to-csv'
 
 //add data to array for download
 class ReportModal extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             data: {}
         }
@@ -38,7 +38,7 @@ class ReportModal extends Component {
                     <thead>
                         <tr>
                             <th>{data.bird} Observation Report</th>
-                            <td><button className="btn btn-primary" onClick={props.printReport}>Print Report</button></td>
+                            <td><button className="btn btn-primary" onClick={this.props.printReport}>Print Report</button></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -102,10 +102,10 @@ class ReportModal extends Component {
                             required
                             className="form-control"
                             // value={props.researcherComments}
-                            onChange={props.researcherCommentsChange}
+                            onChange={this.props.researcherCommentsChange}
                             rows="10"
                             cols='100'>{data.researcher_comments_1}</textarea>
-                        <input type='submit' value='Submit' className="btn btn-primary top-spaced" onClick={props.addComments} />
+                        <input type='submit' value='Submit' className="btn btn-primary top-spaced" onClick={this.props.addComments} />
                     </div >
 
                 </table >

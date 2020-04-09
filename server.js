@@ -43,7 +43,7 @@ const birdSchema = new mongoose.Schema({
     remarks: String,
     researcher_comments_1: String,
     researcher_comments_2: String,
-    image:  { data: Buffer, contentType: String}
+    image: { data: Buffer, contentType: String }
 
 })
 
@@ -275,7 +275,7 @@ const addNestingSite = async (req, res) => {
 
     let bird = req.body.bird
     let site = req.body.nestingSite
-    let id    
+    let id
     let updatedSites
     let filter
 
@@ -310,7 +310,7 @@ const getSiteList = async (req, res) => {
         id = "5e8f15de2c9c234df4e38654"
         filter = { _id: ObjectId(id) }
         currentList = await EagleSiteSchema.findOne(filter)
-    } 
+    }
     else if (bird === "Peregrine Falcon") {
         console.log('getting pefa sites')
         id = '5e8f1508b60a4f4df49c06bf'

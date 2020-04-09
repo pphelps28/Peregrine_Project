@@ -285,6 +285,46 @@ class App extends Component {
       })
     }
   }
+  addNestingSite = (event) => {
+    console.log(`adding ${this.state.nestingSite} to sites`)
+
+    let query = {
+      bird: this.state.bird,
+      nestingSite: this.state.nestingSite
+    }
+
+    fetch(('/addSite'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(query)
+    })
+  }
+
+  // ---------------- fetches array of current species site lists ---------- //
+
+  getCurrentSites = () => {
+
+    let bird = this.state.bird
+    let post = { bird: bird }
+
+    fetch(('/getSites'), {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(post)
+    }).then(res => {
+      console.log('getting sites')
+      return res.json()
+    }).then(jsonObj => {
+      console.log(jsonObj)
+      this.setState({
+        sitesList: jsonObj.sites
+      })
+    })
+  }
   // -------------------------------Submits all values-------------------------
   handleSubmit = (event) => {
     event.preventDefault()
@@ -444,6 +484,8 @@ class App extends Component {
         researcherComments: ''
       })
     })
+  }
+  render() {
     let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, observationReport, redirect } = this.state
     let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
 
@@ -508,48 +550,8 @@ class App extends Component {
 
     )
   }
+} 
 
-  // ---------------- sends request to add sites to either Peregrine or Eagle site dbs ---------- //
+// ---------------- sends request to add sites to either Peregrine or Eagle site dbs ---------- //
 
-  addNestingSite = (event) => {
-    console.log(`adding ${this.state.nestingSite} to sites`)
-
-    let query = {
-      bird: this.state.bird,
-      nestingSite: this.state.nestingSite
-    }
-
-    fetch(('/addSite'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(query)
-    })
-  }
-
-  // ---------------- fetches array of current species site lists ---------- //
-
-  getCurrentSites = () => {
-
-    let bird = this.state.bird
-    let post = { bird: bird }
-
-    fetch(('/getSites'), {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(post)
-    }).then(res => {
-      console.log('getting sites')
-      return res.json()
-    }).then(jsonObj => {
-      console.log(jsonObj)
-      this.setState({
-        sitesList: jsonObj.sites
-      })
-    })
-  }
-}
 export default App
