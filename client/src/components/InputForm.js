@@ -186,6 +186,18 @@ export default function InputForm(props) {
 						onChange={props.formChange}
 					/>
 				</div>
+				{/* ------------------------ Weather Qualitative Observation ------------------------*/}
+				<div className="form-group">
+					<label>Weather Observation: </label>
+					<textarea
+						type="text"
+						required
+						className="form-control"
+						value={props.weatherObservation}
+						onChange={props.weatherObservationChange}
+						rows="6"
+						/>
+						</div>
 				{/* ---------------------------- Temperature --------------------------*/}
 				<div className="form-group">
 					<label>Temperature (in F, can provide a 5-10 degree range): </label>
@@ -462,8 +474,7 @@ export default function InputForm(props) {
 				</div>
 					{/* -------------------image upload -------------------- */}
 					<label for="img">Select image:</label>
-  						<input value={props.image} onChange={props.imageChange} className="form-control" type="file" id="img" name="img" accept="image/*"></input>
-						<input className="form-control" type="file" id="img" name="img" accept="image/*"></input>
+  						<input onChange={props.imageChange} className="form-control" type="file" id="img" name="img" accept="image/*"></input>
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">

@@ -16,6 +16,14 @@ export default function ReportModal(props) {
                     </tr>
                 </thead>
                 <tbody>
+                <tr>
+                            <th scope='column'>Picture</th>
+                            <td>{data.image}</td>
+                        </tr>
+                        <tr>
+                            <th scope='column'>Weather Observation</th>
+                            <td>{data.weather_observation}</td>
+                        </tr>
                     <tr>
                         <th scope="column">Season</th>
                         <td>{data.season}</td>
