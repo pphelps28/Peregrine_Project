@@ -314,8 +314,8 @@ componentDidUpdate() {
 
   render() {
 
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, researcherComments, nestingSite, sitesList, displayContent, reportVisible, observationReport, redirect } = this.state
-    let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, nestingSiteChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport, addComments, researcherCommentsChange, addNestingSite } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed,  young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, researcherComments, nestingSite, sitesList, displayContent, observationReport, redirect, weatherObservation, image} = this.state
+    let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange,  youngChange, youngAgeChange, incubationChange, commentsChange, nestingSiteChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, displayFullReport, addComments, researcherCommentsChange, addNestingSite, imageChange, weatherObservationChange} = this
 
   return (
     <div>
@@ -329,7 +329,7 @@ componentDidUpdate() {
 
               date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} weatherObservation={weatherObservation} temperature={temperature} precipitation={precipitation}
               cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge} image={image}
-              incubation={incubation} observation={observation} comments={comments}
+              incubation={incubation} observation={observation} comments={comments} sitesList={sitesList}
               // passes all methods
               nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
               timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} weatherObservationChange={weatherObservationChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
@@ -339,11 +339,11 @@ componentDidUpdate() {
             />
           </Route>
           <Route path='/display'>
-            <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
+            <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} nestingSite={nestingSite} sitesList={sitesList} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} addNestingSite={addNestingSite} nestingSiteChange={nestingSiteChange}/>
 
           </Route>
           <Route path='/report_modal' render={(props) =>
-            <ReportModal {...props} displayContent={displayContent} observationReport={observationReport} />} >
+            <ReportModal {...props} displayContent={displayContent} observationReport={observationReport} researcherComments={researcherComments} researcherCommentsChange={researcherCommentsChange} addComments={addComments}/>} >
           </Route>
         </div>
       </Router>
