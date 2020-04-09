@@ -181,9 +181,22 @@ export default function InputForm(props) {
 						onChange={props.totalTimeChange}
 					/>
 				</div>
+				{/* ---------------------Weather Observtion Summary  ------------------*/}
+				<div className="form-group">
+					<label>Weather Observation Summary (required): </label>
+					<textarea
+						type="text"
+						required
+						className="form-control"
+						value={props.weatherObservation}
+						onChange={props.weatherObservationChange}
+						rows="6"
+					/>
+				</div>
+
 				{/* ---------------------------- Temperature --------------------------*/}
 				<div className="form-group">
-					<label>Temperature (in F, can provide a 5-10 degree range): </label>
+					<label>Temperature (in F, can provide a 5-10 degree range; optional): </label>
 					<input
 						type="text"
 						required
@@ -196,7 +209,7 @@ export default function InputForm(props) {
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
 
-						Precipitation:
+						Precipitation(optional):
 
 					</Form.Label>
 					<Col sm={10}>
@@ -245,7 +258,7 @@ export default function InputForm(props) {
 				{/* ------------------------------Cloud Cover---------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Cloud Cover:
+						Cloud Cover (optional):
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -285,7 +298,7 @@ export default function InputForm(props) {
 				{/* ---------------------------Wind Speed ---------------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Wind Speed:
+						Wind Speed (optional):
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -439,8 +452,7 @@ export default function InputForm(props) {
 				</div>
 					{/* -------------------image upload -------------------- */}
 					<label for="img">Select image:</label>
-  						<input value={props.image} onChange={props.imageChange} className="form-control" type="file" id="img" name="img" accept="image/*"></input>
-						<input className="form-control" type="file" id="img" name="img" accept="image/*"></input>
+  						<input  onChange={props.imageChange} className="form-control" type="file" id="img" name="img" accept="image/*"></input>
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
