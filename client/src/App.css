@@ -42,13 +42,13 @@
 }
 
 .imageContainer {
-  align-items: center;
-  text-align: center;
+	align-items: center;
+	text-align: center;
 }
 
 .Header {
-  width: 100%;
-  height: 10%;
+	width: 100%;
+	height: 10%;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
@@ -64,17 +64,13 @@
 	justify-content: center;
 	align-items: flex-end;
 	text-align: center;
-
 }
-
-
 
 .headerImages {
 	height: auto;
 	width: auto;
-  margin: 1rem;
+	margin: 1rem;
 }
-
 
 .title {
 	text-align: center;
@@ -85,7 +81,12 @@
 }
 
 .link {
-color: white;
+	color: white;
+	padding-right: 20px;
+}
+
+.link:hover {
+	color: orange
 }
 
 .brandImage {
@@ -96,28 +97,32 @@ color: white;
 .container {
 	padding-top: 2rem;
 }
-	#login-status{
 
+#login-status {
 	font-size: 1.15em;
 	margin-bottom: 5px;
 }
 
-.report_page{
-	padding-top: 5rem;
-}
-
-.spaced{
+.spaced {
 	margin: 0 1rem;
 }
 
-.top-spaced{
+.top-spaced {
 	margin-top: 1rem
 }
 
-#researcher_comment_container{
+#researcher_comment_container {
 	margin: 2rem
 }
 
-#table-container{
+#table-container {
 	margin-top: 2rem;
+}
+
+#report_page {
+	padding-top: 5rem;
+}
+
+#navbar-display-and-user {
+	display: flex;
 }

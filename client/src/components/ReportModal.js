@@ -1,30 +1,44 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Modal, Button } from 'react-bootstrap'
+import axios from 'axios'
 import CsvDownload from 'react-json-to-csv'
 
-export default function ReportModal(props) {
-    console.log(props.observationReport)
-    
-    // variables to streamline return
-    
-    let data = props.observationReport    
+//add data to array for download
+class ReportModal extends Component {
+    constructor() {
+        super()
+        this.state = {
+            data: {}
+        }
+    }
 
-    // For some reason, the observation report object has to appear as an array in order to be correctly read by CsvDownload
+    componentDidMount = () => {
+        let _id = this.props.match.params._id
+        console.log(_id)
+        console.log(this.props.displayContent)
+        console.log(this.props)
+        axios.get('http://localhost:5000/reportModal/' + _id)
+            .then(response => {
+                return (response.json()).then(jsonObj => {
+                    this.setState({
+                        data: jsonObj
+                    })
+                })
 
-    let dataReport = [props.observationReport] 
-    console.log(typeof (data))
-    console.log(props.reportVisible)
-    return (
+            })
+    }
 
-        <div className='report_page'>
-            {props.reportVisible ?
-
+    render() {
+        console.log(this.props.observationReport)
+        let data = this.state.data
+        console.log(data)
+        return (
+            <div id='report_page' >
                 <table className="table table-striped">
                     <thead>
                         <tr>
                             <th>{data.bird} Observation Report</th>
-                            {/* CSV download react component button */}
-                            <CsvDownload data={dataReport} filename="observationData.csv" className="btn btn-primary spaced" />
+                            <td><button className="btn btn-primary" onClick={props.printReport}>Print Report</button></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +47,7 @@ export default function ReportModal(props) {
                             <td>{data.season}</td>
                         </tr>
                         <tr>
-                            <th scope="column">Site</th>
+                            <th scope="column">Location</th>
                             <td> {data.location}</td>
                         </tr>
                         <tr>
@@ -51,44 +65,6 @@ export default function ReportModal(props) {
                         <tr>
                             <th scope="column">Mileage</th>
                             <td>{data.mileage}</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="column">Travel Time</th>
-                            <td>{data.travel_time}</td>
-                        </tr>
-                        <tr>
-                            <th scope="column">Observation Start Time</th>
-                            <td>{data.start_time}</td>
-                        </tr>
-                        <tr>
-                            <th scope="column">Observation End Time</th>
-                            <td>{data.end_time}</td>
-                        </tr>
-                        <tr>
-                            <th scope="column">Total Time</th>
-                            <td>{data.total_time}</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="column">Temperature</th>
-                            <td>{data.temperature}</td>
-                        </tr>
-                        <tr>
-                            <th scope="column">Precipitation</th>
-                            <td>{data.precipitation}</td>
-                        </tr>
-                        <tr>
-                            <th scope="column">Cloud Cover</th>
-                            <td>{data.cloud_coverage}</td>
-                        </tr>
-                        <tr>
-                            <th scope="column">Wind Speed</th>
-                            <td>{data.wind_speed}</td>
-                        </tr>
-                        <tr>
-                            <th scope="column">Summary</th>
-                            <td>{data.summary}</td>
                         </tr>
 
                         <tr>
@@ -115,11 +91,11 @@ export default function ReportModal(props) {
                             <th scope="column">Researcher Comments</th>
                             <td>{data.researcher_comments_1}</td>
                         </tr>
-                    </tbody>
+                    </tbody >
 
                     {/* Text area for admin to add or edit comments to the report */}
 
-                    <div id='researcher_comment_container' className="form-group">
+                    < div id='researcher_comment_container' className="form-group" >
                         <label><strong>Add / edit comments:</strong></label>
                         <textarea
                             type="text"
@@ -130,13 +106,13 @@ export default function ReportModal(props) {
                             rows="10"
                             cols='100'>{data.researcher_comments_1}</textarea>
                         <input type='submit' value='Submit' className="btn btn-primary top-spaced" onClick={props.addComments} />
-                    </div>
+                    </div >
 
-                </table>
+                </table >
 
-
-                : null}
-        </div>
-    )
+            </div>
+        )
+    }
 }
 
+export default ReportModal

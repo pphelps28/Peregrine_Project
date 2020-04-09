@@ -1,7 +1,8 @@
 import React from 'react';
 import CsvDownload from 'react-json-to-csv'
-import { Form, Col } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom'
+import { Form, Col, Accordion, Card } from 'react-bootstrap';
+import ReportModal from './ReportModal'
+import { Link, Redirect } from 'react-router-dom'
 
 export default function Display(props) {
     let bird
@@ -122,23 +123,34 @@ export default function Display(props) {
 
 
             </div>
-            <div id='table-container'>                
-                <table className="table table-striped">                    
-                    <tbody>
-                        {/* //ternary operator that will iterate through each entry using a key */}
-                        {props.displayContent ? props.displayContent.map(data => (
-                            <tr key={data._id}>
-                                <th scope="column" >{data.season}</th>
-                                <td >{data.location}</td>
-                                <td >{data.date_visited}</td>
-                                <td>
-                                    <button className="btn btn-primary" value={JSON.stringify(data)} onClick={props.displayFullReport} style={{ cursor: 'pointer' }}>click here</button>
-                                </td>
-                            </tr>
-                        )) : <em>Loading...</em>}
-                    </tbody>
-                </table>
+            <div>
+                {/* CSV download react component button */}
+                <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary" />
             </div>
+            <div><strong>{bird} Monitor Observation report(s)</strong></div>
+            <table className="table table-striped">
+                <thead>
+                    <tr>{/* //table headers */}
+                        <th scope="col">Season</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Date Observed</th>
+                        <th scope="col">See Full Report</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* //ternary operator that will iterate through each entry using a key */}
+                    {props.displayContent ? props.displayContent.map(data => (
+                        <tr key={data._id}>
+                            <th scope="column" >{data.season}</th>
+                            <td >{data.location}</td>
+                            <td >{data.date_visited}</td>
+                            <td>
+                                <Link to={`/report_modal/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
+                            </td>
+                        </tr>
+                    )) : <em>Loading...</em>}
+                </tbody>
+            </table>
         </div >
     )
 }
