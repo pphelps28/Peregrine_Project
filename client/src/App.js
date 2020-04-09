@@ -41,12 +41,11 @@ class App extends Component {
       inputVisible: true,
       displayContent: [],
       observationReport: '',
-      reportVisible: true,
       redirect: null
     }
   }
  
-  //------------general handler -------------------------------------------//
+  //------------Input Form general handler -------------------------------------------//
   
   formChange = (event) => {
     let input = event.target.value
@@ -56,55 +55,33 @@ class App extends Component {
     console.log(input)
   }
   
-  // ----------------------- apply changes to state ------------------------
-
+  // ----------------Input Form & Display form handlers  ------------------------
 
   siteChange = (event) => {
     this.setState({ site: event.target.value })
   }
-
   birdChange = (event) => {
-
     this.setState({
       prevBird: this.state.bird,
       bird: event.target.value
     })
-
   }
+
+  //-------------------Date & Time change handlers -----------------------//
   dateChange = date => {
     this.setState({ date_observed: date })
   }
-  seasonChange = (event) => {
-    console.log("hi!")
-    this.setState({ season: event.target.value })
-  }
-  
   timeStartChange = timeStart => {
     this.setState({ timeStart: timeStart })
   }
   timeEndChange = (timeEnd) => {
     this.setState({ timeEnd: timeEnd })
   }
-  precipitationChange = (event) => {
-    this.setState({ precipitation: event.target.value })
-    console.log(this.state.precipitation)
-  }
-  cloudCoverChange = (event) => {
-    this.setState({ cloudCover: event.target.value })
-    console.log(this.state.cloudCover)
-  }
-  windSpeedChange = (event) => {
-    this.setState({ windSpeed: event.target.value })
-    console.log(this.state.windSpeed)
-  }
-  relationshipStatusChange = (event) => {
-    this.setState({ relationshipStatus: event.target.value })
-  }
-  youngStatusChange = (event) => {
-    this.setState({ youngStatus: event.target.value })
-  }
-  disturbanceChange = (event) => {
-    this.setState({ disturbance: event.target.value })
+
+  //--------------------Display form handler --------------//
+  seasonChange = (event) => {
+    console.log("hi!")
+    this.setState({ season: event.target.value })
   }
 
   // ---------------- stores single observation report in state and launches observation report page ---------- //
@@ -232,8 +209,8 @@ searchDataBase = (event) => {
 render() {
 
 
-  let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport, redirect } = this.state
-  let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, displayFullReport } = this
+  let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, observationReport, redirect } = this.state
+  let { formChange, birdChange, siteChange, dateChange, seasonChange, timeStartChange, timeEndChange, commentsChange, handleSubmit, toggleInput, searchDataBase, displayFullReport } = this
 
 
   return (
@@ -251,13 +228,8 @@ render() {
               youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
               incubation={incubation} observation={observation} comments={comments}
               // passes all methods
-              nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} 
-              dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
-              timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} 
-              temperatureChange={temperatureChange} precipitationChange={precipitationChange}
-              cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} 
-              relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
-              youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} 
+              birdChange={birdChange} siteChange={siteChange} 
+              dateChange={dateChange} timeStartChange={timeStartChange} timeEndChange={timeEndChange}
               commentsChange={commentsChange} formChange={formChange}
             />
           </Route>
@@ -266,14 +238,12 @@ render() {
 
           </Route>
           <Route path='/report_modal' render={(props) =>
-            <ReportModal {...props} displayContent={displayContent} reportVisible={reportVisible} observationReport={observationReport} />} >
+            <ReportModal {...props} displayContent={displayContent} observationReport={observationReport} />} >
           </Route>
         </div>
       </Router>
     </div >
-
-  )
-}
+  )}
 }
 
 export default App

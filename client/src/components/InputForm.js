@@ -104,7 +104,7 @@ export default function InputForm(props) {
 						<option>Rattlesnake Ridge (Benson)</option>
 						<option>Red Rock (Hinesburg)</option>
 						<option>Red Rocks Park (South Burlington)</option>
-						<option>Rock of Ages QUarry (Barre)</option>
+						<option>Rock of Ages Quarry (Barre)</option>
 						<option>Ryegate Quarry (Ryegate)</option>
 						<option>Sawyer Mountain (Fairlee)</option>
 						<option>Skitchewaug Mountain (Springfield)</option>
@@ -211,7 +211,6 @@ export default function InputForm(props) {
 							label="Fog"
 							value="Fog"
 							name="precipitation"
-							checked={props.precipitation === "Fog"}
 							id="formHorizontalRadios1"
 							onChange={props.formChange}
 						/>
@@ -220,7 +219,6 @@ export default function InputForm(props) {
 							label="Drizzle"
 							value="Drizzle"
 							name="precipitation"
-							checked={props.precipitation === "Drizzle"}
 							id="formHorizontalRadios2"
 							onChange={props.formChange}
 						/>
@@ -229,7 +227,6 @@ export default function InputForm(props) {
 							label="Rain-heavy"
 							value="Rain-heavy"
 							name="precipitation"
-							checked={props.precipitation === "Rain-heavy"}
 							id="formHorizontalRadios3"
 							onChange={props.formChange}
 						/>
@@ -238,7 +235,6 @@ export default function InputForm(props) {
 							label="Rain-light"
 							value="Rain-light"
 							name="precipitation"
-							checked={props.precipitation === "Rain-light"}
 							id="formHorizontalRadios4"
 							onChange={props.formChange}
 						/>
@@ -247,7 +243,6 @@ export default function InputForm(props) {
 							label="None"
 							value="None"
 							name="precipitation"
-							checked={props.precipitation === "None"}
 							id="formHorizontalRadios5"
 							onChange={props.formChange}
 						/>
@@ -265,7 +260,7 @@ export default function InputForm(props) {
 							value="Clear =<10% cover"
 							name="cloud"
 							id="formHorizontalRadios6"
-							onChange={props.cloudCoverChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -273,7 +268,7 @@ export default function InputForm(props) {
 							value="Scattered= 10-50% cover"
 							name="cloud"
 							id="formHorizontalRadios7"
-							onChange={props.cloudCoverChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -281,7 +276,7 @@ export default function InputForm(props) {
 							value="Broken = 50-90% cover"
 							name="cloud"
 							id="formHorizontalRadios8"
-							onChange={props.cloudCoverChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -289,7 +284,7 @@ export default function InputForm(props) {
 							value="Overcast = >90% cover"
 							name="cloud"
 							id="formHorizontalRadios9"
-							onChange={props.cloudCoverChange}
+							onChange={props.formChange}
 						/>
 					</Col>
 				</Form.Group>
@@ -305,7 +300,7 @@ export default function InputForm(props) {
 							value="0-5 mph = low, calm"
 							name="wind"
 							id="formHorizontalRadios10"
-							onChange={props.windSpeedChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -313,7 +308,7 @@ export default function InputForm(props) {
 							value="5-10 mph = moderate"
 							name="wind"
 							id="formHorizontalRadios11"
-							onChange={props.windSpeedChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -321,7 +316,7 @@ export default function InputForm(props) {
 							value="10-15 mph = strong"
 							name="wind"
 							id="formHorizontalRadios12"
-							onChange={props.windSpeedChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -329,7 +324,7 @@ export default function InputForm(props) {
 							value="15-20 mph = very strong"
 							name="wind"
 							id="formHorizontalRadios13"
-							onChange={props.windSpeedChange}
+							onChange={props.formChange}
 						/>
 						<Form.Check
 							type="radio"
@@ -337,14 +332,15 @@ export default function InputForm(props) {
 							value=">20 mph not recommended"
 							name="wind"
 							id="formHorizontalRadios14"
-							onChange={props.windSpeedChange}
+							onChange={props.formChange}
 						/>
 					</Col>
 				</Form.Group>
+
 				{/* ---------------------------------Observation Summary ----------------------- */}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-						Observation Summary (all that apply):
+						Relationship Status:
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -372,7 +368,13 @@ export default function InputForm(props) {
 							id="formHorizontalRadios17"
 							onChange={props.formChange}
 						/>
-						<hr />
+						</Col>
+				</Form.Group>
+				<Form.Group as={Col}>
+					<Form.Label as="legend" column sm={10}>
+						Nesting Status:
+					</Form.Label>
+					<Col sm={10}>	
 						<Form.Check
 							type="radio"
 							label="Incubating"
@@ -405,7 +407,13 @@ export default function InputForm(props) {
 							id="formHorizontalRadios21"
 							onChange={props.formChange}
 						/>
-						<hr />
+						</Col>
+					</Form.Group>
+					<Form.Group as={Col} >
+						<Form.Label as="legend" column sm={10}>
+							Disturbance:
+						</Form.Label>
+						<Col  sm={10}>
 						<Form.Check
 							type="radio"
 							label="Human Disturbance"

@@ -3,11 +3,9 @@ import React from 'react'
 export default function ReportModal(props) {
     console.log(props.observationReport)
     let data = props.observationReport
-    console.log(props.reportVisible)
     return (
        
         <div id='report_page'>
-        {props.reportVisible ?
             
                 <table className="table table-striped">
                     <thead>
@@ -103,7 +101,6 @@ export default function ReportModal(props) {
                         </tr>
                     </tbody>
                 </table> 
-             : null}
         </div>
     )
 }
