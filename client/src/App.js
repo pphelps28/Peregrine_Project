@@ -28,6 +28,7 @@ class App extends Component {
       timeStart: '',
       timeEnd: '',
       totalTime: '',
+      weatherObservation: '',
       temperature: '',
       precipitation: '',
       cloudCover: '',
@@ -90,6 +91,9 @@ class App extends Component {
   totalTimeChange = (event) => {
     this.setState({ totalTime: event.target.value })
   }
+  weatherObservationChange = (event) => {
+    this.setState({ weatherObservation: event.target.value })
+  }
   temperatureChange = (event) => {
     this.setState({ temperature: event.target.value })
   }
@@ -135,6 +139,10 @@ let image  = event.target.files[0]
   commentsChange = (event) => {
     this.setState({ comments: event.target.value })
   }
+  imageChange = (event) => {
+    this.setState({
+      image: event.target.files[0]
+    })}
 
   // ---------------- stores single observation report in state and launches observation report page ---------- //
 
@@ -151,6 +159,7 @@ let image  = event.target.files[0]
       timeStart: this.state.timeStart,
       timeEnd: this.state.timeEnd,
       totalTime: this.state.totalTime,
+      weatherObservation: this.state.weatherObservation,
       temperature: this.state.temperature,
       precipitation: this.state.precipitation,
       cloudCover: this.state.cloudCover,
@@ -164,6 +173,7 @@ let image  = event.target.files[0]
       image: this.state.image,
       observation: this.state.observation,
       comments: this.state.comments,
+      image: this.state.image
     }
 
     fetch('/post', {
@@ -185,6 +195,7 @@ let image  = event.target.files[0]
       timeEnd: '',
       totalTime: '',
       temperature: '',
+      weatherObservation: '',
       precipitation: '',
       cloudCover: '',
       windSpeed: '',
@@ -194,9 +205,10 @@ let image  = event.target.files[0]
       incubation: '',
       young: '',
       youngAge: '',
-      image: File(),
+      image:  '',
       observation: '',
       comments: '',
+      image: ''
     })
     console.log(submission)
     console.log('preparing report')
@@ -210,6 +222,8 @@ let image  = event.target.files[0]
 
 handleSubmit = (event) => {
   event.preventDefault()
+  const fd = new FormData()
+    fd.append('image', this.state.image)
   let submission = {
     name: this.state.name,
     email: this.state.email,
@@ -221,6 +235,7 @@ handleSubmit = (event) => {
     timeStart: this.state.timeStart,
     timeEnd: this.state.timeEnd,
     totalTime: this.state.totalTime,
+    weatherObservation: this.state.weatherObservation,
     temperature: this.state.temperature,
     precipitation: this.state.precipitation,
     cloudCover: this.state.cloudCover,
@@ -233,6 +248,7 @@ handleSubmit = (event) => {
     youngAge: this.state.youngAge,
     observation: this.state.observation,
     comments: this.state.comments,
+    image: this.state.image
   }
 
   fetch('/post', {
@@ -253,6 +269,7 @@ handleSubmit = (event) => {
     timeStart: '',
     timeEnd: '',
     totalTime: '',
+    weatherObservation: '',
     temperature: '',
     precipitation: '',
     cloudCover: '',
@@ -265,6 +282,7 @@ handleSubmit = (event) => {
     youngAge: '',
     observation: '',
     comments: '',
+    image: ''
   })
   console.log(submission)
 }
@@ -322,8 +340,8 @@ searchDataBase = (event) => {
 render() {
 
 
-  let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport, redirect } = this.state
-  let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
+  let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, weatherObservation, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport, redirect, image } = this.state
+  let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, weatherObservationChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport, imageChange } = this
 
 
   return (
@@ -337,13 +355,13 @@ render() {
             <InputForm handleSubmit={handleSubmit}
               name={name} email={email} bird={bird} site={site}
 
-              date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
-              cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+              date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} weatherObservation={weatherObservation} temperature={temperature} precipitation={precipitation}
+              cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge} image={image}
               incubation={incubation} observation={observation} comments={comments}
               // passes all methods
               nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
-              timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
-              cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
+              timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} weatherObservationChange={weatherObservationChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
+              cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange} imageChange={imageChange}
 
               youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
             />
