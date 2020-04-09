@@ -136,7 +136,7 @@ handleSubmit = (event) => {
     email: '',
     bird: '',
     site: '',
-    date_observed: new Date(),
+    date_observed: '',
     mileage: '',
     travel: '',
     timeStart: '',

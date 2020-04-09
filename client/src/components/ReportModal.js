@@ -12,7 +12,6 @@ export default function ReportModal(props) {
                         <tr>
                             <th>{data.bird} Observation Report</th>
                             <td><button className="btn btn-primary" onClick={props.printReport}>Download Report</button></td>
-                            <td><button className="btn btn-primary" onClick={props.printReport}>Back</button></td>
                         </tr>
                     </thead>
                     <tbody>
