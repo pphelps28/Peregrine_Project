@@ -1,7 +1,33 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
-export default function ReportModal(props) {
+export default class ReportModal extends CompositionEvent { 
+constructor(props) {
+super(props)
+
+this.state = {
+
+}
+
+}}
+
+componentDidMount=()=> {
+    axios.get('http://localhost:5000/post/' + this.props.match.params.id)
+    .then(response => {
+        this.setState({
+            _id: response.data._id,
+            username: response.data.username,
+            title: response.data.title,
+            description: response.data.description,
+            location: response.data.location,
+            image: response.data.image,
+            date: new Date(response.data.date)
+        })
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+}
     console.log(props.observationReport)
     let data = props.observationReport
     console.log(props.reportVisible)
