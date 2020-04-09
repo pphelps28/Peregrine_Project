@@ -102,6 +102,22 @@ color: white;
 	margin-bottom: 5px;
 }
 
-#report_page{
+.report_page{
 	padding-top: 5rem;
+}
+
+.spaced{
+	margin: 0 1rem;
+}
+
+.top-spaced{
+	margin-top: 1rem
+}
+
+#researcher_comment_container{
+	margin: 2rem
+}
+
+#table-container{
+	margin-top: 2rem;
 }
