@@ -30,7 +30,7 @@ class App extends Component {
     this.state = {
       name: '',
       email: '',
-      bird: 'Peregrine Falcon',
+      bird: '',
       prevBird: '',
       site: '',
       date_observed: new Date(),
@@ -53,13 +53,13 @@ class App extends Component {
       youngAge: '',
       image: '',
       observation: '',
-      comments: '',
-      researcherComments: '',
+      comments: '',      
       nestingSite: '',
       sitesList: ['', 'Please select a species first'],
+      stopLoop: false,
       inputVisible: true,
       displayContent: [],
-      observationReport: '',
+      observationReport: {},
       loggedIn: false,
       email: '',
       password: '',
@@ -83,6 +83,7 @@ class App extends Component {
 
 
   // ----------------------- apply changes to state ------------------------
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -103,12 +104,13 @@ class App extends Component {
   }
   birdChange = (event) => {
     this.setState({
-      prevBird: this.state.bird,
-      bird: event.target.value
+      bird: event.target.value,
+      stopLoop: true
     })
   }
 
   //-------------------Date & Time change handlers -----------------------//
+
   dateChange = date => {
     this.setState({ date_observed: date })
   }
@@ -129,6 +131,7 @@ class App extends Component {
   }
 
   //--------------------Display form handler --------------//
+
   seasonChange = (event) => {
     console.log("hi!")
     this.setState({ season: event.target.value })
@@ -139,22 +142,19 @@ class App extends Component {
     })
   }
 
-  // -------------------------------Submits all values------------------------- //
+  
 
-
-  // ---------------- stores single observation report in state and launches observation report page ---------- //
-
-  displayFullReport = (event) => {
-    event.preventDefault()
-    console.log('preparing report')
-    this.setState({
-      observationReport: JSON.parse(event.target.value),
-      redirect: '/report_modal'
-    })
-  }
+  
+  // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
   componentDidUpdate = () => {
-    this.getCurrentSites()
+    if (this.state.stopLoop === true) {
+      this.getCurrentSites()
+      this.setState({
+        stopLoop: false,
+        sitesList: ['', 'Please select a species first']
+      })
+    }
   }
 
   componentDidMount = () => {
@@ -174,6 +174,8 @@ class App extends Component {
         })
       }
     })
+
+    this.getCurrentSites()
   }
   emailChange = (event) => {
     console.log(event.target.value)
@@ -285,6 +287,59 @@ class App extends Component {
       })
     }
   }
+  // ---------------- database queries ---------------- //
+
+  // ---------- searches database using bird / season / site paramaters and returns observation sketches ---------- //
+
+  searchDataBase = (event) => {
+    event.preventDefault()
+    console.log('getting data')
+
+    let query = { // this query is coming from the three search input fields
+
+      bird: this.state.bird,
+      site: this.state.site,
+      season: this.state.season
+    }
+
+    if (query.bird === '') {
+      alert('Please choose either Bald Eagle or Peregrine Falcon.')
+    } else {
+      fetch(('/display'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(query)
+      }).then(res => {
+
+        return res.json()
+      }).then(jsonObj => {
+        this.setState({ displayContent: jsonObj })
+      })
+
+      this.setState({
+        // bird: '',
+        site: '',
+        season: '',
+      })
+    }
+  }
+
+  // // ---------------- stores single observation report in state and launches observation report page ---------- //
+
+
+  // displayFullReport = (event) => {
+  //   event.preventDefault()
+  //   console.log('preparing report')
+  //   this.setState({
+  //     observationReport: JSON.parse(event.target.value),
+  //     redirect: '/report_modal'
+  //   })
+  // }
+
+  // ---------------- adds new nesting sites to lists EAGLE or PEREGRINE sites ---------------- //
+
   addNestingSite = (event) => {
     console.log(`adding ${this.state.nestingSite} to sites`)
 
@@ -319,13 +374,15 @@ class App extends Component {
       console.log('getting sites')
       return res.json()
     }).then(jsonObj => {
-      console.log(jsonObj)
+      console.log(jsonObj.sites)
       this.setState({
         sitesList: jsonObj.sites
       })
     })
   }
-  // -------------------------------Submits all values-------------------------
+
+  // -------------------------------Submits all values------------------------- //
+
   handleSubmit = (event) => {
     event.preventDefault()
     let submission = {
@@ -395,99 +452,20 @@ class App extends Component {
 
   }
 
-  //--------switches between observation and view reports pages and back from observation report page ----------//
+  // //--------switches between observation and view reports pages and back from observation report page ----------//
 
-  toggleInput = () => {
-    if (this.state.redirect === '/report_modal') {
-      this.setState({
-        redirect: null
-      })
-    }
+  // toggleInput = () => {
+  //   if (this.state.redirect === '/report_modal') {
+  //     this.setState({
+  //       redirect: null
+  //     })
+  //   }
 
-  }
-
-  // ---------- database queries ---------- //
-
-  // ---------- searches database using bird / season / site paramaters and returns observation sketches ---------- //
-
-  searchDataBase = (event) => {
-    event.preventDefault()
-    console.log('getting data')
-
-    let query = { // this query is coming from the three search input fields
-
-      bird: this.state.bird,
-      site: this.state.site,
-      season: this.state.season
-    }
-
-    if (query.bird === '') {
-      alert('Please choose either Bald Eagle or Peregrine Falcon.')
-    } else {
-      fetch(('/display'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(query)
-      }).then(res => {
-
-        return res.json()
-      }).then(jsonObj => {
-        this.setState({ displayContent: jsonObj })
-      })
-
-      this.setState({
-        // bird: '',
-        site: '',
-        season: '',
-      })
-    }
-  }
-
-  // ---------------- stores single observation report in state and launches observation report page ---------- //
-
-  displayFullReport = (event) => {
-    event.preventDefault()
-    console.log('preparing report')
-    this.setState({
-      observationReport: JSON.parse(event.target.value),
-      redirect: '/report_modal'
-    })
-  }
-
-  // ---------------- updates researcher comments in single reports ---------- //
-
-  addComments = (event) => {
-    console.log('sending comments')
-
-    let query = {
-      bird: this.state.observationReport.bird,
-      id: this.state.observationReport._id,
-      comments: this.state.researcherComments
-    }
-
-    console.log(this.state.researcherComments)
-
-    fetch(('/update'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(query)
-    }).then(res => {
-      console.log('getting back document')
-      return res.json()
-    }).then(jsonObj => {
-      this.setState({
-        observationReport: jsonObj,
-        researcherComments: ''
-      })
-    })
-  }
+  // }
+    
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, observationReport, redirect } = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, observationSummaryChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent,  redirect, sitesList} = this.state
+    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange,  youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase } = this
 
     return (
       <div>
@@ -522,7 +500,7 @@ class App extends Component {
                 name={name} email={email} bird={bird} site={site}
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
                 cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
-                incubation={incubation} observation={observation} comments={comments}
+                incubation={incubation} observation={observation} comments={comments} sitesList={sitesList}
                 // passes all methods
                 nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                 timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
@@ -535,14 +513,13 @@ class App extends Component {
             {this.state.loggedIn ?
               <>
                 <Route path='/display'>
-                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} displayFullReport={displayFullReport} />
+                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} />
                 </Route>
-                <Route path='/report_modal/:_id'
+                <Route path='/report_modal/:bird/:_id'
                   component={(props) =>
-                    <ReportModal {...props} displayContent={this.state.displayContent} observationReport={this.state.observationReport} />} >
+                    <ReportModal {...props} />} >
                 </Route>
               </>
-
               : "Please log in to see this page"}
           </div>
         </Router>
@@ -550,7 +527,7 @@ class App extends Component {
 
     )
   }
-} 
+}
 
 // ---------------- sends request to add sites to either Peregrine or Eagle site dbs ---------- //
 

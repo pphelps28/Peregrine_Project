@@ -3,42 +3,82 @@ import { Modal, Button } from 'react-bootstrap'
 import axios from 'axios'
 import CsvDownload from 'react-json-to-csv'
 
-//add data to array for download
 class ReportModal extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: {}
+            data: '',
+            researcherComments: ''            
         }
     }
 
     componentDidMount = () => {
+        let bird = this.props.match.params.bird
         let _id = this.props.match.params._id
-        console.log(_id)
-        console.log(this.props.displayContent)
-        console.log(this.props)
-        axios.get('http://localhost:5000/reportModal/' + _id)
-            .then(response => {
-                return (response.json()).then(jsonObj => {
-                    this.setState({
-                        data: jsonObj
-                    })
-                })
 
+        console.log(bird)
+
+        // gets report info from database using id
+    
+        axios.get('/reportModal/' + bird + '/' + _id)
+            .then(response => {
+                console.log('retrieved report request')
+                console.log(response.data)
+                
+                this.setState({
+                    data: response.data                    
+                })                
             })
     }
 
+    // saves newly inputted comments to state for data update request
+
+    researcherCommentsChange = (event) => {
+        this.setState({ researcherComments: event.target.value })
+    }
+
+    // ----------------updates researcher comments ---------- //
+
+    addComments = () => {
+        console.log('sending comments')
+
+        let query = {
+            bird: this.state.data.bird,
+            id: this.state.data._id,
+            comments: this.state.researcherComments
+        }
+
+        console.log(this.state.researcherComments)
+
+        fetch(('/update'), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(query)
+        }).then(res => {
+            console.log('getting back document')
+            return res.json()
+        }).then(jsonObj => {
+            this.setState({
+                data: jsonObj                
+            })
+        })
+    }
     render() {
-        console.log(this.props.observationReport)
+
+        // variable for easier handling of data in state
         let data = this.state.data
-        console.log(data)
+        // variable to allow data to be read correctly by Csv downloader
+        let dataSet = [data]             
+
         return (
-            <div id='report_page' >
+            <div className='report_page' >
                 <table className="table table-striped">
                     <thead>
                         <tr>
                             <th>{data.bird} Observation Report</th>
-                            <td><button className="btn btn-primary" onClick={this.props.printReport}>Print Report</button></td>
+                            <CsvDownload data={dataSet} filename="Observation_Report.csv" className="btn btn-primary spaced" />
                         </tr>
                     </thead>
                     <tbody>
@@ -92,23 +132,22 @@ class ReportModal extends Component {
                             <td>{data.researcher_comments_1}</td>
                         </tr>
                     </tbody >
-
-                    {/* Text area for admin to add or edit comments to the report */}
-
-                    < div id='researcher_comment_container' className="form-group" >
-                        <label><strong>Add / edit comments:</strong></label>
-                        <textarea
-                            type="text"
-                            required
-                            className="form-control"
-                            // value={props.researcherComments}
-                            onChange={this.props.researcherCommentsChange}
-                            rows="10"
-                            cols='100'>{data.researcher_comments_1}</textarea>
-                        <input type='submit' value='Submit' className="btn btn-primary top-spaced" onClick={this.props.addComments} />
-                    </div >
-
                 </table >
+
+                {/* Text area for admin to add or edit comments to the report */}
+
+                < div id='researcher_comment_container' className="form-group" >
+                    <label><strong>Add / edit comments:</strong></label>
+                    <textarea
+                        type="text"
+                        required
+                        className="form-control"
+                        defaultValue={data.researcher_comments_1}
+                        onChange={this.researcherCommentsChange}
+                        rows="10"
+                        cols='100' />
+                    <input type='submit' value='Submit' className="btn btn-primary top-spaced" onClick={this.addComments} />
+                </div >
 
             </div>
         )

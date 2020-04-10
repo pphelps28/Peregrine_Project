@@ -28,9 +28,7 @@ export default function Display(props) {
         <div className="container report_page" >
             <div>
                 <Form>
-                    <Form.Group as={Col}>
-                        <Form.Label as="legend" column sm={20}><strong>Add a nesting site</strong></Form.Label>
-                    </Form.Group>
+
                     {/* -----------------------Bird Observed Radio -------------------*/}
                     <Form.Group as={Col}>
                         <Form.Label as="legend" column sm={10}>
@@ -55,7 +53,11 @@ export default function Display(props) {
                             />
                         </Col>
                     </Form.Group>
+
                     {/* ----------------------------------- New Nesting Site Input --------------------------- */}
+                    <Form.Group as={Col}>
+                        <Form.Label as="legend" column sm={20}><strong>Add a nesting site</strong></Form.Label>
+                    </Form.Group>
                     <div className="form-group">
                         <label>Site to add:</label>
                         <input
@@ -71,37 +73,14 @@ export default function Display(props) {
                     <Form.Group as={Col}>
                         <Form.Label as="legend" column sm={20}><strong>Read a monitor report</strong></Form.Label>
                     </Form.Group>
-                    {/* -----------------------Bird Observed Radio -------------------*/}
-                    <Form.Group as={Col}>
-                        <Form.Label as="legend" column sm={10}>
-                            Please select a species:
-					</Form.Label>
-                        <Col sm={10}>
-                            <Form.Check
-                                type="radio"
-                                label="Bald Eagle"
-                                value="Bald Eagle"
-                                name="birds"
-                                id="formHorizontalRadios1"
-                                onChange={props.birdChange}
-                            />
-                            <Form.Check
-                                type="radio"
-                                label="Peregrine Falcon"
-                                value="Peregrine Falcon"
-                                name="birds"
-                                id="formHorizontalRadios2"
-                                onChange={props.birdChange}
-                            />
-                        </Col>
-                    </Form.Group>
+                    
                     {/*------------------------- Location Site Name ------------------------*/}
                     <Form.Group controlId="exampleForm.SelectCustom">
                         <Form.Label>Please select a nesting site:</Form.Label>
                         <Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
-                        {props.sitesList.map(site => (
-							<option>{site}</option>
-						))}
+                            {props.sitesList.map(site => (
+                                <option>{site}</option>
+                            ))}
                         </Form.Control>
                     </Form.Group>
                     {/*------------------------- Season Selector ------------------------*/}
@@ -123,34 +102,37 @@ export default function Display(props) {
 
 
             </div>
-            <div>
+            {/* <div>
                 {/* CSV download react component button */}
-                <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary" />
-            </div>
-            <div><strong>{bird} Monitor Observation report(s)</strong></div>
-            <table className="table table-striped">
-                <thead>
-                    <tr>{/* //table headers */}
-                        <th scope="col">Season</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Date Observed</th>
-                        <th scope="col">See Full Report</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* //ternary operator that will iterate through each entry using a key */}
-                    {props.displayContent ? props.displayContent.map(data => (
-                        <tr key={data._id}>
-                            <th scope="column" >{data.season}</th>
-                            <td >{data.location}</td>
-                            <td >{data.date_visited}</td>
-                            <td>
-                                <Link to={`/report_modal/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
-                            </td>
+            {/* <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary" />
+            </div>  */}
+            {/* //ternary operator that will iterate through each entry using a key */}
+            {props.displayContent ? props.displayContent.map(data => (
+            <div>
+                {/* <div><strong>{bird} Monitor Observation report(s)</strong></div> */}
+                <table className="table table-striped">
+                    {/* <thead>
+                        <tr>
+                            <th scope="col">Season</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Date Observed</th>
+                            <th scope="col">See Full Report</th>
                         </tr>
-                    )) : <em>Loading...</em>}
-                </tbody>
-            </table>
+                    </thead> */}
+                    <tbody>
+                        
+                            <tr key={data._id}>
+                                <th scope="column" >{data.season}</th>
+                                <td >{data.location}</td>
+                                <td >{data.date_visited}</td>
+                                <td>
+                                    <Link to={`/report_modal/${data.bird}/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
+                                </td>
+                            </tr>
+                       
+                    </tbody>
+                </table>
+            </div> )) : <em>Loading...</em>}
         </div >
     )
 }
