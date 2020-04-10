@@ -1,6 +1,6 @@
 import React from 'react';
 import CsvDownload from 'react-json-to-csv'
-import { Form, Col } from 'react-bootstrap';
+import { Form, Col, Container, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom'
 
 export default function Display(props) {
@@ -138,37 +138,42 @@ export default function Display(props) {
             <table className="table table-striped">
                 <thead>
                     <tr>{/* //table headers */}
+                   
                         <th scope="col">Season</th>
+                       
                         <th scope="col">Location</th>
+                        
                         <th scope="col">Date Observed</th>
+                        
                         <th  scope="col">See Full Report</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     {/* //ternary operator that will iterate through each entry using a key */}
                     {props.displayContent ? props.displayContent.map(data => (
-                        <tr key={data._id}>
+                      <tr key={data._id}>
                             <th scope="column" >
-                                <Col xs={4} fluid>
                             {data.season}
-                            </Col></th>
+                            </th>
 
                             <td >
-                                <Col xs={4} fluid>
+                                
                                 {data.location}
-                                </Col>
+                                
                                 </td>
                             <td >
-                                <Col xs={4} fluid>
+                               
                                 {data.date_visited}
-                                </Col>
+                               
                                 </td>
                             <td>
-                                <Col xs={12} fluid>
+                                
                                 <button className="btn btn-primary" value={JSON.stringify(data)} onClick={props.displayFullReport} style={{ cursor: 'pointer' }}>click here</button>
-                                </Col>
+                                
                             </td>
                         </tr>
+                       
                     )) : <em>Loading...</em>}
                 </tbody>
             </table>
