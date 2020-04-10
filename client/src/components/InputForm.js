@@ -302,83 +302,176 @@ export default function InputForm(props) {
 						Relationship Status:
 					</Form.Label>
 					<Col sm={10}>
-						<Form.Check
-							type="radio"
-							label="Single Bird"
-							value="Single Bird"
-							name="relationshipStatus"
-							id="formHorizontalRadios15"
-							onChange={props.formChange}
-						/>
-						<Form.Check
-							type="radio"
-							label="Territorial Pair"
-							value="Territorial Pair"
-							name="relationshipStatus"
-							id="formHorizontalRadios16"
-							onChange={props.formChange}
-
-						/>
-						<Form.Check
-							type="radio"
-							label="Courtship/Copulation"
-							value="Courtship/Copulation"
-							name="relationshipStatus"
-							id="formHorizontalRadios17"
-							onChange={props.formChange}
-						/>
-						</Col>
+						<Form.Row>
+							<Form.Check
+								inline
+								type="radio"
+								label="Single Bird (Suspected)"
+								value="Single Bird (Suspected)"
+								name="relationshipStatus"
+								id="formHorizontalRadios15"
+								onChange={props.formChange}
+							/>
+							<Form.Check
+								inline
+								type="radio"
+								label="Single Bird (Confirmed)"
+								value="Single Bird (Confirmed)"
+								name="relationshipStatus"
+								id="formHorizontalRadios15a"
+								onChange={props.formChange}
+							/>
+						</Form.Row>
+						<Form.Row>
+							<Form.Check
+								inline
+								type="radio"
+								label="Territorial Pair (Suspected)"
+								value="Territorial Pair (Suspected)"
+								name="relationshipStatus"
+								id="formHorizontalRadios16"
+								onChange={props.formChange}
+							/>
+							<Form.Check
+								inline
+								type="radio"
+								label="Territorial Pair (Confirmed)"
+								value="Territorial Pair (Confirmed)"
+								name="relationshipStatus"
+								id="formHorizontalRadios16a"
+								onChange={props.formChange}
+							/>
+						</Form.Row>
+						<Form.Row>
+							<Form.Check
+								inline
+								type="radio"
+								label="Courtship/Copulation (Suspected)"
+								value="Courtship/Copulation (Suspected)"
+								name="relationshipStatus"
+								id="formHorizontalRadios17"
+								onChange={props.formChange}
+							/>
+							<Form.Check
+								inline
+								type="radio"
+								label="Courtship/Copulation (Confirmed)"
+								value="Courtship/Copulation (Confirmed)"
+								name="relationshipStatus"
+								id="formHorizontalRadios17a"
+								onChange={props.formChange}
+							/>
+						</Form.Row>
+					</Col>
 				</Form.Group>
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
 						Nesting Status:
 					</Form.Label>
-					<Col sm={10}>	
-						<Form.Check
-							type="radio"
-							label="Incubating"
-							value="Incubating"
-							name="youngStatus"
-							id="formHorizontalRadios18"
-							onChange={props.formChange}
-						/>
-						<Form.Check
-							type="radio"
-							label="Hatched"
-							value="Hatched"
-							name="youngStatus"
-							id="formHorizontalRadios19"
-							onChange={props.formChange}
-						/>
-						<Form.Check
-							type="radio"
-							label="Nest Failure"
-							value="Nest Failure"
-							name="youngStatus"
-							id="formHorizontalRadios20"
-							onChange={props.formChange}
-						/>
-						<Form.Check
-							type="radio"
-							label="Fledged"
-							value="Fledged"
-							name="youngStatus"
-							id="formHorizontalRadios21"
-							onChange={props.formChange}
-						/>
-						</Col>
-					</Form.Group>
-					<Form.Group as={Col} >
-						<Form.Label as="legend" column sm={10}>
-							Disturbance:
+					<Col sm={10}>
+						<Form.Row>
+							<Form.Check
+								inline
+								type="radio"
+								label="Incubating (Suspected)"
+								value="Incubating (Suspected)"
+								name="youngStatus"
+								id="formHorizontalRadios18"
+								onChange={props.formChange}
+							/>
+							<Form.Check
+								inline
+								type="radio"
+								label="Incubating (Confirmed)"
+								value="Incubating (Confirmed)"
+								name="youngStatus"
+								id="formHorizontalRadios18a"
+								onChange={props.formChange}
+							/>
+						</Form.Row>
+						<Form.Row>
+							<Form.Check
+								inline
+								type="radio"
+								label="Hatched (Suspected)"
+								value="Hatched (Suspected)"
+								name="youngStatus"
+								id="formHorizontalRadios19"
+								onChange={props.formChange}
+							/>
+							<Form.Check
+								inline
+								type="radio"
+								label="Hatched (Confirmed)"
+								value="Hatched (Confirmed)"
+								name="youngStatus"
+								id="formHorizontalRadios19a"
+								onChange={props.formChange}
+							/>
+						</Form.Row>
+						<Form.Row>
+							<Form.Check
+								inline
+								type="radio"
+								label="Nest Failure (Suspected)"
+								value="Nest Failure (Suspected)"
+								name="youngStatus"
+								id="formHorizontalRadios20"
+								onChange={props.formChange}
+							/>
+							<Form.Check
+								inline
+								type="radio"
+								label="Nest Failure (Confirmed)"
+								value="Nest Failure (Confirmed)"
+								name="youngStatus"
+								id="formHorizontalRadios20a"
+								onChange={props.formChange}
+							/>
+						</Form.Row>
+						<Form.Row>
+							<Form.Check
+								inline
+								type="radio"
+								label="Fledged (Suspected)"
+								value="Fledged (Suspected)"
+								name="youngStatus"
+								id="formHorizontalRadios21"
+								onChange={props.formChange}
+							/>
+							<Form.Check
+								inline
+								type="radio"
+								label="Fledged (Confirmed)"
+								value="Fledged (Confirmed)"
+								name="youngStatus"
+								id="formHorizontalRadios21a"
+								onChange={props.formChange}
+							/>
+						</Form.Row>
+					</Col>
+				</Form.Group>
+				<Form.Group as={Col} >
+					<Form.Label as="legend" column sm={10}>
+						Disturbance:
 						</Form.Label>
-						<Col  sm={10}>
+					<Col sm={10}>
 						<Form.Check
+							inline
 							type="radio"
-							label="Human Disturbance"
-							value="Human Disturbance"
+							label="Human Disturbance (Suspected)"
+							value="Human Disturbance (Suspected)"
 							name="disturbance"
 							id="formHorizontalRadios22"
+							onChange={props.formChange}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							label="Human Disturbance (Confirmed)"
+							value="Human Disturbance (Confirmed)"
+							name="disturbance"
+							id="formHorizontalRadios22a"
 							onChange={props.formChange}
 						/>
 					</Col>
@@ -421,7 +514,8 @@ export default function InputForm(props) {
 				</div>
 					{/* -------------------image upload -------------------- */}
 					<label for="img">Select image:</label>
-  						<input onChange={props.imageChange} className="form-control" type="file" id="img" name="img" accept="image/*"></input>
+
+  					<input onChange={props.imageChange} className="form-control" type="file" id="img" name="img" accept="image/*"></input>
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
