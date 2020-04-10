@@ -89,6 +89,33 @@ class App extends Component {
     this.setState({ temperature: event.target.value })
   }
 
+   totalTimeCalculator=(start, end)=>{
+    start = this.state.timeStart.split(":");
+    end = this.state.timeEnd.split(":");
+    console.log('start', start)
+    console.log('end', end)
+
+    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+    var diff = endDate.getTime() - startDate.getTime();
+    var hours = Math.floor(diff / 1000 / 60 / 60);
+    console.log('hours', hours)
+
+    diff -= hours * 1000 * 60 * 60;
+    var minutes = Math.floor(diff / 1000 / 60);
+    console.log('minutes', minutes)
+
+
+    // If using time pickers with 24 hours format, add the below line get exact hours
+    if (hours < 0)
+       hours = hours + 24;
+this.setState({
+  totalTime: Number((hours <= 9 ? "0" : "") + hours) + ":" + Number((minutes <= 9 ? "0" : "") + minutes)
+
+})
+console.log(this.state.totalTime)
+}
+
   //--------------------Display form handler --------------//
   seasonChange = (event) => {
     console.log("hi!")
@@ -294,7 +321,7 @@ render() {
 
 
   let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, weatherObservation, temperature, precipitation, cloudCover, windSpeed, observationSummary, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, reportVisible, observationReport, redirect, image } = this.state
-  let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, weatherObservationChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport, imageChange } = this
+  let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, weatherObservationChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, consoleCheck, searchDataBase, displayFullReport, imageChange, totalTimeCalculator } = this
 
 
   return (
@@ -315,7 +342,7 @@ render() {
               timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} weatherObservationChange={weatherObservationChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
               cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange} imageChange={imageChange}
 
-              youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} formChange={formChange}
+              youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} formChange={formChange} totalTimeCalculator={totalTimeCalculator}
             />
           </Route>
           <Route path='/display'>

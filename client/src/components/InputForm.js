@@ -1,14 +1,15 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
+import TimePicker from 'react-time-picker';
 import { Form, Col } from 'react-bootstrap';
-import Header from '../components/Header'
+import Header from '../components/Header';
 
 export default function InputForm(props) {
 	return (
-		<div>
+		<div className="form"> 
 			<Header />
 			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block">
-				<h3 className='title'>Observation Form</h3>
+				<h3 className="title">Observation Form</h3>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
 					<label>Name: </label>
@@ -61,7 +62,7 @@ export default function InputForm(props) {
 				<Form.Group controlId="exampleForm.SelectCustom">
 					<Form.Label>Select Site:</Form.Label>
 					<Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
-						<option></option>
+						<option />
 						<option>Arrowhead Mountain (Milton)</option>
 						<option>Bald Mountain (West Haven)</option>
 						<option>Ball Mountain (Jamaica)</option>
@@ -152,6 +153,11 @@ export default function InputForm(props) {
 				</div>
 				{/* --------------------------------------- Observation Start Time ------------------------------*/}
 				<div className="form-group">
+				<label>Start Time of Observtion:</label>
+				<br></br>
+				<TimePicker amPmAriaLabel  selected={props.timeStart} onChange={props.timeStartChange} />
+				</div>
+				{/* <div className="form-group">
 					<label>Observation Start Time: </label>
 					<div>
 						<DatePicker
@@ -161,9 +167,15 @@ export default function InputForm(props) {
 							dateFormat="Pp"
 						/>
 					</div>
-				</div>
+				</div> */}
 				{/* -------------------------------------- Observation End Time -------------------------- */}
 				<div className="form-group">
+				<label>End Time of Observation:</label>
+				<br></br>
+				<TimePicker amPmAriaLabel selected={props.timeEnd} onChange={props.timeEndChange}  />
+				</div>
+
+				{/* <div className="form-group">
 					<label>Observation End Time: </label>
 					<div>
 						<DatePicker
@@ -173,7 +185,7 @@ export default function InputForm(props) {
 							dateFormat="Pp"
 						/>
 					</div>
-				</div>
+				</div> */}
 				{/* ----------------------------------- Total Observation Time --------------------------- */}
 				<div className="form-group">
 					<label>Total Observation Time: </label>
@@ -182,6 +194,7 @@ export default function InputForm(props) {
 						required
 						className="form-control"
 						name="totalTime"
+						onClick={props.totalTimeCalculator}
 						value={props.totalTime}
 						onChange={props.formChange}
 					/>
@@ -196,8 +209,8 @@ export default function InputForm(props) {
 						value={props.weatherObservation}
 						onChange={props.weatherObservationChange}
 						rows="6"
-						/>
-						</div>
+					/>
+				</div>
 				{/* ---------------------------- Temperature --------------------------*/}
 				<div className="form-group">
 					<label>Temperature (in F, can provide a 5-10 degree range): </label>
@@ -213,9 +226,7 @@ export default function InputForm(props) {
 				{/* ------------------------- Precipitation ---------------------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
-
 						Precipitation:
-
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -350,6 +361,7 @@ export default function InputForm(props) {
 				</Form.Group>
 
 				{/* ---------------------------------Observation Summary ----------------------- */}
+				{/* ---------------------------------Relationship Status  -----------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
 						Relationship Status:
@@ -370,7 +382,6 @@ export default function InputForm(props) {
 							name="relationshipStatus"
 							id="formHorizontalRadios16"
 							onChange={props.formChange}
-
 						/>
 						<Form.Check
 							type="radio"
@@ -380,13 +391,14 @@ export default function InputForm(props) {
 							id="formHorizontalRadios17"
 							onChange={props.formChange}
 						/>
-						</Col>
+					</Col>
 				</Form.Group>
+				{/* ----------------------------Nesting Status  -----------------------*/}
 				<Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
 						Nesting Status:
 					</Form.Label>
-					<Col sm={10}>	
+					<Col sm={10}>
 						<Form.Check
 							type="radio"
 							label="Incubating"
@@ -419,15 +431,16 @@ export default function InputForm(props) {
 							id="formHorizontalRadios21"
 							onChange={props.formChange}
 						/>
-						</Col>
-					</Form.Group>
-					<Form.Group as={Col} >
-						<Form.Label as="legend" column sm={10}>
-							Disturbance:
-						</Form.Label>
-						<Col  sm={10}>
+					</Col>
+				</Form.Group>
+				{/* ------------------ Disturbacne --------------------------- */}
+				<Form.Group as={Col}>
+					<Form.Label as="legend" column sm={10}>
+						Disturbance:
+					</Form.Label>
+					<Col sm={10}>
 						<Form.Check
-							type="radio"
+							type="checkbox"
 							label="Human Disturbance"
 							value="Human Disturbance"
 							name="disturbance"
@@ -472,9 +485,16 @@ export default function InputForm(props) {
 						onChange={props.formChange}
 					/>
 				</div>
-					{/* -------------------image upload -------------------- */}
-					<label for="img">Select image:</label>
-  						<input onChange={props.imageChange} className="form-control" type="file" id="img" name="img" accept="image/*"></input>
+				{/* -------------------image upload -------------------- */}
+				<label for="img">Select image:</label>
+				<input
+					onChange={props.imageChange}
+					className="form-control"
+					type="file"
+					id="img"
+					name="img"
+					accept="image/*"
+				/>
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
@@ -500,11 +520,10 @@ export default function InputForm(props) {
 						value={props.comments}
 						onChange={props.formChange}
 						rows="6"
-						/>
-						</div>
+					/>
+				</div>
 				{/* --------------------------Submit-------------------------------- */}
 				<input type="submit" value="Submit Form" className="btn btn-primary" onClick={props.handleSubmit} />
-
 			</Form>
 		</div>
 	);

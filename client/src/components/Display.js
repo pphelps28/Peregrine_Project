@@ -141,18 +141,32 @@ export default function Display(props) {
                         <th scope="col">Season</th>
                         <th scope="col">Location</th>
                         <th scope="col">Date Observed</th>
-                        <th scope="col">See Full Report</th>
+                        <th  scope="col">See Full Report</th>
                     </tr>
                 </thead>
                 <tbody>
                     {/* //ternary operator that will iterate through each entry using a key */}
                     {props.displayContent ? props.displayContent.map(data => (
                         <tr key={data._id}>
-                            <th scope="column" >{data.season}</th>
-                            <td >{data.location}</td>
-                            <td >{data.date_visited}</td>
+                            <th scope="column" >
+                                <Col xs={4} fluid>
+                            {data.season}
+                            </Col></th>
+
+                            <td >
+                                <Col xs={4} fluid>
+                                {data.location}
+                                </Col>
+                                </td>
+                            <td >
+                                <Col xs={4} fluid>
+                                {data.date_visited}
+                                </Col>
+                                </td>
                             <td>
+                                <Col xs={12} fluid>
                                 <button className="btn btn-primary" value={JSON.stringify(data)} onClick={props.displayFullReport} style={{ cursor: 'pointer' }}>click here</button>
+                                </Col>
                             </td>
                         </tr>
                     )) : <em>Loading...</em>}

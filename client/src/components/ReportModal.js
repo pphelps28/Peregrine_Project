@@ -5,7 +5,7 @@ export default function ReportModal(props) {
     let data = props.observationReport
     return (
 
-        <div id='report_page'>
+        <div id='report_page' className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block form">
 
             <table className="table table-striped">
                 <thead>
