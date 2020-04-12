@@ -14,7 +14,7 @@ export class NavBar extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar fixed="top" bg="dark" variant="dark" className="navContainer" expand="lg">
+				<Navbar fixed="top" bg="dark" variant="dark" className="navContainer" expand="md" collapseOnSelect >
 					<Navbar.Brand>
 						<Link to="/" className="link">
 							<img className="brandImage" src="../../img/Audubon_H_WHT_VT.png" />
@@ -24,7 +24,7 @@ export class NavBar extends Component {
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="mr-auto">
 							<Nav.Link>
-								<Link to="/" className="link">
+								<Link to="/" className="link" >
 									Observation Form
 								</Link>
 							</Nav.Link>
