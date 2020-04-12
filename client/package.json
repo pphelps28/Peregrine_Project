@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "firebase": "^7.13.2",
     "react": "^16.13.1",
@@ -13,8 +14,13 @@
     "react-clock": "^2.4.0",
     "react-datepicker": "^2.14.1",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-scripts": "3.4.1",
     "react-time-picker": "^4.0.1"
+=======
+    "react-json-to-csv": "^1.0.4",
+    "react-scripts": "3.4.1"
+>>>>>>> master
   },
   "scripts": {
     "start": "react-scripts start",
