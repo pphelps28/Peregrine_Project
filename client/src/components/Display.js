@@ -41,6 +41,7 @@ export default function Display(props) {
                                 value="Bald Eagle"
                                 name="birds"
                                 id="formHorizontalRadios1"
+                                className='radioButton'
                                 onChange={props.birdChange}
                             />
                             <Form.Check
@@ -49,6 +50,7 @@ export default function Display(props) {
                                 value="Peregrine Falcon"
                                 name="birds"
                                 id="formHorizontalRadios2"
+                                className='radioButton'
                                 onChange={props.birdChange}
                             />
                         </Col>

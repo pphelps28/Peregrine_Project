@@ -46,6 +46,7 @@ export default function InputForm(props) {
 							value="Bald Eagle"
 							name="birds"
 							id="formHorizontalRadios25"
+							className='radio'
 							onChange={props.birdChange}
 						/>
 						<Form.Check
@@ -54,6 +55,7 @@ export default function InputForm(props) {
 							value="Peregrine Falcon"
 							name="birds"
 							id="formHorizontalRadios26"
+							className='radio'
 							onChange={props.birdChange}
 						/>
 					</Col>
