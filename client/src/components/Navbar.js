@@ -11,8 +11,10 @@ class NavBar extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar fixed="top" bg="dark" variant="dark" className='navContainer'>
+				<Navbar fixed="top" bg="dark" variant="dark" className='navContainer' expand='md'>
 					<Navbar.Brand><Link to='/' className='link'><img className='brandImage' src='../../img/Audubon_H_WHT_VT.png'></img></Link></Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto">
 						<Nav.Link ><Link to='/' className='link' onClick={this.props.toggleInput}>Observation Form</Link></Nav.Link>
 						<Nav.Link>
@@ -52,6 +54,7 @@ class NavBar extends Component {
 								</div>}
 						</Nav.Link>
 					</Nav>
+					</Navbar.Collapse>
 				</Navbar>
 			</div>
 		);

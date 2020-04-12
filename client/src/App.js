@@ -436,9 +436,9 @@ console.log(this.state.totalTime)
       youngAge: this.state.youngAge,
       image: this.state.image,
       observation: this.state.observation,
-      comments: this.state.comments,
-
+      comments: this.state.comments
     }
+
 
     fetch('/post', {
       method: 'POST',
@@ -535,7 +535,7 @@ console.log(this.state.totalTime)
                 </Route>
                 <Route path='/report_modal/:bird/:_id'
                   component={(props) =>
-                    <ReportModal {...props} />} >
+                    <ReportModal {...props} />}>
                 </Route>
               </>
               : "Please log in to see this page"}
