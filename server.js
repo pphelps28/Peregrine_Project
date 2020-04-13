@@ -30,19 +30,14 @@ const birdSchema = new mongoose.Schema({
     start_time: String,
     end_time: String,
     total_time: String,
-    weather_observation: String,
-    temperature: String,
-    precipitation: String,
-    cloud_coverage: String,
-    wind_speed: String,
+    weather_observation: String,    
     summary: String,
     eyrie_location: String,
     number_young: String,
     young_age: String,
     observations: String,
     remarks: String,
-    researcher_comments_1: String,
-    researcher_comments_2: String,
+    researcher_comments_1: String,    
     image: { data: Buffer, contentType: String }
 
 })
@@ -136,16 +131,7 @@ const handleBirdPosts = async (req, res) => {
             remarks: remarks,
             image: image
         })
-
-        // // and written to database
-
-        // await post.save((err, doc) => {
-        //     if (err) {
-        //         return console.log(err)
-        //     }
-        //     console.log('Post Saved: ' + doc)
-        // })
-
+        
     } else {
 
         // new PEREGRINE data object created from monitor data
