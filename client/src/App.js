@@ -103,10 +103,15 @@ class App extends Component {
     this.setState({ site: event.target.value })
   }
   birdChange = (event) => {
+    console.log('changed species')
     this.setState({
       bird: event.target.value,
       stopLoop: true
     })
+  }
+
+  nestingSiteChange = (event) => {
+    this.setState({ nestingSite: event.target.value })
   }
 
   //-------------------Date & Time change handlers -----------------------//
@@ -175,11 +180,13 @@ console.log(this.state.totalTime)
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
   componentDidUpdate = () => {
+    console.log('updating species')
     if (this.state.stopLoop === true) {
+      console.log('inside the if statement')
       this.getCurrentSites()
       this.setState({
         stopLoop: false,
-        sitesList: ['', 'Please select a species first']
+        // sitesList: ['', 'Please select a species first']
       })
     }
   }
@@ -202,7 +209,7 @@ console.log(this.state.totalTime)
       }
     })
 
-    this.getCurrentSites()
+    // this.getCurrentSites()
   }
   emailChange = (event) => {
     console.log(event.target.value)
@@ -351,6 +358,9 @@ console.log(this.state.totalTime)
         season: '',
       })
     }
+
+    // window.location.reload()
+    this.clearButtons()
   }
 
   // // ---------------- stores single observation report in state and launches observation report page ---------- //
@@ -474,16 +484,29 @@ console.log(this.state.totalTime)
       comments: '',
       image: ''
     })
+
+    // window.location.reload()
+    this.clearButtons()
+    
     console.log(submission)
     console.log('preparing report')
 
   }
+  clearButtons = () => {
+    // document.querySelectorAll('.radio').checked = false
+    document.getElementsByClassName('radioButton')[0].checked = false
+    
+    // document.getElementById('formHorizontalRadios1').checked = false
+    console.log(document.getElementsByClassName('radioButton')[0])
+    console.log(document.getElementById('formHorizontalRadios1'))
+  }
+
 
   
     
   render() {
     let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent,  redirect, sitesList} = this.state
-    let { nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange,  youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase } = this
+    let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange,  youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
 
     return (
       <div>
@@ -520,7 +543,7 @@ console.log(this.state.totalTime)
                 cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
                 incubation={incubation} observation={observation} comments={comments} sitesList={sitesList}
                 // passes all methods
-                nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
+                formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                 timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
                 cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
                 youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit}
@@ -531,7 +554,7 @@ console.log(this.state.totalTime)
             {this.state.loggedIn ?
               <>
                 <Route path='/display'>
-                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} />
+                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange}seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite}/>
                 </Route>
                 <Route path='/report_modal/:bird/:_id'
                   component={(props) =>

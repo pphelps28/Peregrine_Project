@@ -317,6 +317,9 @@ const getSiteList = async (req, res) => {
         filter = { _id: ObjectId(id) }
         currentList = await PeregrineSiteSchema.findOne(filter)
     }
+
+    let listArray = currentList.sites
+    console.log(listArray.sort())
     console.log(currentList)
     res.send(currentList)
 }
@@ -348,7 +351,6 @@ app.post('/display', getBirdPosts)
 app.post('/update', updateBirdPosts)
 app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
-// app.get('/reportModal/:bird/:_id', getReport)
 app.get('/reportModal/:bird/:_id', getReport)
 
 app.listen(port, () => console.log(`listening on: ${port}`))
