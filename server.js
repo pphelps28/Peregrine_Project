@@ -86,10 +86,10 @@ const handleBirdPosts = async (req, res) => {
     let end_time = req.body.timeEnd
     let total_time = req.body.totalTime
     let weather_observation = req.body.weatherObservation
-    let temperature = req.body.temperature
-    let precipitation = req.body.precipitation
-    let cloud_coverage = req.body.cloudCover
-    let wind_speed = req.body.windSpeed
+    // let temperature = req.body.temperature
+    // let precipitation = req.body.precipitation
+    // let cloud_coverage = req.body.cloudCover
+    // let wind_speed = req.body.windSpeed
     let summary = req.body.ObservationSummary
     let eyrie_location = req.body.incubation
     let number_young = req.body.young
@@ -118,10 +118,10 @@ const handleBirdPosts = async (req, res) => {
             start_time: start_time,
             end_time: end_time,
             total_time: total_time,
-            weather_observation: weather_observation,
-            temperature: temperature,
-            precipitation: precipitation,
-            cloud_coverage: cloud_coverage,
+            // weather_observation: weather_observation,
+            // temperature: temperature,
+            // precipitation: precipitation,
+            // cloud_coverage: cloud_coverage,
             wind_speed: wind_speed,
             summary: summary,
             eyrie_location: eyrie_location,
@@ -151,10 +151,10 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation, weather_observation,
-            temperature: temperature,
-            precipitation: precipitation,
-            cloud_coverage: cloud_coverage,
-            wind_speed: wind_speed,
+            // temperature: temperature,
+            // precipitation: precipitation,
+            // cloud_coverage: cloud_coverage,
+            // wind_speed: wind_speed,
             summary: summary,
             eyrie_location: eyrie_location,
             number_young: number_young,
@@ -265,7 +265,7 @@ const addNestingSite = async (req, res) => {
     let updatedSites
     let filter
 
-    console.log(site)
+    console.log(site)    
 
     if (bird === "Bald Eagle") {
         id = "5e94c31ac0c3fe4534f1b7be"
@@ -293,13 +293,13 @@ const getSiteList = async (req, res) => {
 
     if (bird === "Bald Eagle") {
         console.log('getting Eagle sites')
-        id = "5e8f15de2c9c234df4e38654"
+        id = "5e94c31ac0c3fe4534f1b7be"
         filter = { _id: ObjectId(id) }
         currentList = await EagleSiteSchema.findOne(filter)
     }
     else if (bird === "Peregrine Falcon") {
         console.log('getting pefa sites')
-        id = '5e8f1508b60a4f4df49c06bf'
+        id = '5e94c3b903443b4d2c7f7a5d'
         filter = { _id: ObjectId(id) }
         currentList = await PeregrineSiteSchema.findOne(filter)
     }
