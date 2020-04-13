@@ -105,7 +105,7 @@ export default function InputForm(props) {
 				<div className="form-group">
 				<label>Start Time of Observtion:</label>
 				<br></br>
-				<TimePicker amPmAriaLabel  selected={props.timeStart} onChange={props.timeStartChange} />
+				<TimePicker amPmAriaLabel  disableClock={true} clearAriaLabel='Clear value'	  selected={props.timeStart} onChange={props.timeStartChange} />
 				</div>
 				{/* <div className="form-group">
 					<label>Observation Start Time: </label>
@@ -122,7 +122,7 @@ export default function InputForm(props) {
 				<div className="form-group">
 				<label>End Time of Observation:</label>
 				<br></br>
-				<TimePicker amPmAriaLabel selected={props.timeEnd} onChange={props.timeEndChange}  />
+				<TimePicker amPmAriaLabel disableClock={true} selected={props.timeEnd} onChange={props.timeEndChange}  />
 				</div>
 
 				{/* <div className="form-group">
