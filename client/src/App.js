@@ -465,14 +465,14 @@ class App extends Component {
     console.log('preparing report')
 
   }
-  clearButtons = () => {
-    // document.querySelectorAll('.radio').checked = false
-    document.getElementsByClassName('radioButton')[0].checked = false
-    
-    // document.getElementById('formHorizontalRadios1').checked = false
-    console.log(document.getElementsByClassName('radioButton')[0])
-    console.log(document.getElementById('formHorizontalRadios1'))
-  }
+  //clearButtons = () => {
+  //  // document.querySelectorAll('.radio').checked = false
+  //  document.getElementsByClassName('radioButton')[0].checked = false
+  //  
+  //  // document.getElementById('formHorizontalRadios1').checked = false
+  //  console.log(document.getElementsByClassName('radioButton')[0])
+  //  console.log(document.getElementById('formHorizontalRadios1'))
+  //}
 
 
   // //--------switches between observation and view reports pages and back from observation report page ----------//
