@@ -447,7 +447,7 @@ export default function InputForm(props) {
 						name="img"
 						accept="image/*"
 					/>
-					<Button>Upload</Button>
+					<Button onClick={props.imageSubmit}>Upload</Button>
 				</div>
 
 				{/* -----------------------------Recorded Observations ------------------- */}

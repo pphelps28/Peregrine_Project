@@ -327,7 +327,7 @@ const getSiteList = async (req, res) => {
 const getReport = async (req, res) => {
     console.log("got report request")
     console.log(req.params._id)
-    
+
     let id = req.params._id
     let bird = req.params.bird
 
@@ -337,14 +337,18 @@ const getReport = async (req, res) => {
     if (bird === 'Bald Eagle') {
         console.log('getting Eagle report')
         report = await EagleSchema.findOne(filter)
-    } else{
+    } else {
 
-    report = await PeregrineSchema.findOne(filter)
-    console.log('getting Peregrine report')
-}
+        report = await PeregrineSchema.findOne(filter)
+        console.log('getting Peregrine report')
+    }
     res.send(report)
 }
 
+const uploadImage = (req, res) => {
+    console.log('entered /upload on server.js')
+    console.log(req.headers)
+}
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
@@ -352,5 +356,6 @@ app.post('/update', updateBirdPosts)
 app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
+app.post('/upload', uploadImage)
 
 app.listen(port, () => console.log(`listening on: ${port}`))

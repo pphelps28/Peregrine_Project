@@ -8,6 +8,8 @@ import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
 import Display from './components/Display.js'
 import firebase from 'firebase'
+import axios from 'axios'
+import FormData from 'form-data'
 import ReportModal from './components/ReportModal'
 
 //firebase => .env
@@ -170,7 +172,6 @@ class App extends Component {
     this.setState({ season: event.target.value })
   }
   imageChange = (event) => {
-    console.log(event.target.files[0])
     this.setState({
       image: event.target.files[0]
     })
@@ -178,13 +179,24 @@ class App extends Component {
 
   imageSubmit = () => {
     const fd = new FormData()
-    fd.append('image')
+    fd.append('image', this.state.image, this.state.image.name)
+    console.log(this.state.image)
+    axios.post('/upload', fd, {
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': "multipart/form-data"
+      }
+    }).then(res => {
+      console.log('Im back!')
+    }).catch(err => {
+      console.log(err)
+    })
+
   }
 
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
   componentDidUpdate = () => {
-    console.log('updating species')
     if (this.state.stopLoop === true) {
       console.log('inside the if statement')
       this.getCurrentSites()
@@ -510,7 +522,7 @@ class App extends Component {
 
   render() {
     let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
-    let { imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
+    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
 
     return (
       <div>
@@ -541,7 +553,7 @@ class App extends Component {
             {/* //passes variables if the button is true */}
             <Route path='/' exact>
               <InputForm
-                handleSubmit={handleSubmit} imageChange={imageChange}
+                handleSubmit={handleSubmit} imageChange={imageChange} imageSubmit={imageSubmit}
                 name={name} email={email} bird={bird} site={site}
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
                 cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
