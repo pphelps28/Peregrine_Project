@@ -176,23 +176,41 @@ class App extends Component {
       image: event.target.files[0]
     })
   }
+  //
+  //imageSubmit = () => {
+  //  const fd = new FormData()
+  //  fd.append('image', this.state.image)
+  //  console.log(this.state.image)
+  //
+  //  fetch(('/upload'), fd, {
+  //    body: fd
+  //  }).then(res => {
+  //    console.log(res)
+  //    console.log('Im back!')
+  //  }).catch(err => {
+  //    console.log('error:')
+  //    console.log(err.message)
+  //  })
+  //
+  //}
 
-  imageSubmit = () => {
+  imageSubmit = async () => {
     const fd = new FormData()
-    fd.append('image', this.state.image, this.state.image.name)
+    fd.append('image', this.state.image)
     console.log(this.state.image)
-    axios.post('/upload', fd, {
-      headers: {
-        'accept': 'application/json',
-        'Content-Type': "multipart/form-data"
-      }
-    }).then(res => {
-      console.log('Im back!')
-    }).catch(err => {
-      console.log(err)
-    })
-
+    try {
+      const result = await axios({
+        url: '/upload',
+        method: "POST",
+        data: ReadableStream,
+      })
+      return result
+    } catch (err) {
+      console.log(err.message)
+    }
   }
+
+
 
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 

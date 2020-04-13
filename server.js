@@ -7,14 +7,64 @@ const ObjectId = require('mongodb').ObjectId
 const port = process.env.PORT || 5000
 require('mongoose-type-email')
 
+//Experiments to add image upload
+const crypto = require('crypto')
+const multer = require('multer')
+const GridFsStorage = require('multer-gridfs-storage')
+const Grid = require('gridfs-stream')
+//
+//do I need a view engine??
+app.set('view engine', 'pug');
+app.set('views', './views');
+app.use(express.static('public'))
+
+//
+const mongoURI = 'mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority'
+
 app.use(express.static(path.join(__dirname, '/client/build')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-mongoose.connect('mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority', {
+//image upload experimentation, here to BIRD SCHEMATA
+const conn = mongoose.createConnection(mongoURI, {
     useUnifiedTopology: true, useNewUrlParser: true
 })
 mongoose.set('useFindAndModify', false)
+
+let gfs
+conn.once('open', () => {
+    gfs = Grid(conn.db, mongoose.mongo)
+    gfs.collection('images')
+})
+
+
+const storage = new GridFsStorage({
+    url: mongoURI,
+    file: (req, file) => {
+        return new Promise((resolve, reject) => {
+            crypto.randomBytes(16, (err, buf) => {
+                if (err) {
+                    return reject(err);
+                }
+                const filename = buf.toString('hex') + path.extname(file.originalname);
+                const fileInfo = {
+                    filename: filename,
+                    bucketName: 'images' //match collection name
+                };
+                resolve(fileInfo);
+            });
+        });
+    }
+})
+const upload = multer({ storage })
+
+uploadImage = (req, res) => {
+    console.log('entered /upload on server.js')
+    console.log(req.body)
+    res.send(JSON.stringify({ file: req.file }))
+}
+
+
 
 // ---------- BIRD SCHEMATA ---------- // 
 
@@ -345,17 +395,12 @@ const getReport = async (req, res) => {
     res.send(report)
 }
 
-const uploadImage = (req, res) => {
-    console.log('entered /upload on server.js')
-    console.log(req.headers)
-}
-
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
 app.post('/update', updateBirdPosts)
 app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
-app.post('/upload', uploadImage)
+app.post('/upload', upload.single('file'), uploadImage)
 
 app.listen(port, () => console.log(`listening on: ${port}`))
