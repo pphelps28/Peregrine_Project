@@ -17,22 +17,18 @@ export default function Display(props) {
     else {
         bird = ''
     }
-    // ---------- redirects to observation report page ---------- //
-
-    if (props.redirect) {
-        return <Redirect to={props.redirect} />
-    }
-
 
     return (
         <div className="container report_page" >
             <div>
                 <Form>
-
+                    <Form.Group as={Col}>
+                        <Form.Label as="legend" column sm={20}><strong>Here you can add a nesting site or read monitor reports</strong></Form.Label>
+                    </Form.Group>
                     {/* -----------------------Bird Observed Radio -------------------*/}
                     <Form.Group as={Col}>
                         <Form.Label as="legend" column sm={10}>
-                            Please select a species:
+                            First please select a species:
 					</Form.Label>
                         <Col sm={10}>
                             <Form.Check
@@ -75,7 +71,7 @@ export default function Display(props) {
                     <Form.Group as={Col}>
                         <Form.Label as="legend" column sm={20}><strong>Read a monitor report</strong></Form.Label>
                     </Form.Group>
-                    
+
                     {/*------------------------- Location Site Name ------------------------*/}
                     <Form.Group controlId="exampleForm.SelectCustom">
                         <Form.Label>Please select a nesting site:</Form.Label>
@@ -110,10 +106,10 @@ export default function Display(props) {
             </div>  */}
             {/* //ternary operator that will iterate through each entry using a key */}
             {props.displayContent ? props.displayContent.map(data => (
-            <div>
-                {/* <div><strong>{bird} Monitor Observation report(s)</strong></div> */}
-                <table className="table table-striped">
-                    {/* <thead>
+                <div>
+                    {/* <div><strong>{bird} Monitor Observation report(s)</strong></div> */}
+                    <table className="table table-striped">
+                        {/* <thead>
                         <tr>
                             <th scope="col">Season</th>
                             <th scope="col">Location</th>
@@ -121,8 +117,8 @@ export default function Display(props) {
                             <th scope="col">See Full Report</th>
                         </tr>
                     </thead> */}
-                    <tbody>
-                        
+                        <tbody>
+
                             <tr key={data._id}>
                                 <th scope="column" >{data.season}</th>
                                 <td >{data.location}</td>
@@ -131,10 +127,10 @@ export default function Display(props) {
                                     <Link to={`/report_modal/${data.bird}/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
                                 </td>
                             </tr>
-                       
-                    </tbody>
-                </table>
-            </div> )) : <em>Loading...</em>}
+
+                        </tbody>
+                    </table>
+                </div>)) : <em>Loading...</em>}
         </div >
     )
 }
