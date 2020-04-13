@@ -135,6 +135,33 @@ class App extends Component {
     this.setState({ temperature: event.target.value })
   }
 
+   totalTimeCalculator=(start, end)=>{
+    start = this.state.timeStart.split(":");
+    end = this.state.timeEnd.split(":");
+    console.log('start', start)
+    console.log('end', end)
+
+    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+    var diff = endDate.getTime() - startDate.getTime();
+    var hours = Math.floor(diff / 1000 / 60 / 60);
+    console.log('hours', hours)
+
+    diff -= hours * 1000 * 60 * 60;
+    var minutes = Math.floor(diff / 1000 / 60);
+    console.log('minutes', minutes)
+
+
+    // If using time pickers with 24 hours format, add the below line get exact hours
+    if (hours < 0)
+       hours = hours + 24;
+this.setState({
+  totalTime: Number((hours <= 9 ? "0" : "") + hours) + ":" + Number((minutes <= 9 ? "0" : "") + minutes)
+
+})
+console.log(this.state.totalTime)
+}
+
   //--------------------Display form handler --------------//
 
   seasonChange = (event) => {
@@ -419,9 +446,9 @@ class App extends Component {
       youngAge: this.state.youngAge,
       image: this.state.image,
       observation: this.state.observation,
-      comments: this.state.comments,
-
+      comments: this.state.comments
     }
+
 
     fetch('/post', {
       method: 'POST',
@@ -465,26 +492,17 @@ class App extends Component {
     console.log('preparing report')
 
   }
-  clearButtons = () => {
-    // document.querySelectorAll('.radio').checked = false
-    document.getElementsByClassName('radioButton')[0].checked = false
-    
-    // document.getElementById('formHorizontalRadios1').checked = false
-    console.log(document.getElementsByClassName('radioButton')[0])
-    console.log(document.getElementById('formHorizontalRadios1'))
-  }
+  //clearButtons = () => {
+  //  // document.querySelectorAll('.radio').checked = false
+  //  document.getElementsByClassName('radioButton')[0].checked = false
+  //  
+  //  // document.getElementById('formHorizontalRadios1').checked = false
+  //  console.log(document.getElementsByClassName('radioButton')[0])
+  //  console.log(document.getElementById('formHorizontalRadios1'))
+  //}
 
 
-  // //--------switches between observation and view reports pages and back from observation report page ----------//
-
-  // toggleInput = () => {
-  //   if (this.state.redirect === '/report_modal') {
-  //     this.setState({
-  //       redirect: null
-  //     })
-  //   }
-
-  // }
+  
     
   render() {
     let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent,  redirect, sitesList} = this.state
@@ -540,7 +558,7 @@ class App extends Component {
                 </Route>
                 <Route path='/report_modal/:bird/:_id'
                   component={(props) =>
-                    <ReportModal {...props} />} >
+                    <ReportModal {...props} />}>
                 </Route>
               </>
               : "Please log in to see this page"}
@@ -552,6 +570,6 @@ class App extends Component {
   }
 }
 
-// ---------------- sends request to add sites to either Peregrine or Eagle site dbs ---------- //
+
 
 export default App
