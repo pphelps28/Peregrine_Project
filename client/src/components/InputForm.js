@@ -1,13 +1,13 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'react-time-picker';
-import { Form, Col } from 'react-bootstrap';
+import { Form, Col, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 
 export default function InputForm(props) {
-	console.log(props.sitesList)
+	//	console.log(props.sitesList)
 	return (
-		<div className="form"> 
+		<div className="form">
 			<Header />
 			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block">
 				<h3 className="title">Observation Form</h3>
@@ -103,9 +103,9 @@ export default function InputForm(props) {
 				</div>
 				{/* --------------------------------------- Observation Start Time ------------------------------*/}
 				<div className="form-group">
-				<label>Start Time of Observtion:</label>
-				<br></br>
-				<TimePicker amPmAriaLabel  selected={props.timeStart} onChange={props.timeStartChange} />
+					<label>Start Time of Observtion:</label>
+					<br></br>
+					<TimePicker amPmAriaLabel selected={props.timeStart} onChange={props.timeStartChange} />
 				</div>
 				{/* <div className="form-group">
 					<label>Observation Start Time: </label>
@@ -120,9 +120,9 @@ export default function InputForm(props) {
 				</div> */}
 				{/* -------------------------------------- Observation End Time -------------------------- */}
 				<div className="form-group">
-				<label>End Time of Observation:</label>
-				<br></br>
-				<TimePicker amPmAriaLabel selected={props.timeEnd} onChange={props.timeEndChange}  />
+					<label>End Time of Observation:</label>
+					<br></br>
+					<TimePicker amPmAriaLabel selected={props.timeEnd} onChange={props.timeEndChange} />
 				</div>
 
 				{/* <div className="form-group">
@@ -436,15 +436,19 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* -------------------image upload -------------------- */}
-				<label for="img">Select image:</label>
-				<input
-					onChange={props.imageChange}
-					className="form-control"
-					type="file"
-					id="img"
-					name="img"
-					accept="image/*"
-				/>
+				<div id="image-upload">
+					<label for="img">Upload image:</label>
+					<input
+						placeholder={''}
+						style={{ margin: '5px' }}
+						onChange={props.imageChange}
+						type="file"
+						id="img"
+						name="img"
+						accept="image/*"
+					/>
+					<Button>Upload</Button>
+				</div>
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">

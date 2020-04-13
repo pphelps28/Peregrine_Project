@@ -9,6 +9,7 @@ import InputForm from './components/InputForm.js'
 import Display from './components/Display.js'
 import firebase from 'firebase'
 import ReportModal from './components/ReportModal'
+
 //firebase => .env
 const firebaseConfig = {
   apiKey: "AIzaSyAio6vwdZAJ1GlzX7C0Mg8bR6gLt1EpVBQ",
@@ -51,9 +52,9 @@ class App extends Component {
       incubation: '',
       young: '',
       youngAge: '',
-      image: '',
+      image: null,
       observation: '',
-      comments: '',      
+      comments: '',
       nestingSite: '',
       sitesList: ['', 'Please select a species first'],
       stopLoop: false,
@@ -135,7 +136,7 @@ class App extends Component {
     this.setState({ temperature: event.target.value })
   }
 
-   totalTimeCalculator=(start, end)=>{
+  totalTimeCalculator = (start, end) => {
     start = this.state.timeStart.split(":");
     end = this.state.timeEnd.split(":");
     console.log('start', start)
@@ -154,13 +155,13 @@ class App extends Component {
 
     // If using time pickers with 24 hours format, add the below line get exact hours
     if (hours < 0)
-       hours = hours + 24;
-this.setState({
-  totalTime: Number((hours <= 9 ? "0" : "") + hours) + ":" + Number((minutes <= 9 ? "0" : "") + minutes)
+      hours = hours + 24;
+    this.setState({
+      totalTime: Number((hours <= 9 ? "0" : "") + hours) + ":" + Number((minutes <= 9 ? "0" : "") + minutes)
 
-})
-console.log(this.state.totalTime)
-}
+    })
+    console.log(this.state.totalTime)
+  }
 
   //--------------------Display form handler --------------//
 
@@ -169,14 +170,17 @@ console.log(this.state.totalTime)
     this.setState({ season: event.target.value })
   }
   imageChange = (event) => {
+    console.log(event.target.files[0])
     this.setState({
       image: event.target.files[0]
     })
   }
 
-  
+  imageSubmit = () => {
+    const fd = new FormData()
+    fd.append('image')
+  }
 
-  
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
   componentDidUpdate = () => {
@@ -487,7 +491,7 @@ console.log(this.state.totalTime)
 
     // window.location.reload()
     this.clearButtons()
-    
+
     console.log(submission)
     console.log('preparing report')
 
@@ -502,11 +506,11 @@ console.log(this.state.totalTime)
   //}
 
 
-  
-    
+
+
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent,  redirect, sitesList} = this.state
-    let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange,  youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
+    let { imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
 
     return (
       <div>
@@ -537,7 +541,7 @@ console.log(this.state.totalTime)
             {/* //passes variables if the button is true */}
             <Route path='/' exact>
               <InputForm
-                handleSubmit={handleSubmit}
+                handleSubmit={handleSubmit} imageChange={imageChange}
                 name={name} email={email} bird={bird} site={site}
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
                 cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
@@ -554,7 +558,7 @@ console.log(this.state.totalTime)
             {this.state.loggedIn ?
               <>
                 <Route path='/display'>
-                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange}seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite}/>
+                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} />
                 </Route>
                 <Route path='/report_modal/:bird/:_id'
                   component={(props) =>
