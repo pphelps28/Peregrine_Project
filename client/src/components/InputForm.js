@@ -144,7 +144,8 @@ export default function InputForm(props) {
 						required
 						className="form-control"
 						name="totalTime"
-						onClick={props.totalTimeCalculator}
+						onFocus={props.totalTimeCalculator}
+						// onClick={props.totalTimeCalculator}
 						value={props.totalTime}
 						onChange={props.formChange}
 					/>
