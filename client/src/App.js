@@ -492,14 +492,14 @@ console.log(this.state.totalTime)
     console.log('preparing report')
 
   }
-  clearButtons = () => {
-    // document.querySelectorAll('.radio').checked = false
-    document.getElementsByClassName('radioButton')[0].checked = false
-    
-    // document.getElementById('formHorizontalRadios1').checked = false
-    console.log(document.getElementsByClassName('radioButton')[0])
-    console.log(document.getElementById('formHorizontalRadios1'))
-  }
+  //clearButtons = () => {
+  //  // document.querySelectorAll('.radio').checked = false
+  //  document.getElementsByClassName('radioButton')[0].checked = false
+  //  
+  //  // document.getElementById('formHorizontalRadios1').checked = false
+  //  console.log(document.getElementsByClassName('radioButton')[0])
+  //  console.log(document.getElementById('formHorizontalRadios1'))
+  //}
 
 
   

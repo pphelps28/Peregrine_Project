@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '/client/build')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-mongoose.connect('mongodb://localhost:27017/schema_practice', {
+mongoose.connect('mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority', {
     useUnifiedTopology: true, useNewUrlParser: true
 })
 mongoose.set('useFindAndModify', false)
