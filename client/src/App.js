@@ -486,7 +486,7 @@ console.log(this.state.totalTime)
     })
 
     // window.location.reload()
-    this.clearButtons()
+   // this.clearButtons()
     
     console.log(submission)
     console.log('preparing report')
