@@ -22,9 +22,7 @@ export default function Display(props) {
         <div className="container report_page" >
             <div>
                 <Form>
-                    <Form.Group as={Col}>
-                        <Form.Label as="legend" column sm={20}><strong>Here you can add a nesting site or read monitor reports</strong></Form.Label>
-                    </Form.Group>
+                <h3 className="title">Here you can add a nesting site or read an observation report</h3>
                     {/* -----------------------Bird Observed Radio -------------------*/}
                     <Form.Group as={Col}>
                         <Form.Label as="legend" column sm={10}>

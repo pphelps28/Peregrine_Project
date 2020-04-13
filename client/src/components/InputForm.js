@@ -163,7 +163,7 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* ---------------------------- Temperature --------------------------*/}
-				<div className="form-group">
+				{/* <div className="form-group">
 					<label>Temperature (in F, can provide a 5-10 degree range): </label>
 					<input
 						type="text"
@@ -173,9 +173,9 @@ export default function InputForm(props) {
 						value={props.temperature}
 						onChange={props.formChange}
 					/>
-				</div>
+				</div> */}
 				{/* ------------------------- Precipitation ---------------------------------*/}
-				<Form.Group as={Col}>
+				{/* <Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
 						Precipitation:
 					</Form.Label>
@@ -221,9 +221,9 @@ export default function InputForm(props) {
 							onChange={props.formChange}
 						/>
 					</Col>
-				</Form.Group>
+				</Form.Group> */}
 				{/* ------------------------------Cloud Cover---------------- */}
-				<Form.Group as={Col}>
+				{/* <Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
 						Cloud Cover:
 					</Form.Label>
@@ -261,9 +261,9 @@ export default function InputForm(props) {
 							onChange={props.formChange}
 						/>
 					</Col>
-				</Form.Group>
+				</Form.Group> */}
 				{/* ---------------------------Wind Speed ---------------------- */}
-				<Form.Group as={Col}>
+				{/* <Form.Group as={Col}>
 					<Form.Label as="legend" column sm={10}>
 						Wind Speed:
 					</Form.Label>
@@ -309,7 +309,7 @@ export default function InputForm(props) {
 							onChange={props.formChange}
 						/>
 					</Col>
-				</Form.Group>
+				</Form.Group> */}
 
 				{/* ---------------------------------Observation Summary ----------------------- */}
 				{/* ---------------------------------Relationship Status  -----------------------*/}

@@ -8,7 +8,7 @@ class ReportModal extends Component {
         super(props)
         this.state = {
             data: '',
-            researcherComments: ''            
+            researcherComments: ''
         }
     }
 
@@ -19,15 +19,15 @@ class ReportModal extends Component {
         console.log(bird)
 
         // gets report info from database using id
-    
+
         axios.get('/reportModal/' + bird + '/' + _id)
             .then(response => {
                 console.log('retrieved report request')
                 console.log(response.data)
-                
+
                 this.setState({
-                    data: response.data                    
-                })                
+                    data: response.data
+                })
             })
     }
 
@@ -61,7 +61,7 @@ class ReportModal extends Component {
             return res.json()
         }).then(jsonObj => {
             this.setState({
-                data: jsonObj                
+                data: jsonObj
             })
         })
     }
@@ -70,7 +70,7 @@ class ReportModal extends Component {
         // variable for easier handling of data in state
         let data = this.state.data
         // variable to allow data to be read correctly by Csv downloader
-        let dataSet = [data]             
+        let dataSet = [data]
 
         return (
             <div className='report_page' >
@@ -106,7 +106,26 @@ class ReportModal extends Component {
                             <th scope="column">Mileage</th>
                             <td>{data.mileage}</td>
                         </tr>
-
+                        <tr>
+                            <th scope="column">Travel time</th>
+                            <td>{data.travel_time}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Start time</th>
+                            <td>{data.start_time}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">End time</th>
+                            <td>{data.end_time}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Total time</th>
+                            <td>{data.total_time}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Weather observations</th>
+                            <td>{data.weather_observation}</td>
+                        </tr>
                         <tr>
                             <th scope="column">Eyrie Location</th>
                             <td>{data.eyrie_location}</td>
