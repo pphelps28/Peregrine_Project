@@ -530,7 +530,7 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* -------------------image upload -------------------- */}
-				<label for="img">Select image:</label>
+				<label htmlFor="img">Select image:</label>
 				<input
 					onChange={props.imageChange}
 					className="form-control"

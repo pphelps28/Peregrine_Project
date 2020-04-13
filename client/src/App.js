@@ -360,7 +360,7 @@ console.log(this.state.totalTime)
     }
 
     // window.location.reload()
-    this.clearButtons()
+    // this.clearButtons()
   }
 
   // // ---------------- stores single observation report in state and launches observation report page ---------- //
@@ -554,7 +554,7 @@ console.log(this.state.totalTime)
             {this.state.loggedIn ?
               <>
                 <Route path='/display'>
-                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange}seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite}/>
+                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite}/>
                 </Route>
                 <Route path='/report_modal/:bird/:_id'
                   component={(props) =>

@@ -1,7 +1,6 @@
 import React from 'react';
 import CsvDownload from 'react-json-to-csv'
 import { Form, Col, Accordion, Card } from 'react-bootstrap';
-import ReportModal from './ReportModal'
 import { Link, Redirect } from 'react-router-dom'
 
 export default function Display(props) {
@@ -81,7 +80,7 @@ export default function Display(props) {
                         <Form.Label>Please select a nesting site:</Form.Label>
                         <Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
                             {props.sitesList.map(site => (
-                                <option>{site}</option>
+                                <option >{site}</option>
                             ))}
                         </Form.Control>
                     </Form.Group>
