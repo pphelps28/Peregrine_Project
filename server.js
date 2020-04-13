@@ -58,11 +58,10 @@ const storage = new GridFsStorage({
 })
 const upload = multer({ storage })
 
-uploadImage = (req, res) => {
-    console.log('entered /upload on server.js')
-    console.log(req.body)
-    res.send(JSON.stringify({ file: req.file }))
-}
+app.post('/upload', upload.single('img'), (req, res) => {
+    console.log(req.file)
+    console.log('uploaded?')
+})
 
 
 
@@ -401,6 +400,5 @@ app.post('/update', updateBirdPosts)
 app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
-app.post('/upload', upload.single('file'), uploadImage)
 
 app.listen(port, () => console.log(`listening on: ${port}`))

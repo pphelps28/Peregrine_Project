@@ -194,23 +194,23 @@ class App extends Component {
   //
   //}
 
-  imageSubmit = async () => {
-    const fd = new FormData()
-    fd.append('image', this.state.image)
-    console.log(this.state.image)
-    try {
-      const result = await axios({
-        url: '/upload',
-        method: "POST",
-        data: ReadableStream,
-      })
-      return result
-    } catch (err) {
-      console.log(err.message)
-    }
-  }
-
-
+  //imageSubmit = async () => {
+  //  const fd = new FormData()
+  //  fd.append('image', this.state.image)
+  //  console.log(this.state.image)
+  //  try {
+  //    const result = await axios({
+  //      url: '/upload',
+  //      method: "POST",
+  //      data: ReadableStream,
+  //    })
+  //    return result
+  //  } catch (err) {
+  //    console.log(err.message)
+  //  }
+  //}
+  //
+  //
 
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
