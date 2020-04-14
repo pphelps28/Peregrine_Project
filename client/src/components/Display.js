@@ -1,7 +1,7 @@
 import React from 'react';
 import CsvDownload from 'react-json-to-csv'
-import { Form, Col, Accordion, Card } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom'
+import { Form, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 export default function Display(props) {
     let bird
@@ -97,10 +97,7 @@ export default function Display(props) {
 
 
             </div>
-            {/* <div>
-                {/* CSV download react component button */}
-            {/* <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary" />
-            </div>  */}
+           
             {/* //ternary operator that will iterate through each entry using a key */}
             {props.displayContent ? props.displayContent.map(data => (
                 <div>

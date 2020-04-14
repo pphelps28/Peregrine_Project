@@ -106,8 +106,6 @@ const handleBirdPosts = async (req, res) => {
 
     let post
 
-    console.log(date_visited)
-    console.log(location)
     if (bird === 'Bald Eagle') {
 
         // new EAGLE data object created from monitor data
@@ -158,10 +156,6 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation, weather_observation,
-            // temperature: temperature,
-            // precipitation: precipitation,
-            // cloud_coverage: cloud_coverage,
-            // wind_speed: wind_speed,
             relationship_status: relationship_status,
             young_status: young_status,
             disturbance: disturbance,
@@ -245,9 +239,6 @@ const updateBirdPosts = async (req, res) => {
     let researcherComments = req.body.comments
     let updatedDoc
 
-    console.log(bird)
-    console.log(researcherComments)
-
     const filter = { _id: ObjectId(id) };
     const comments = { researcher_comments_1: researcherComments }
 
@@ -274,8 +265,6 @@ const addNestingSite = async (req, res) => {
     let id
     let updatedSites
     let filter
-
-    console.log(site)
 
     if (bird === "Bald Eagle") {
         id = "5e94c31ac0c3fe4534f1b7be"
@@ -314,16 +303,13 @@ const getSiteList = async (req, res) => {
         currentList = await PeregrineSiteSchema.findOne(filter)
     }
 
-    let listArray = currentList.sites
-    console.log(listArray.sort())
-    console.log(currentList)
+    currentList.sites.sort()
     res.send(currentList)
 }
 
 const getReport = async (req, res) => {
     console.log("got report request")
-    console.log(req.params._id)
-
+    
     let id = req.params._id
     let bird = req.params.bird
 
@@ -340,7 +326,6 @@ const getReport = async (req, res) => {
     }
     res.send(report)
 }
-
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
@@ -511,16 +496,16 @@ const addAllSites = async () => {
 // -------- delete repeated sites ---------- //
 
 const deleteSites = async () => {
-    
+
     let id = '5e94c3b903443b4d2c7f7a5d'
     let filter = { _id: ObjectId(id) }
     currentList = await PeregrineSiteSchema.findOne(filter)
-    
+
     let listArray = currentList.sites
     let newArray = listArray.slice(0, 69)
     console.log(newArray)
     await PeregrineSiteSchema.findOneAndUpdate(filter, { sites: newArray }, { new: true })
-    
+
 }
 
 // deleteSites()

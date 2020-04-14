@@ -5,7 +5,7 @@ import { Form, Col } from 'react-bootstrap';
 import Header from '../components/Header';
 
 export default function InputForm(props) {
-	console.log(props.sitesList)
+	
 	return (
 		<div className="form">
 			<Header />
