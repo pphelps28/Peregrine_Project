@@ -1,14 +1,16 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
 import Display from './components/Display.js'
 import firebase from 'firebase'
+import FormData from 'form-data'
 import ReportModal from './components/ReportModal'
+
 //firebase => .env
 const firebaseConfig = {
   apiKey: "AIzaSyAio6vwdZAJ1GlzX7C0Mg8bR6gLt1EpVBQ",
@@ -51,7 +53,7 @@ class App extends Component {
       incubation: '',
       young: '',
       youngAge: '',
-      image: '',
+      image: null,
       observation: '',
       comments: '',
       nestingSite: '',
@@ -170,11 +172,28 @@ class App extends Component {
       image: event.target.files[0]
     })
   }
+  //
+  imageSubmit = () => {
+    if (this.state.image) {
+      const fd = new FormData()
+      fd.append('img', this.state.image, this.state.image.name)
+      console.log(this.state.image)
+      fetch(('/upload'), {
+        method: "POST",
+        'Content-Type': 'multipart/form-data',
+        body: fd
+      }).then(res => {
+        console.log('Im back!')
+      }).catch(err => {
+        console.log('error:')
+        console.log(err.message)
+      })
+    }
+  }
 
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
   componentDidUpdate = () => {
-    console.log('updating species')
     if (this.state.stopLoop === true) {
       console.log('inside the if statement')
       this.getCurrentSites()
@@ -188,7 +207,6 @@ class App extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user)
         this.setState({
           display: `logged in as ${user.email}`,
           displayColor: 'green',
@@ -438,7 +456,7 @@ class App extends Component {
       youngAge: this.state.youngAge,
       image: this.state.image,
       observation: this.state.observation,
-      comments: this.state.comments
+      comments: this.state.comments,
     }
 
 
@@ -490,12 +508,9 @@ class App extends Component {
 
   }
 
-
-
-
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, weatherObservation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
-    let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList, weatherObservation } = this.state
+    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
 
     return (
       <div>
@@ -521,12 +536,11 @@ class App extends Component {
             resetPassword={this.resetPassword}
             changeEmail={this.changeEmail}
           />
-
           <div id="wrapper">
             {/* //passes variables if the button is true */}
             <Route path='/' exact>
               <InputForm
-                handleSubmit={handleSubmit}
+                handleSubmit={handleSubmit} imageChange={imageChange} imageSubmit={imageSubmit}
                 name={name} email={email} bird={bird} site={site}
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
                 cloudCover={cloudCover} windSpeed={windSpeed} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
@@ -539,7 +553,6 @@ class App extends Component {
               />
             </Route>
 
-
             {this.state.loggedIn ?
               <>
                 <Route path='/display'>
@@ -550,7 +563,7 @@ class App extends Component {
                     <ReportModal {...props} />}>
                 </Route>
               </>
-              : "Please log in to see this page"}
+              : null}
           </div>
         </Router>
       </div >

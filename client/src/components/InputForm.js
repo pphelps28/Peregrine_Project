@@ -1,13 +1,13 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'react-time-picker';
-import { Form, Col } from 'react-bootstrap';
+import { Form, Col, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 
 export default function InputForm(props) {
-	console.log(props.sitesList)
+	//	console.log(props.sitesList)
 	return (
-		<div className="form"> 
+		<div className="form">
 			<Header />
 			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block">
 				<h3 className="title">Observation Form</h3>
@@ -532,15 +532,18 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* -------------------image upload -------------------- */}
-				<label htmlFor="img">Select image:</label>
-				<input
-					onChange={props.imageChange}
-					className="form-control"
-					type="file"
-					id="img"
-					name="img"
-					accept="image/*"
-				/>
+				<div id="image-upload">
+					<label for="img">Upload image:</label>
+					<input
+						style={{ margin: '5px' }}
+						onChange={props.imageChange}
+						type="file"
+						id="img"
+						name="img"
+						accept="image/*"
+					/>
+					<Button onClick={props.imageSubmit}>Upload</Button>
+				</div>
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">

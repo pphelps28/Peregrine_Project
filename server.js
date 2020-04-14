@@ -7,14 +7,61 @@ const ObjectId = require('mongodb').ObjectId
 const port = process.env.PORT || 5000
 require('mongoose-type-email')
 
+//Experiments to add image upload
+const crypto = require('crypto')
+const multer = require('multer')
+const GridFsStorage = require('multer-gridfs-storage')
+const Grid = require('gridfs-stream')
+//
+//do I need a view engine??
+app.use(express.static('public'))
+
+//
+const mongoURI = 'mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority'
+
 app.use(express.static(path.join(__dirname, '/client/build')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-mongoose.connect('mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority', {
+//image upload experimentation, here to BIRD SCHEMATA
+const conn = mongoose.createConnection(mongoURI, {
     useUnifiedTopology: true, useNewUrlParser: true
 })
 mongoose.set('useFindAndModify', false)
+
+let gfs
+conn.once('open', () => {
+    gfs = Grid(conn.db, mongoose.mongo)
+    gfs.collection('images')
+})
+
+
+const storage = new GridFsStorage({
+    url: mongoURI,
+    file: (req, file) => {
+        return new Promise((resolve, reject) => {
+            crypto.randomBytes(16, (err, buf) => {
+                if (err) {
+                    return reject(err);
+                }
+                const sanitizeName = file.originalname.split(' ').join('')
+                const filename = buf.toString('hex') + sanitizeName
+                const fileInfo = {
+                    filename: filename,
+                    bucketName: 'images' //match collection name
+                };
+                resolve(fileInfo);
+            });
+        });
+    }
+})
+const upload = multer({ storage })
+
+app.post('/upload', upload.single('img'), (req, res) => {
+    console.log(req.file)
+    console.log('uploaded!')
+})
+
 
 // ---------- BIRD SCHEMATA ---------- // 
 
@@ -325,7 +372,7 @@ const getSiteList = async (req, res) => {
 const getReport = async (req, res) => {
     console.log("got report request")
     console.log(req.params._id)
-    
+
     let id = req.params._id
     let bird = req.params.bird
 
@@ -335,14 +382,34 @@ const getReport = async (req, res) => {
     if (bird === 'Bald Eagle') {
         console.log('getting Eagle report')
         report = await EagleSchema.findOne(filter)
-    } else{
+    } else {
 
-    report = await PeregrineSchema.findOne(filter)
-    console.log('getting Peregrine report')
-}
+        report = await PeregrineSchema.findOne(filter)
+        console.log('getting Peregrine report')
+    }
     res.send(report)
 }
-
+//trying to render images
+app.get('/images/:id', (req, res) => {
+    gfs.files.findOne({ filename: req.params.id }, (err, file) => {
+        if (!file || file.length === 0) {
+            return res.status(404).json({
+                err: 'No file exist'
+            })
+        }
+        //Check if image
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+            console.log(file)
+            const readstream = gfs.createReadStream(file.filename)
+            readstream.pipe(res)
+        }
+        else {
+            res.status(404).json({
+                err: "Not an image"
+            })
+        }
+    })
+})
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
@@ -350,5 +417,4 @@ app.post('/update', updateBirdPosts)
 app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
-
 app.listen(port, () => console.log(`listening on: ${port}`))
