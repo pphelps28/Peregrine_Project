@@ -157,6 +157,7 @@ export default function InputForm(props) {
 						type="text"
 						required
 						className="form-control"
+						name="weatherObservation"
 						value={props.weatherObservation}
 						onChange={props.weatherObservationChange}
 						rows="6"

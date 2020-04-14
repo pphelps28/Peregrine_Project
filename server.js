@@ -22,7 +22,7 @@ const birdSchema = new mongoose.Schema({
     bird: String,
     monitor_name: String,
     email: mongoose.SchemaTypes.Email,
-    location: { type: String, required: true },
+    location: { type: String, require: true },
     date_visited: { type: String, require: true },
     season: { type: String, require: true },
     mileage: String,
@@ -30,7 +30,10 @@ const birdSchema = new mongoose.Schema({
     start_time: String,
     end_time: String,
     total_time: String,
-    weather_observation: String,    
+    weather_observation: { type: String, require: true},  
+    relationship_status: String,
+    young_status: String,
+    disturbance: String,
     summary: String,
     eyrie_location: String,
     number_young: String,
@@ -90,6 +93,9 @@ const handleBirdPosts = async (req, res) => {
     // let precipitation = req.body.precipitation
     // let cloud_coverage = req.body.cloudCover
     // let wind_speed = req.body.windSpeed
+    let relationship_status = req.body.relationshipStatus
+    let young_status = req.body.youngStatus
+    let disturbance = req.body.disturbance
     let summary = req.body.ObservationSummary
     let eyrie_location = req.body.incubation
     let number_young = req.body.young
@@ -118,11 +124,14 @@ const handleBirdPosts = async (req, res) => {
             start_time: start_time,
             end_time: end_time,
             total_time: total_time,
-            // weather_observation: weather_observation,
-            // temperature: temperature,
-            // precipitation: precipitation,
-            // cloud_coverage: cloud_coverage,
-            wind_speed: wind_speed,
+            weather_observation: weather_observation,
+            // let temperature = temperature
+            // let precipitation = precipitation
+            // let cloud_coverage = cloudCover
+            // let wind_speed = windSpeed
+            relationship_status: relationship_status,
+            young_status: young_status,
+            disturbance: disturbance,
             summary: summary,
             eyrie_location: eyrie_location,
             number_young: number_young,
@@ -155,6 +164,9 @@ const handleBirdPosts = async (req, res) => {
             // precipitation: precipitation,
             // cloud_coverage: cloud_coverage,
             // wind_speed: wind_speed,
+            relationship_status: relationship_status,
+            young_status: young_status,
+            disturbance: disturbance,
             summary: summary,
             eyrie_location: eyrie_location,
             number_young: number_young,
