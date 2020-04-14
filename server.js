@@ -282,14 +282,14 @@ const addNestingSite = async (req, res) => {
     console.log(site)
 
     if (bird === "Bald Eagle") {
-        id = "5e8f15de2c9c234df4e38654"
+        id = "5e94c31ac0c3fe4534f1b7be"
         filter = { _id: ObjectId(id) }
         console.log('updating Eagle sites')
         updatedSites = await EagleSiteSchema.findOneAndUpdate(filter, { $push: { sites: site } }, { new: true })
     }
 
     else {
-        id = '5e8f1508b60a4f4df49c06bf'
+        id = '5e94c3b903443b4d2c7f7a5d'
         filter = { _id: ObjectId(id) }
         console.log('updating pefa sites')
         updatedSites = await PeregrineSiteSchema.findOneAndUpdate(filter, { $push: { sites: site } }, { new: true })
@@ -313,7 +313,7 @@ const getSiteList = async (req, res) => {
     }
     else if (bird === "Peregrine Falcon") {
         console.log('getting pefa sites')
-        id = '5e8f1508b60a4f4df49c06bf'
+        id = '5e94c3b903443b4d2c7f7a5d'
         filter = { _id: ObjectId(id) }
         currentList = await PeregrineSiteSchema.findOne(filter)
     }
