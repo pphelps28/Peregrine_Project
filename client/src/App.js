@@ -360,7 +360,7 @@ console.log(this.state.totalTime)
     }
 
     // window.location.reload()
-    this.clearButtons()
+    //this.clearButtons()
   }
 
   // // ---------------- stores single observation report in state and launches observation report page ---------- //
