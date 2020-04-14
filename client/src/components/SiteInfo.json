@@ -1,384 +1,439 @@
 [
     {
-        "Site": "Snake Mountain",
+        "sites": "Snake Mountain",
+        "bird":"Peregrine Falcon",
         "Town": "Addison",
         "Zip": 5491,
         "Long": -73.4462814,
         "Lat\r": 44.1228394
     },
     {
-        "Site": "Brousseau Mountain",
+        "sites": "Brousseau Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Averill",
         "Zip": 5901,
         "Long": -71.7272701,
         "Lat\r": 44.9988853
     },
     {
-        "Site": "Checkerberry Ledge",
+        "sites": "Checkerberry Ledge",
+        "bird": "Peregrine Falcon",
         "Town": "Bakersfield",
         "Zip": 5441,
         "Long": -72.821714,
         "Lat\r": 44.782719
     },
     {
-        "Site": "Barnet Roadcut",
+        "sites": "Barnet Roadcut",
+        "bird": "Peregrine Falcon",
         "Town": "Barnet",
         "Zip": 5821,
         "Long": -72.2430168,
         "Lat\r": 44.320753
     },
     {
-        "Site": "Rock of Ages QUarry",
+        "sites": "Rock of Ages QUarry",
+        "bird": "Peregrine Falcon",
         "Town": "Barre",
         "Zip": 5641,
         "Long": -72.2430168,
         "Lat\r": 44.320753
     },
     {
-        "Site": "Crystal Lake",
+        "sites": "Crystal Lake",
+        "bird": "Peregrine Falcon",
         "Town": "Barton",
         "Zip": 5822,
         "Long": -72.2430168,
         "Lat\r": 44.320753
     },
     {
-        "Site": "Rattlesnake Ridge",
+        "sites": "Rattlesnake Ridge",
+        "bird": "Peregrine Falcon",
         "Town": "Benson",
         "Zip": 5743,
         "Long": -72.2430168,
         "Lat\r": 44.320753
     },
     {
-        "Site": "Bethel Quarry",
+        "sites": "Bethel Quarry",
+        "bird": "Peregrine Falcon",
         "Town": "Bethel",
         "Zip": 5032,
         "Long": -73.3894493,
         "Lat\r": 43.7156231
     },
     {
-        "Site": "Bolton Notch - Upper Upper West",
+        "sites": "Bolton Notch - Upper Upper West",
+        "bird": "Peregrine Falcon",
         "Town": "Bolton",
         "Zip": 5676,
         "Long": -72.8070718,
         "Lat\r": 44.3385703
     },
     {
-        "Site": "Bone Mt",
+        "sites": "Bone Mt",
+        "bird": "Peregrine Falcon",
         "Town": "Bolton",
         "Zip": 5676,
         "Long": -72.8070718,
         "Lat\r": 44.3385703
     },
     {
-        "Site": "Bradford Cliff",
+        "sites": "Bradford Cliff",
+        "bird": "Peregrine Falcon",
         "Town": "Bradford",
         "Zip": 5033,
         "Long": -72.3140096,
         "Lat\r": 43.9887403
     },
     {
-        "Site": "Mount Horrid",
+        "sites": "Mount Horrid",
+        "bird": "Peregrine Falcon",
         "Town": "Brandon",
         "Zip": 5733,
         "Long": -73.3910329,
         "Lat\r": 43.8058364
     },
     {
-        "Site": "Bristol Cliff",
+        "sites": "Bristol Cliff",
+        "bird": "Peregrine Falcon",
         "Town": "Bristol",
         "Zip": 5443,
         "Long": -73.3143193,
         "Lat\r": 44.1264587
     },
     {
-        "Site": "Deer Leap",
+        "sites": "Deer Leap",
+        "bird": "Peregrine Falcon",
         "Town": "Bristol",
         "Zip": 5443,
         "Long": -73.3143193,
         "Lat\r": 44.1264587
     },
     {
-        "Site": "Elephant Mountain",
+        "sites": "Elephant Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Bristol",
         "Zip": 5443,
         "Long": -73.3143193,
         "Lat\r": 44.1264587
     },
     {
-        "Site": "Lone Rock Point",
+        "sites": "Lone Rock Point",
+        "bird": "Peregrine Falcon",
         "Town": "Burlington",
         "Zip": 5401,
         "Long": -73.3675351,
         "Lat\r": 44.4769853
     },
     {
-        "Site": "Hawkins Pond",
+        "sites": "Hawkins Pond",
+        "bird": "Peregrine Falcon",
         "Town": "Calais",
         "Zip": 5648,
         "Long": -72.5712602,
         "Lat\r": 44.3771376
     },
     {
-        "Site": "Smuggler's Notch",
+        "sites": "Smuggler's Notch",
+        "bird": "Peregrine Falcon",
         "Town": "Cambridge",
         "Zip": 5444,
         "Long": -72.9677713,
         "Lat\r": 44.6171821
     },
     {
-        "Site": "Wallace Ledge",
+        "sites": "Wallace Ledge",
+        "bird": "Peregrine Falcon",
         "Town": "Castleton",
         "Zip": 5735,
         "Long": -73.3065302,
         "Lat\r": 43.6614643
     },
     {
-        "Site": "Mallet's Bay",
+        "sites": "Mallet's Bay",
+        "bird": "Peregrine Falcon",
         "Town": "Colchester",
         "Zip": 5446,
         "Long": -73.5097019,
         "Lat\r": 44.5599527
     },
     {
-        "Site": "Whitcomb Quarry",
+        "sites": "Whitcomb Quarry",
+        "bird": "Peregrine Falcon",
         "Town": "Colchester",
         "Zip": 5446,
         "Long": -73.5097019,
         "Lat\r": 44.5599527
     },
     {
-        "Site": "Camels Hump",
+        "sites": "Camels Hump",
+        "bird": "Peregrine Falcon",
         "Town": "Duxbury",
         "Zip": 5676,
         "Long": -73.0863651,
         "Lat\r": 44.3493807
     },
     {
-        "Site": "Fairlee Palisades",
+        "sites": "Fairlee Palisades",
+        "bird": "Peregrine Falcon",
         "Town": "Fairlee",
         "Zip": 5045,
         "Long": -72.3315382,
         "Lat\r": 43.9022448
     },
     {
-        "Site": "Sawyer Mountain",
+        "sites": "Sawyer Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Fairlee",
         "Zip": 5045,
         "Long": -72.3315382,
         "Lat\r": 43.9022448
     },
     {
-        "Site": "Highgate Cliffs",
+        "sites": "Highgate Cliffs",
+        "bird": "Peregrine Falcon",
         "Town": "Highgate Springs",
         "Zip": 5459,
         "Long": -73.1571117,
         "Lat\r": 44.9612997
     },
     {
-        "Site": "Red Rock",
+        "sites": "Red Rock",
+        "bird": "Peregrine Falcon",
         "Town": "Hinesburg",
         "Zip": 5461,
         "Long": -73.2306372,
         "Lat\r": 44.3157958
     },
     {
-        "Site": "Ball Mountain",
+        "sites": "Ball Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Jamaica",
         "Zip": 5343,
         "Long": -72.9423509,
         "Lat\r": 43.101257
     },
     {
-        "Site": "Prospect Rock",
+        "sites": "Prospect Rock",
+        "bird": "Peregrine Falcon",
         "Town": "Johnson",
         "Zip": 5656,
         "Long": -72.9628055,
         "Lat\r": 44.6471522
     },
     {
-        "Site": "Hazen's Notch",
+        "sites": "Hazen's Notch",
+        "bird": "Peregrine Falcon",
         "Town": "Lowell",
         "Zip": 5847,
         "Long": -72.7370613,
         "Lat\r": 44.8194086
     },
     {
-        "Site": "Mount Norris",
+        "sites": "Mount Norris",
+        "bird": "Peregrine Falcon",
         "Town": "Lowell",
         "Zip": 5847,
         "Long": -72.7370613,
         "Lat\r": 44.8194086
     },
     {
-        "Site": "Mount Equinox",
+        "sites": "Mount Equinox",
+        "bird": "Peregrine Falcon",
         "Town": "Manchester",
         "Zip": 5254,
         "Long": -73.1079352,
         "Lat\r": 43.1635258
     },
     {
-        "Site": "Marshfield Mountain",
+        "sites": "Marshfield Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Marshfield",
         "Zip": 5658,
         "Long": -72.6273261,
         "Lat\r": 44.3655557
     },
     {
-        "Site": "Arrowhead Mountain",
+        "sites": "Arrowhead Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Milton",
         "Zip": 5468,
         "Long": -73.419314,
         "Lat\r": 44.6481196
     },
     {
-        "Site": "Eagle Mountain",
+        "sites": "Eagle Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Milton",
         "Zip": 5468,
         "Long": -73.419314,
         "Lat\r": 44.6481196
     },
     {
-        "Site": "Lamoille River",
+        "sites": "Lamoille River",
+        "bird": "Peregrine Falcon",
         "Town": "Milton",
         "Zip": 5468,
         "Long": -73.419314,
         "Lat\r": 44.6481196
     },
     {
-        "Site": "Hawk Rock",
+        "sites": "Hawk Rock",
+        "bird": "Peregrine Falcon",
         "Town": "Newark",
         "Zip": 5871,
         "Long": -72.077863,
         "Lat\r": 44.6762262
     },
     {
-        "Site": "Haystack Mountain",
+        "sites": "Haystack Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Pawlet",
         "Zip": 5761,
         "Long": -73.4319823,
         "Lat\r": 43.3517317
     },
     {
-        "Site": "Quarry Hill",
+        "sites": "Quarry Hill",
+        "bird": "Peregrine Falcon",
         "Town": "Pownal",
         "Zip": 5261,
         "Long": -73.3550883,
         "Lat\r": 42.7903335
     },
     {
-        "Site": "Sutherland Quarry/Proctor",
+        "sites": "Sutherland Quarry/Proctor",
+        "bird": "Peregrine Falcon",
         "Town": "Proctor",
         "Zip": 5765,
         "Long": -73.1046512,
         "Lat\r": 43.6447472
     },
     {
-        "Site": "Ryegate Quarry",
+        "sites": "Ryegate Quarry",
+        "bird": "Peregrine Falcon",
         "Town": "Ryegate",
         "Zip": 5042,
         "Long": -72.2371557,
         "Lat\r": 44.2323863
     },
     {
-        "Site": "Rattlesnake Point",
+        "sites": "Rattlesnake Point",
+        "bird": "Peregrine Falcon",
         "Town": "Salisbury",
         "Zip": 5769,
         "Long": -73.2383871,
         "Lat\r": 43.9083
     },
     {
-        "Site": "Red Rocks Park",
+        "sites": "Red Rocks Park",
+        "bird": "Peregrine Falcon",
         "Town": "South Burlington",
         "Zip": 5403,
         "Long": -73.2585929,
         "Lat\r": 44.4541796
     },
     {
-        "Site": "Skitchewaug Mountain",
+        "sites": "Skitchewaug Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Springfield",
         "Zip": 5156,
         "Long": -72.6106701,
         "Lat\r": 43.3106915
     },
     {
-        "Site": "Vulture Mountain",
+        "sites": "Vulture Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Springfield",
         "Zip": 5156,
         "Long": -72.6106701,
         "Lat\r": 43.3106915
     },
     {
-        "Site": "Swanton Quarry",
+        "sites": "Swanton Quarry",
+        "bird": "Peregrine Falcon",
         "Town": "Swanton",
         "Zip": 5488,
         "Long": -73.2735974,
         "Lat\r": 44.9019563
     },
     {
-        "Site": "Nebraska Notch",
+        "sites": "Nebraska Notch",
+        "bird": "Peregrine Falcon",
         "Town": "Underhill",
         "Zip": 5489,
         "Long": -73.0439069,
         "Lat\r": 44.5520308
     },
     {
-        "Site": "Vermont Yankee",
+        "sites": "Vermont Yankee",
+        "bird": "Peregrine Falcon",
         "Town": "Vernon",
         "Zip": 5354,
         "Long": -72.5841169,
         "Lat\r": 42.7755956
     },
     {
-        "Site": "Eagle Ledge",
+        "sites": "Eagle Ledge",
+        "bird": "Peregrine Falcon",
         "Town": "Vershire",
         "Zip": 5079,
         "Long": -72.4571915,
         "Lat\r": 43.9551244
     },
     {
-        "Site": "White Rocks",
+        "sites": "White Rocks",
+        "bird": "Peregrine Falcon",
         "Town": "Wallingford",
         "Zip": 5773,
         "Long": -73.2674056,
         "Lat\r": 43.3979075
     },
     {
-        "Site": "Hawks Mountain",
+        "sites": "Hawks Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Weathersfield",
         "Zip": 5151,
         "Long": -72.6145627,
         "Lat\r": 43.392563
     },
     {
-        "Site": "Pond MOuntain",
+        "sites": "Pond MOuntain",
+        "bird": "Peregrine Falcon",
         "Town": "Wells",
         "Zip": 5774,
         "Long": -73.3196886,
         "Lat\r": 43.4246924
     },
     {
-        "Site": "Bald Mountain",
+        "sites": "Bald Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "West Haven",
         "Zip": 5743,
         "Long": -73.588068,
         "Lat\r": 43.6516667
     },
     {
-        "Site": "Jobs Mountain",
+        "sites": "Jobs Mountain",
+        "bird": "Peregrine Falcon",
         "Town": "Westmore",
         "Zip": 5822,
         "Long": -72.1673035,
         "Lat\r": 44.7602738
     },
     {
-        "Site": "Mount Pisgah",
+        "sites": "Mount Pisgah",
+        "bird": "Peregrine Falcon",
         "Town": "Westmore",
         "Zip": 5822,
         "Long": -72.1673035,
         "Lat\r": 44.7602738
     },
     {
-        "Site": "Nichols Ledge",
+        "sites": "Nichols Ledge",
+        "bird": "Peregrine Falcon",
         "Town": "Woodbury",
         "Zip": 5681,
         "Long": -72.5268874,
