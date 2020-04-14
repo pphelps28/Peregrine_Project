@@ -1,14 +1,13 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
 import Display from './components/Display.js'
 import firebase from 'firebase'
-import axios from 'axios'
 import FormData from 'form-data'
 import ReportModal from './components/ReportModal'
 
@@ -177,40 +176,23 @@ class App extends Component {
     })
   }
   //
-  //imageSubmit = () => {
-  //  const fd = new FormData()
-  //  fd.append('image', this.state.image)
-  //  console.log(this.state.image)
-  //
-  //  fetch(('/upload'), fd, {
-  //    body: fd
-  //  }).then(res => {
-  //    console.log(res)
-  //    console.log('Im back!')
-  //  }).catch(err => {
-  //    console.log('error:')
-  //    console.log(err.message)
-  //  })
-  //
-  //}
-
-  //imageSubmit = async () => {
-  //  const fd = new FormData()
-  //  fd.append('image', this.state.image)
-  //  console.log(this.state.image)
-  //  try {
-  //    const result = await axios({
-  //      url: '/upload',
-  //      method: "POST",
-  //      data: ReadableStream,
-  //    })
-  //    return result
-  //  } catch (err) {
-  //    console.log(err.message)
-  //  }
-  //}
-  //
-  //
+  imageSubmit = () => {
+    if (this.state.image) {
+      const fd = new FormData()
+      fd.append('img', this.state.image, this.state.image.name)
+      console.log(this.state.image)
+      fetch(('/upload'), {
+        method: "POST",
+        'Content-Type': 'multipart/form-data',
+        body: fd
+      }).then(res => {
+        console.log('Im back!')
+      }).catch(err => {
+        console.log('error:')
+        console.log(err.message)
+      })
+    }
+  }
 
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
@@ -242,9 +224,21 @@ class App extends Component {
         })
       }
     })
-
     // this.getCurrentSites()
+    this.getImages()
   }
+  getImages = () => {
+    console.log('fetching images')
+    fetch('/images').then(res => {
+      return res.json()
+    }).then(jsonObj => {
+      console.log(jsonObj)
+      this.setState({
+        gridFsImages: jsonObj
+      })
+    })
+  }
+
   emailChange = (event) => {
     console.log(event.target.value)
     this.setState({ email: event.target.value })
@@ -480,7 +474,7 @@ class App extends Component {
       youngAge: this.state.youngAge,
       image: this.state.image,
       observation: this.state.observation,
-      comments: this.state.comments
+      comments: this.state.comments,
     }
 
 
@@ -566,7 +560,6 @@ class App extends Component {
             resetPassword={this.resetPassword}
             changeEmail={this.changeEmail}
           />
-
           <div id="wrapper">
             {/* //passes variables if the button is true */}
             <Route path='/' exact>
@@ -584,7 +577,6 @@ class App extends Component {
               />
             </Route>
 
-
             {this.state.loggedIn ?
               <>
                 <Route path='/display'>
@@ -595,7 +587,7 @@ class App extends Component {
                     <ReportModal {...props} />}>
                 </Route>
               </>
-              : "Please log in to see this page"}
+              : null}
           </div>
         </Router>
       </div >

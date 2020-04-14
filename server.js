@@ -46,7 +46,8 @@ const storage = new GridFsStorage({
                 if (err) {
                     return reject(err);
                 }
-                const filename = buf.toString('hex') + path.extname(file.originalname);
+                const sanitizeName = file.originalname.split(' ').join('')
+                const filename = buf.toString('hex') + sanitizeName
                 const fileInfo = {
                     filename: filename,
                     bucketName: 'images' //match collection name
@@ -60,7 +61,7 @@ const upload = multer({ storage })
 
 app.post('/upload', upload.single('img'), (req, res) => {
     console.log(req.file)
-    console.log('uploaded?')
+    console.log('uploaded!')
 })
 
 
@@ -393,6 +394,23 @@ const getReport = async (req, res) => {
     }
     res.send(report)
 }
+//trying to render images
+app.get('/images', (req, res) => {
+    gfs.files.find().toArray((err, files) => {
+        if (!files || files.length === 0) {
+            res.render('index', { files: false })
+        } else {
+            files.map(file => {
+                if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+                    file.isImage = true
+                } else file.isIamge = false
+            })
+            // res.render('App', { files: files })
+            res.json(files)
+        }
+    })
+})
+
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
@@ -400,5 +418,4 @@ app.post('/update', updateBirdPosts)
 app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
-
 app.listen(port, () => console.log(`listening on: ${port}`))

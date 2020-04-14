@@ -439,7 +439,6 @@ export default function InputForm(props) {
 				<div id="image-upload">
 					<label for="img">Upload image:</label>
 					<input
-						placeholder={''}
 						style={{ margin: '5px' }}
 						onChange={props.imageChange}
 						type="file"
