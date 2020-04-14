@@ -210,7 +210,6 @@ class App extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user)
         this.setState({
           display: `logged in as ${user.email}`,
           displayColor: 'green',
@@ -225,19 +224,18 @@ class App extends Component {
       }
     })
     // this.getCurrentSites()
-    this.getImages()
+    // this.getImages()
   }
-  getImages = () => {
-    console.log('fetching images')
-    fetch('/images').then(res => {
-      return res.json()
-    }).then(jsonObj => {
-      console.log(jsonObj)
-      this.setState({
-        gridFsImages: jsonObj
-      })
-    })
-  }
+  //getImages = () => {
+  //  console.log('fetching images')
+  //  fetch('/images').then(res => res.json())
+  //    .then(jsonObj => {
+  //      console.log(jsonObj)
+  //      this.setState({
+  //        gridFsImages: jsonObj
+  //      })
+  //    })
+  //}
 
   emailChange = (event) => {
     console.log(event.target.value)
@@ -388,7 +386,6 @@ class App extends Component {
     }
 
     // window.location.reload()
-    this.clearButtons()
   }
 
   // // ---------------- stores single observation report in state and launches observation report page ---------- //
@@ -514,7 +511,6 @@ class App extends Component {
     })
 
     // window.location.reload()
-    this.clearButtons()
 
     console.log(submission)
     console.log('preparing report')

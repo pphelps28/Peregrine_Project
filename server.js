@@ -14,8 +14,6 @@ const GridFsStorage = require('multer-gridfs-storage')
 const Grid = require('gridfs-stream')
 //
 //do I need a view engine??
-app.set('view engine', 'pug');
-app.set('views', './views');
 app.use(express.static('public'))
 
 //
@@ -63,7 +61,6 @@ app.post('/upload', upload.single('img'), (req, res) => {
     console.log(req.file)
     console.log('uploaded!')
 })
-
 
 
 // ---------- BIRD SCHEMATA ---------- // 
@@ -357,13 +354,13 @@ const getSiteList = async (req, res) => {
 
     if (bird === "Bald Eagle") {
         console.log('getting Eagle sites')
-        id = "5e8f15de2c9c234df4e38654"
+        id = "5e94c31ac0c3fe4534f1b7be"
         filter = { _id: ObjectId(id) }
         currentList = await EagleSiteSchema.findOne(filter)
     }
     else if (bird === "Peregrine Falcon") {
         console.log('getting pefa sites')
-        id = '5e8f1508b60a4f4df49c06bf'
+        id = '5e94c3b903443b4d2c7f7a5d'
         filter = { _id: ObjectId(id) }
         currentList = await PeregrineSiteSchema.findOne(filter)
     }
@@ -395,22 +392,26 @@ const getReport = async (req, res) => {
     res.send(report)
 }
 //trying to render images
-app.get('/images', (req, res) => {
-    gfs.files.find().toArray((err, files) => {
-        if (!files || files.length === 0) {
-            res.render('index', { files: false })
-        } else {
-            files.map(file => {
-                if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
-                    file.isImage = true
-                } else file.isIamge = false
+app.get('/images/:id', (req, res) => {
+    gfs.files.findOne({ filename: req.params.id }, (err, file) => {
+        if (!file || file.length === 0) {
+            return res.status(404).json({
+                err: 'No file exist'
             })
-            // res.render('App', { files: files })
-            res.json(files)
+        }
+        //Check if image
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+            console.log(file)
+            const readstream = gfs.createReadStream(file.filename)
+            readstream.pipe(res)
+        }
+        else {
+            res.status(404).json({
+                err: "Not an image"
+            })
         }
     })
 })
-
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)

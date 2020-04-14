@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import axios from 'axios'
 import CsvDownload from 'react-json-to-csv'
+import TestImage from './TestImage'
 
 class ReportModal extends Component {
     constructor(props) {
         super(props)
         this.state = {
             data: '',
-            researcherComments: ''            
+            researcherComments: ''
         }
     }
 
@@ -19,15 +20,15 @@ class ReportModal extends Component {
         console.log(bird)
 
         // gets report info from database using id
-    
+
         axios.get('/reportModal/' + bird + '/' + _id)
             .then(response => {
                 console.log('retrieved report request')
                 console.log(response.data)
-                
+
                 this.setState({
-                    data: response.data                    
-                })                
+                    data: response.data
+                })
             })
     }
 
@@ -61,7 +62,7 @@ class ReportModal extends Component {
             return res.json()
         }).then(jsonObj => {
             this.setState({
-                data: jsonObj                
+                data: jsonObj
             })
         })
     }
@@ -70,10 +71,11 @@ class ReportModal extends Component {
         // variable for easier handling of data in state
         let data = this.state.data
         // variable to allow data to be read correctly by Csv downloader
-        let dataSet = [data]             
+        let dataSet = [data]
 
         return (
             <div className='report_page' >
+                <TestImage />
                 <table className="table table-striped">
                     <thead>
                         <tr>
