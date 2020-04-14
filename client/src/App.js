@@ -53,7 +53,7 @@ class App extends Component {
       youngAge: '',
       image: '',
       observation: '',
-      comments: '',      
+      comments: '',
       nestingSite: '',
       sitesList: ['', 'Please select a species first'],
       stopLoop: false,
@@ -128,14 +128,11 @@ class App extends Component {
   totalTimeChange = (event) => {
     this.setState({ totalTime: event.target.value })
   }
-  weatherObservationChange = (event) => {
-    this.setState({ weatherObservation: event.target.value })
-  }
   temperatureChange = (event) => {
     this.setState({ temperature: event.target.value })
   }
 
-   totalTimeCalculator=(start, end)=>{
+  totalTimeCalculator = (start, end) => {
     start = this.state.timeStart.split(":");
     end = this.state.timeEnd.split(":");
     console.log('start', start)
@@ -154,13 +151,13 @@ class App extends Component {
 
     // If using time pickers with 24 hours format, add the below line get exact hours
     if (hours < 0)
-       hours = hours + 24;
-this.setState({
-  totalTime: Number((hours <= 9 ? "0" : "") + hours) + ":" + Number((minutes <= 9 ? "0" : "") + minutes)
+      hours = hours + 24;
+    this.setState({
+      totalTime: Number((hours <= 9 ? "0" : "") + hours) + ":" + Number((minutes <= 9 ? "0" : "") + minutes)
 
-})
-console.log(this.state.totalTime)
-}
+    })
+    console.log(this.state.totalTime)
+  }
 
   //--------------------Display form handler --------------//
 
@@ -174,9 +171,6 @@ console.log(this.state.totalTime)
     })
   }
 
-  
-
-  
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
   componentDidUpdate = () => {
@@ -208,9 +202,8 @@ console.log(this.state.totalTime)
         })
       }
     })
-
-    // this.getCurrentSites()
   }
+
   emailChange = (event) => {
     console.log(event.target.value)
     this.setState({ email: event.target.value })
@@ -353,14 +346,15 @@ console.log(this.state.totalTime)
       })
 
       this.setState({
-        // bird: '',
         site: '',
         season: '',
       })
     }
 
     // window.location.reload()
-    //this.clearButtons()
+
+    // this.clearButtons()
+
   }
 
   // // ---------------- stores single observation report in state and launches observation report page ---------- //
@@ -485,28 +479,28 @@ console.log(this.state.totalTime)
       image: ''
     })
 
-    // window.location.reload()
-   // this.clearButtons()
-    
+
+
+    window.location.reload()
+
+
     console.log(submission)
     console.log('preparing report')
 
   }
-  //clearButtons = () => {
-  //  // document.querySelectorAll('.radio').checked = false
-  //  document.getElementsByClassName('radioButton')[0].checked = false
-  //  
-  //  // document.getElementById('formHorizontalRadios1').checked = false
-  //  console.log(document.getElementsByClassName('radioButton')[0])
-  //  console.log(document.getElementById('formHorizontalRadios1'))
-  //}
+  clearButtons = () => {
+
+    document.getElementById('formHorizontalRadios1').checked = false
+    document.getElementById('formHorizontalRadios2').checked = false
+
+  }
 
 
-  
-    
+
+
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent,  redirect, sitesList} = this.state
-    let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange,  youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, weatherObservation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
+    let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
 
     return (
       <div>
@@ -540,7 +534,7 @@ console.log(this.state.totalTime)
                 handleSubmit={handleSubmit}
                 name={name} email={email} bird={bird} site={site}
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
-                cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+                cloudCover={cloudCover} windSpeed={windSpeed} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
                 incubation={incubation} observation={observation} comments={comments} sitesList={sitesList}
                 // passes all methods
                 formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
@@ -554,7 +548,7 @@ console.log(this.state.totalTime)
             {this.state.loggedIn ?
               <>
                 <Route path='/display'>
-                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange}seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite}/>
+                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} />
                 </Route>
                 <Route path='/report_modal/:bird/:_id'
                   component={(props) =>

@@ -22,7 +22,7 @@ const birdSchema = new mongoose.Schema({
     bird: String,
     monitor_name: String,
     email: mongoose.SchemaTypes.Email,
-    location: { type: String, required: true },
+    location: { type: String, require: true },
     date_visited: { type: String, require: true },
     season: { type: String, require: true },
     mileage: String,
@@ -30,19 +30,17 @@ const birdSchema = new mongoose.Schema({
     start_time: String,
     end_time: String,
     total_time: String,
-    weather_observation: String,
-    temperature: String,
-    precipitation: String,
-    cloud_coverage: String,
-    wind_speed: String,
+    weather_observation: { type: String, require: true},  
+    relationship_status: String,
+    young_status: String,
+    disturbance: String,
     summary: String,
     eyrie_location: String,
     number_young: String,
     young_age: String,
     observations: String,
     remarks: String,
-    researcher_comments_1: String,
-    researcher_comments_2: String,
+    researcher_comments_1: String,    
     image: { data: Buffer, contentType: String }
 
 })
@@ -91,10 +89,13 @@ const handleBirdPosts = async (req, res) => {
     let end_time = req.body.timeEnd
     let total_time = req.body.totalTime
     let weather_observation = req.body.weatherObservation
-    let temperature = req.body.temperature
-    let precipitation = req.body.precipitation
-    let cloud_coverage = req.body.cloudCover
-    let wind_speed = req.body.windSpeed
+    // let temperature = req.body.temperature
+    // let precipitation = req.body.precipitation
+    // let cloud_coverage = req.body.cloudCover
+    // let wind_speed = req.body.windSpeed
+    let relationship_status = req.body.relationshipStatus
+    let young_status = req.body.youngStatus
+    let disturbance = req.body.disturbance
     let summary = req.body.ObservationSummary
     let eyrie_location = req.body.incubation
     let number_young = req.body.young
@@ -124,10 +125,13 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation: weather_observation,
-            temperature: temperature,
-            precipitation: precipitation,
-            cloud_coverage: cloud_coverage,
-            wind_speed: wind_speed,
+            // let temperature = temperature
+            // let precipitation = precipitation
+            // let cloud_coverage = cloudCover
+            // let wind_speed = windSpeed
+            relationship_status: relationship_status,
+            young_status: young_status,
+            disturbance: disturbance,
             summary: summary,
             eyrie_location: eyrie_location,
             number_young: number_young,
@@ -136,16 +140,7 @@ const handleBirdPosts = async (req, res) => {
             remarks: remarks,
             image: image
         })
-
-        // // and written to database
-
-        // await post.save((err, doc) => {
-        //     if (err) {
-        //         return console.log(err)
-        //     }
-        //     console.log('Post Saved: ' + doc)
-        // })
-
+        
     } else {
 
         // new PEREGRINE data object created from monitor data
@@ -165,10 +160,13 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation, weather_observation,
-            temperature: temperature,
-            precipitation: precipitation,
-            cloud_coverage: cloud_coverage,
-            wind_speed: wind_speed,
+            // temperature: temperature,
+            // precipitation: precipitation,
+            // cloud_coverage: cloud_coverage,
+            // wind_speed: wind_speed,
+            relationship_status: relationship_status,
+            young_status: young_status,
+            disturbance: disturbance,
             summary: summary,
             eyrie_location: eyrie_location,
             number_young: number_young,
@@ -279,7 +277,7 @@ const addNestingSite = async (req, res) => {
     let updatedSites
     let filter
 
-    console.log(site)
+    console.log(site)    
 
     if (bird === "Bald Eagle") {
         id = "5e94c31ac0c3fe4534f1b7be"
@@ -307,7 +305,7 @@ const getSiteList = async (req, res) => {
 
     if (bird === "Bald Eagle") {
         console.log('getting Eagle sites')
-        id = "5e8f15de2c9c234df4e38654"
+        id = "5e94c31ac0c3fe4534f1b7be"
         filter = { _id: ObjectId(id) }
         currentList = await EagleSiteSchema.findOne(filter)
     }
