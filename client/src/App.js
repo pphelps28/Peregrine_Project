@@ -353,7 +353,7 @@ class App extends Component {
         season: '',
       })
     }
-    
+
     this.clearButtons()
   }
 
@@ -480,16 +480,16 @@ class App extends Component {
     })
 
     window.location.reload()
-    
+
     console.log(submission)
     console.log('preparing report')
 
   }
   clearButtons = () => {
-    
+
     document.getElementById('formHorizontalRadios1').checked = false
     document.getElementById('formHorizontalRadios2').checked = false
-   
+
   }
 
 
