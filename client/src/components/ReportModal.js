@@ -125,6 +125,17 @@ class ReportModal extends Component {
                             <th scope="column">Weather observations</th>
                             <td>{data.weather_observation}</td>
                         </tr>
+                        {(data.bird === 'Bald Eagle') ?
+                        
+                        <tr>
+                            <th scope="column">Banded</th>
+                            <td>{data.eagle_band}</td>
+                        </tr>: null}
+                        {(data.bird === 'Bald Eagle') ?
+                        <tr>
+                            <th scope="column">Approximate age(s)</th>
+                            <td>{data.eagle_age}</td>
+                        </tr>: null}
                         <tr>
                             <th scope="column">Relationship Status</th>
                             <td>{data.relationship_status}</td>
