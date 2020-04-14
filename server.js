@@ -31,6 +31,8 @@ const birdSchema = new mongoose.Schema({
     end_time: String,
     total_time: String,
     weather_observation: { type: String, require: true },
+    eagle_band: String,
+    eagle_age: String,
     relationship_status: String,
     young_status: String,
     disturbance: String,
@@ -89,10 +91,8 @@ const handleBirdPosts = async (req, res) => {
     let end_time = req.body.timeEnd
     let total_time = req.body.totalTime
     let weather_observation = req.body.weatherObservation
-    // let temperature = req.body.temperature
-    // let precipitation = req.body.precipitation
-    // let cloud_coverage = req.body.cloudCover
-    // let wind_speed = req.body.windSpeed
+    let eagle_band = req.body.eagleBand
+    let eagle_age = req.body.eagleAge
     let relationship_status = req.body.relationshipStatus
     let young_status = req.body.youngStatus
     let disturbance = req.body.disturbance
@@ -125,10 +125,8 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation: weather_observation,
-            // let temperature = temperature
-            // let precipitation = precipitation
-            // let cloud_coverage = cloudCover
-            // let wind_speed = windSpeed
+            eagle_age: eagle_age,
+            eagle_band: eagle_band,
             relationship_status: relationship_status,
             young_status: young_status,
             disturbance: disturbance,

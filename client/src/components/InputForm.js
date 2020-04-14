@@ -351,7 +351,7 @@ export default function InputForm(props) {
 							<Form.Check
 								inline
 								type="radio"
-								label="Hatchling"
+								label="Hatchling (0-2 months)"
 								value="Hatchling"
 								name="eagleAge"
 								id="eagleData3"
@@ -360,7 +360,7 @@ export default function InputForm(props) {
 							<Form.Check
 								inline
 								type="radio"
-								label="Fledgling"
+								label="Fledgling (2-4 months)"
 								value="Fledgling"
 								name="eagleAge"
 								id="eagleData4"
@@ -369,7 +369,7 @@ export default function InputForm(props) {
 							<Form.Check
 								inline
 								type="radio"
-								label="Juvenile"
+								label="Juvenile (1-3 years)"
 								value="Juvenile"
 								name="eagleAge"
 								id="eagleData5"
@@ -378,7 +378,7 @@ export default function InputForm(props) {
 							<Form.Check
 								inline
 								type="radio"
-								label="Adult"
+								label="Adult (4+ years)"
 								value="Adult"
 								name="eagleAge"
 								id="eagleData6"
