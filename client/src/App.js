@@ -352,7 +352,9 @@ class App extends Component {
     }
 
     // window.location.reload()
+
     // this.clearButtons()
+
   }
 
   // // ---------------- stores single observation report in state and launches observation report page ---------- //
@@ -477,7 +479,10 @@ class App extends Component {
       image: ''
     })
 
+
+
     window.location.reload()
+
 
     console.log(submission)
     console.log('preparing report')
