@@ -128,9 +128,6 @@ class App extends Component {
   totalTimeChange = (event) => {
     this.setState({ totalTime: event.target.value })
   }
-  weatherObservationChange = (event) => {
-    this.setState({ weatherObservation: event.target.value })
-  }
   temperatureChange = (event) => {
     this.setState({ temperature: event.target.value })
   }
@@ -497,7 +494,7 @@ class App extends Component {
 
 
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, weatherObservation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
     let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
 
     return (
@@ -532,7 +529,7 @@ class App extends Component {
                 handleSubmit={handleSubmit}
                 name={name} email={email} bird={bird} site={site}
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
-                cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+                cloudCover={cloudCover} windSpeed={windSpeed} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
                 incubation={incubation} observation={observation} comments={comments} sitesList={sitesList}
                 // passes all methods
                 formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}

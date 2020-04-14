@@ -159,7 +159,7 @@ export default function InputForm(props) {
 						className="form-control"
 						name="weatherObservation"
 						value={props.weatherObservation}
-						onChange={props.weatherObservationChange}
+						onChange={props.formChange}
 						rows="6"
 					/>
 					<small className="help-block">Please include cloud cover, wind, temperature and other environmental notes to help researchers get context for observation.</small>
