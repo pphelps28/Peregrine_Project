@@ -126,6 +126,18 @@ class ReportModal extends Component {
                             <td>{data.weather_observation}</td>
                         </tr>
                         <tr>
+                            <th scope="column">Relationship Status</th>
+                            <td>{data.relationship_status}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Nesting Status</th>
+                            <td>{data.young_status}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Human Disturbance</th>
+                            <td>{data.disturbance}</td>
+                        </tr>
+                        <tr>
                             <th scope="column">Eyrie Location</th>
                             <td>{data.eyrie_location}</td>
                         </tr>
