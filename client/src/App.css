@@ -131,3 +131,19 @@
 #navbar-display-and-user {
 	display: flex;
 }
+
+.label{
+	padding-right: 30rem
+}
+
+.conf-susp{
+	padding: 0 5rem 0 0
+}
+
+.button-padding{
+	padding: 0 8rem 
+}
+
+.italic{
+	font-style: italic
+}
