@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const conn = mongoose.createConnection(mongoURI, {
     useUnifiedTopology: true, useNewUrlParser: true
 })
+mongoose.connect(mongoURI)
 mongoose.set('useFindAndModify', false)
 
 let gfs
@@ -77,7 +78,7 @@ const birdSchema = new mongoose.Schema({
     start_time: String,
     end_time: String,
     total_time: String,
-    weather_observation: { type: String, require: true},  
+    weather_observation: { type: String, require: true },
     relationship_status: String,
     young_status: String,
     disturbance: String,
@@ -87,7 +88,7 @@ const birdSchema = new mongoose.Schema({
     young_age: String,
     observations: String,
     remarks: String,
-    researcher_comments_1: String,    
+    researcher_comments_1: String,
     image: { data: Buffer, contentType: String }
 
 })
@@ -187,7 +188,7 @@ const handleBirdPosts = async (req, res) => {
             remarks: remarks,
             image: image
         })
-        
+
     } else {
 
         // new PEREGRINE data object created from monitor data
@@ -324,7 +325,7 @@ const addNestingSite = async (req, res) => {
     let updatedSites
     let filter
 
-    console.log(site)    
+    console.log(site)
 
     if (bird === "Bald Eagle") {
         id = "5e94c31ac0c3fe4534f1b7be"
@@ -410,6 +411,7 @@ app.get('/images/:id', (req, res) => {
         }
     })
 })
+
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)

@@ -10,6 +10,7 @@ import Display from './components/Display.js'
 import firebase from 'firebase'
 import FormData from 'form-data'
 import ReportModal from './components/ReportModal'
+import TestImage from './components/TestImage'
 
 //firebase => .env
 const firebaseConfig = {
@@ -199,7 +200,7 @@ class App extends Component {
       this.getCurrentSites()
       this.setState({
         stopLoop: false,
-        // sitesList: ['', 'Please select a species first']
+        sitesList: ['', 'Please select a species first']
       })
     }
   }
@@ -514,6 +515,7 @@ class App extends Component {
 
     return (
       <div>
+        <TestImage />
         <Router>
           <NavBar
             email={this.state.email}
