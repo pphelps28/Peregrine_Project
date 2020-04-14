@@ -1,7 +1,7 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
