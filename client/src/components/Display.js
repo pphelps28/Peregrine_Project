@@ -3,6 +3,9 @@ import CsvDownload from 'react-json-to-csv'
 import { Form, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
+
+//shows the administrative side of the site. Must be logged in to access
+
 export default function Display(props) {
     let bird
 
