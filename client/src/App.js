@@ -8,7 +8,9 @@ import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
 import Display from './components/Display.js'
 import firebase from 'firebase'
+import FormData from 'form-data'
 import ReportModal from './components/ReportModal'
+
 //firebase => .env
 const firebaseConfig = {
   apiKey: "AIzaSyAio6vwdZAJ1GlzX7C0Mg8bR6gLt1EpVBQ",
@@ -41,22 +43,17 @@ class App extends Component {
       timeEnd: '',
       totalTime: '',
       weatherObservation: '',
-      eagleAge: '',
-      eagleBand: '',
-      // relationshipStatus: '',
-      singleBird: '',
-      birdPair: '',
-      courtship: '',
-      incubating: '',
-      hatched: '',
-      nestFailure: '',
-      fledged: '',
+      temperature: '',
+      precipitation: '',
+      cloudCover: '',
+      windSpeed: '',
+      relationshipStatus: '',
+      youngStatus: '',
       disturbance: '',
       incubation: '',
-      youngStatus: '',
       young: '',
       youngAge: '',
-      image: '',
+      image: null,
       observation: '',
       comments: '',
       nestingSite: '',
@@ -83,17 +80,18 @@ class App extends Component {
     this.setState({
       [event.target.name]: input
     })
-    // console.log(input)
+    console.log(input)
   }
+
 
   // ----------------------- apply changes to state ------------------------
 
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  //   console.log()
-  // }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+    console.log()
+  }
   nameChange = (event) => {
     this.setState({ name: event.target.value })
   }
@@ -174,16 +172,32 @@ class App extends Component {
       image: event.target.files[0]
     })
   }
+  //
+  imageSubmit = () => {
+    if (this.state.image) {
+      const fd = new FormData()
+      fd.append('img', this.state.image, this.state.image.name)
+      fetch((`/upload/${this.state.doc_id}`), {
+        method: "POST",
+        'Content-Type': 'multipart/form-data',
+        body: fd
+      }).then(res => {
+      }).catch(err => {
+        console.log('error:')
+        console.log(err.message)
+      })
+    }
+  }
 
   // ---------- gets current list of nesting sites to display in drop-down menus ---------- //
 
   componentDidUpdate = () => {
-    console.log('updating species')
     if (this.state.stopLoop === true) {
       console.log('inside the if statement')
       this.getCurrentSites()
       this.setState({
-        stopLoop: false
+        stopLoop: false,
+        sitesList: ['', 'Please select a species first']
       })
     }
   }
@@ -191,7 +205,6 @@ class App extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user)
         this.setState({
           display: `logged in as ${user.email}`,
           displayColor: 'green',
@@ -357,6 +370,18 @@ class App extends Component {
     this.clearButtons()
   }
 
+  // // ---------------- stores single observation report in state and launches observation report page ---------- //
+
+
+  // displayFullReport = (event) => {
+  //   event.preventDefault()
+  //   console.log('preparing report')
+  //   this.setState({
+  //     observationReport: JSON.parse(event.target.value),
+  //     redirect: '/report_modal'
+  //   })
+  // }
+
   // ---------------- adds new nesting sites to lists EAGLE or PEREGRINE sites ---------------- //
 
   addNestingSite = (event) => {
@@ -392,8 +417,7 @@ class App extends Component {
     }).then(res => {
       console.log('getting sites')
       return res.json()
-    }).then(jsonObj => {
-      console.log(jsonObj.sites)
+    }).then(jsonObj => {     
       this.setState({
         sitesList: jsonObj.sites
       })
@@ -416,16 +440,11 @@ class App extends Component {
       timeEnd: this.state.timeEnd,
       totalTime: this.state.totalTime,
       weatherObservation: this.state.weatherObservation,
-      eagleAge: this.state.eagleAge,
-      eagleBand: this.state.eagleBand,
-      singleBird: this.state.singleBird,
-      birdPair: this.state.birdPair,
-      courtship: this.state.courtship,
-      incubating: this.state.incubating,
-      hatched: this.state.hatched,
-      nestFailure: this.state.nestFailure,
-      fledged: this.state.fledged,
-      // relationshipStatus: this.state.relationshipStatus,
+      temperature: this.state.temperature,
+      precipitation: this.state.precipitation,
+      cloudCover: this.state.cloudCover,
+      windSpeed: this.state.windSpeed,
+      relationshipStatus: this.state.relationshipStatus,
       youngStatus: this.state.youngStatus,
       disturbance: this.state.disturbance,
       incubation: this.state.incubation,
@@ -433,9 +452,8 @@ class App extends Component {
       youngAge: this.state.youngAge,
       image: this.state.image,
       observation: this.state.observation,
-      comments: this.state.comments
+      comments: this.state.comments,
     }
-
 
     fetch('/post', {
       method: 'POST',
@@ -443,41 +461,52 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(submission)
-    })
-    this.setState({
-      name: '',
-      email: '',
-      bird: '',
-      site: '',
-      date_observed: new Date(),
-      mileage: '',
-      travel: '',
-      timeStart: '',
-      timeEnd: '',
-      totalTime: '',
-      weatherObservation: '',
-      eagleBand: '',
-      eagleAge: '',
-      // relationshipStatus: '',
-      singleBird: '',
-      birdPair: '',
-      courtship: '',
-      incubating: '',
-      hatched: '',
-      nestFailure: '',
-      fledged: '',
-      youngStatus: '',
-      disturbance: '',
-      incubation: '',
-      young: '',
-      youngAge: '',
-      image: '',
-      observation: '',
-      comments: '',
-      image: ''
+    }).then(res => {
+      if (res.status !== 200) {
+        console.log('error')
+      } else {
+        return res.json()
+      }
+    }).then(jsonObj => {
+      this.setState({
+        doc_id: jsonObj
+      })
+      console.log(jsonObj)
+    }).then(() => {
+      this.imageSubmit()
+    }).then(() => {
+      this.setState({
+        name: '',
+        email: '',
+        bird: '',
+        site: '',
+        date_observed: new Date(),
+        mileage: '',
+        travel: '',
+        timeStart: '',
+        timeEnd: '',
+        totalTime: '',
+        temperature: '',
+        weatherObservation: '',
+        precipitation: '',
+        cloudCover: '',
+        windSpeed: '',
+        relationshipStatus: '',
+        youngStatus: '',
+        disturbance: '',
+        incubation: '',
+        young: '',
+        youngAge: '',
+        image: '',
+        observation: '',
+        comments: '',
+        image: ''
+      })
     })
 
     window.location.reload()
+
+    console.log(submission)
     console.log('preparing report')
 
   }
@@ -489,8 +518,8 @@ class App extends Component {
   }
 
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, weatherObservation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
-    let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList, weatherObservation } = this.state
+    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
 
     return (
       <div>
@@ -516,12 +545,11 @@ class App extends Component {
             resetPassword={this.resetPassword}
             changeEmail={this.changeEmail}
           />
-
           <div id="wrapper">
             {/* //passes variables if the button is true */}
             <Route path='/' exact>
               <InputForm
-                handleSubmit={handleSubmit}
+                handleSubmit={handleSubmit} imageChange={imageChange} imageSubmit={imageSubmit}
                 name={name} email={email} bird={bird} site={site}
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
                 cloudCover={cloudCover} windSpeed={windSpeed} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
@@ -534,23 +562,24 @@ class App extends Component {
               />
             </Route>
 
+            <>
+              <Route path='/display'>
+                <Display loggedIn={this.state.loggedIn} bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} />
+              </Route>
+              <Route path='/report_modal/:bird/:_id'
+                component={(props) =>
+                  <ReportModal {...props} />}>
+              </Route>
+            </>
 
-            {this.state.loggedIn ?
-              <>
-                <Route path='/display'>
-                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} />
-                </Route>
-                <Route path='/report_modal/:bird/:_id'
-                  component={(props) =>
-                    <ReportModal {...props} />}>
-                </Route>
-              </>
-              : "Please log in to see this page"}
           </div>
         </Router>
       </div >
+
     )
   }
 }
+
+
 
 export default App

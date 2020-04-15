@@ -7,14 +7,66 @@ const ObjectId = require('mongodb').ObjectId
 const port = process.env.PORT || 5000
 require('mongoose-type-email')
 
+//Experiments to add image upload
+const crypto = require('crypto')
+const multer = require('multer')
+const GridFsStorage = require('multer-gridfs-storage')
+const Grid = require('gridfs-stream')
+//
+//do I need a view engine??
+app.use(express.static('public'))
+
+//
+const mongoURI = 'mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority'
+
 app.use(express.static(path.join(__dirname, '/client/build')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-mongoose.connect('mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority', {
+//image upload experimentation, here to BIRD SCHEMATA
+const conn = mongoose.createConnection(mongoURI, {
     useUnifiedTopology: true, useNewUrlParser: true
 })
+mongoose.connect(mongoURI)
 mongoose.set('useFindAndModify', false)
+
+let gfs
+conn.once('open', () => {
+    gfs = Grid(conn.db, mongoose.mongo)
+    gfs.collection('images')
+})
+
+
+const storage = new GridFsStorage({
+    url: mongoURI,
+    file: (req, file) => {
+        return new Promise((resolve, reject) => {
+            crypto.randomBytes(16, (err, buf) => {
+                if (err) {
+                    return reject(err);
+                }
+                const sanitizeName = file.originalname.split(' ').join('')
+                const filename = buf.toString('hex') + sanitizeName
+                const fileInfo = {
+                    filename: filename,
+                    bucketName: 'images',//match collection name,
+                    metadata: {
+                        doc_id: req.params.doc_id
+                    }
+                };
+                resolve(fileInfo);
+            });
+        });
+    }
+})
+const upload = multer({ storage })
+
+app.post('/upload/:doc_id', upload.single('img'), (req, res) => {
+    console.log(req.file)
+    console.log(req.params.doc_id)
+    console.log('uploaded!')
+})
+
 
 // ---------- BIRD SCHEMATA ---------- // 
 
@@ -85,7 +137,6 @@ const handleBirdPosts = async (req, res) => {
     console.log("received request")
 
     // data inputted by monitor
-
     let name = req.body.name
     let location = req.body.site
     let email = req.body.email
@@ -177,7 +228,14 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation, weather_observation,
-            relationship_status: relationship_status,
+            // relationship_status: relationship_status,
+            single_bird: single_bird,
+            bird_pair: bird_pair,
+            courtship: courtship,
+            incubating: incubating,
+            hatched: hatched,
+            nest_failure: nest_failure,
+            fledged: fledged,
             young_status: young_status,
             disturbance: disturbance,
             summary: summary,
@@ -194,9 +252,14 @@ const handleBirdPosts = async (req, res) => {
 
     await post.save((err, doc) => {
         if (err) {
-            return console.log(err)
+            res.status(500)
+            res.send()
         }
-        console.log('Post Saved: ' + doc)
+        else {
+            res.status(200)
+            res.send(JSON.stringify(doc._id))
+            console.log('Post Saved: ' + doc)
+        }
     })
 }
 
@@ -287,6 +350,8 @@ const addNestingSite = async (req, res) => {
     let updatedSites
     let filter
 
+    console.log(site)
+
     if (bird === "Bald Eagle") {
         id = "5e94c31ac0c3fe4534f1b7be"
         filter = { _id: ObjectId(id) }
@@ -330,6 +395,7 @@ const getSiteList = async (req, res) => {
 
 const getReport = async (req, res) => {
     console.log("got report request")
+    console.log(req.params._id)
 
     let id = req.params._id
     let bird = req.params.bird
@@ -347,6 +413,30 @@ const getReport = async (req, res) => {
     }
     res.send(report)
 }
+//trying to render images
+app.get('/images/:doc_id', (req, res) => {
+    console.log(req.params.doc_id)
+    gfs.files.findOne({ "metadata.doc_id": req.params.doc_id }, (err, file) => {
+        if (!file || file.length === 0) {
+            return res.status(404).json({
+                err: 'No file exists'
+            })
+        }
+        console.log('file: ' + file)
+        //Check if image
+        console.log(file.contentType)
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+            console.log(file)
+            const readstream = gfs.createReadStream(file.filename)
+            readstream.pipe(res)
+        }
+        else {
+            res.status(404).json({
+                err: "Not an image"
+            })
+        }
+    })
+})
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
@@ -354,7 +444,6 @@ app.post('/update', updateBirdPosts)
 app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
-
 app.listen(port, () => console.log(`listening on: ${port}`))
 
 // --------------------- functions to manipulate database for setup purposes ----------------------- //

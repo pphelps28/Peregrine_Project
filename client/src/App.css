@@ -16,10 +16,7 @@
 	justify-content: center;
 	align-items: center;
 	margin: 10%;
-}
 
-.form {
-	padding-bottom: 50%;
 }
 
 #toggle-button {
@@ -57,7 +54,7 @@
 	text-align: center;
 	justify-content: center;
 	align-items: center;
-	padding: 4rem .5rem 2rem .5rem;
+	padding: 0rem .5rem 2rem .5rem;
 }
 
 .headerImage2 {
@@ -99,13 +96,14 @@
 	width: auto;
 }
 
-.container {
-	padding-top: 2rem;
-}
-
 #login-status {
 	font-size: 1.15em;
 	margin-bottom: 5px;
+}
+
+#login-message {
+	text-align: center;
+	color: rgb(175, 115, 3);
 }
 
 .spaced {
@@ -128,22 +126,33 @@
 	padding-top: 2rem;
 }
 
+#image-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+#report-image {
+	width: 250px;
+	border-radius: 5%
+}
+
 #navbar-display-and-user {
 	display: flex;
 }
 
-.label{
+.label {
 	padding-right: 30rem
 }
 
-.conf-susp{
+.conf-susp {
 	padding: 0 5rem 0 0
 }
 
-.button-padding{
-	padding: 0 8rem 
+.button-padding {
+	padding: 0 8rem
 }
 
-.italic{
+.italic {
 	font-style: italic
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'react-time-picker';
-import { Form, Col } from 'react-bootstrap';
+import { Form, Col, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 
 export default function InputForm(props) {
-	
+
 	return (
 		<div className="form">
 			<Header />
@@ -779,15 +779,17 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* -------------------image upload -------------------- */}
-				<label htmlFor="img">Select image:</label>
-				<input
-					onChange={props.imageChange}
-					className="form-control"
-					type="file"
-					id="img"
-					name="img"
-					accept="image/*"
-				/>
+				<div id="image-upload">
+					<label for="img">Upload image:</label>
+					<input
+						style={{ margin: '5px' }}
+						onChange={props.imageChange}
+						type="file"
+						id="img"
+						name="img"
+						accept="image/*"
+					/>
+				</div>
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
