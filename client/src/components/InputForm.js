@@ -407,16 +407,16 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Single Bird (Confirmed)"
-							name="relationshipStatus"
+							value="Confirmed"
+							name="singleBird"
 							id="formHorizontalRadios15"
 							onChange={props.formChange}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Single Bird (Suspected)"
-							name="relationshipStatus"
+							value="Suspected"
+							name="singleBird"
 							id="formHorizontalRadios15a"
 							onChange={props.formChange}
 						/>
@@ -427,16 +427,16 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Territorial Pair (Confirmed)"
-							name="relationshipStatus"
+							value="Confirmed"
+							name="birdPair"
 							id="formHorizontalRadios16"
 							onChange={props.formChange}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Territorial Pair (Suspected)"
-							name="relationshipStatus"
+							value="Suspected"
+							name="birdPair"
 							id="formHorizontalRadios16a"
 							onChange={props.formChange}
 						/>
@@ -447,16 +447,16 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Courtship (Confirmed)"
-							name="relationshipStatus"
+							value="Confirmed"
+							name="courtship"
 							id="formHorizontalRadios17"
 							onChange={props.formChange}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Courtship (Suspected)"
-							name="relationshipStatus"
+							value="Suspected"
+							name="courtship"
 							id="formHorizontalRadios17a"
 							onChange={props.formChange}
 						/>
@@ -467,16 +467,16 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Incubating (Confirmed)"
-							name="relationshipStatus"
+							value="Confirmed"
+							name="incubating"
 							id="formHorizontalRadios18"
 							onChange={props.formChange}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Incubating (Suspected)"
-							name="relationshipStatus"
+							value="Suspected"
+							name="incubating"
 							id="formHorizontalRadios18a"
 							onChange={props.formChange}
 						/>
@@ -487,16 +487,16 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Hatched (Confirmed)"
-							name="relationshipStatus"
+							value="Confirmed"
+							name="hatched"
 							id="formHorizontalRadios19"
 							onChange={props.formChange}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Hatched (Suspected)"
-							name="relationshipStatus"
+							value="Suspected"
+							name="hatched"
 							id="formHorizontalRadios19a"
 							onChange={props.formChange}
 						/>
@@ -507,16 +507,16 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Failure (Confirmed)"
-							name="relationshipStatus"
+							value="Confirmed"
+							name="nestFailure"
 							id="formHorizontalRadios20"
 							onChange={props.formChange}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Failure (Suspected)"
-							name="relationshipStatus"
+							value="Suspected"
+							name="nestFailure"
 							id="formHorizontalRadios20a"
 							onChange={props.formChange}
 						/>
@@ -527,16 +527,16 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Fledged (Confirmed)"
-							name="relationshipStatus"
+							value="Confirmed"
+							name="fledged"
 							id="formHorizontalRadios21"
 							onChange={props.formChange}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Fledged (Suspected)"
-							name="relationshipStatus"
+							value="Suspected"
+							name="fledged"
 							id="formHorizontalRadios21a"
 							onChange={props.formChange}
 						/>
@@ -547,16 +547,16 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Disturbance (Confirmed)"
-							name="relationshipStatus"
+							value="Confirmed"
+							name="disturbance"
 							id="formHorizontalRadios22"
 							onChange={props.formChange}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Disturbance (Suspected)"
-							name="relationshipStatus"
+							value="Suspected"
+							name="disturbance"
 							id="formHorizontalRadios22a"
 							onChange={props.formChange}
 						/>

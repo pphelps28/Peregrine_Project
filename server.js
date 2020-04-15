@@ -33,9 +33,16 @@ const birdSchema = new mongoose.Schema({
     weather_observation: { type: String, require: true },
     eagle_band: String,
     eagle_age: String,
-    relationship_status: String,
-    young_status: String,
+    // relationship_status: String,
+    single_bird: String,
+    bird_pair: String,
+    courtship: String,
+    incubating: String,
+    hatched: String,
+    nest_failure: String,
+    fledged: String,
     disturbance: String,
+    young_status: String,
     summary: String,
     eyrie_location: String,
     number_young: String,
@@ -93,8 +100,15 @@ const handleBirdPosts = async (req, res) => {
     let weather_observation = req.body.weatherObservation
     let eagle_band = req.body.eagleBand
     let eagle_age = req.body.eagleAge
-    let relationship_status = req.body.relationshipStatus
+    // let relationship_status = req.body.relationshipStatus
     let young_status = req.body.youngStatus
+    let single_bird = req.body.singleBird
+    let bird_pair = req.body.birdPair
+    let courtship = req.body.courtship
+    let incubating = req.body.incubating
+    let hatched = req.body.hatched
+    let nest_failure = req.body.nestFailure
+    let fledged = req.body.fledged
     let disturbance = req.body.disturbance
     let summary = req.body.ObservationSummary
     let eyrie_location = req.body.incubation
@@ -125,7 +139,14 @@ const handleBirdPosts = async (req, res) => {
             weather_observation: weather_observation,
             eagle_age: eagle_age,
             eagle_band: eagle_band,
-            relationship_status: relationship_status,
+            // relationship_status: relationship_status,
+            single_bird: single_bird,
+            bird_pair: bird_pair,
+            courtship: courtship,
+            incubating: incubating,
+            hatched: hatched,
+            nest_failure: nest_failure,
+            fledged: fledged,
             young_status: young_status,
             disturbance: disturbance,
             summary: summary,
@@ -309,7 +330,7 @@ const getSiteList = async (req, res) => {
 
 const getReport = async (req, res) => {
     console.log("got report request")
-    
+
     let id = req.params._id
     let bird = req.params.bird
 

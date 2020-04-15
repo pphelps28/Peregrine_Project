@@ -1,7 +1,7 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
@@ -43,10 +43,17 @@ class App extends Component {
       weatherObservation: '',
       eagleAge: '',
       eagleBand: '',
-      relationshipStatus: '',
-      youngStatus: '',
+      // relationshipStatus: '',
+      singleBird: '',
+      birdPair: '',
+      courtship: '',
+      incubating: '',
+      hatched: '',
+      nestFailure: '',
+      fledged: '',
       disturbance: '',
       incubation: '',
+      youngStatus: '',
       young: '',
       youngAge: '',
       image: '',
@@ -76,17 +83,17 @@ class App extends Component {
     this.setState({
       [event.target.name]: input
     })
-    console.log(input)
+    // console.log(input)
   }
 
   // ----------------------- apply changes to state ------------------------
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-    console.log()
-  }
+  // handleChange = (event) => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   })
+  //   console.log()
+  // }
   nameChange = (event) => {
     this.setState({ name: event.target.value })
   }
@@ -348,9 +355,7 @@ class App extends Component {
     }
 
     this.clearButtons()
-
   }
-
 
   // ---------------- adds new nesting sites to lists EAGLE or PEREGRINE sites ---------------- //
 
@@ -413,7 +418,14 @@ class App extends Component {
       weatherObservation: this.state.weatherObservation,
       eagleAge: this.state.eagleAge,
       eagleBand: this.state.eagleBand,
-      relationshipStatus: this.state.relationshipStatus,
+      singleBird: this.state.singleBird,
+      birdPair: this.state.birdPair,
+      courtship: this.state.courtship,
+      incubating: this.state.incubating,
+      hatched: this.state.hatched,
+      nestFailure: this.state.nestFailure,
+      fledged: this.state.fledged,
+      // relationshipStatus: this.state.relationshipStatus,
       youngStatus: this.state.youngStatus,
       disturbance: this.state.disturbance,
       incubation: this.state.incubation,
@@ -446,7 +458,14 @@ class App extends Component {
       weatherObservation: '',
       eagleBand: '',
       eagleAge: '',
-      relationshipStatus: '',
+      // relationshipStatus: '',
+      singleBird: '',
+      birdPair: '',
+      courtship: '',
+      incubating: '',
+      hatched: '',
+      nestFailure: '',
+      fledged: '',
       youngStatus: '',
       disturbance: '',
       incubation: '',
@@ -458,10 +477,7 @@ class App extends Component {
       image: ''
     })
 
-
-
     window.location.reload()
-
     console.log('preparing report')
 
   }
@@ -533,11 +549,8 @@ class App extends Component {
           </div>
         </Router>
       </div >
-
     )
   }
 }
-
-
 
 export default App
