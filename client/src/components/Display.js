@@ -4,7 +4,7 @@ import { Form, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 
-//shows the administrative side of the site. Must be logged in to access
+//shows the administrative side of the site. Otherwise a please log in message displays
 
 export default function Display(props) {
     let bird
@@ -22,15 +22,16 @@ export default function Display(props) {
 
     return (
         <div>
-            <h3 className="title">Here you can add a nesting site or read an observation report</h3>
+
             <div className="container report_page" >
                 <div>
                     <Form>
+                        {/* <h3 className="title">Search and Retrieve Observation Reports</h3>  */}
                         {/* -----------------------Bird Observed Radio -------------------*/}
                         <Form.Group as={Col}>
                             <Form.Label as="legend" column sm={10}>
-                                First please select a species:
-					</Form.Label>
+                                <strong>Please Select a Species:</strong>
+                            </Form.Label>
                             <Col sm={10}>
                                 <Form.Check
                                     type="radio"
@@ -54,6 +55,7 @@ export default function Display(props) {
                         </Form.Group>
 
                         {/* ----------------------------------- New Nesting Site Input --------------------------- */}
+
                         <Form.Group as={Col}>
                             <Form.Label as="legend" column sm={20}><strong>Add a nesting site</strong></Form.Label>
                         </Form.Group>
@@ -69,13 +71,14 @@ export default function Display(props) {
                         </div>
                         <input type="submit" value="Add" className="btn btn-primary spaced" onClick={props.addNestingSite} />
                         {/* -----------------------Observation Report Search -------------------*/}
+                        
                         <Form.Group as={Col}>
-                            <Form.Label as="legend" column sm={20}><strong>Read a monitor report</strong></Form.Label>
+                            <Form.Label as="legend" column sm={20}><strong>Search and Read Monitor Reports</strong></Form.Label>
                         </Form.Group>
 
                         {/*------------------------- Location Site Name ------------------------*/}
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Label>Please select a nesting site:</Form.Label>
+                            <Form.Label>Please select a nesting site (leave blank to retrieve all reports):</Form.Label>
                             <Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
                                 {props.sitesList.map(site => (
                                     <option >{site}</option>
@@ -84,7 +87,7 @@ export default function Display(props) {
                         </Form.Group>
                         {/*------------------------- Season Selector ------------------------*/}
                         <Form.Group controlId="exampleForm.SelectCustom">
-                            <Form.Label>Please select a season(year):</Form.Label>
+                            <Form.Label>Please select a season (leave blank to retrieve multiple years):</Form.Label>
                             <Form.Control as="select" custom value={props.season} onChange={props.seasonChange}>
                                 <option></option>
                                 <option>2020</option>
@@ -102,16 +105,9 @@ export default function Display(props) {
                 {/* //ternary operator that will iterate through each entry using a key */}
                 {props.displayContent ? props.displayContent.map(data => (
                     <div>
-                        {/* <div><strong>{bird} Monitor Observation report(s)</strong></div> */}
+                      
                         <table className="table table-striped">
-                            {/* <thead>
-                        <tr>
-                            <th scope="col">Season</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Date Observed</th>
-                            <th scope="col">See Full Report</th>
-                        </tr>
-                    </thead> */}
+                          
                             <tbody>
 
                                 <tr key={data._id}>

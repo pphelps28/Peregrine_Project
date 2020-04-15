@@ -4,6 +4,8 @@ import TimePicker from 'react-time-picker';
 import { Form, Col } from 'react-bootstrap';
 import Header from '../components/Header';
 
+
+// Landing page for monitors.  The place to input all information
 export default function InputForm(props) {
 	
 	return (
@@ -37,8 +39,9 @@ export default function InputForm(props) {
 				</div>
 				{/* -----------------------Bird Observed Radio -------------------*/}
 				<Form.Group as={Col}>
+				
 					<Form.Label as="legend" column sm={10}>
-						Which species did you observe?
+						Please select the species you observed.
 					</Form.Label>
 					<Col sm={10}>
 						<Form.Check
@@ -103,7 +106,7 @@ export default function InputForm(props) {
 				</div>
 				{/* --------------------------------------- Observation Start Time ------------------------------*/}
 				<div className="form-group">
-					<label>Start Time of Observtion:</label>
+					<label>Start Time of Observation:</label>
 					<br></br>
 					<TimePicker amPmAriaLabel disableClock={true} clearIcon selected={props.timeStart} onChange={props.timeStartChange} />
 				</div>
