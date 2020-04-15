@@ -367,8 +367,7 @@ class App extends Component {
       })
     }
 
-    // window.location.reload()
-    // this.clearButtons()
+    this.clearButtons()
   }
 
   // // ---------------- stores single observation report in state and launches observation report page ---------- //
@@ -418,8 +417,7 @@ class App extends Component {
     }).then(res => {
       console.log('getting sites')
       return res.json()
-    }).then(jsonObj => {
-      console.log(jsonObj.sites)
+    }).then(jsonObj => {     
       this.setState({
         sitesList: jsonObj.sites
       })
@@ -506,7 +504,7 @@ class App extends Component {
       })
     })
 
-    //window.location.reload()
+    window.location.reload()
 
     console.log(submission)
     console.log('preparing report')

@@ -20,7 +20,6 @@ class ReportModal extends Component {
 
         axios.get('/reportModal/' + bird + '/' + _id)
             .then(response => {
-
                 this.setState({
                     data: response.data
                 })
@@ -134,8 +133,32 @@ class ReportModal extends Component {
                                 <td>{data.eagle_age}</td>
                             </tr> : null}
                         <tr>
-                            <th scope="column">Relationship Status</th>
-                            <td>{data.relationship_status}</td>
+                            <th scope="column">Single Bird</th>
+                            <td>{data.single_bird}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Territorial Pair</th>
+                            <td>{data.bird_pair}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Courtship</th>
+                            <td>{data.courtship}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Incubating</th>
+                            <td>{data.incubating}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Hatched</th>
+                            <td>{data.hatched}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Nest Failure</th>
+                            <td>{data.nest_failure}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Fledged</th>
+                            <td>{data.fledged}</td>
                         </tr>
                         <tr>
                             <th scope="column">Nesting Status</th>
