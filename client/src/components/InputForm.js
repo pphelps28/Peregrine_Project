@@ -391,18 +391,11 @@ export default function InputForm(props) {
 				<div className="form-group">
 					<label>Observation summary (fill in all that apply):</label>
 				</div>
-				{/* <Form.Label as="legend" column sm={10}>Observation summary (fill in all that apply)</Form.Label> */}
 				<Form.Group as={Col}>
 
-					{/* <h5>Observation summary (fill in all that apply)</h5> */}
+					
 					<Form.Row>
-						<label className='italic label'>Observed</label>
-						<label className='italic conf-susp'>Confirmed</label>
-						<label className='italic conf-susp'>Suspected</label>
-
-					</Form.Row>
-					<Form.Row>
-						<Form.Label as="legend" column sm={8}>Single Bird</Form.Label>
+						<Form.Label as="legend" column md={12} lg={2}>Single Bird</Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -411,18 +404,34 @@ export default function InputForm(props) {
 							name="singleBird"
 							id="formHorizontalRadios15"
 							onChange={props.formChange}
+							label='Confirmed'
+							sm={12} md={4} lg={1}
 						/>
 						<Form.Check
 							inline
 							type="radio"
+							className='button-padding'
 							value="Suspected"
 							name="singleBird"
 							id="formHorizontalRadios15a"
 							onChange={props.formChange}
+							label='Suspected'
+							sm={12} md={4} lg={1}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							className='button-padding'
+							value="None"
+							name="singleBird"
+							id="formHorizontalRadios15"
+							onChange={props.formChange}
+							label='Unknown'
+							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column sm={8}>Territorial Pair</Form.Label>
+						<Form.Label as="legend" column md={12} lg={2}>Territorial Pair</Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -431,18 +440,34 @@ export default function InputForm(props) {
 							name="birdPair"
 							id="formHorizontalRadios16"
 							onChange={props.formChange}
+							label='Confirmed'
+							sm={12} md={4} lg={1}
 						/>
 						<Form.Check
 							inline
 							type="radio"
+							className='button-padding'
 							value="Suspected"
 							name="birdPair"
 							id="formHorizontalRadios16a"
 							onChange={props.formChange}
+							label='Suspected'
+							sm={12} md={4} lg={1}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							className='button-padding'
+							value="None"
+							name="birdPair"
+							id="formHorizontalRadios15"
+							onChange={props.formChange}
+							label='Unknown'
+							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column sm={8}>Courtship / Copulation</Form.Label>
+						<Form.Label as="legend" column md={12} lg={2}>Courtship / Copulation</Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -451,18 +476,34 @@ export default function InputForm(props) {
 							name="courtship"
 							id="formHorizontalRadios17"
 							onChange={props.formChange}
+							label='Confirmed'
+							sm={12} md={4} lg={1}
 						/>
 						<Form.Check
 							inline
 							type="radio"
+							className='button-padding'
 							value="Suspected"
 							name="courtship"
 							id="formHorizontalRadios17a"
 							onChange={props.formChange}
+							label='Suspected'
+							sm={12} md={4} lg={1}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							className='button-padding'
+							value="None"
+							name="courtship"
+							id="formHorizontalRadios15"
+							onChange={props.formChange}
+							label='Unknown'
+							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column sm={8}>Incubating</Form.Label>
+						<Form.Label as="legend" column md={12} lg={2}>Incubating</Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -471,18 +512,34 @@ export default function InputForm(props) {
 							name="incubating"
 							id="formHorizontalRadios18"
 							onChange={props.formChange}
+							label='Confirmed'
+							sm={12} md={4} lg={1}
 						/>
 						<Form.Check
 							inline
 							type="radio"
+							className='button-padding'
 							value="Suspected"
 							name="incubating"
 							id="formHorizontalRadios18a"
 							onChange={props.formChange}
+							label='Suspected'
+							sm={12} md={4} lg={1}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							className='button-padding'
+							value="None"
+							name="incubating"
+							id="formHorizontalRadios15"
+							onChange={props.formChange}
+							label='Unknown'
+							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column sm={8}>Hatched</Form.Label>
+						<Form.Label as="legend" column md={12} lg={2}>Hatched</Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -491,18 +548,34 @@ export default function InputForm(props) {
 							name="hatched"
 							id="formHorizontalRadios19"
 							onChange={props.formChange}
+							label='Confirmed'
+							sm={12} md={4} lg={1}
 						/>
 						<Form.Check
 							inline
 							type="radio"
+							className='button-padding'
 							value="Suspected"
 							name="hatched"
 							id="formHorizontalRadios19a"
 							onChange={props.formChange}
+							label='Suspected'
+							sm={12} md={4} lg={1}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							className='button-padding'
+							value="None"
+							name="hatched"
+							id="formHorizontalRadios15"
+							onChange={props.formChange}
+							label='Unknown'
+							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column sm={8}>Nest Failure</Form.Label>
+						<Form.Label as="legend" column md={12} lg={2}>Nest Failure</Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -511,18 +584,34 @@ export default function InputForm(props) {
 							name="nestFailure"
 							id="formHorizontalRadios20"
 							onChange={props.formChange}
+							label='Confirmed'
+							sm={12} md={4} lg={1}
 						/>
 						<Form.Check
 							inline
 							type="radio"
+							className='button-padding'
 							value="Suspected"
 							name="nestFailure"
 							id="formHorizontalRadios20a"
 							onChange={props.formChange}
+							label='Suspected'
+							sm={12} md={4} lg={1}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							className='button-padding'
+							value="None"
+							name="nestFailure"
+							id="formHorizontalRadios15"
+							onChange={props.formChange}
+							label='Unknown'
+							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column sm={8}>Fledged</Form.Label>
+						<Form.Label as="legend" column md={12} lg={2}>Fledged</Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -531,18 +620,34 @@ export default function InputForm(props) {
 							name="fledged"
 							id="formHorizontalRadios21"
 							onChange={props.formChange}
+							label='Confirmed'
+							sm={12} md={4} lg={1}
 						/>
 						<Form.Check
 							inline
 							type="radio"
+							className='button-padding'
 							value="Suspected"
 							name="fledged"
 							id="formHorizontalRadios21a"
 							onChange={props.formChange}
+							label='Suspected'
+							sm={12} md={4} lg={1}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							className='button-padding'
+							value="None"
+							name="fledged"
+							id="formHorizontalRadios15"
+							onChange={props.formChange}
+							label='Unknown'
+							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column sm={8}>Human Disturbance</Form.Label>
+						<Form.Label as="legend" column md={12} lg={2}>Human Disturbance</Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -551,14 +656,30 @@ export default function InputForm(props) {
 							name="disturbance"
 							id="formHorizontalRadios22"
 							onChange={props.formChange}
+							label='Confirmed'
+							sm={12} md={4} lg={1}
 						/>
 						<Form.Check
 							inline
 							type="radio"
+							className='button-padding'
 							value="Suspected"
 							name="disturbance"
 							id="formHorizontalRadios22a"
 							onChange={props.formChange}
+							label='Suspected'
+							sm={12} md={4} lg={1}
+						/>
+						<Form.Check
+							inline
+							type="radio"
+							className='button-padding'
+							value="None"
+							name="disturbance"
+							id="formHorizontalRadios15"
+							onChange={props.formChange}
+							label='Unknown'
+							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
 				</Form.Group>
