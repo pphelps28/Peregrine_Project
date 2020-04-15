@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import noimage from '../img/noimage.png'
 
 class ReportImage extends Component {
+   
     constructor(props) {
         super(props)
     }
@@ -17,5 +18,5 @@ class ReportImage extends Component {
         )
     }
 }
-
+console.log(e.target.onerror)
 export default ReportImage
