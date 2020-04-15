@@ -86,6 +86,17 @@ class App extends Component {
     // console.log(input)
   }
 
+  checkToggle = (event) => {
+    event.preventDefault()
+    if(event.target.checked===false) {
+      event.target.checked = true
+      console.log(event.target.checked)
+    } else if (event.target.checked === true)
+    event.target.checked = false
+    console.log(event.target.checked)
+
+  }
+
   // ----------------------- apply changes to state ------------------------
 
   // handleChange = (event) => {
@@ -530,7 +541,7 @@ class App extends Component {
                 formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                 timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
                 cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
-                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} totalTimeCalculator={this.totalTimeCalculator}
+                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} totalTimeCalculator={this.totalTimeCalculator} checkToggle={this.checkToggle}
               />
             </Route>
 
