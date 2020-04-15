@@ -1,7 +1,7 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
@@ -43,12 +43,17 @@ class App extends Component {
       weatherObservation: '',
       eagleAge: '',
       eagleBand: '',
-      // cloudCover: '',
-      // windSpeed: '',
-      relationshipStatus: '',
-      youngStatus: '',
+      // relationshipStatus: '',
+      singleBird: '',
+      birdPair: '',
+      courtship: '',
+      incubating: '',
+      hatched: '',
+      nestFailure: '',
+      fledged: '',
       disturbance: '',
       incubation: '',
+      youngStatus: '',
       young: '',
       youngAge: '',
       image: '',
@@ -78,18 +83,17 @@ class App extends Component {
     this.setState({
       [event.target.name]: input
     })
-    console.log(input)
+    // console.log(input)
   }
-
 
   // ----------------------- apply changes to state ------------------------
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-    console.log()
-  }
+  // handleChange = (event) => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   })
+  //   console.log()
+  // }
   nameChange = (event) => {
     this.setState({ name: event.target.value })
   }
@@ -179,8 +183,7 @@ class App extends Component {
       console.log('inside the if statement')
       this.getCurrentSites()
       this.setState({
-        stopLoop: false,
-        // sitesList: ['', 'Please select a species first']
+        stopLoop: false
       })
     }
   }
@@ -351,23 +354,8 @@ class App extends Component {
       })
     }
 
-    // window.location.reload()
-
-    // this.clearButtons()
-
+    this.clearButtons()
   }
-
-  // // ---------------- stores single observation report in state and launches observation report page ---------- //
-
-
-  // displayFullReport = (event) => {
-  //   event.preventDefault()
-  //   console.log('preparing report')
-  //   this.setState({
-  //     observationReport: JSON.parse(event.target.value),
-  //     redirect: '/report_modal'
-  //   })
-  // }
 
   // ---------------- adds new nesting sites to lists EAGLE or PEREGRINE sites ---------------- //
 
@@ -428,13 +416,16 @@ class App extends Component {
       timeEnd: this.state.timeEnd,
       totalTime: this.state.totalTime,
       weatherObservation: this.state.weatherObservation,
-      // temperature: this.state.temperature,
-      // precipitation: this.state.precipitation,
-      // cloudCover: this.state.cloudCover,
-      // windSpeed: this.state.windSpeed,
       eagleAge: this.state.eagleAge,
       eagleBand: this.state.eagleBand,
-      relationshipStatus: this.state.relationshipStatus,
+      singleBird: this.state.singleBird,
+      birdPair: this.state.birdPair,
+      courtship: this.state.courtship,
+      incubating: this.state.incubating,
+      hatched: this.state.hatched,
+      nestFailure: this.state.nestFailure,
+      fledged: this.state.fledged,
+      // relationshipStatus: this.state.relationshipStatus,
       youngStatus: this.state.youngStatus,
       disturbance: this.state.disturbance,
       incubation: this.state.incubation,
@@ -463,11 +454,18 @@ class App extends Component {
       travel: '',
       timeStart: '',
       timeEnd: '',
-      totalTime: '',      
+      totalTime: '',
       weatherObservation: '',
       eagleBand: '',
       eagleAge: '',
-      relationshipStatus: '',
+      // relationshipStatus: '',
+      singleBird: '',
+      birdPair: '',
+      courtship: '',
+      incubating: '',
+      hatched: '',
+      nestFailure: '',
+      fledged: '',
       youngStatus: '',
       disturbance: '',
       incubation: '',
@@ -479,12 +477,7 @@ class App extends Component {
       image: ''
     })
 
-
-
     window.location.reload()
-
-
-    console.log(submission)
     console.log('preparing report')
 
   }
@@ -494,9 +487,6 @@ class App extends Component {
     document.getElementById('formHorizontalRadios2').checked = false
 
   }
-
-
-
 
   render() {
     let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, weatherObservation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
@@ -559,11 +549,8 @@ class App extends Component {
           </div>
         </Router>
       </div >
-
     )
   }
 }
-
-
 
 export default App

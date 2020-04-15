@@ -33,9 +33,16 @@ const birdSchema = new mongoose.Schema({
     weather_observation: { type: String, require: true },
     eagle_band: String,
     eagle_age: String,
-    relationship_status: String,
-    young_status: String,
+    // relationship_status: String,
+    single_bird: String,
+    bird_pair: String,
+    courtship: String,
+    incubating: String,
+    hatched: String,
+    nest_failure: String,
+    fledged: String,
     disturbance: String,
+    young_status: String,
     summary: String,
     eyrie_location: String,
     number_young: String,
@@ -93,8 +100,15 @@ const handleBirdPosts = async (req, res) => {
     let weather_observation = req.body.weatherObservation
     let eagle_band = req.body.eagleBand
     let eagle_age = req.body.eagleAge
-    let relationship_status = req.body.relationshipStatus
+    // let relationship_status = req.body.relationshipStatus
     let young_status = req.body.youngStatus
+    let single_bird = req.body.singleBird
+    let bird_pair = req.body.birdPair
+    let courtship = req.body.courtship
+    let incubating = req.body.incubating
+    let hatched = req.body.hatched
+    let nest_failure = req.body.nestFailure
+    let fledged = req.body.fledged
     let disturbance = req.body.disturbance
     let summary = req.body.ObservationSummary
     let eyrie_location = req.body.incubation
@@ -106,8 +120,6 @@ const handleBirdPosts = async (req, res) => {
 
     let post
 
-    console.log(date_visited)
-    console.log(location)
     if (bird === 'Bald Eagle') {
 
         // new EAGLE data object created from monitor data
@@ -127,7 +139,14 @@ const handleBirdPosts = async (req, res) => {
             weather_observation: weather_observation,
             eagle_age: eagle_age,
             eagle_band: eagle_band,
-            relationship_status: relationship_status,
+            // relationship_status: relationship_status,
+            single_bird: single_bird,
+            bird_pair: bird_pair,
+            courtship: courtship,
+            incubating: incubating,
+            hatched: hatched,
+            nest_failure: nest_failure,
+            fledged: fledged,
             young_status: young_status,
             disturbance: disturbance,
             summary: summary,
@@ -158,10 +177,6 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation, weather_observation,
-            // temperature: temperature,
-            // precipitation: precipitation,
-            // cloud_coverage: cloud_coverage,
-            // wind_speed: wind_speed,
             relationship_status: relationship_status,
             young_status: young_status,
             disturbance: disturbance,
@@ -245,9 +260,6 @@ const updateBirdPosts = async (req, res) => {
     let researcherComments = req.body.comments
     let updatedDoc
 
-    console.log(bird)
-    console.log(researcherComments)
-
     const filter = { _id: ObjectId(id) };
     const comments = { researcher_comments_1: researcherComments }
 
@@ -274,8 +286,6 @@ const addNestingSite = async (req, res) => {
     let id
     let updatedSites
     let filter
-
-    console.log(site)
 
     if (bird === "Bald Eagle") {
         id = "5e94c31ac0c3fe4534f1b7be"
@@ -314,15 +324,12 @@ const getSiteList = async (req, res) => {
         currentList = await PeregrineSiteSchema.findOne(filter)
     }
 
-    let listArray = currentList.sites
-    console.log(listArray.sort())
-    console.log(currentList)
+    currentList.sites.sort()
     res.send(currentList)
 }
 
 const getReport = async (req, res) => {
     console.log("got report request")
-    console.log(req.params._id)
 
     let id = req.params._id
     let bird = req.params.bird
@@ -340,7 +347,6 @@ const getReport = async (req, res) => {
     }
     res.send(report)
 }
-
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
@@ -511,16 +517,16 @@ const addAllSites = async () => {
 // -------- delete repeated sites ---------- //
 
 const deleteSites = async () => {
-    
+
     let id = '5e94c3b903443b4d2c7f7a5d'
     let filter = { _id: ObjectId(id) }
     currentList = await PeregrineSiteSchema.findOne(filter)
-    
+
     let listArray = currentList.sites
     let newArray = listArray.slice(0, 69)
     console.log(newArray)
     await PeregrineSiteSchema.findOneAndUpdate(filter, { sites: newArray }, { new: true })
-    
+
 }
 
 // deleteSites()
