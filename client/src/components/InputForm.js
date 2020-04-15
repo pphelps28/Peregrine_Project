@@ -5,11 +5,7 @@ import { Form, Col, Button } from 'react-bootstrap';
 import Header from '../components/Header';
 
 export default function InputForm(props) {
-<<<<<<< HEAD
-	//	console.log(props.sitesList)
-=======
-	
->>>>>>> master
+
 	return (
 		<div className="form">
 			<Header />
@@ -793,7 +789,6 @@ export default function InputForm(props) {
 						name="img"
 						accept="image/*"
 					/>
-					<Button onClick={props.imageSubmit}>Upload</Button>
 				</div>
 
 				{/* -----------------------------Recorded Observations ------------------- */}

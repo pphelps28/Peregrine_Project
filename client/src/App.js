@@ -10,7 +10,6 @@ import Display from './components/Display.js'
 import firebase from 'firebase'
 import FormData from 'form-data'
 import ReportModal from './components/ReportModal'
-import ReportImage from './components/ReportImage'
 
 //firebase => .env
 const firebaseConfig = {
@@ -44,19 +43,14 @@ class App extends Component {
       timeEnd: '',
       totalTime: '',
       weatherObservation: '',
-      eagleAge: '',
-      eagleBand: '',
-      // relationshipStatus: '',
-      singleBird: '',
-      birdPair: '',
-      courtship: '',
-      incubating: '',
-      hatched: '',
-      nestFailure: '',
-      fledged: '',
+      temperature: '',
+      precipitation: '',
+      cloudCover: '',
+      windSpeed: '',
+      relationshipStatus: '',
+      youngStatus: '',
       disturbance: '',
       incubation: '',
-      youngStatus: '',
       young: '',
       youngAge: '',
       image: null,
@@ -86,17 +80,18 @@ class App extends Component {
     this.setState({
       [event.target.name]: input
     })
-    // console.log(input)
+    console.log(input)
   }
+
 
   // ----------------------- apply changes to state ------------------------
 
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  //   console.log()
-  // }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+    console.log()
+  }
   nameChange = (event) => {
     this.setState({ name: event.target.value })
   }
@@ -182,13 +177,11 @@ class App extends Component {
     if (this.state.image) {
       const fd = new FormData()
       fd.append('img', this.state.image, this.state.image.name)
-      console.log(this.state.image)
       fetch((`/upload/${this.state.doc_id}`), {
         method: "POST",
         'Content-Type': 'multipart/form-data',
         body: fd
       }).then(res => {
-        console.log('Im back!')
       }).catch(err => {
         console.log('error:')
         console.log(err.message)
@@ -203,7 +196,8 @@ class App extends Component {
       console.log('inside the if statement')
       this.getCurrentSites()
       this.setState({
-        stopLoop: false
+        stopLoop: false,
+        sitesList: ['', 'Please select a species first']
       })
     }
   }
@@ -373,8 +367,21 @@ class App extends Component {
       })
     }
 
-    this.clearButtons()
+    // window.location.reload()
+    // this.clearButtons()
   }
+
+  // // ---------------- stores single observation report in state and launches observation report page ---------- //
+
+
+  // displayFullReport = (event) => {
+  //   event.preventDefault()
+  //   console.log('preparing report')
+  //   this.setState({
+  //     observationReport: JSON.parse(event.target.value),
+  //     redirect: '/report_modal'
+  //   })
+  // }
 
   // ---------------- adds new nesting sites to lists EAGLE or PEREGRINE sites ---------------- //
 
@@ -435,16 +442,11 @@ class App extends Component {
       timeEnd: this.state.timeEnd,
       totalTime: this.state.totalTime,
       weatherObservation: this.state.weatherObservation,
-      eagleAge: this.state.eagleAge,
-      eagleBand: this.state.eagleBand,
-      singleBird: this.state.singleBird,
-      birdPair: this.state.birdPair,
-      courtship: this.state.courtship,
-      incubating: this.state.incubating,
-      hatched: this.state.hatched,
-      nestFailure: this.state.nestFailure,
-      fledged: this.state.fledged,
-      // relationshipStatus: this.state.relationshipStatus,
+      temperature: this.state.temperature,
+      precipitation: this.state.precipitation,
+      cloudCover: this.state.cloudCover,
+      windSpeed: this.state.windSpeed,
+      relationshipStatus: this.state.relationshipStatus,
       youngStatus: this.state.youngStatus,
       disturbance: this.state.disturbance,
       incubation: this.state.incubation,
@@ -454,7 +456,6 @@ class App extends Component {
       observation: this.state.observation,
       comments: this.state.comments,
     }
-
 
     fetch('/post', {
       method: 'POST',
@@ -475,41 +476,39 @@ class App extends Component {
       console.log(jsonObj)
     }).then(() => {
       this.imageSubmit()
-    })
-    this.setState({
-      name: '',
-      email: '',
-      bird: '',
-      site: '',
-      date_observed: new Date(),
-      mileage: '',
-      travel: '',
-      timeStart: '',
-      timeEnd: '',
-      totalTime: '',
-      weatherObservation: '',
-      eagleBand: '',
-      eagleAge: '',
-      // relationshipStatus: '',
-      singleBird: '',
-      birdPair: '',
-      courtship: '',
-      incubating: '',
-      hatched: '',
-      nestFailure: '',
-      fledged: '',
-      youngStatus: '',
-      disturbance: '',
-      incubation: '',
-      young: '',
-      youngAge: '',
-      image: '',
-      observation: '',
-      comments: '',
-      image: ''
+    }).then(() => {
+      this.setState({
+        name: '',
+        email: '',
+        bird: '',
+        site: '',
+        date_observed: new Date(),
+        mileage: '',
+        travel: '',
+        timeStart: '',
+        timeEnd: '',
+        totalTime: '',
+        temperature: '',
+        weatherObservation: '',
+        precipitation: '',
+        cloudCover: '',
+        windSpeed: '',
+        relationshipStatus: '',
+        youngStatus: '',
+        disturbance: '',
+        incubation: '',
+        young: '',
+        youngAge: '',
+        image: '',
+        observation: '',
+        comments: '',
+        image: ''
+      })
     })
 
-    window.location.reload()
+    //window.location.reload()
+
+    console.log(submission)
     console.log('preparing report')
 
   }
@@ -526,7 +525,6 @@ class App extends Component {
 
     return (
       <div>
-        <ReportImage />
         <Router>
           <NavBar
             email={this.state.email}
@@ -580,8 +578,11 @@ class App extends Component {
           </div>
         </Router>
       </div >
+
     )
   }
 }
+
+
 
 export default App

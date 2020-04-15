@@ -21,16 +21,6 @@ export default function Display(props) {
     }
 
     return (
-<<<<<<< HEAD
-        <div className="container report_page" >
-            <div>
-                <Form>
-                    <h3 className="title">Here you can add a nesting site or read an observation report</h3>
-                    {/* -----------------------Bird Observed Radio -------------------*/}
-                    <Form.Group as={Col}>
-                        <Form.Label as="legend" column sm={10}>
-                            First please select a species:
-=======
         <div>
             <h3 className="title">Here you can add a nesting site or read an observation report</h3>
             <div className="container report_page" >
@@ -40,7 +30,6 @@ export default function Display(props) {
                         <Form.Group as={Col}>
                             <Form.Label as="legend" column sm={10}>
                                 First please select a species:
->>>>>>> master
 					</Form.Label>
                             <Col sm={10}>
                                 <Form.Check
@@ -104,13 +93,6 @@ export default function Display(props) {
                                 <option>2017</option>
                             </Form.Control>
 
-<<<<<<< HEAD
-            </div>
-            {props.displayContent ? props.displayContent.map(data => (
-                <div>
-                    <table className="table table-striped">
-                        <tbody>
-=======
                         </Form.Group>
                         <input type="submit" value="Search" className="btn btn-primary spaced" onClick={props.searchDataBase} />
                         {/* CSV download react component button */}
@@ -131,7 +113,6 @@ export default function Display(props) {
                         </tr>
                     </thead> */}
                             <tbody>
->>>>>>> master
 
                                 <tr key={data._id}>
                                     <th scope="column" >{data.season}</th>

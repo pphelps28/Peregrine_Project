@@ -228,7 +228,7 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation, weather_observation,
-            relationship_status: relationship_status,
+            // relationship_status: relationship_status,
             young_status: young_status,
             disturbance: disturbance,
             summary: summary,
@@ -417,6 +417,7 @@ app.get('/images/:doc_id', (req, res) => {
         }
         console.log('file: ' + file)
         //Check if image
+        console.log(file.contentType)
         if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
             console.log(file)
             const readstream = gfs.createReadStream(file.filename)
