@@ -16,14 +16,10 @@ class ReportModal extends Component {
         let bird = this.props.match.params.bird
         let _id = this.props.match.params._id
 
-        console.log(bird)
-
         // gets report info from database using id
 
         axios.get('/reportModal/' + bird + '/' + _id)
             .then(response => {
-                console.log('retrieved report request')
-                console.log(response.data)
 
                 this.setState({
                     data: response.data
