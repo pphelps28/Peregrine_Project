@@ -34,7 +34,7 @@
 }
 
 .vtfwd {
-	background-image: url('/img/vtfwd.jpg');
+	background-image: url('./img/VFWD.png');
 	background-size: contain;
 	background-position: center;
 }
