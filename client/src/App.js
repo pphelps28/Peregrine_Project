@@ -417,7 +417,7 @@ class App extends Component {
     }).then(res => {
       console.log('getting sites')
       return res.json()
-    }).then(jsonObj => {     
+    }).then(jsonObj => {
       this.setState({
         sitesList: jsonObj.sites
       })
@@ -503,9 +503,6 @@ class App extends Component {
         image: ''
       })
     })
-
-    window.location.reload()
-
     console.log(submission)
     console.log('preparing report')
 
