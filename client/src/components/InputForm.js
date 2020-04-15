@@ -396,10 +396,8 @@ export default function InputForm(props) {
 
 					{/* <h5>Observation summary (fill in all that apply)</h5> */}
 					<Form.Row>
-						<Form.Label as="th" column sm={4} className='italic label'>Observed</Form.Label>
-						<Form.Label as='th' column sm={4} className='d-none d-md-block italic conf-susp'>Confirmed</Form.Label>
-						<Form.Label as="th" column sm={4} className='d-none d-md-block italic conf-susp'>Suspected</Form.Label>
-
+						<Form.Label as="th" column md={4} className='italic label'>Observed</Form.Label>
+						
 					</Form.Row>
 					<Form.Row>
 						<Form.Label as="legend" column md={4}>Single Bird</Form.Label>
@@ -407,18 +405,18 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Confirmed"
-							name="singleBird"
+							value="Single Confirmed"
+							name="birdPair"
 							id="formHorizontalRadios15"
 							onChange={props.formChange}
 							label='Confirmed'
-							md={6}
-						/>
+							md={6}/>
+						
 						<Form.Check
 							inline
 							type="radio"
-							value="Suspected"
-							name="singleBird"
+							value="Single Suspected"
+							name="birdPair"
 							id="formHorizontalRadios15a"
 							onChange={props.formChange}
 							label='Suspected'
@@ -431,19 +429,18 @@ export default function InputForm(props) {
 							inline
 							type="radio"
 							className='button-padding'
-							value="Confirmed"
+							value="Pair Confirmed"
 							name="birdPair"
 							id="formHorizontalRadios16"
 							onChange={props.formChange}
 							onClick={props.checkToggle}
-							checked={true}
 							label='Confirmed'
 							md={6}
 						/>
 						<Form.Check
 							inline
 							type="radio"
-							value="Suspected"
+							value=" Pair Suspected"
 							name="birdPair"
 							id="formHorizontalRadios16a"
 							onChange={props.formChange}

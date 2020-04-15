@@ -86,16 +86,6 @@ class App extends Component {
     // console.log(input)
   }
 
-  checkToggle = (event) => {
-    event.preventDefault()
-    if(event.target.checked===false) {
-      event.target.checked = true
-      console.log(event.target.checked)
-    } else if (event.target.checked === true)
-    event.target.checked = false
-    console.log(event.target.checked)
-
-  }
 
   // ----------------------- apply changes to state ------------------------
 
