@@ -9,7 +9,7 @@ class ReportImage extends Component {
         return (
             this.props.id ?
                 <div id="image-wrapper">
-                    <img id="report-image" src={`/images/${this.props.id}`} onerror="null" alt="image" />
+                    <img id="report-image" src={`/images/${this.props.id}`} onError={(e) => { e.target.onerror = null; e.target.src = "none" }} alt="image" />
                 </div>
                 : null
         )

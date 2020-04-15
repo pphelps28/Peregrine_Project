@@ -412,7 +412,7 @@ app.get('/images/:doc_id', (req, res) => {
     gfs.files.findOne({ "metadata.doc_id": req.params.doc_id }, (err, file) => {
         if (!file || file.length === 0) {
             return res.status(404).json({
-                err: 'No file exist'
+                err: 'No file exists'
             })
         }
         console.log('file: ' + file)

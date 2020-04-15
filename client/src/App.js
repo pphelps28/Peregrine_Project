@@ -564,17 +564,16 @@ class App extends Component {
               />
             </Route>
 
-            {this.state.loggedIn ?
-              <>
-                <Route path='/display'>
-                  <Display bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} />
-                </Route>
-                <Route path='/report_modal/:bird/:_id'
-                  component={(props) =>
-                    <ReportModal {...props} />}>
-                </Route>
-              </>
-              : null}
+            <>
+              <Route path='/display'>
+                <Display loggedIn={this.state.loggedIn} bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} />
+              </Route>
+              <Route path='/report_modal/:bird/:_id'
+                component={(props) =>
+                  <ReportModal {...props} />}>
+              </Route>
+            </>
+
           </div>
         </Router>
       </div >
