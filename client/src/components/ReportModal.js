@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Modal, Button } from 'react-bootstrap'
 import axios from 'axios'
 import CsvDownload from 'react-json-to-csv'
 
@@ -125,6 +124,28 @@ class ReportModal extends Component {
                         <tr>
                             <th scope="column">Weather observations</th>
                             <td>{data.weather_observation}</td>
+                        </tr>
+                        {(data.bird === 'Bald Eagle') ?                        
+                        <tr>
+                            <th scope="column">Banded</th>
+                            <td>{data.eagle_band}</td>
+                        </tr>: null}
+                        {(data.bird === 'Bald Eagle') ?
+                        <tr>
+                            <th scope="column">Approximate age(s)</th>
+                            <td>{data.eagle_age}</td>
+                        </tr>: null}
+                        <tr>
+                            <th scope="column">Relationship Status</th>
+                            <td>{data.relationship_status}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Nesting Status</th>
+                            <td>{data.young_status}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Human Disturbance</th>
+                            <td>{data.disturbance}</td>
                         </tr>
                         <tr>
                             <th scope="column">Eyrie Location</th>

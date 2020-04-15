@@ -22,7 +22,7 @@ const birdSchema = new mongoose.Schema({
     bird: String,
     monitor_name: String,
     email: mongoose.SchemaTypes.Email,
-    location: { type: String, required: true },
+    location: { type: String, require: true },
     date_visited: { type: String, require: true },
     season: { type: String, require: true },
     mileage: String,
@@ -30,14 +30,26 @@ const birdSchema = new mongoose.Schema({
     start_time: String,
     end_time: String,
     total_time: String,
-    weather_observation: String,    
+    weather_observation: { type: String, require: true },
+    eagle_band: String,
+    eagle_age: String,
+    // relationship_status: String,
+    single_bird: String,
+    bird_pair: String,
+    courtship: String,
+    incubating: String,
+    hatched: String,
+    nest_failure: String,
+    fledged: String,
+    disturbance: String,
+    young_status: String,
     summary: String,
     eyrie_location: String,
     number_young: String,
     young_age: String,
     observations: String,
     remarks: String,
-    researcher_comments_1: String,    
+    researcher_comments_1: String,
     image: { data: Buffer, contentType: String }
 
 })
@@ -86,10 +98,18 @@ const handleBirdPosts = async (req, res) => {
     let end_time = req.body.timeEnd
     let total_time = req.body.totalTime
     let weather_observation = req.body.weatherObservation
-    let temperature = req.body.temperature
-    let precipitation = req.body.precipitation
-    let cloud_coverage = req.body.cloudCover
-    let wind_speed = req.body.windSpeed
+    let eagle_band = req.body.eagleBand
+    let eagle_age = req.body.eagleAge
+    // let relationship_status = req.body.relationshipStatus
+    let young_status = req.body.youngStatus
+    let single_bird = req.body.singleBird
+    let bird_pair = req.body.birdPair
+    let courtship = req.body.courtship
+    let incubating = req.body.incubating
+    let hatched = req.body.hatched
+    let nest_failure = req.body.nestFailure
+    let fledged = req.body.fledged
+    let disturbance = req.body.disturbance
     let summary = req.body.ObservationSummary
     let eyrie_location = req.body.incubation
     let number_young = req.body.young
@@ -100,8 +120,6 @@ const handleBirdPosts = async (req, res) => {
 
     let post
 
-    console.log(date_visited)
-    console.log(location)
     if (bird === 'Bald Eagle') {
 
         // new EAGLE data object created from monitor data
@@ -119,10 +137,18 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation: weather_observation,
-            temperature: temperature,
-            precipitation: precipitation,
-            cloud_coverage: cloud_coverage,
-            wind_speed: wind_speed,
+            eagle_age: eagle_age,
+            eagle_band: eagle_band,
+            // relationship_status: relationship_status,
+            single_bird: single_bird,
+            bird_pair: bird_pair,
+            courtship: courtship,
+            incubating: incubating,
+            hatched: hatched,
+            nest_failure: nest_failure,
+            fledged: fledged,
+            young_status: young_status,
+            disturbance: disturbance,
             summary: summary,
             eyrie_location: eyrie_location,
             number_young: number_young,
@@ -131,7 +157,7 @@ const handleBirdPosts = async (req, res) => {
             remarks: remarks,
             image: image
         })
-        
+
     } else {
 
         // new PEREGRINE data object created from monitor data
@@ -151,10 +177,9 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation, weather_observation,
-            temperature: temperature,
-            precipitation: precipitation,
-            cloud_coverage: cloud_coverage,
-            wind_speed: wind_speed,
+            relationship_status: relationship_status,
+            young_status: young_status,
+            disturbance: disturbance,
             summary: summary,
             eyrie_location: eyrie_location,
             number_young: number_young,
@@ -235,9 +260,6 @@ const updateBirdPosts = async (req, res) => {
     let researcherComments = req.body.comments
     let updatedDoc
 
-    console.log(bird)
-    console.log(researcherComments)
-
     const filter = { _id: ObjectId(id) };
     const comments = { researcher_comments_1: researcherComments }
 
@@ -265,17 +287,15 @@ const addNestingSite = async (req, res) => {
     let updatedSites
     let filter
 
-    console.log(site)
-
     if (bird === "Bald Eagle") {
-        id = "5e8f15de2c9c234df4e38654"
+        id = "5e94c31ac0c3fe4534f1b7be"
         filter = { _id: ObjectId(id) }
         console.log('updating Eagle sites')
         updatedSites = await EagleSiteSchema.findOneAndUpdate(filter, { $push: { sites: site } }, { new: true })
     }
 
     else {
-        id = '5e8f1508b60a4f4df49c06bf'
+        id = '5e94c3b903443b4d2c7f7a5d'
         filter = { _id: ObjectId(id) }
         console.log('updating pefa sites')
         updatedSites = await PeregrineSiteSchema.findOneAndUpdate(filter, { $push: { sites: site } }, { new: true })
@@ -293,27 +313,24 @@ const getSiteList = async (req, res) => {
 
     if (bird === "Bald Eagle") {
         console.log('getting Eagle sites')
-        id = "5e8f15de2c9c234df4e38654"
+        id = "5e94c31ac0c3fe4534f1b7be"
         filter = { _id: ObjectId(id) }
         currentList = await EagleSiteSchema.findOne(filter)
     }
     else if (bird === "Peregrine Falcon") {
         console.log('getting pefa sites')
-        id = '5e8f1508b60a4f4df49c06bf'
+        id = '5e94c3b903443b4d2c7f7a5d'
         filter = { _id: ObjectId(id) }
         currentList = await PeregrineSiteSchema.findOne(filter)
     }
 
-    let listArray = currentList.sites
-    console.log(listArray.sort())
-    console.log(currentList)
+    currentList.sites.sort()
     res.send(currentList)
 }
 
 const getReport = async (req, res) => {
     console.log("got report request")
-    console.log(req.params._id)
-    
+
     let id = req.params._id
     let bird = req.params.bird
 
@@ -323,14 +340,13 @@ const getReport = async (req, res) => {
     if (bird === 'Bald Eagle') {
         console.log('getting Eagle report')
         report = await EagleSchema.findOne(filter)
-    } else{
+    } else {
 
-    report = await PeregrineSchema.findOne(filter)
-    console.log('getting Peregrine report')
-}
+        report = await PeregrineSchema.findOne(filter)
+        console.log('getting Peregrine report')
+    }
     res.send(report)
 }
-
 
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
@@ -340,3 +356,177 @@ app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
 
 app.listen(port, () => console.log(`listening on: ${port}`))
+
+// --------------------- functions to manipulate database for setup purposes ----------------------- //
+
+// --------- set up pefa sites ---------- //
+
+const addAllSites = async () => {
+
+    let id
+    let filter
+    console.log('updating all pefa sites')
+
+    let townArray = ['Milton',
+        'West Haven',
+        'Jamaica',
+        'Barnet',
+        'Lowell',
+        'Benson',
+        'Bethel',
+        'Ira',
+        'Bolton',
+        'Bolton',
+        'Bradford',
+        'Bristol',
+        'Averill',
+        'Duxbury',
+        'Bakersfield',
+        'Barton',
+        'Bristol',
+        'Vershire',
+        'Milton',
+        'Bristol',
+        'Fairlee',
+        'Newark',
+        'Calais',
+        'Weathersfield',
+        'Pawlet',
+        'Lowell',
+        'Highgate',
+        'Westmore',
+        'Milton',
+        'Burlington',
+        'Colchester',
+        'Marshfield',
+        'Goshen/Rochester',
+        'Lowell',
+        'Westmore',
+        'Underhill',
+        'Woodbury',
+        'Hartland',
+        'Wells',
+        'Johnson',
+        'Pownal',
+        'Salisbury',
+        'Benson',
+        'Hinesburg',
+        'S.Burlington',
+        'Barre',
+        'Ryegate',
+        'Fairlee',
+        'Springfield',
+        'Cambridge',
+        'Addison',
+        'Proctor',
+        'Swanton',
+        'Manchester',
+        'Vernon',
+        'Stockbridge',
+        'Castleton',
+        'Colchester',
+        'Wallingford',
+
+    ]
+
+    let townArrayParens = townArray.map(town => {
+        town = ' (' + town + ')'
+        return town
+    })
+
+    let sitesArray = [
+        'Arrowhead',
+        'Bald Mtn.',
+        'Ball Mt. Dam',
+        'Barnet',
+        'Belvidere Mt Quarry',
+        'Benson Ledges',
+        'Bethel Quarry',
+        'Bird Mtn.',
+        'Bolton Notch (UUW)',
+        'Bone Mtn.',
+        'Bradford Cliff',
+        'Bristol Cliffs',
+        'Brousseau Mtn.',
+        'Camels Hump',
+        'Checkerberry Ledge',
+        'Crystal Lake',
+        'Deer Leap',
+        'Eagle Ledge',
+        'Eagle Mtn.',
+        'Elephant Mtn.',
+        'Fairlee Palisades',
+        'Hawk Rock',
+        'Hawkins Pond',
+        'Hawks Mt',
+        'Haystack Mtn.',
+        'Hazen\'s Notch',
+        'Highgate Cliffs',
+        'Jobs Mtn.',
+        'Lamoille River',
+        'Lone Rock Pt',
+        'Mallett’s Bay',
+        'Marshfield Mtn.',
+        'Mt. Horrid',
+        'Mt. Norris',
+        'Mt. Pisgah',
+        'Nebraska Notch',
+        'Nichols Ledge',
+        'North Hartland Dam',
+        'Pond Mtn.',
+        'Prospect Rock',
+        'Quarry Hill',
+        'Rattlesnake Pt.',
+        'Rattlesnake Ridge',
+        'Red Rock',
+        'Red Rocks Park',
+        'Rock of Ages Quarry',
+        'Ryegate Quarry',
+        'Sawyer Mtn.',
+        'Skitchewaug Mtn.',
+        'Smuggler’s Notch',
+        'Snake Mtn.',
+        'Sutherland Quarry/Proctor',
+        'Swanton Quarry',
+        'Table Rock/Mt Equinox',
+        'VT Yankee',
+        'Vulture Mt',
+        'Wallace Ledge',
+        'Whitcomb Quarry',
+        'White Rocks'
+    ]
+
+    console.log(townArrayParens.length)
+    console.log(sitesArray.length)
+
+    let i = 0
+    let combinedSite
+
+    while (i < townArrayParens.length) {
+        combinedSite = sitesArray[i] + townArrayParens[i]
+        console.log(combinedSite)
+        id = '5e94c3b903443b4d2c7f7a5d'
+        filter = { _id: ObjectId(id) }
+        await PeregrineSiteSchema.findOneAndUpdate(filter, { $push: { sites: combinedSite } }, { new: true })
+        i++
+    }
+}
+
+// addAllSites()
+
+// -------- delete repeated sites ---------- //
+
+const deleteSites = async () => {
+
+    let id = '5e94c3b903443b4d2c7f7a5d'
+    let filter = { _id: ObjectId(id) }
+    currentList = await PeregrineSiteSchema.findOne(filter)
+
+    let listArray = currentList.sites
+    let newArray = listArray.slice(0, 69)
+    console.log(newArray)
+    await PeregrineSiteSchema.findOneAndUpdate(filter, { sites: newArray }, { new: true })
+
+}
+
+// deleteSites()

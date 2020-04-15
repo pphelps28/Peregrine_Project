@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import ModalLogIn from './ModalLogIn.js';
 import UserModal from './UserModal.js'
@@ -12,7 +12,7 @@ class NavBar extends Component {
 		return (
 			<div>
 				<Navbar fixed="top" bg="dark" variant="dark" className='navContainer' expand='md'>
-					<Navbar.Brand><Link to='/' className='link'><img className='brandImage' src='../../img/Audubon_H_WHT_VT.png'></img></Link></Navbar.Brand>
+					<Navbar.Brand><Link to='/' className='link'><img className='brandImage' src='../../img/Audubon_H_WHT_VT.png' alt="logo with and egret and the word Audubon rendered in white"></img></Link></Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto" collapseOnSelect={true}>

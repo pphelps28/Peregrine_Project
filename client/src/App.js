@@ -1,7 +1,7 @@
 import './App.css';
 import "react-datepicker/dist/react-datepicker.css"
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
@@ -41,14 +41,19 @@ class App extends Component {
       timeEnd: '',
       totalTime: '',
       weatherObservation: '',
-      temperature: '',
-      precipitation: '',
-      cloudCover: '',
-      windSpeed: '',
-      relationshipStatus: '',
-      youngStatus: '',
+      eagleAge: '',
+      eagleBand: '',
+      // relationshipStatus: '',
+      singleBird: '',
+      birdPair: '',
+      courtship: '',
+      incubating: '',
+      hatched: '',
+      nestFailure: '',
+      fledged: '',
       disturbance: '',
       incubation: '',
+      youngStatus: '',
       young: '',
       youngAge: '',
       image: '',
@@ -78,18 +83,17 @@ class App extends Component {
     this.setState({
       [event.target.name]: input
     })
-    console.log(input)
+    // console.log(input)
   }
-
 
   // ----------------------- apply changes to state ------------------------
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-    console.log()
-  }
+  // handleChange = (event) => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   })
+  //   console.log()
+  // }
   nameChange = (event) => {
     this.setState({ name: event.target.value })
   }
@@ -127,9 +131,6 @@ class App extends Component {
   }
   totalTimeChange = (event) => {
     this.setState({ totalTime: event.target.value })
-  }
-  weatherObservationChange = (event) => {
-    this.setState({ weatherObservation: event.target.value })
   }
   temperatureChange = (event) => {
     this.setState({ temperature: event.target.value })
@@ -182,8 +183,7 @@ class App extends Component {
       console.log('inside the if statement')
       this.getCurrentSites()
       this.setState({
-        stopLoop: false,
-        // sitesList: ['', 'Please select a species first']
+        stopLoop: false
       })
     }
   }
@@ -353,21 +353,9 @@ class App extends Component {
         season: '',
       })
     }
-    
+
     this.clearButtons()
   }
-
-  // // ---------------- stores single observation report in state and launches observation report page ---------- //
-
-
-  // displayFullReport = (event) => {
-  //   event.preventDefault()
-  //   console.log('preparing report')
-  //   this.setState({
-  //     observationReport: JSON.parse(event.target.value),
-  //     redirect: '/report_modal'
-  //   })
-  // }
 
   // ---------------- adds new nesting sites to lists EAGLE or PEREGRINE sites ---------------- //
 
@@ -428,11 +416,16 @@ class App extends Component {
       timeEnd: this.state.timeEnd,
       totalTime: this.state.totalTime,
       weatherObservation: this.state.weatherObservation,
-      temperature: this.state.temperature,
-      precipitation: this.state.precipitation,
-      cloudCover: this.state.cloudCover,
-      windSpeed: this.state.windSpeed,
-      relationshipStatus: this.state.relationshipStatus,
+      eagleAge: this.state.eagleAge,
+      eagleBand: this.state.eagleBand,
+      singleBird: this.state.singleBird,
+      birdPair: this.state.birdPair,
+      courtship: this.state.courtship,
+      incubating: this.state.incubating,
+      hatched: this.state.hatched,
+      nestFailure: this.state.nestFailure,
+      fledged: this.state.fledged,
+      // relationshipStatus: this.state.relationshipStatus,
       youngStatus: this.state.youngStatus,
       disturbance: this.state.disturbance,
       incubation: this.state.incubation,
@@ -462,12 +455,17 @@ class App extends Component {
       timeStart: '',
       timeEnd: '',
       totalTime: '',
-      temperature: '',
       weatherObservation: '',
-      precipitation: '',
-      cloudCover: '',
-      windSpeed: '',
-      relationshipStatus: '',
+      eagleBand: '',
+      eagleAge: '',
+      // relationshipStatus: '',
+      singleBird: '',
+      birdPair: '',
+      courtship: '',
+      incubating: '',
+      hatched: '',
+      nestFailure: '',
+      fledged: '',
       youngStatus: '',
       disturbance: '',
       incubation: '',
@@ -480,23 +478,18 @@ class App extends Component {
     })
 
     window.location.reload()
-    
-    console.log(submission)
     console.log('preparing report')
 
   }
   clearButtons = () => {
-    
+
     document.getElementById('formHorizontalRadios1').checked = false
     document.getElementById('formHorizontalRadios2').checked = false
-   
+
   }
 
-
-
-
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, weatherObservation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList } = this.state
     let { formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
 
     return (
@@ -531,7 +524,7 @@ class App extends Component {
                 handleSubmit={handleSubmit}
                 name={name} email={email} bird={bird} site={site}
                 date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
-                cloudCover={cloudCover} windSpeed={windSpeed} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+                cloudCover={cloudCover} windSpeed={windSpeed} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
                 incubation={incubation} observation={observation} comments={comments} sitesList={sitesList}
                 // passes all methods
                 formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
@@ -556,11 +549,8 @@ class App extends Component {
           </div>
         </Router>
       </div >
-
     )
   }
 }
-
-
 
 export default App
