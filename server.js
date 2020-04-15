@@ -83,9 +83,18 @@ const birdSchema = new mongoose.Schema({
     end_time: String,
     total_time: String,
     weather_observation: { type: String, require: true },
-    relationship_status: String,
-    young_status: String,
+    eagle_band: String,
+    eagle_age: String,
+    // relationship_status: String,
+    single_bird: String,
+    bird_pair: String,
+    courtship: String,
+    incubating: String,
+    hatched: String,
+    nest_failure: String,
+    fledged: String,
     disturbance: String,
+    young_status: String,
     summary: String,
     eyrie_location: String,
     number_young: String,
@@ -140,12 +149,17 @@ const handleBirdPosts = async (req, res) => {
     let end_time = req.body.timeEnd
     let total_time = req.body.totalTime
     let weather_observation = req.body.weatherObservation
-    // let temperature = req.body.temperature
-    // let precipitation = req.body.precipitation
-    // let cloud_coverage = req.body.cloudCover
-    // let wind_speed = req.body.windSpeed
-    let relationship_status = req.body.relationshipStatus
+    let eagle_band = req.body.eagleBand
+    let eagle_age = req.body.eagleAge
+    // let relationship_status = req.body.relationshipStatus
     let young_status = req.body.youngStatus
+    let single_bird = req.body.singleBird
+    let bird_pair = req.body.birdPair
+    let courtship = req.body.courtship
+    let incubating = req.body.incubating
+    let hatched = req.body.hatched
+    let nest_failure = req.body.nestFailure
+    let fledged = req.body.fledged
     let disturbance = req.body.disturbance
     let summary = req.body.ObservationSummary
     let eyrie_location = req.body.incubation
@@ -157,8 +171,6 @@ const handleBirdPosts = async (req, res) => {
 
     let post
 
-    console.log(date_visited)
-    console.log(location)
     if (bird === 'Bald Eagle') {
 
         // new EAGLE data object created from monitor data
@@ -176,11 +188,16 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation: weather_observation,
-            // let temperature = temperature
-            // let precipitation = precipitation
-            // let cloud_coverage = cloudCover
-            // let wind_speed = windSpeed
-            relationship_status: relationship_status,
+            eagle_age: eagle_age,
+            eagle_band: eagle_band,
+            // relationship_status: relationship_status,
+            single_bird: single_bird,
+            bird_pair: bird_pair,
+            courtship: courtship,
+            incubating: incubating,
+            hatched: hatched,
+            nest_failure: nest_failure,
+            fledged: fledged,
             young_status: young_status,
             disturbance: disturbance,
             summary: summary,
@@ -211,10 +228,6 @@ const handleBirdPosts = async (req, res) => {
             end_time: end_time,
             total_time: total_time,
             weather_observation, weather_observation,
-            // temperature: temperature,
-            // precipitation: precipitation,
-            // cloud_coverage: cloud_coverage,
-            // wind_speed: wind_speed,
             relationship_status: relationship_status,
             young_status: young_status,
             disturbance: disturbance,
@@ -303,9 +316,6 @@ const updateBirdPosts = async (req, res) => {
     let researcherComments = req.body.comments
     let updatedDoc
 
-    console.log(bird)
-    console.log(researcherComments)
-
     const filter = { _id: ObjectId(id) };
     const comments = { researcher_comments_1: researcherComments }
 
@@ -372,9 +382,7 @@ const getSiteList = async (req, res) => {
         currentList = await PeregrineSiteSchema.findOne(filter)
     }
 
-    let listArray = currentList.sites
-    console.log(listArray.sort())
-    console.log(currentList)
+    currentList.sites.sort()
     res.send(currentList)
 }
 
@@ -422,7 +430,6 @@ app.get('/images/:doc_id', (req, res) => {
     })
 })
 
-
 app.post('/post', handleBirdPosts)
 app.post('/display', getBirdPosts)
 app.post('/update', updateBirdPosts)
@@ -430,3 +437,177 @@ app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
 app.listen(port, () => console.log(`listening on: ${port}`))
+
+// --------------------- functions to manipulate database for setup purposes ----------------------- //
+
+// --------- set up pefa sites ---------- //
+
+const addAllSites = async () => {
+
+    let id
+    let filter
+    console.log('updating all pefa sites')
+
+    let townArray = ['Milton',
+        'West Haven',
+        'Jamaica',
+        'Barnet',
+        'Lowell',
+        'Benson',
+        'Bethel',
+        'Ira',
+        'Bolton',
+        'Bolton',
+        'Bradford',
+        'Bristol',
+        'Averill',
+        'Duxbury',
+        'Bakersfield',
+        'Barton',
+        'Bristol',
+        'Vershire',
+        'Milton',
+        'Bristol',
+        'Fairlee',
+        'Newark',
+        'Calais',
+        'Weathersfield',
+        'Pawlet',
+        'Lowell',
+        'Highgate',
+        'Westmore',
+        'Milton',
+        'Burlington',
+        'Colchester',
+        'Marshfield',
+        'Goshen/Rochester',
+        'Lowell',
+        'Westmore',
+        'Underhill',
+        'Woodbury',
+        'Hartland',
+        'Wells',
+        'Johnson',
+        'Pownal',
+        'Salisbury',
+        'Benson',
+        'Hinesburg',
+        'S.Burlington',
+        'Barre',
+        'Ryegate',
+        'Fairlee',
+        'Springfield',
+        'Cambridge',
+        'Addison',
+        'Proctor',
+        'Swanton',
+        'Manchester',
+        'Vernon',
+        'Stockbridge',
+        'Castleton',
+        'Colchester',
+        'Wallingford',
+
+    ]
+
+    let townArrayParens = townArray.map(town => {
+        town = ' (' + town + ')'
+        return town
+    })
+
+    let sitesArray = [
+        'Arrowhead',
+        'Bald Mtn.',
+        'Ball Mt. Dam',
+        'Barnet',
+        'Belvidere Mt Quarry',
+        'Benson Ledges',
+        'Bethel Quarry',
+        'Bird Mtn.',
+        'Bolton Notch (UUW)',
+        'Bone Mtn.',
+        'Bradford Cliff',
+        'Bristol Cliffs',
+        'Brousseau Mtn.',
+        'Camels Hump',
+        'Checkerberry Ledge',
+        'Crystal Lake',
+        'Deer Leap',
+        'Eagle Ledge',
+        'Eagle Mtn.',
+        'Elephant Mtn.',
+        'Fairlee Palisades',
+        'Hawk Rock',
+        'Hawkins Pond',
+        'Hawks Mt',
+        'Haystack Mtn.',
+        'Hazen\'s Notch',
+        'Highgate Cliffs',
+        'Jobs Mtn.',
+        'Lamoille River',
+        'Lone Rock Pt',
+        'Mallett’s Bay',
+        'Marshfield Mtn.',
+        'Mt. Horrid',
+        'Mt. Norris',
+        'Mt. Pisgah',
+        'Nebraska Notch',
+        'Nichols Ledge',
+        'North Hartland Dam',
+        'Pond Mtn.',
+        'Prospect Rock',
+        'Quarry Hill',
+        'Rattlesnake Pt.',
+        'Rattlesnake Ridge',
+        'Red Rock',
+        'Red Rocks Park',
+        'Rock of Ages Quarry',
+        'Ryegate Quarry',
+        'Sawyer Mtn.',
+        'Skitchewaug Mtn.',
+        'Smuggler’s Notch',
+        'Snake Mtn.',
+        'Sutherland Quarry/Proctor',
+        'Swanton Quarry',
+        'Table Rock/Mt Equinox',
+        'VT Yankee',
+        'Vulture Mt',
+        'Wallace Ledge',
+        'Whitcomb Quarry',
+        'White Rocks'
+    ]
+
+    console.log(townArrayParens.length)
+    console.log(sitesArray.length)
+
+    let i = 0
+    let combinedSite
+
+    while (i < townArrayParens.length) {
+        combinedSite = sitesArray[i] + townArrayParens[i]
+        console.log(combinedSite)
+        id = '5e94c3b903443b4d2c7f7a5d'
+        filter = { _id: ObjectId(id) }
+        await PeregrineSiteSchema.findOneAndUpdate(filter, { $push: { sites: combinedSite } }, { new: true })
+        i++
+    }
+}
+
+// addAllSites()
+
+// -------- delete repeated sites ---------- //
+
+const deleteSites = async () => {
+
+    let id = '5e94c3b903443b4d2c7f7a5d'
+    let filter = { _id: ObjectId(id) }
+    currentList = await PeregrineSiteSchema.findOne(filter)
+
+    let listArray = currentList.sites
+    let newArray = listArray.slice(0, 69)
+    console.log(newArray)
+    await PeregrineSiteSchema.findOneAndUpdate(filter, { sites: newArray }, { new: true })
+
+}
+
+// deleteSites()
