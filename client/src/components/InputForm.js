@@ -403,22 +403,22 @@ export default function InputForm(props) {
 						<Form.Label as="legend" column md={4}>Single Bird</Form.Label>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							className='button-padding'
 							value="Single Confirmed"
 							name="birdPair"
 							id="formHorizontalRadios15"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Confirmed'
 							md={6}/>
 						
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							value="Single Suspected"
 							name="birdPair"
 							id="formHorizontalRadios15a"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Suspected'
 							md={6} />
 						
@@ -427,24 +427,24 @@ export default function InputForm(props) {
 						<Form.Label as="legend" column md={4}>Territorial Pair</Form.Label>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							className='button-padding'
 							value="Pair Confirmed"
 							name="birdPair"
 							id="formHorizontalRadios16"
 							onChange={props.formChange}
-							onClick={props.checkToggle}
+							onChange={props.checkboxInput}
 							label='Confirmed'
 							md={6}
 						/>
 						<Form.Check
 							inline
-							type="radio"
-							value=" Pair Suspected"
+							type="checkbox"
+							value="Pair Suspected"
 							name="birdPair"
 							id="formHorizontalRadios16a"
 							onChange={props.formChange}
-							onClick={props.checkToggle}
+							onChange={props.checkboxInput}
 							label='Suspected'
 							md={6}
 						/>
@@ -453,22 +453,22 @@ export default function InputForm(props) {
 						<Form.Label as="legend" column md={4}>Courtship / Copulation</Form.Label>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							className='button-padding'
 							value="Confirmed"
 							name="courtship"
 							id="formHorizontalRadios17"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Confirmed'
 							md={6}
 						/>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							value="Suspected"
 							name="courtship"
 							id="formHorizontalRadios17a"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Suspected'
 							md={6}
 						/>
@@ -477,22 +477,22 @@ export default function InputForm(props) {
 						<Form.Label as="legend" column md={4}>Incubating</Form.Label>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							className='button-padding'
 							value="Confirmed"
 							name="incubating"
 							id="formHorizontalRadios18"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Confirmed'
 							md={6}
 						/>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							value="Suspected"
 							name="incubating"
 							id="formHorizontalRadios18a"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Suspected'
 							md={6}
 						/>
@@ -501,22 +501,22 @@ export default function InputForm(props) {
 						<Form.Label as="legend" column md={4}>Hatched</Form.Label>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							className='button-padding'
 							value="Confirmed"
 							name="hatched"
 							id="formHorizontalRadios19"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Confirmed'
 							md={6}
 						/>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							value="Suspected"
 							name="hatched"
 							id="formHorizontalRadios19a"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Suspected'
 							md={6}
 						/>
@@ -525,22 +525,22 @@ export default function InputForm(props) {
 						<Form.Label as="legend" column md={4}>Nest Failure</Form.Label>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							className='button-padding'
 							value="Confirmed"
 							name="nestFailure"
 							id="formHorizontalRadios20"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label="Confrimed"
 							md={6}
 						/>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							value="Suspected"
 							name="nestFailure"
 							id="formHorizontalRadios20a"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Suspected'
 							md={6}
 						/>
@@ -549,22 +549,22 @@ export default function InputForm(props) {
 						<Form.Label as="legend" column md={4}>Fledged</Form.Label>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							className='button-padding'
 							value="Confirmed"
 							name="fledged"
 							id="formHorizontalRadios21"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Confirmed'
 							md={6}
 						/>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							value="Suspected"
 							name="fledged"
 							id="formHorizontalRadios21a"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Suspected'
 							md={6}
 						/>
@@ -573,22 +573,22 @@ export default function InputForm(props) {
 						<Form.Label as="legend" column md={4}>Human Disturbance</Form.Label>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							className='button-padding'
 							value="Confirmed"
 							name="disturbance"
 							id="formHorizontalRadios22"
-							onChange={props.formChange}
+							onChange={props.checkboxInput}
 							label='Confirmed'
 							md={6}
 						/>
 						<Form.Check
 							inline
-							type="radio"
+							type="checkbox"
 							value="Suspected"
 							name="disturbance"
 							id="formHorizontalRadios22a"
-							onChange={props.formChange}
+							onChange={props.consoleLog}
 							label='Suspected'
 							md={6}
 						/>

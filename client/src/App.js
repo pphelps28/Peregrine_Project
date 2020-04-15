@@ -44,10 +44,10 @@ class App extends Component {
       eagleAge: '',
       eagleBand: '',
       // relationshipStatus: '',
-      singleBird: '',
-      birdPair: '',
-      courtship: '',
-      incubating: '',
+      singleBird: [],
+      birdPair: [],
+      courtship: [],
+      incubating: [],
       hatched: '',
       nestFailure: '',
       fledged: '',
@@ -86,6 +86,26 @@ class App extends Component {
     // console.log(input)
   }
 
+  checkboxInput= (e)=> {
+    let array = this.state[e.target.name]
+    if(e.target.checked) {
+      array.push(e.target.value)
+      this.setState({
+        [e.target.name] : array
+      })
+      
+    } else {
+      let filtered = this.state[e.target.name].filter((item=> item !== e.target.value))
+      this.setState({
+        [e.target.name] : filtered
+      })
+      
+    }
+  }
+
+  consoleLog = () => {
+    console.log(this.state.birdPair, this.state.incubating)
+  }
 
   // ----------------------- apply changes to state ------------------------
 
@@ -531,7 +551,7 @@ class App extends Component {
                 formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                 timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
                 cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
-                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} totalTimeCalculator={this.totalTimeCalculator} checkToggle={this.checkToggle}
+                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} totalTimeCalculator={this.totalTimeCalculator} checkboxInput={this.checkboxInput} consoleLog={this.consoleLog}
               />
             </Route>
 
