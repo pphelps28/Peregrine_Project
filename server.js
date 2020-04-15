@@ -49,7 +49,10 @@ const storage = new GridFsStorage({
                 const filename = buf.toString('hex') + sanitizeName
                 const fileInfo = {
                     filename: filename,
-                    bucketName: 'images' //match collection name
+                    bucketName: 'images',//match collection name,
+                    metadata: {
+                        doc_id: req.params.doc_id
+                    }
                 };
                 resolve(fileInfo);
             });
@@ -58,8 +61,9 @@ const storage = new GridFsStorage({
 })
 const upload = multer({ storage })
 
-app.post('/upload', upload.single('img'), (req, res) => {
+app.post('/upload/:doc_id', upload.single('img'), (req, res) => {
     console.log(req.file)
+    console.log(req.params.doc_id)
     console.log('uploaded!')
 })
 
@@ -124,7 +128,6 @@ const handleBirdPosts = async (req, res) => {
     console.log("received request")
 
     // data inputted by monitor
-
     let name = req.body.name
     let location = req.body.site
     let email = req.body.email
@@ -229,9 +232,14 @@ const handleBirdPosts = async (req, res) => {
 
     await post.save((err, doc) => {
         if (err) {
-            return console.log(err)
+            res.status(500)
+            res.send()
         }
-        console.log('Post Saved: ' + doc)
+        else {
+            res.status(200)
+            res.send(JSON.stringify(doc._id))
+            console.log('Post Saved: ' + doc)
+        }
     })
 }
 
@@ -391,13 +399,15 @@ const getReport = async (req, res) => {
     res.send(report)
 }
 //trying to render images
-app.get('/images/:id', (req, res) => {
-    gfs.files.findOne({ filename: req.params.id }, (err, file) => {
+app.get('/images/:doc_id', (req, res) => {
+    console.log(req.params.doc_id)
+    gfs.files.findOne({ "metadata.doc_id": req.params.doc_id }, (err, file) => {
         if (!file || file.length === 0) {
             return res.status(404).json({
                 err: 'No file exist'
             })
         }
+        console.log('file: ' + file)
         //Check if image
         if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
             console.log(file)

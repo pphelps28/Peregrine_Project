@@ -18,10 +18,6 @@
 	margin: 10%;
 }
 
-.form {
-	padding-bottom: 50%;
-}
-
 #toggle-button {
 	position: fixed;
 	top: 0;
@@ -126,6 +122,17 @@
 
 .report_page {
 	padding-top: 2rem;
+}
+
+#image-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+#report-image {
+	width: 250px;
+	border-radius: 5%
 }
 
 #navbar-display-and-user {

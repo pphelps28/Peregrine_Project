@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import CsvDownload from 'react-json-to-csv'
-import TestImage from './TestImage'
+import ReportImage from './ReportImage'
 
 class ReportModal extends Component {
     constructor(props) {
@@ -74,7 +74,7 @@ class ReportModal extends Component {
 
         return (
             <div className='report_page' >
-                <TestImage />
+                <ReportImage id={this.state.data._id} />
                 <table className="table table-striped">
                     <thead>
                         <tr>

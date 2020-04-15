@@ -21,7 +21,7 @@ export default function Display(props) {
         <div className="container report_page" >
             <div>
                 <Form>
-                <h3 className="title">Here you can add a nesting site or read an observation report</h3>
+                    <h3 className="title">Here you can add a nesting site or read an observation report</h3>
                     {/* -----------------------Bird Observed Radio -------------------*/}
                     <Form.Group as={Col}>
                         <Form.Label as="legend" column sm={10}>
@@ -97,23 +97,9 @@ export default function Display(props) {
 
 
             </div>
-            {/* <div>
-                {/* CSV download react component button */}
-            {/* <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary" />
-            </div>  */}
-            {/* //ternary operator that will iterate through each entry using a key */}
             {props.displayContent ? props.displayContent.map(data => (
                 <div>
-                    {/* <div><strong>{bird} Monitor Observation report(s)</strong></div> */}
                     <table className="table table-striped">
-                        {/* <thead>
-                        <tr>
-                            <th scope="col">Season</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Date Observed</th>
-                            <th scope="col">See Full Report</th>
-                        </tr>
-                    </thead> */}
                         <tbody>
 
                             <tr key={data._id}>

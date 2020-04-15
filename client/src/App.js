@@ -10,7 +10,7 @@ import Display from './components/Display.js'
 import firebase from 'firebase'
 import FormData from 'form-data'
 import ReportModal from './components/ReportModal'
-import TestImage from './components/TestImage'
+import ReportImage from './components/ReportImage'
 
 //firebase => .env
 const firebaseConfig = {
@@ -179,7 +179,7 @@ class App extends Component {
       const fd = new FormData()
       fd.append('img', this.state.image, this.state.image.name)
       console.log(this.state.image)
-      fetch(('/upload'), {
+      fetch((`/upload/${this.state.doc_id}`), {
         method: "POST",
         'Content-Type': 'multipart/form-data',
         body: fd
@@ -467,36 +467,49 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(submission)
+    }).then(res => {
+      if (res.status !== 200) {
+        console.log('error')
+      } else {
+        return res.json()
+      }
+    }).then(jsonObj => {
+      this.setState({
+        doc_id: jsonObj
+      })
+      console.log(jsonObj)
+    }).then(() => {
+      this.imageSubmit()
     })
-    this.setState({
-      name: '',
-      email: '',
-      bird: '',
-      site: '',
-      date_observed: new Date(),
-      mileage: '',
-      travel: '',
-      timeStart: '',
-      timeEnd: '',
-      totalTime: '',
-      temperature: '',
-      weatherObservation: '',
-      precipitation: '',
-      cloudCover: '',
-      windSpeed: '',
-      relationshipStatus: '',
-      youngStatus: '',
-      disturbance: '',
-      incubation: '',
-      young: '',
-      youngAge: '',
-      image: '',
-      observation: '',
-      comments: '',
-      image: ''
-    })
+    // this.setState({
+    //   name: '',
+    //   email: '',
+    //   bird: '',
+    //   site: '',
+    //   date_observed: new Date(),
+    //   mileage: '',
+    //   travel: '',
+    //   timeStart: '',
+    //   timeEnd: '',
+    //   totalTime: '',
+    //   temperature: '',
+    //   weatherObservation: '',
+    //   precipitation: '',
+    //   cloudCover: '',
+    //   windSpeed: '',
+    //   relationshipStatus: '',
+    //   youngStatus: '',
+    //   disturbance: '',
+    //   incubation: '',
+    //   young: '',
+    //   youngAge: '',
+    //   image: '',
+    //   observation: '',
+    //   comments: '',
+    //   image: ''
+    // })
 
-    window.location.reload()
+    //window.location.reload()
 
     console.log(submission)
     console.log('preparing report')
@@ -515,7 +528,7 @@ class App extends Component {
 
     return (
       <div>
-        <TestImage />
+        <ReportImage />
         <Router>
           <NavBar
             email={this.state.email}
