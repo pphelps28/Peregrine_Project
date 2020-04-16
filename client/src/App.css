@@ -177,3 +177,9 @@
 	margin-top: 2rem;
 	
 }
+
+.required{
+	color: red;
+	font-style: italic;
+	font-variant: small-caps
+}

@@ -66,7 +66,9 @@ export default function InputForm(props) {
 				</Form.Group>
 				{/*------------------------- Location Site Name ------------------------*/}
 				<Form.Group controlId="exampleForm.SelectCustom">
-					<Form.Label>Select Site:</Form.Label>
+					<div className="label-button-container">
+						<Form.Label>Select Site:</Form.Label><span className="required">*Required</span>
+					</div>
 					<Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
 						{props.sitesList.map(site => (
 							<option>{site}</option>
@@ -75,7 +77,9 @@ export default function InputForm(props) {
 				</Form.Group>
 				{/*-------------------------- Date Observed -------------------------------*/}
 				<div className="form-group">
-					<label>Date: </label>
+					<div className="label-button-container">
+						<label>Date: </label><span className="required">*Required</span>
+					</div>
 					<div>
 						<DatePicker maxDate={new Date()} className='input' title='Date Observed' selected={props.date_observed} onSelect={props.dateChange} />
 					</div>
@@ -181,7 +185,7 @@ export default function InputForm(props) {
 						</Form.Label>
 						<Col sm={10}>
 
-							<Form.Row>								
+							<Form.Row>
 								<Form.Check
 									inline
 									type="radio"
@@ -573,7 +577,9 @@ export default function InputForm(props) {
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
-					<label>Species Specific Observations - Include Time of Observation: </label>
+					<div className="label-button-container">
+						<label>Species Specific Observations - Include Time of Observation: </label><span className="required">*Required</span>
+					</div>
 					<textarea
 						type="text"
 						required
