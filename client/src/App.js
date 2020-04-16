@@ -43,17 +43,20 @@ class App extends Component {
       timeEnd: '',
       totalTime: '',
       weatherObservation: '',
-      temperature: '',
-      precipitation: '',
-      cloudCover: '',
-      windSpeed: '',
-      relationshipStatus: '',
+      singleBird: '',
+      birdPair: '',
+      courtship: '',
+      incubating: '',
+      hatched: '',
+      nestFailure: '',
+      fledged: '',
       youngStatus: '',
       disturbance: '',
       incubation: '',
       young: '',
       youngAge: '',
       image: null,
+      caption: '',
       observation: '',
       comments: '',
       nestingSite: '',
@@ -63,7 +66,6 @@ class App extends Component {
       displayContent: [],
       observationReport: {},
       loggedIn: false,
-      email: '',
       password: '',
       display: '',
       displayColor: '',
@@ -428,6 +430,19 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
+    if(!this.state.site) {
+      alert('Please select the nesting site you visited.')
+    }
+
+    if(!this.state.date_observed) {
+      alert('Please provide the date of your observation.')
+    }
+
+    if(!this.state.observation) {
+      alert('Please provide some information about your visit, even if you did not see any species activity.')
+    }
+    
     let submission = {
       name: this.state.name,
       email: this.state.email,
@@ -440,11 +455,13 @@ class App extends Component {
       timeEnd: this.state.timeEnd,
       totalTime: this.state.totalTime,
       weatherObservation: this.state.weatherObservation,
-      temperature: this.state.temperature,
-      precipitation: this.state.precipitation,
-      cloudCover: this.state.cloudCover,
-      windSpeed: this.state.windSpeed,
-      relationshipStatus: this.state.relationshipStatus,
+      singleBird: this.state.singleBird,
+      bird_pair: this.state.birdPair,
+      courtship: this.state.courtship,
+      incubating: this.state.incubating,
+      hatched: this.state.hatched,
+      nest_failure: this.state.nestFailure,
+      fledged: this.state.fledged,
       youngStatus: this.state.youngStatus,
       disturbance: this.state.disturbance,
       incubation: this.state.incubation,
@@ -486,12 +503,14 @@ class App extends Component {
         timeStart: '',
         timeEnd: '',
         totalTime: '',
-        temperature: '',
         weatherObservation: '',
-        precipitation: '',
-        cloudCover: '',
-        windSpeed: '',
-        relationshipStatus: '',
+        singleBird: '',
+        birdPair: '',
+        courtship: '',
+        incubating: '',
+        hatched: '',
+        nestFailure: '',
+        fledged: '',
         youngStatus: '',
         disturbance: '',
         incubation: '',
@@ -500,9 +519,14 @@ class App extends Component {
         image: '',
         observation: '',
         comments: '',
-        image: ''
       })
     })
+<<<<<<< HEAD
+=======
+
+    // window.location.reload()
+
+>>>>>>> d48c9372d72b74e656bc8a866050693fd8c7f3c0
     console.log(submission)
     console.log('preparing report')
 
@@ -515,8 +539,8 @@ class App extends Component {
   }
 
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, temperature, precipitation, cloudCover, windSpeed, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList, weatherObservation } = this.state
-    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, singleBird, birdPair, courtship, incubating, hatched, nestFailure, fledged, caption, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList, weatherObservation } = this.state
+    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite, totalTimeCalculator } = this
 
     return (
       <div>
@@ -531,7 +555,6 @@ class App extends Component {
             modalShow={this.state.modalShow}
             userModalShow={this.state.userModalShow}
             // methods
-            toggleInput={toggleInput}
             setUserModalShow={this.setUserModalShow}
             setModalShow={this.setModalShow}
             emailChange={this.emailChange}
@@ -548,14 +571,13 @@ class App extends Component {
               <InputForm
                 handleSubmit={handleSubmit} imageChange={imageChange} imageSubmit={imageSubmit}
                 name={name} email={email} bird={bird} site={site}
-                date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} temperature={temperature} precipitation={precipitation}
-                cloudCover={cloudCover} windSpeed={windSpeed} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+                date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} singleBird={singleBird} birdPair={birdPair} courtship={courtship} incubating={incubating} hatched={hatched} nestFailure={nestFailure} fledged={fledged} caption={caption} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
                 incubation={incubation} observation={observation} comments={comments} sitesList={sitesList}
                 // passes all methods
                 formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                 timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
                 cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
-                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} totalTimeCalculator={this.totalTimeCalculator}
+                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} totalTimeCalculator={totalTimeCalculator}
               />
             </Route>
 

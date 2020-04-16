@@ -84,7 +84,7 @@
 
 .link {
 	color: white;
-	padding-right: 20px;
+	padding: 8px 0px;
 }
 
 .link:hover {
@@ -136,10 +136,12 @@
 	width: 250px;
 	border-radius: 5%
 }
-
-#navbar-display-and-user {
-	display: flex;
+@media only screen and (min-width: 450px) {
+	#navbar-display-and-user {
+		display: flex;
+	}
 }
+
 
 .label {
 	padding-right: 30rem
@@ -155,4 +157,31 @@
 
 .italic {
 	font-style: italic
+}
+
+#image-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 2rem
+}
+
+.label-button-container{
+	display: flex;
+	justify-content: space-between;
+}
+
+#site-add{
+	margin-top: 1.5rem
+}
+
+.padding-top{
+	margin-top: 2rem;
+	
+}
+
+.required{
+	color: red;
+	font-style: italic;
+	font-variant: small-caps
 }

@@ -8,9 +8,9 @@ class UserModal extends Component {
     render() {
         return (
             <>
-                <div className="link" variant="primary" onClick={this.props.setUserModalShow}>
+                <span className="link" variant="primary" onClick={this.props.setUserModalShow}>
                     Settings
-      </div>
+                </span>
                 <Modal
                     show={this.props.userModalShow}
                     onHide={this.props.setUserModalShow}
