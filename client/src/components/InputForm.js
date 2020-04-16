@@ -39,7 +39,7 @@ export default function InputForm(props) {
 				</div>
 				{/* -----------------------Bird Observed Radio -------------------*/}
 				<Form.Group as={Col}>
-				
+
 					<Form.Label as="legend" column sm={10}>
 						Please select the species you observed.
 					</Form.Label>
@@ -110,7 +110,7 @@ export default function InputForm(props) {
 					<br></br>
 					<TimePicker amPmAriaLabel disableClock={true} clearIcon selected={props.timeStart} onChange={props.timeStartChange} />
 				</div>
-				
+
 				{/* -------------------------------------- Observation End Time -------------------------- */}
 				<div className="form-group">
 					<label>End Time of Observation:</label>
@@ -145,7 +145,7 @@ export default function InputForm(props) {
 						rows="6"
 					/>
 				</div>
-				
+
 				{/* ---------------------------------Observation Summary ----------------------- */}
 				{/* ---------------------------------Eagle Specific Fields ----------------------- */}
 				{(props.bird === 'Bald Eagle') ?
@@ -177,33 +177,15 @@ export default function InputForm(props) {
 						</Col>
 						{/* Age groups based on info from Margaret Fowle head of Audubon Peregrine/Eagle monitoring program */}
 						<Form.Label as="legend" column sm={10}>
-							Approximate age(s):
+							Approximate ages (if there is a pair):
 						</Form.Label>
 						<Col sm={10}>
 
-							<Form.Row>
+							<Form.Row>								
 								<Form.Check
 									inline
 									type="radio"
-									label="Hatchling (0-2 months)"
-									value="Hatchling"
-									name="eagleAge"
-									id="eagleData3"
-									onChange={props.formChange}
-								/>
-								<Form.Check
-									inline
-									type="radio"
-									label="Fledgling (2-4 months)"
-									value="Fledgling"
-									name="eagleAge"
-									id="eagleData4"
-									onChange={props.formChange}
-								/>
-								<Form.Check
-									inline
-									type="radio"
-									label="Juvenile (1-3 years)"
+									label="Juvenile (brown head feathers)"
 									value="Juvenile"
 									name="eagleAge"
 									id="eagleData5"
@@ -212,7 +194,16 @@ export default function InputForm(props) {
 								<Form.Check
 									inline
 									type="radio"
-									label="Adult (4+ years)"
+									label="Sub Adult (dirty white head)"
+									value="Sub Adult"
+									name="eagleAge"
+									id="eagleData4"
+									onChange={props.formChange}
+								/>
+								<Form.Check
+									inline
+									type="radio"
+									label="Adult (full white head)"
 									value="Adult"
 									name="eagleAge"
 									id="eagleData6"
@@ -227,7 +218,7 @@ export default function InputForm(props) {
 				</div>
 				<Form.Group as={Col}>
 
-					
+
 					<Form.Row>
 						<Form.Label as="legend" column md={12} lg={2}>Single Bird</Form.Label>
 						<Form.Check
@@ -517,7 +508,7 @@ export default function InputForm(props) {
 						/>
 					</Form.Row>
 				</Form.Group>
-				
+
 				{/* -----------------------------Incubation -------------------------- */}
 				<div className="form-group">
 					<label>If incubation was confirmed, where is the location of the eyrie? </label>
@@ -555,9 +546,9 @@ export default function InputForm(props) {
 					/>
 				</div>
 
-				{/* -------------------image upload -------------------- */}
+				{/* -------------------image upload and caption -------------------- */}
 				<div id="image-upload">
-					<label for="img">Upload image. Please write a brief caption to explain why you chose this image:</label>
+					<label for="img">Upload image</label>
 					<input
 						style={{ margin: '5px' }}
 						onChange={props.imageChange}
@@ -565,6 +556,18 @@ export default function InputForm(props) {
 						id="img"
 						name="img"
 						accept="image/*"
+					/>
+				</div>
+				<div className="form-group">
+					<label>Please write a brief caption to explain why you chose this image:</label>
+					<textarea
+						type="text"
+						required
+						className="form-control"
+						name="caption"
+						value={props.caption}
+						onChange={props.formChange}
+						rows="1"
 					/>
 				</div>
 

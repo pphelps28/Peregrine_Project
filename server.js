@@ -101,7 +101,8 @@ const birdSchema = new mongoose.Schema({
     observations: String,
     remarks: String,
     researcher_comments_1: String,
-    image: { data: Buffer, contentType: String }
+    image: { data: Buffer, contentType: String },
+    caption: String
 
 })
 
@@ -167,6 +168,7 @@ const handleBirdPosts = async (req, res) => {
     let observations = req.body.observation
     let remarks = req.body.comments
     let image = req.body.image
+    let caption = req.body.caption
 
     let post
 
@@ -205,7 +207,8 @@ const handleBirdPosts = async (req, res) => {
             young_age: young_age,
             observations: observations,
             remarks: remarks,
-            image: image
+            image: image,
+            caption: caption
         })
 
     } else {
@@ -243,7 +246,8 @@ const handleBirdPosts = async (req, res) => {
             young_age: young_age,
             observations: observations,
             remarks: remarks,
-            image: image
+            image: image,
+            caption: caption
         })
     }
 

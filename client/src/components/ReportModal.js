@@ -69,7 +69,10 @@ class ReportModal extends Component {
 
         return (
             <div className='report_page' >
-                <ReportImage id={this.state.data._id} />
+                <div id='image-container'>
+                    <ReportImage id={this.state.data._id} />
+                    <div>{data.caption}</div>
+                </div>
                 <table className="table table-striped">
                     <thead>
                         <tr>

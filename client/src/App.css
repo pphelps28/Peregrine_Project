@@ -156,3 +156,24 @@
 .italic {
 	font-style: italic
 }
+
+#image-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 2rem
+}
+
+.label-button-container{
+	display: flex;
+	justify-content: space-between;
+}
+
+#site-add{
+	margin-top: 1.5rem
+}
+
+.padding-top{
+	margin-top: 2rem;
+	
+}
