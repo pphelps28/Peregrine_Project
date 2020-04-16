@@ -27,7 +27,6 @@ export default function Display(props) {
             <div className="container report_page" >
                 <div>
                     <Form>
-                        {/* <h3 className="title">Search and Retrieve Observation Reports</h3>  */}
                         {/* -----------------------Bird Observed Radio -------------------*/}
                         <Form.Group as={Col}>
                             <Form.Label as="legend" column sm={10}>
@@ -99,7 +98,8 @@ export default function Display(props) {
 
                         </Form.Group>
                         <input type="submit" value="Search" className="btn btn-primary spaced" onClick={props.searchDataBase} />
-                        {/* CSV download react component button */}
+                        
+                            {/* --------------------CSV download react component button, enables report to be downloaded as CSV--------------- */}
                         <CsvDownload data={props.displayContent} filename="birdData.csv" className="btn btn-primary spaced" />
                     </Form>
                 </div>

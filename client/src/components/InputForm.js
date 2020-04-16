@@ -110,17 +110,7 @@ export default function InputForm(props) {
 					<br></br>
 					<TimePicker amPmAriaLabel disableClock={true} clearIcon selected={props.timeStart} onChange={props.timeStartChange} />
 				</div>
-				{/* <div className="form-group">
-					<label>Observation Start Time: </label>
-					<div>
-						<DatePicker
-							selected={props.timeStart}
-							onChange={props.timeStartChange}
-							showTimeSelect
-							dateFormat="Pp"
-						/>
-					</div>
-				</div> */}
+				
 				{/* -------------------------------------- Observation End Time -------------------------- */}
 				<div className="form-group">
 					<label>End Time of Observation:</label>
@@ -128,17 +118,6 @@ export default function InputForm(props) {
 					<TimePicker amPmAriaLabel disableClock={true} clearIcon selected={props.timeEnd} onChange={props.timeEndChange} />
 				</div>
 
-				{/* <div className="form-group">
-					<label>Observation End Time: </label>
-					<div>
-						<DatePicker
-							selected={props.timeEnd}
-							onChange={props.timeEndChange}
-							showTimeSelect
-							dateFormat="Pp"
-						/>
-					</div>
-				</div> */}
 				{/* ----------------------------------- Total Observation Time --------------------------- */}
 				<div className="form-group">
 					<label>Total Observation Time: </label>
@@ -148,7 +127,6 @@ export default function InputForm(props) {
 						className="form-control"
 						name="totalTime"
 						onFocus={props.totalTimeCalculator}
-						// onClick={props.totalTimeCalculator}
 						value={props.totalTime}
 						onChange={props.formChange}
 					/>
@@ -576,9 +554,10 @@ export default function InputForm(props) {
 						onChange={props.formChange}
 					/>
 				</div>
+
 				{/* -------------------image upload -------------------- */}
 				<div id="image-upload">
-					<label for="img">Upload image:</label>
+					<label for="img">Upload image. Please write a brief caption to explain why you chose this image:</label>
 					<input
 						style={{ margin: '5px' }}
 						onChange={props.imageChange}
@@ -591,7 +570,7 @@ export default function InputForm(props) {
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
-					<label>Recorded Observations (include time of observation): </label>
+					<label>Species Specific Observations - Include Time of Observation: </label>
 					<textarea
 						type="text"
 						required
@@ -604,7 +583,7 @@ export default function InputForm(props) {
 				</div>
 				{/* ---------------------Remarks Comments --------------------------*/}
 				<div className="form-group">
-					<label>Remarks/Comments: </label>
+					<label>General Observations (other species in area, etc.) </label>
 					<textarea
 						type="text"
 						required

@@ -18,5 +18,5 @@ class ReportImage extends Component {
         )
     }
 }
-console.log(e.target.onerror)
+
 export default ReportImage
