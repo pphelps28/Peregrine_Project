@@ -85,7 +85,6 @@ const birdSchema = new mongoose.Schema({
     weather_observation: { type: String, require: true },
     eagle_band: String,
     eagle_age: String,
-    // relationship_status: String,
     single_bird: String,
     bird_pair: String,
     courtship: String,

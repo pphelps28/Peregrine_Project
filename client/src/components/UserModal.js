@@ -9,7 +9,7 @@ class UserModal extends Component {
         return (
             <>
                 <div className="link" variant="primary" onClick={this.props.setUserModalShow}>
-                    User Settings
+                    Settings
       </div>
                 <Modal
                     show={this.props.userModalShow}
@@ -20,7 +20,7 @@ class UserModal extends Component {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            User Settings
+                            Settings
           </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
