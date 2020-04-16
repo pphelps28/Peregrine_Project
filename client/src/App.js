@@ -431,6 +431,19 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
+    if(!this.state.site) {
+      alert('Please select the nesting site you visited.')
+    }
+
+    if(!this.state.date_observed) {
+      alert('Please provide the date of your observation.')
+    }
+
+    if(!this.state.observation) {
+      alert('Please provide some information about your visit, even if you did not see any species activity.')
+    }
+    
     let submission = {
       name: this.state.name,
       email: this.state.email,
@@ -511,7 +524,7 @@ class App extends Component {
       })
     })
 
-    window.location.reload()
+    // window.location.reload()
 
     console.log(submission)
     console.log('preparing report')
