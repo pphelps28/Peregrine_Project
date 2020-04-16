@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import CsvDownload from 'react-json-to-csv'
+import ReportImage from './ReportImage'
 
 class ReportModal extends Component {
     constructor(props) {
@@ -15,15 +16,10 @@ class ReportModal extends Component {
         let bird = this.props.match.params.bird
         let _id = this.props.match.params._id
 
-        console.log(bird)
-
         // gets report info from database using id
 
         axios.get('/reportModal/' + bird + '/' + _id)
             .then(response => {
-                console.log('retrieved report request')
-                console.log(response.data)
-
                 this.setState({
                     data: response.data
                 })
@@ -73,6 +69,7 @@ class ReportModal extends Component {
 
         return (
             <div className='report_page' >
+                <ReportImage id={this.state.data._id} />
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -125,19 +122,43 @@ class ReportModal extends Component {
                             <th scope="column">Weather observations</th>
                             <td>{data.weather_observation}</td>
                         </tr>
-                        {(data.bird === 'Bald Eagle') ?                        
-                        <tr>
-                            <th scope="column">Banded</th>
-                            <td>{data.eagle_band}</td>
-                        </tr>: null}
                         {(data.bird === 'Bald Eagle') ?
+                            <tr>
+                                <th scope="column">Banded</th>
+                                <td>{data.eagle_band}</td>
+                            </tr> : null}
+                        {(data.bird === 'Bald Eagle') ?
+                            <tr>
+                                <th scope="column">Approximate age(s)</th>
+                                <td>{data.eagle_age}</td>
+                            </tr> : null}
                         <tr>
-                            <th scope="column">Approximate age(s)</th>
-                            <td>{data.eagle_age}</td>
-                        </tr>: null}
+                            <th scope="column">Single Bird</th>
+                            <td>{data.single_bird}</td>
+                        </tr>
                         <tr>
-                            <th scope="column">Relationship Status</th>
-                            <td>{data.relationship_status}</td>
+                            <th scope="column">Territorial Pair</th>
+                            <td>{data.bird_pair}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Courtship</th>
+                            <td>{data.courtship}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Incubating</th>
+                            <td>{data.incubating}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Hatched</th>
+                            <td>{data.hatched}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Nest Failure</th>
+                            <td>{data.nest_failure}</td>
+                        </tr>
+                        <tr>
+                            <th scope="column">Fledged</th>
+                            <td>{data.fledged}</td>
                         </tr>
                         <tr>
                             <th scope="column">Nesting Status</th>

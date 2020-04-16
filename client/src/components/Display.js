@@ -21,6 +21,7 @@ export default function Display(props) {
     }
 
     return (
+
         <div>
 
             <div className="container report_page" >
@@ -110,19 +111,21 @@ export default function Display(props) {
                           
                             <tbody>
 
-                                <tr key={data._id}>
-                                    <th scope="column" >{data.season}</th>
-                                    <td >{data.location}</td>
-                                    <td >{data.date_visited}</td>
-                                    <td>
-                                        <Link to={`/report_modal/${data.bird}/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
-                                    </td>
-                                </tr>
 
-                            </tbody>
-                        </table>
-                    </div>)) : <em>Loading...</em>}
-            </div >
-        </div>
+                                    <tr key={data._id}>
+                                        <th scope="column" >{data.season}</th>
+                                        <td >{data.location}</td>
+                                        <td >{data.date_visited}</td>
+                                        <td>
+                                            <Link to={`/report_modal/${data.bird}/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>)) : <em>Loading...</em>}
+                </div >
+            </div>
+            : <div id="login-message">Log in to see this page</div>
     )
 }

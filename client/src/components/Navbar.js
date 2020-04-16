@@ -15,7 +15,7 @@ class NavBar extends Component {
 					<Navbar.Brand><Link to='/' className='link'><img className='brandImage' src='../../img/Audubon_H_WHT_VT.png' alt="logo with and egret and the word Audubon rendered in white"></img></Link></Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="mr-auto">
+					<Nav className="mr-auto" collapseOnSelect={true}>
 						<Nav.Link ><Link to='/' className='link' onClick={this.props.toggleInput}>Observation Form</Link></Nav.Link>
 						<Nav.Link>
 							{!this.props.loggedIn ?
