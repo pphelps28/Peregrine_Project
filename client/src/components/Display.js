@@ -37,7 +37,7 @@ export default function Display(props) {
                                         type="radio"
                                         label="Bald Eagle"
                                         value="Bald Eagle"
-                                        name="birds"
+                                        name="bird"
                                         id="formHorizontalRadios1"
                                         className='radioButton'
                                         onChange={props.birdChange}
@@ -46,7 +46,7 @@ export default function Display(props) {
                                         type="radio"
                                         label="Peregrine Falcon"
                                         value="Peregrine Falcon"
-                                        name="birds"
+                                        name="bird"
                                         id="formHorizontalRadios2"
                                         className='radioButton'
                                         onChange={props.birdChange}

@@ -66,7 +66,6 @@ class App extends Component {
       displayContent: [],
       observationReport: {},
       loggedIn: false,
-      email: '',
       password: '',
       display: '',
       displayColor: '',
@@ -520,7 +519,6 @@ class App extends Component {
         image: '',
         observation: '',
         comments: '',
-        image: ''
       })
     })
 
@@ -539,7 +537,7 @@ class App extends Component {
 
   render() {
     let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, singleBird, birdPair, courtship, incubating, hatched, nestFailure, fledged, caption, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList, weatherObservation } = this.state
-    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite } = this
+    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite, totalTimeCalculator } = this
 
     return (
       <div>
@@ -577,7 +575,7 @@ class App extends Component {
                 formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}
                 timeStartChange={timeStartChange} timeEndChange={timeEndChange} totalTimeChange={totalTimeChange} temperatureChange={temperatureChange} precipitationChange={precipitationChange}
                 cloudCoverChange={cloudCoverChange} windSpeedChange={windSpeedChange} observationChange={observationChange} relationshipStatusChange={relationshipStatusChange} youngStatusChange={youngStatusChange} disturbanceChange={disturbanceChange}
-                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} handleSubmit={handleSubmit} totalTimeCalculator={this.totalTimeCalculator}
+                youngChange={youngChange} youngAgeChange={youngAgeChange} incubationChange={incubationChange} commentsChange={commentsChange} totalTimeCalculator={totalTimeCalculator}
               />
             </Route>
 
