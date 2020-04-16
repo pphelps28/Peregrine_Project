@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav} from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import ModalLogIn from './ModalLogIn.js';
 import UserModal from './UserModal.js'
 
@@ -16,10 +17,10 @@ class NavBar extends Component {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto" collapseOnSelect={true}>
-						<Nav.Link ><Link to='/' className='link' onClick={this.props.toggleInput}>Observation Form</Link></Nav.Link>
-						<Nav.Link>
-							{!this.props.loggedIn ?
-								<ModalLogIn
+						<LinkContainer to='/' className='link' ><Nav.Link>Observation Form</Nav.Link></LinkContainer>
+						
+						{!this.props.loggedIn ?
+								<Nav.Link><ModalLogIn
 									// props
 									email={this.props.email}
 									password={this.props.password}
@@ -36,10 +37,11 @@ class NavBar extends Component {
 									logOut={this.props.logOut}
 									forgotPasswordAtLogIn={this.props.forgotPasswordAtLogIn}
 									changeEmail={this.props.changeEmail}
-								/> : <div id="navbar-display-and-user">
+								/> </Nav.Link>
+								: <div id="navbar-display-and-user">
 
-									<Link to="/display" className='link' >View Reports</Link>
-									<UserModal
+									<LinkContainer to="/display" className='link' ><Nav.Link>View Reports</Nav.Link></LinkContainer>
+									<Nav.Link><UserModal
 										//props
 										display={this.props.display}
 										displayColor={this.props.displayColor}
@@ -51,8 +53,8 @@ class NavBar extends Component {
 										logOut={this.props.logOut}
 										resetPassword={this.props.resetPassword}
 										changeEmail={this.props.changeEmail} />
+									</Nav.Link>
 								</div>}
-						</Nav.Link>
 					</Nav>
 					</Navbar.Collapse>
 				</Navbar>
