@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Modal, Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 class UserModal extends Component {
     constructor(props) {
@@ -8,9 +9,9 @@ class UserModal extends Component {
     render() {
         return (
             <>
-                <div className="link" variant="primary" onClick={this.props.setUserModalShow}>
+                <a href='/' className="link" variant="primary" onClick={this.props.setUserModalShow}>
                     Settings
-      </div>
+                </a>
                 <Modal
                     show={this.props.userModalShow}
                     onHide={this.props.setUserModalShow}

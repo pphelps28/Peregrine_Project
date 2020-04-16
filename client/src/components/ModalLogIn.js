@@ -9,9 +9,9 @@ class ModalLogIn extends Component {
   render() {
     return (
       <>
-        <div className="link" variant="primary" onClick={this.props.setModalShow}>
+        <a href='/' className="link" variant="primary" onClick={this.props.setModalShow}>
           Log In
-      </div>
+      </a>
         <Modal
           show={this.props.modalShow}
           onHide={this.props.setModalShow}

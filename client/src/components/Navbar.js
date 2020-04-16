@@ -20,7 +20,8 @@ class NavBar extends Component {
 						<LinkContainer to='/' className='link' ><Nav.Link>Observation Form</Nav.Link></LinkContainer>
 						
 						{!this.props.loggedIn ?
-								<Nav.Link><ModalLogIn
+								<Nav.Link>
+									<ModalLogIn
 									// props
 									email={this.props.email}
 									password={this.props.password}
@@ -41,7 +42,8 @@ class NavBar extends Component {
 								: <div id="navbar-display-and-user">
 
 									<LinkContainer to="/display" className='link' ><Nav.Link>View Reports</Nav.Link></LinkContainer>
-									<Nav.Link><UserModal
+									<Nav.Link>
+										<UserModal
 										//props
 										display={this.props.display}
 										displayColor={this.props.displayColor}

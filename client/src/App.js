@@ -537,7 +537,7 @@ class App extends Component {
 
   render() {
     let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, singleBird, birdPair, courtship, incubating, hatched, nestFailure, fledged, caption, young, youngAge, incubation, observation, comments, relationshipStatus, youngStatus, disturbance, displayContent, redirect, sitesList, weatherObservation } = this.state
-    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, toggleInput, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite, totalTimeCalculator } = this
+    let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite, totalTimeCalculator } = this
 
     return (
       <div>
@@ -552,7 +552,6 @@ class App extends Component {
             modalShow={this.state.modalShow}
             userModalShow={this.state.userModalShow}
             // methods
-            toggleInput={toggleInput}
             setUserModalShow={this.setUserModalShow}
             setModalShow={this.setModalShow}
             emailChange={this.emailChange}

@@ -552,7 +552,7 @@ export default function InputForm(props) {
 
 				{/* -------------------image upload and caption -------------------- */}
 				<div id="image-upload">
-					<label for="img">Upload image</label>
+					<label htmlFor="img">Upload image</label>
 					<input
 						style={{ margin: '5px' }}
 						onChange={props.imageChange}
@@ -563,7 +563,7 @@ export default function InputForm(props) {
 					/>
 				</div>
 				<div className="form-group">
-					<label>Please write a brief caption to explain why you chose this image:</label>
+					<label htmlFor="caption">Please write a brief caption to explain why you chose this image:</label>
 					<textarea
 						type="text"
 						required
