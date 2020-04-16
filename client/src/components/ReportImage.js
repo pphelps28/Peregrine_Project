@@ -13,7 +13,7 @@ class ReportImage extends Component {
     render() {
         return (
             <div id="image-wrapper">
-                <img id="report-image" src={`/images/${this.props.id}`} onError={this.handleNoImage} alt="image" />
+                <img id="report-image" src={`/images/${this.props.id}`} onError={this.handleNoImage} alt="monitor report" />
             </div>
         )
     }

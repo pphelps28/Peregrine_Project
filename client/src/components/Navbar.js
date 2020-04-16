@@ -12,11 +12,11 @@ class NavBar extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar fixed="top" bg="dark" variant="dark" className='navContainer' expand='md'>
+				<Navbar fixed="top" bg="dark" variant="dark" className='navContainer' expand='md' collapseOnSelect="true">
 					<Navbar.Brand><Link to='/' className='link'><img className='brandImage' src='../../img/Audubon_H_WHT_VT.png' alt="logo with and egret and the word Audubon rendered in white"></img></Link></Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="mr-auto" collapseOnSelect={true}>
+					<Nav className="mr-auto" >
 						<LinkContainer to='/' className='link' ><Nav.Link>Observation Form</Nav.Link></LinkContainer>
 						
 						{!this.props.loggedIn ?

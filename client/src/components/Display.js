@@ -87,8 +87,8 @@ export default function Display(props) {
                             <Form.Group controlId="exampleForm.SelectCustom">
                                 <Form.Label>Please select a nesting site (leave blank to retrieve all reports):</Form.Label>
                                 <Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
-                                    {props.sitesList.map(site => (
-                                        <option >{site}</option>
+                                    {props.sitesList.map((site, index) => (
+                                        <option key={index} >{site}</option>
                                     ))}
                                 </Form.Control>
                             </Form.Group>
