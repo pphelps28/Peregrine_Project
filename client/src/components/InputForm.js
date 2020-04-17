@@ -604,7 +604,7 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* --------------------------Submit-------------------------------- */}
-				<input type="submit" value="Submit Form" className="btn btn-primary" onClick={props.handleSubmit} />
+				<input type="submit" value="Submit Form" className="btn btn-primary" onSubmit={props.handleSubmit} />
 			</Form>
 		</div >
 	);
