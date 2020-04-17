@@ -18,5 +18,5 @@ class ReportImage extends Component {
         )
     }
 }
-
+ 
 export default ReportImage
