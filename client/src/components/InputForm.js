@@ -66,9 +66,7 @@ export default function InputForm(props) {
 				</Form.Group>
 				{/*------------------------- Location Site Name ------------------------*/}
 				<Form.Group controlId="exampleForm.SelectCustom">
-					<div className="label-button-container">
-						<Form.Label>Select Site:</Form.Label><span className="required">*Required</span>
-					</div>
+					<span className="required">*</span><label>Select Site: </label>
 					<Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
 						{props.sitesList.map((site, index) => (
 							<option key={index}>{site}</option>
@@ -77,9 +75,7 @@ export default function InputForm(props) {
 				</Form.Group>
 				{/*-------------------------- Date Observed -------------------------------*/}
 				<div className="form-group">
-					<div className="label-button-container">
-						<label>Date: </label><span className="required">*Required</span>
-					</div>
+					<span className="required">*</span><label>Date: </label>
 					<div>
 						<DatePicker maxDate={new Date()} className='input' title='Date Observed' selected={props.date_observed} onSelect={props.dateChange} />
 					</div>
@@ -89,7 +85,6 @@ export default function InputForm(props) {
 					<label>Mileage to and from site: </label>
 					<input
 						type="text"
-						required
 						className="form-control"
 						name="mileage"
 						value={props.mileage}
@@ -101,7 +96,6 @@ export default function InputForm(props) {
 					<label>Travel Time(Including Hike): </label>
 					<input
 						type="text"
-						required
 						className="form-control"
 						name="travel"
 						value={props.travel}
@@ -127,7 +121,6 @@ export default function InputForm(props) {
 					<label>Total Observation Time: </label>
 					<input
 						type="text"
-						required
 						className="form-control"
 						name="totalTime"
 						onFocus={props.totalTimeCalculator}
@@ -137,7 +130,7 @@ export default function InputForm(props) {
 				</div>
 				{/* ------------------------ Weather Qualitative Observation ------------------------*/}
 				<div className="form-group">
-					<label>Weather Observation </label>
+					<span className="required">*</span><label>Weather Observations: </label> <br />
 					<small className="help-block"> (Please include cloud cover, wind, temperature and other environmental notes to help researchers get context for observation.):</small>
 					<textarea
 						type="text"
@@ -518,7 +511,6 @@ export default function InputForm(props) {
 					<label>If incubation was confirmed, where is the location of the eyrie? </label>
 					<input
 						type="text"
-						required
 						className="form-control"
 						name="incubation"
 						value={props.incubation}
@@ -530,7 +522,6 @@ export default function InputForm(props) {
 					<label>If young exist, how many were there? </label>
 					<input
 						type="text"
-						required
 						className="form-control"
 						name="young"
 						value={props.young}
@@ -566,7 +557,6 @@ export default function InputForm(props) {
 					<label htmlFor="caption">Please write a brief caption to explain why you chose this image:</label>
 					<textarea
 						type="text"
-						required
 						className="form-control"
 						name="caption"
 						value={props.caption}
@@ -577,9 +567,7 @@ export default function InputForm(props) {
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
-					<div className="label-button-container">
-						<label>Species Specific Observations - Include Time of Observation: </label><span className="required">*Required</span>
-					</div>
+					<span className="required">*</span><label>Species Specific Observations- Include Time of Observation:  </label> <br />
 					<textarea
 						type="text"
 						required
@@ -595,7 +583,6 @@ export default function InputForm(props) {
 					<label>General Observations (other species in area, etc.) </label>
 					<textarea
 						type="text"
-						required
 						className="form-control"
 						name="comments"
 						value={props.comments}
@@ -604,7 +591,7 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* --------------------------Submit-------------------------------- */}
-				<input type="submit" value="Submit Form" className="btn btn-primary" onClick={props.handleSubmit} />
+				<input type="submit" value="Submit Form" className="btn btn-primary" onSubmit={props.handleSubmit} />
 			</Form>
 		</div >
 	);
