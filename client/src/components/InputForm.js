@@ -70,8 +70,8 @@ export default function InputForm(props) {
 						<Form.Label>Select Site:</Form.Label><span className="required">*Required</span>
 					</div>
 					<Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
-						{props.sitesList.map(site => (
-							<option>{site}</option>
+						{props.sitesList.map((site, index) => (
+							<option key={index}>{site}</option>
 						))}
 					</Form.Control>
 				</Form.Group>
@@ -112,14 +112,14 @@ export default function InputForm(props) {
 				<div className="form-group">
 					<label>Start Time of Observation:</label>
 					<br></br>
-					<TimePicker amPmAriaLabel disableClock={true} clearIcon selected={props.timeStart} onChange={props.timeStartChange} />
+					<TimePicker amPmAriaLabel="amPmAriaLabel" disableClock={true} clearIcon="clearIcon" selected={props.timeStart} onChange={props.timeStartChange} />
 				</div>
 
 				{/* -------------------------------------- Observation End Time -------------------------- */}
 				<div className="form-group">
 					<label>End Time of Observation:</label>
 					<br></br>
-					<TimePicker amPmAriaLabel disableClock={true} clearIcon selected={props.timeEnd} onChange={props.timeEndChange} />
+					<TimePicker amPmAriaLabel="amPmAriaLabel" disableClock={true} clearIcon="clearIcon" selected={props.timeEnd} onChange={props.timeEndChange} />
 				</div>
 
 				{/* ----------------------------------- Total Observation Time --------------------------- */}

@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const conn = mongoose.createConnection(mongoURI, {
     useUnifiedTopology: true, useNewUrlParser: true
 })
-mongoose.connect(mongoURI)
+mongoose.connect(mongoURI, { useUnifiedTopology: true, useNewUrlParser: true })
 mongoose.set('useFindAndModify', false)
 
 let gfs
@@ -39,6 +39,7 @@ conn.once('open', () => {
 
 const storage = new GridFsStorage({
     url: mongoURI,
+    options: { useUnifiedTopology: true, useNewUrlParser: true },
     file: (req, file) => {
         return new Promise((resolve, reject) => {
             crypto.randomBytes(16, (err, buf) => {
