@@ -533,7 +533,6 @@ export default function InputForm(props) {
 					<label>If young exist, what were the approximate ages? </label>
 					<input
 						type="text"
-						required
 						className="form-control"
 						name="youngAge"
 						value={props.youngAge}

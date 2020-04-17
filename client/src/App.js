@@ -223,7 +223,7 @@ class App extends Component {
       }
     })
   }
- 
+
   passwordChange = (event) => {
     console.log(event.target.value)
     this.setState({ password: event.target.value })
@@ -468,6 +468,7 @@ class App extends Component {
       image: this.state.image,
       observation: this.state.observation,
       comments: this.state.comments,
+      caption: this.state.caption
     }
 
     fetch('/post', {
@@ -563,7 +564,10 @@ class App extends Component {
               <InputForm
                 handleSubmit={handleSubmit} imageChange={imageChange} imageSubmit={imageSubmit}
                 name={name} email={email} bird={bird} site={site}
-                date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime} singleBird={singleBird} birdPair={birdPair} courtship={courtship} incubating={incubating} hatched={hatched} nestFailure={nestFailure} fledged={fledged} caption={caption} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus} youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
+                date_observed={date_observed} mileage={mileage} travel={travel} timeStart={timeStart} timeEnd={timeEnd} totalTime={totalTime}
+                singleBird={singleBird} birdPair={birdPair} courtship={courtship} incubating={incubating} hatched={hatched}
+                nestFailure={nestFailure} fledged={fledged} caption={caption} weatherObservation={weatherObservation} relationshipStatus={relationshipStatus}
+                youngStatus={youngStatus} disturbance={disturbance} young={young} youngAge={youngAge}
                 incubation={incubation} observation={observation} comments={comments} sitesList={sitesList}
                 // passes all methods
                 formChange={formChange} nameChange={nameChange} emailChange={emailChange} birdChange={birdChange} siteChange={siteChange} dateChange={dateChange} mileageChange={mileageChange} travelChange={travelChange}

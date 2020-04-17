@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { Form, Modal, Button } from 'react-bootstrap'
 
 class UserModal extends Component {
-    constructor(props) {
-        super(props)
-    }
     render() {
         return (
             <>

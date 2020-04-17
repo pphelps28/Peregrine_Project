@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import { Form, Modal, Button } from 'react-bootstrap'
 
 class ModalLogIn extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <>
