@@ -140,10 +140,6 @@ class ReportModal extends Component {
                             <td>{data.single_bird}</td>
                         </tr>
                         <tr>
-                            <th scope="column">Territorial Pair</th>
-                            <td>{data.bird_pair}</td>
-                        </tr>
-                        <tr>
                             <th scope="column">Courtship</th>
                             <td>{data.courtship}</td>
                         </tr>
@@ -156,16 +152,8 @@ class ReportModal extends Component {
                             <td>{data.hatched}</td>
                         </tr>
                         <tr>
-                            <th scope="column">Nest Failure</th>
-                            <td>{data.nest_failure}</td>
-                        </tr>
-                        <tr>
                             <th scope="column">Fledged</th>
                             <td>{data.fledged}</td>
-                        </tr>
-                        <tr>
-                            <th scope="column">Nesting Status</th>
-                            <td>{data.young_status}</td>
                         </tr>
                         <tr>
                             <th scope="column">Human Disturbance</th>
