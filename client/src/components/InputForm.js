@@ -11,7 +11,7 @@ export default function InputForm(props) {
 	return (
 		<div className="form">
 			<Header />
-			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block" onSubmit={props.handleSubmit} >
+			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block" onSubmit={props.handleSubmit}>
 				<h3 className="title">Observation Form</h3>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
@@ -106,14 +106,14 @@ export default function InputForm(props) {
 				<div className="form-group">
 					<label>Start Time of Observation:</label>
 					<br></br>
-					<TimePicker amPmAriaLabel disableClock={true} clearIcon selected={props.timeStart} onChange={props.timeStartChange} />
+					<TimePicker amPmAriaLabel={"amPmAriaLabel"} disableClock={true} clearIcon={null} selected={props.timeStart} onChange={props.timeStartChange} />
 				</div>
 
 				{/* -------------------------------------- Observation End Time -------------------------- */}
 				<div className="form-group">
 					<label>End Time of Observation:</label>
 					<br></br>
-					<TimePicker amPmAriaLabel disableClock={true} clearIcon selected={props.timeEnd} onChange={props.timeEndChange} />
+					<TimePicker amPmAriaLabel={"amPmAriaLabel"} disableClock={true} clearIcon={null} selected={props.timeEnd} onChange={props.timeEndChange} />
 				</div>
 
 				{/* ----------------------------------- Total Observation Time --------------------------- */}
@@ -533,7 +533,6 @@ export default function InputForm(props) {
 					<label>If young exist, what were the approximate ages? </label>
 					<input
 						type="text"
-						required
 						className="form-control"
 						name="youngAge"
 						value={props.youngAge}
@@ -591,7 +590,7 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* --------------------------Submit-------------------------------- */}
-				<input type="submit" value="Submit Form" className="btn btn-primary" />
+				<button type="submit" value="Submit Form" className="btn btn-primary" >Submit Form</button>
 			</Form>
 		</div >
 	);
