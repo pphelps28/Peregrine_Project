@@ -17,9 +17,10 @@ class NavBar extends Component {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto" >
-						<LinkContainer to='/' className='link' ><Nav.Link>Observation Form</Nav.Link></LinkContainer>
+						<LinkContainer to='/'><Nav.Link>Observation Form</Nav.Link></LinkContainer>
 						
 						{!this.props.loggedIn ?
+
 								<Nav.Link>
 									<ModalLogIn
 									// props
@@ -39,9 +40,9 @@ class NavBar extends Component {
 									forgotPasswordAtLogIn={this.props.forgotPasswordAtLogIn}
 									changeEmail={this.props.changeEmail}
 								/> </Nav.Link>
-								: <div id="navbar-display-and-user">
+								: <span>
 
-									<LinkContainer to="/display" className='link' ><Nav.Link>View Reports</Nav.Link></LinkContainer>
+									<LinkContainer to="/display" ><Nav.Link>View Reports</Nav.Link></LinkContainer>
 									<Nav.Link>
 										<UserModal
 										//props
@@ -56,7 +57,7 @@ class NavBar extends Component {
 										resetPassword={this.props.resetPassword}
 										changeEmail={this.props.changeEmail} />
 									</Nav.Link>
-								</div>}
+								</span>}
 					</Nav>
 					</Navbar.Collapse>
 				</Navbar>

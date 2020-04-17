@@ -11,7 +11,7 @@ export default function InputForm(props) {
 	return (
 		<div className="form">
 			<Header />
-			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block">
+			<Form className="d-xs-block d-sm-block d-md-block d-lg-block d-xl-block" onSubmit={props.handleSubmit} >
 				<h3 className="title">Observation Form</h3>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
@@ -591,7 +591,7 @@ export default function InputForm(props) {
 					/>
 				</div>
 				{/* --------------------------Submit-------------------------------- */}
-				<input type="submit" value="Submit Form" className="btn btn-primary" onSubmit={props.handleSubmit} />
+				<input type="submit" value="Submit Form" className="btn btn-primary" />
 			</Form>
 		</div >
 	);
