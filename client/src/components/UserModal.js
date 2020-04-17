@@ -18,7 +18,7 @@ class UserModal extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
                             Settings
-          </Modal.Title>
+                    </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <UserLoginModal

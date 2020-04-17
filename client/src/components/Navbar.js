@@ -38,7 +38,7 @@ class NavBar extends Component {
 									/> </Nav.Link>
 								: <div>
 
-									<LinkContainer to="/display" ><Nav.Link>View Reports</Nav.Link></LinkContainer>
+									<LinkContainer to="/display" className="link"><Nav.Link>View Reports</Nav.Link></LinkContainer>
 									<Nav.Link>
 										<UserModal
 											//props
