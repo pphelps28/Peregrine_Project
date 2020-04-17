@@ -36,7 +36,7 @@ class NavBar extends Component {
 										forgotPasswordAtLogIn={this.props.forgotPasswordAtLogIn}
 										changeEmail={this.props.changeEmail}
 									/> </Nav.Link>
-								: <div id="navbar-display-and-user">
+								: <div>
 
 									<LinkContainer to="/display" ><Nav.Link>View Reports</Nav.Link></LinkContainer>
 									<Nav.Link>
