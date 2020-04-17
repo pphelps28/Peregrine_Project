@@ -17,17 +17,16 @@ const Grid = require('gridfs-stream')
 app.use(express.static('public'))
 
 //
-const mongoURI = 'mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority'
 
 app.use(express.static(path.join(__dirname, '/client/build')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //image upload experimentation, here to BIRD SCHEMATA
-const conn = mongoose.createConnection(mongoURI, {
+const conn = mongoose.createConnection(MONGO_URI, {
     useUnifiedTopology: true, useNewUrlParser: true
 })
-mongoose.connect(mongoURI, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
 mongoose.set('useFindAndModify', false)
 
 let gfs
@@ -38,7 +37,7 @@ conn.once('open', () => {
 
 
 const storage = new GridFsStorage({
-    url: mongoURI,
+    url: MONGO_URI,
     options: { useUnifiedTopology: true, useNewUrlParser: true },
     file: (req, file) => {
         return new Promise((resolve, reject) => {
