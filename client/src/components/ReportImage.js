@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import noimage from '../img/noimage.png'
 
 class ReportImage extends Component {
-   
-    constructor(props) {
-        super(props)
-    }
     handleNoImage = (event) => {
         console.log(event.target.src)
         return event.target.src = noimage
