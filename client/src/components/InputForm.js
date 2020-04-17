@@ -70,8 +70,8 @@ export default function InputForm(props) {
 						<Form.Label>Select Site:</Form.Label><span className="required">*Required</span>
 					</div>
 					<Form.Control as="select" custom value={props.site} onChange={props.siteChange}>
-						{props.sitesList.map(site => (
-							<option>{site}</option>
+						{props.sitesList.map((site, index) => (
+							<option key={index}>{site}</option>
 						))}
 					</Form.Control>
 				</Form.Group>
