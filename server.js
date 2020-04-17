@@ -23,10 +23,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //image upload experimentation, here to BIRD SCHEMATA
-const conn = mongoose.createConnection(MONGO_URI, {
+const conn = mongoose.createConnection(process.env.MONGO_URI, {
     useUnifiedTopology: true, useNewUrlParser: true
 })
-mongoose.connect(MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
 mongoose.set('useFindAndModify', false)
 
 let gfs
@@ -37,7 +37,7 @@ conn.once('open', () => {
 
 
 const storage = new GridFsStorage({
-    url: MONGO_URI,
+    url: process.env.MONGO_URI,
     options: { useUnifiedTopology: true, useNewUrlParser: true },
     file: (req, file) => {
         return new Promise((resolve, reject) => {
