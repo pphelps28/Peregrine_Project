@@ -521,12 +521,6 @@ class App extends Component {
         comments: '',
       })
     })
-<<<<<<< HEAD
-=======
-
-    // window.location.reload()
-
->>>>>>> d48c9372d72b74e656bc8a866050693fd8c7f3c0
     console.log(submission)
     console.log('preparing report')
 
