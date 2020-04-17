@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar'
 import InputForm from './components/InputForm.js'
 import Display from './components/Display.js'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import FormData from 'form-data'
 import ReportModal from './components/ReportModal'
 
@@ -66,6 +67,7 @@ class App extends Component {
       displayContent: [],
       observationReport: {},
       loggedIn: false,
+      userEmail: '',
       password: '',
       display: '',
       displayColor: '',
@@ -98,7 +100,7 @@ class App extends Component {
     this.setState({ name: event.target.value })
   }
   emailChange = (event) => {
-    this.setState({ email: event.target.value })
+    this.setState({ userEmail: event.target.value })
   }
 
   // ----------------Input Form & Display form handlers  ------------------------
@@ -221,11 +223,7 @@ class App extends Component {
       }
     })
   }
-
-  emailChange = (event) => {
-    console.log(event.target.value)
-    this.setState({ email: event.target.value })
-  }
+ 
   passwordChange = (event) => {
     console.log(event.target.value)
     this.setState({ password: event.target.value })
@@ -242,7 +240,7 @@ class App extends Component {
   }
   logIn = (event) => {
     event.preventDefault()
-    const email = this.state.email;
+    const email = this.state.userEmail;
     const password = this.state.password
     auth.signInWithEmailAndPassword(email, password).catch((error) => {
       console.log(error.message)
@@ -431,18 +429,18 @@ class App extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    if(!this.state.site) {
+    if (!this.state.site) {
       alert('Please select the nesting site you visited.')
     }
 
-    if(!this.state.date_observed) {
+    if (!this.state.date_observed) {
       alert('Please provide the date of your observation.')
     }
 
-    if(!this.state.observation) {
+    if (!this.state.observation) {
       alert('Please provide some information about your visit, even if you did not see any species activity.')
     }
-    
+
     let submission = {
       name: this.state.name,
       email: this.state.email,

@@ -15,7 +15,7 @@ export default function InputForm(props) {
 				<h3 className="title">Observation Form</h3>
 				{/*------------------------- Insert name ----------------------*/}
 				<div className="form-group">
-					<label>Name: </label>
+					<span className="required">*</span><label>Name: </label>
 					<input
 						type="text"
 						required
@@ -27,7 +27,7 @@ export default function InputForm(props) {
 				</div>
 				{/*------------------------- email  -----------------------*/}
 				<div className="form-group">
-					<label>Email: </label>
+					<span className="required">*</span><label>Email: </label>
 					<input
 						type="text"
 						required

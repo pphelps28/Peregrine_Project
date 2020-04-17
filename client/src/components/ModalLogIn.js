@@ -27,7 +27,7 @@ class ModalLogIn extends Component {
           <Modal.Body>
             <LoginModal
               //props
-              email={this.props.email}
+              userEmail={this.props.userEmail}
               password={this.props.password}
               display={this.props.display}
               displayColor={this.props.displayColor}
@@ -56,7 +56,7 @@ function LoginModal(props) {
       <Form.Group controlId="formBasicEmail">
         <div style={{ color: props.displayColor }} id="login-status">{props.display}</div>
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" onChange={props.emailChange} value={props.email} />
+        <Form.Control type="email" placeholder="Enter email" onChange={props.emailChange} value={props.userEmail} />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
     </Form.Text>
