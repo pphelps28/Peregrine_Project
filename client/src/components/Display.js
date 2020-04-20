@@ -120,7 +120,7 @@ export default function Display(props) {
                                     <tr key={data._id}>
                                         <th scope="column" >{data.season}</th>
                                         <td >{data.location}</td>
-                                        <td >{data.date_visited}</td>
+                                        <td >{data.date_visited.slice(0,15)}</td>
                                         <td>
                                             <Link to={`/report_modal/${data.bird}/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
                                         </td>
