@@ -79,6 +79,7 @@ class App extends Component {
     }
   }
 
+
   //------------Input Form general handler -------------------------------------------//
 
   formChange = (event) => {
@@ -87,6 +88,7 @@ class App extends Component {
       [event.target.name]: input
     })
     console.log(input)
+
   }
 
 
@@ -130,41 +132,46 @@ class App extends Component {
   timeStartChange = timeStart => {
     this.setState({ timeStart: timeStart })
   }
+
+
   timeEndChange = (timeEnd) => {
+
     this.setState({ timeEnd: timeEnd })
+
+    let totalTimeCalculator = (start, end) => {
+      start = this.state.timeStart.split(":");
+      end = timeEnd.split(":")
+      console.log('start', start)
+      console.log('end', end)
+
+      let startDate = new Date(0, 0, 0, start[0], start[1], 0);
+      let endDate = new Date(0, 0, 0, end[0], end[1], 0);
+      let diff = endDate.getTime() - startDate.getTime();
+      let hours = Math.floor(diff / 1000 / 60 / 60);
+      console.log('hours', hours)
+
+      diff -= hours * 1000 * 60 * 60;
+
+      let minutes = Math.floor(diff / 1000 / 60);
+
+      if (minutes <= 9) {
+        minutes = minutes.toString().padStart(2, '0')
+      }
+
+      console.log('minutes', minutes)
+
+      let timeTotal = hours + ':' + minutes
+
+      this.setState({
+        totalTime: timeTotal
+
+      })
+    }
+    totalTimeCalculator()
   }
-  totalTimeChange = (event) => {
-    this.setState({ totalTime: event.target.value })
-  }
+
   temperatureChange = (event) => {
     this.setState({ temperature: event.target.value })
-  }
-
-  totalTimeCalculator = (start, end) => {
-    start = this.state.timeStart.split(":");
-    end = this.state.timeEnd.split(":");
-    console.log('start', start)
-    console.log('end', end)
-
-    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
-    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
-    var diff = endDate.getTime() - startDate.getTime();
-    var hours = Math.floor(diff / 1000 / 60 / 60);
-    console.log('hours', hours)
-
-    diff -= hours * 1000 * 60 * 60;
-    var minutes = Math.floor(diff / 1000 / 60);
-    console.log('minutes', minutes)
-
-
-    // If using time pickers with 24 hours format, add the below line get exact hours
-    if (hours < 0)
-      hours = hours + 24;
-    this.setState({
-      totalTime: Number((hours <= 9 ? "0" : "") + hours) + ":" + Number((minutes <= 9 ? "0" : "") + minutes)
-
-    })
-    console.log(this.state.totalTime)
   }
 
   //--------------------Display form handler --------------//
@@ -372,18 +379,6 @@ class App extends Component {
     this.clearButtons()
   }
 
-  // // ---------------- stores single observation report in state and launches observation report page ---------- //
-
-
-  // displayFullReport = (event) => {
-  //   event.preventDefault()
-  //   console.log('preparing report')
-  //   this.setState({
-  //     observationReport: JSON.parse(event.target.value),
-  //     redirect: '/report_modal'
-  //   })
-  // }
-
   // ---------------- adds new nesting sites to lists EAGLE or PEREGRINE sites ---------------- //
 
   addNestingSite = (event) => {
@@ -431,18 +426,6 @@ class App extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    // if (!this.state.site) {
-    //   alert('Please select the nesting site you visited.')
-    // }
-
-    // if (!this.state.date_observed) {
-    //   alert('Please provide the date of your observation.')
-    // }
-
-    // if (!this.state.observation) {
-    //   alert('Please provide some information about your visit, even if you did not see any species activity.')
-    // }
-
     let submission = {
       name: this.state.name,
       email: this.state.email,
@@ -464,7 +447,6 @@ class App extends Component {
       hatched: this.state.hatched,
       nestFailure: this.state.nestFailure,
       fledged: this.state.fledged,
-      // youngStatus: this.state.youngStatus,
       disturbance: this.state.disturbance,
       incubation: this.state.incubation,
       young: this.state.young,
@@ -516,7 +498,6 @@ class App extends Component {
         hatched: '',
         nestFailure: '',
         fledged: '',
-        // youngStatus: '',
         disturbance: '',
         incubation: '',
         young: '',
@@ -535,6 +516,22 @@ class App extends Component {
 
     document.getElementById('formHorizontalRadios1').checked = false
     document.getElementById('formHorizontalRadios2').checked = false
+    // document.getElementById('eagleData1').checked = false
+    // document.getElementById('eagleData2').checked = false
+    // document.getElementById('eagleData5').checked = false
+    // document.getElementById('eagleData4').checked = false
+    // document.getElementById('eagleData6').checked = false
+    // document.getElementById('formHorizontalRadios15').checked = false
+    // document.getElementById('formHorizontalRadios15a').checked = false
+    // document.getElementById('formHorizontalRadios15b').checked = false
+
+
+    // let radioButtons = document.getElementsByClassName('radioButton')
+    // let buttonsArray = Array.from(radioButtons)
+    // console.log(buttonsArray)
+    // buttonsArray.forEach(radioButton => {
+    //   radioButton.checked = false
+    // })
 
   }
 
