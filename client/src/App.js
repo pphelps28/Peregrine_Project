@@ -431,7 +431,7 @@ class App extends Component {
       email: this.state.email,
       bird: this.state.bird,
       site: this.state.site,
-      date_observed: this.state.date_observed,
+      date_observed: this.state.date_observed.toString().slice(0, 15),
       mileage: this.state.mileage,
       travel: this.state.travel,
       timeStart: this.state.timeStart,

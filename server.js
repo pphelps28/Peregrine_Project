@@ -436,6 +436,9 @@ app.post('/update', updateBirdPosts)
 app.post('/addSite', addNestingSite)
 app.post('/getSites', getSiteList)
 app.get('/reportModal/:bird/:_id', getReport)
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve('./client/build/index.html'))
+})
 app.listen(port, () => console.log(`listening on: ${port}`))
 
 // --------------------- functions to manipulate database for setup purposes ----------------------- //
