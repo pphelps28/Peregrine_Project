@@ -154,7 +154,7 @@ class ReportModal extends Component {
                         <tr>
                             <th scope="column">Fledged</th>
                             <td>{data.fledged}</td>
-                        </tr>
+                        </tr>                        
                         <tr>
                             <th scope="column">Human Disturbance</th>
                             <td>{data.disturbance}</td>

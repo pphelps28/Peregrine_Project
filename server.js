@@ -93,7 +93,7 @@ const birdSchema = new mongoose.Schema({
     nest_failure: String,
     fledged: String,
     disturbance: String,
-    young_status: String,
+    // young_status: String,
     summary: String,
     eyrie_location: String,
     number_young: String,
@@ -152,7 +152,7 @@ const handleBirdPosts = async (req, res) => {
     let eagle_band = req.body.eagleBand
     let eagle_age = req.body.eagleAge
     // let relationship_status = req.body.relationshipStatus
-    let young_status = req.body.youngStatus
+    // let young_status = req.body.youngStatus
     let single_bird = req.body.singleBird
     let bird_pair = req.body.birdPair
     let courtship = req.body.courtship
@@ -199,7 +199,7 @@ const handleBirdPosts = async (req, res) => {
             hatched: hatched,
             nest_failure: nest_failure,
             fledged: fledged,
-            young_status: young_status,
+            // young_status: young_status,
             disturbance: disturbance,
             summary: summary,
             eyrie_location: eyrie_location,
@@ -238,7 +238,7 @@ const handleBirdPosts = async (req, res) => {
             hatched: hatched,
             nest_failure: nest_failure,
             fledged: fledged,
-            young_status: young_status,
+            // young_status: young_status,
             disturbance: disturbance,
             summary: summary,
             eyrie_location: eyrie_location,
