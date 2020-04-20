@@ -67,7 +67,7 @@ class App extends Component {
       stopLoop: false,
       inputVisible: true,
       displayContent: [],
-      observationReport: {},
+      // observationReport: {},
       loggedIn: false,
       userEmail: '',
       password: '',

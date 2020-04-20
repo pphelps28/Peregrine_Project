@@ -93,8 +93,6 @@ const birdSchema = new mongoose.Schema({
     nest_failure: String,
     fledged: String,
     disturbance: String,
-    // young_status: String,
-    summary: String,
     eyrie_location: String,
     number_young: String,
     young_age: String,
@@ -151,8 +149,6 @@ const handleBirdPosts = async (req, res) => {
     let weather_observation = req.body.weatherObservation
     let eagle_band = req.body.eagleBand
     let eagle_age = req.body.eagleAge
-    // let relationship_status = req.body.relationshipStatus
-    // let young_status = req.body.youngStatus
     let single_bird = req.body.singleBird
     let bird_pair = req.body.birdPair
     let courtship = req.body.courtship
@@ -160,8 +156,7 @@ const handleBirdPosts = async (req, res) => {
     let hatched = req.body.hatched
     let nest_failure = req.body.nestFailure
     let fledged = req.body.fledged
-    let disturbance = req.body.disturbance
-    let summary = req.body.ObservationSummary
+    let disturbance = req.body.disturbance    
     let eyrie_location = req.body.incubation
     let number_young = req.body.young
     let young_age = req.body.youngAge
@@ -190,8 +185,7 @@ const handleBirdPosts = async (req, res) => {
             total_time: total_time,
             weather_observation: weather_observation,
             eagle_age: eagle_age,
-            eagle_band: eagle_band,
-            // relationship_status: relationship_status,
+            eagle_band: eagle_band,            
             single_bird: single_bird,
             bird_pair: bird_pair,
             courtship: courtship,
@@ -199,9 +193,7 @@ const handleBirdPosts = async (req, res) => {
             hatched: hatched,
             nest_failure: nest_failure,
             fledged: fledged,
-            // young_status: young_status,
-            disturbance: disturbance,
-            summary: summary,
+            disturbance: disturbance,            
             eyrie_location: eyrie_location,
             number_young: number_young,
             young_age: young_age,
@@ -229,18 +221,15 @@ const handleBirdPosts = async (req, res) => {
             start_time: start_time,
             end_time: end_time,
             total_time: total_time,
-            weather_observation, weather_observation,
-            // relationship_status: relationship_status,
+            weather_observation, weather_observation,            
             single_bird: single_bird,
             bird_pair: bird_pair,
             courtship: courtship,
             incubating: incubating,
             hatched: hatched,
             nest_failure: nest_failure,
-            fledged: fledged,
-            // young_status: young_status,
+            fledged: fledged,            
             disturbance: disturbance,
-            summary: summary,
             eyrie_location: eyrie_location,
             number_young: number_young,
             young_age: young_age,
