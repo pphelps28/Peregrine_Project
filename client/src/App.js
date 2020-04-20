@@ -442,13 +442,12 @@ class App extends Component {
     // if (!this.state.observation) {
     //   alert('Please provide some information about your visit, even if you did not see any species activity.')
     // }
-
     let submission = {
       name: this.state.name,
       email: this.state.email,
       bird: this.state.bird,
       site: this.state.site,
-      date_observed: this.state.date_observed,
+      date_observed: this.state.date_observed.toString().slice(0, 15),
       mileage: this.state.mileage,
       travel: this.state.travel,
       timeStart: this.state.timeStart,
