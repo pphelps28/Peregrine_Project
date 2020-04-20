@@ -116,18 +116,6 @@ export default function InputForm(props) {
 					<TimePicker amPmAriaLabel={"amPmAriaLabel"} disableClock={true} clearIcon={null} selected={props.timeEnd} onChange={props.timeEndChange} />
 				</div>
 
-				{/* ----------------------------------- Total Observation Time --------------------------- */}
-				<div className="form-group">
-					<label>Total Observation Time: </label>
-					<input
-						type="text"
-						className="form-control"
-						name="totalTime"
-						onFocus={props.totalTimeCalculator}
-						value={props.totalTime}
-						onChange={props.formChange}
-					/>
-				</div>
 				{/* ------------------------ Weather Qualitative Observation ------------------------*/}
 				<div className="form-group">
 					<span className="required">*</span><label>Weather Observations: </label> <br />
@@ -282,7 +270,7 @@ export default function InputForm(props) {
 							className='button-padding'
 							value="None"
 							name="birdPair"
-							id="formHorizontalRadios15"
+							id="formHorizontalRadios16b"
 							onChange={props.formChange}
 							label='Unknown'
 							sm={12} md={4} lg={1}
@@ -318,7 +306,7 @@ export default function InputForm(props) {
 							className='button-padding'
 							value="None"
 							name="courtship"
-							id="formHorizontalRadios15"
+							id="formHorizontalRadios17b"
 							onChange={props.formChange}
 							label='Unknown'
 							sm={12} md={4} lg={1}
@@ -354,7 +342,7 @@ export default function InputForm(props) {
 							className='button-padding'
 							value="None"
 							name="incubating"
-							id="formHorizontalRadios15"
+							id="formHorizontalRadios18b"
 							onChange={props.formChange}
 							label='Unknown'
 							sm={12} md={4} lg={1}
@@ -390,7 +378,7 @@ export default function InputForm(props) {
 							className='button-padding'
 							value="None"
 							name="hatched"
-							id="formHorizontalRadios15"
+							id="formHorizontalRadios19b"
 							onChange={props.formChange}
 							label='Unknown'
 							sm={12} md={4} lg={1}
@@ -426,7 +414,7 @@ export default function InputForm(props) {
 							className='button-padding'
 							value="None"
 							name="nestFailure"
-							id="formHorizontalRadios15"
+							id="formHorizontalRadios20b"
 							onChange={props.formChange}
 							label='Unknown'
 							sm={12} md={4} lg={1}
@@ -462,7 +450,7 @@ export default function InputForm(props) {
 							className='button-padding'
 							value="None"
 							name="fledged"
-							id="formHorizontalRadios15"
+							id="formHorizontalRadios21b"
 							onChange={props.formChange}
 							label='Unknown'
 							sm={12} md={4} lg={1}
@@ -498,7 +486,7 @@ export default function InputForm(props) {
 							className='button-padding'
 							value="None"
 							name="disturbance"
-							id="formHorizontalRadios15"
+							id="formHorizontalRadios22b"
 							onChange={props.formChange}
 							label='Unknown'
 							sm={12} md={4} lg={1}
