@@ -69,7 +69,6 @@ export default function Display(props) {
                                 <input
                                     type="text"
                                     id='site-add'
-                                    required
                                     className="form-control"
                                     value={props.nestingSite}
                                     onChange={props.nestingSiteChange}
