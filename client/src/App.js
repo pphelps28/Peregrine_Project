@@ -75,7 +75,7 @@ class App extends Component {
       displayColor: '',
       logoutDisabled: true,
       modalShow: false,
-      userModalShow: false      
+      userModalShow: false
     }
   }
 
@@ -508,6 +508,8 @@ class App extends Component {
         comments: '',
       })
     }).then(() => {
+      alert('Thank you for your submission!')
+    }).then(() => {
       window.location.reload()
     })
     console.log(submission)
@@ -517,7 +519,7 @@ class App extends Component {
   clearButtons = () => {
 
     document.getElementById('formHorizontalRadios1').checked = false
-    document.getElementById('formHorizontalRadios2').checked = false  
+    document.getElementById('formHorizontalRadios2').checked = false
   }
 
   render() {
@@ -567,7 +569,7 @@ class App extends Component {
 
             <>
               <Route path='/display'>
-                <Display loggedIn={this.state.loggedIn} bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} checked={checked}/>
+                <Display loggedIn={this.state.loggedIn} bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} checked={checked} />
               </Route>
               <Route path='/report_modal/:bird/:_id'
                 component={(props) =>
