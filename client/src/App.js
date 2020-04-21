@@ -75,7 +75,7 @@ class App extends Component {
       displayColor: '',
       logoutDisabled: true,
       modalShow: false,
-      userModalShow: false
+      userModalShow: false      
     }
   }
 
@@ -507,6 +507,8 @@ class App extends Component {
         observation: '',
         comments: '',
       })
+    }).then(() => {
+      window.location.reload()
     })
     console.log(submission)
     console.log('preparing report')
@@ -515,28 +517,11 @@ class App extends Component {
   clearButtons = () => {
 
     document.getElementById('formHorizontalRadios1').checked = false
-    document.getElementById('formHorizontalRadios2').checked = false
-    // document.getElementById('eagleData1').checked = false
-    // document.getElementById('eagleData2').checked = false
-    // document.getElementById('eagleData5').checked = false
-    // document.getElementById('eagleData4').checked = false
-    // document.getElementById('eagleData6').checked = false
-    // document.getElementById('formHorizontalRadios15').checked = false
-    // document.getElementById('formHorizontalRadios15a').checked = false
-    // document.getElementById('formHorizontalRadios15b').checked = false
-
-
-    // let radioButtons = document.getElementsByClassName('radioButton')
-    // let buttonsArray = Array.from(radioButtons)
-    // console.log(buttonsArray)
-    // buttonsArray.forEach(radioButton => {
-    //   radioButton.checked = false
-    // })
-
+    document.getElementById('formHorizontalRadios2').checked = false  
   }
 
   render() {
-    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, singleBird, birdPair, courtship, incubating, hatched, nestFailure, fledged, caption, young, youngAge, incubation, observation, comments, eagleAge, eagleBand, disturbance, displayContent, redirect, sitesList, weatherObservation } = this.state
+    let { name, email, bird, prevBird, site, date_observed, season, mileage, travel, timeStart, timeEnd, totalTime, singleBird, birdPair, courtship, incubating, hatched, nestFailure, fledged, caption, young, youngAge, incubation, observation, comments, eagleAge, eagleBand, disturbance, displayContent, redirect, sitesList, weatherObservation, checked } = this.state
     let { imageSubmit, imageChange, formChange, nameChange, emailChange, birdChange, siteChange, dateChange, seasonChange, mileageChange, travelChange, timeStartChange, timeEndChange, totalTimeChange, temperatureChange, precipitationChange, cloudCoverChange, windSpeedChange, observationChange, youngChange, youngAgeChange, incubationChange, commentsChange, handleSubmit, relationshipStatusChange, youngStatusChange, disturbanceChange, searchDataBase, nestingSiteChange, addNestingSite, totalTimeCalculator } = this
 
     return (
@@ -582,7 +567,7 @@ class App extends Component {
 
             <>
               <Route path='/display'>
-                <Display loggedIn={this.state.loggedIn} bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} />
+                <Display loggedIn={this.state.loggedIn} bird={bird} prevBird={prevBird} site={site} season={season} redirect={redirect} formChange={formChange} seasonChange={seasonChange} birdChange={birdChange} siteChange={siteChange} searchDataBase={searchDataBase} displayContent={displayContent} sitesList={sitesList} nestingSiteChange={nestingSiteChange} addNestingSite={addNestingSite} checked={checked}/>
               </Route>
               <Route path='/report_modal/:bird/:_id'
                 component={(props) =>

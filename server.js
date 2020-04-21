@@ -140,7 +140,8 @@ const handleBirdPosts = async (req, res) => {
     let email = req.body.email
     let bird = req.body.bird
     let date_visited = req.body.date_observed // might want to have this as 'visited' since that is how it is on the form 
-    let season = date_visited.slice(0, 4) // this is not inputted by user
+    let season = date_visited.slice(11, 15) // this is not inputted by user
+    console.log(season)
     let mileage = req.body.mileage
     let travel_time = req.body.travel
     let start_time = req.body.timeStart

@@ -32,7 +32,7 @@ export default function Display(props) {
                             <Form.Label as="legend" column sm={10}>
                                 <strong>Please Select a Species:</strong>
                             </Form.Label>
-                            <Col sm={10}>
+                            <Col sm={10} id='radioColumn'>
                                 <Form.Check
                                     type="radio"
                                     label="Bald Eagle"
@@ -40,6 +40,7 @@ export default function Display(props) {
                                     name="bird"
                                     id="formHorizontalRadios1"
                                     className='radioButton'
+                                    // checked={props.checked}
                                     onChange={props.birdChange}
                                 />
                                 <Form.Check
@@ -49,6 +50,7 @@ export default function Display(props) {
                                     name="bird"
                                     id="formHorizontalRadios2"
                                     className='radioButton'
+                                    // checked={props.checked}
                                     onChange={props.birdChange}
                                 />
                             </Col>

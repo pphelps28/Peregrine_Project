@@ -236,7 +236,7 @@ export default function InputForm(props) {
 							name="singleBird"
 							id="formHorizontalRadios15"
 							onChange={props.formChange}
-							label='Unknown'
+							label='Unselect'
 							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
@@ -272,7 +272,7 @@ export default function InputForm(props) {
 							name="birdPair"
 							id="formHorizontalRadios16b"
 							onChange={props.formChange}
-							label='Unknown'
+							label='Unselect'
 							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
@@ -308,7 +308,7 @@ export default function InputForm(props) {
 							name="courtship"
 							id="formHorizontalRadios17b"
 							onChange={props.formChange}
-							label='Unknown'
+							label='Unselect'
 							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
@@ -344,7 +344,7 @@ export default function InputForm(props) {
 							name="incubating"
 							id="formHorizontalRadios18b"
 							onChange={props.formChange}
-							label='Unknown'
+							label='Unselect'
 							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
@@ -380,7 +380,7 @@ export default function InputForm(props) {
 							name="hatched"
 							id="formHorizontalRadios19b"
 							onChange={props.formChange}
-							label='Unknown'
+							label='Unselect'
 							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
@@ -416,7 +416,7 @@ export default function InputForm(props) {
 							name="nestFailure"
 							id="formHorizontalRadios20b"
 							onChange={props.formChange}
-							label='Unknown'
+							label='Unselect'
 							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
@@ -452,7 +452,7 @@ export default function InputForm(props) {
 							name="fledged"
 							id="formHorizontalRadios21b"
 							onChange={props.formChange}
-							label='Unknown'
+							label='Unselect'
 							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
@@ -488,7 +488,7 @@ export default function InputForm(props) {
 							name="disturbance"
 							id="formHorizontalRadios22b"
 							onChange={props.formChange}
-							label='Unknown'
+							label='Unselect'
 							sm={12} md={4} lg={1}
 						/>
 					</Form.Row>
