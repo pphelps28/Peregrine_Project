@@ -194,9 +194,17 @@
 	font-variant: small-caps
 }
 
-
 #makeWhite {
-	color: white;
-	
-	
+	color: white;	
+}
+
+.dataContainer{
+	max-width: 90vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center
+}
+
+.data{
+	max-width: auto
 }
