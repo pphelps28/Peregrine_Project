@@ -138,29 +138,8 @@ export default function Display(props) {
                         )) : <em>Loading...</em>}
 
                     </div>
-                    {/* //ternary operator that will iterate through each entry using a key */}
-                    {props.displayContent ? props.displayContent.map(data => (
-                        <div>
-
-                            <table className="table table-striped">
-
-                                <tbody>
-
-                                    <tr key={data._id}>
-                                        <th scope="column" >{data.season}</th>
-                                        <td >{data.location}</td>
-                                        <td >{data.date_visited.slice(0, 15)}</td>
-                                        <td>
-                                            <Link to={`/report_modal/${data.bird}/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>)) : <em>Loading...</em>}
                 </div >
             </div>
-
             : <div id="login-message">Log in to see this page</div>
     )
 }

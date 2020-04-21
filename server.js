@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const ObjectId = require('mongodb').ObjectId
 const port = process.env.PORT || 5000
+require('dotenv').config()
 require('mongoose-type-email')
 
 //Experiments to add image upload
@@ -15,9 +16,8 @@ const Grid = require('gridfs-stream')
 //
 //do I need a view engine??
 app.use(express.static('public'))
-
 //
-const localURI = 'mongodb+srv://paulPhelps:paulPhelps@chat-app-4tmuj.mongodb.net/Audubon?retryWrites=true&w=majority'
+const localURI = process.env.LOCAL_URI
 app.use(express.static(path.join(__dirname, '/client/build')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -157,7 +157,7 @@ const handleBirdPosts = async (req, res) => {
     let hatched = req.body.hatched
     let nest_failure = req.body.nestFailure
     let fledged = req.body.fledged
-    let disturbance = req.body.disturbance    
+    let disturbance = req.body.disturbance
     let eyrie_location = req.body.incubation
     let number_young = req.body.young
     let young_age = req.body.youngAge
@@ -186,7 +186,7 @@ const handleBirdPosts = async (req, res) => {
             total_time: total_time,
             weather_observation: weather_observation,
             eagle_age: eagle_age,
-            eagle_band: eagle_band,            
+            eagle_band: eagle_band,
             single_bird: single_bird,
             bird_pair: bird_pair,
             courtship: courtship,
@@ -194,7 +194,7 @@ const handleBirdPosts = async (req, res) => {
             hatched: hatched,
             nest_failure: nest_failure,
             fledged: fledged,
-            disturbance: disturbance,            
+            disturbance: disturbance,
             eyrie_location: eyrie_location,
             number_young: number_young,
             young_age: young_age,
@@ -222,14 +222,14 @@ const handleBirdPosts = async (req, res) => {
             start_time: start_time,
             end_time: end_time,
             total_time: total_time,
-            weather_observation, weather_observation,            
+            weather_observation, weather_observation,
             single_bird: single_bird,
             bird_pair: bird_pair,
             courtship: courtship,
             incubating: incubating,
             hatched: hatched,
             nest_failure: nest_failure,
-            fledged: fledged,            
+            fledged: fledged,
             disturbance: disturbance,
             eyrie_location: eyrie_location,
             number_young: number_young,
