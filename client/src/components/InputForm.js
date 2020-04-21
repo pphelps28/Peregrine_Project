@@ -205,7 +205,7 @@ export default function InputForm(props) {
 
 
 					<Form.Row>
-						<Form.Label as="legend" column md={12} lg={2}>Single Bird</Form.Label>
+						<Form.Label as="legend" column md={12} lg={12}><b>Single Bird</b></Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -241,7 +241,7 @@ export default function InputForm(props) {
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column md={12} lg={2}>Territorial Pair</Form.Label>
+						<Form.Label as="legend" column md={12} lg={12}><b>Territorial Pair</b></Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -277,7 +277,7 @@ export default function InputForm(props) {
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column md={12} lg={2}>Courtship / Copulation</Form.Label>
+						<Form.Label as="legend" column md={12} lg={12}><b>Courtship / Copulation</b></Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -313,7 +313,7 @@ export default function InputForm(props) {
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column md={12} lg={2}>Incubating</Form.Label>
+						<Form.Label as="legend" column md={12} lg={12}><b>Incubating</b></Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -349,7 +349,7 @@ export default function InputForm(props) {
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column md={12} lg={2}>Hatched</Form.Label>
+						<Form.Label as="legend" column md={12} lg={12}><b>Hatched</b></Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -385,7 +385,7 @@ export default function InputForm(props) {
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column md={12} lg={2}>Nest Failure</Form.Label>
+						<Form.Label as="legend" column md={12} lg={12}><b>Nest Failure </b></Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -421,7 +421,7 @@ export default function InputForm(props) {
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column md={12} lg={2}>Fledged</Form.Label>
+						<Form.Label as="legend" column md={12} lg={12}><b>Fledged</b></Form.Label>
 						<Form.Check
 							inline
 							type="radio"
@@ -457,7 +457,7 @@ export default function InputForm(props) {
 						/>
 					</Form.Row>
 					<Form.Row>
-						<Form.Label as="legend" column md={12} lg={2}>Human Disturbance</Form.Label>
+						<Form.Label as="legend" column md={12} lg={12}><b>Human Disturbance</b></Form.Label>
 						<Form.Check
 							inline
 							type="radio"

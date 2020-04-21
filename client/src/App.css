@@ -16,7 +16,7 @@
 	justify-content: center;
 	align-items: center;
 	margin: 10%;
-
+	padding-top: 5%;
 }
 
 #toggle-button {
@@ -167,44 +167,47 @@
 	font-style: italic
 }
 
-#image-container{
+#image-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding-bottom: 2rem
 }
 
-.label-button-container{
+.label-button-container {
 	display: flex;
 	justify-content: space-between;
 }
 
-#site-add{
+#site-add {
 	margin-top: 1.5rem
 }
 
-.padding-top{
+.padding-top {
 	margin-top: 2rem;
-	
 }
 
-.required{
+.required {
 	color: red;
 	font-style: italic;
 	font-variant: small-caps
 }
 
 #makeWhite {
-	color: white;	
+	color: white;
 }
 
-.dataContainer{
+.dataContainer {
 	max-width: 90vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center
 }
 
-.data{
+.data {
 	max-width: auto
+}
+
+.container {
+	padding-right: 0;
 }
