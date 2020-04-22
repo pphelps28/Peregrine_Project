@@ -554,7 +554,7 @@ export default function InputForm(props) {
 
 				{/* -----------------------------Recorded Observations ------------------- */}
 				<div className="form-group">
-					<span className="required">*</span><label>Species Specific Observations- Include Time of Observation:  </label> <br />
+					<span className="required">*</span><label>Species Specific Observations (please include time of observation):  </label> <br />
 					<textarea
 						type="text"
 						required
@@ -567,7 +567,7 @@ export default function InputForm(props) {
 				</div>
 				{/* ---------------------Remarks Comments --------------------------*/}
 				<div className="form-group">
-					<label>General Observations (other species in area, etc.) </label>
+					<label>Remarks (context for the observations): </label>
 					<textarea
 						type="text"
 						className="form-control"
@@ -576,6 +576,77 @@ export default function InputForm(props) {
 						onChange={props.formChange}
 						rows="6"
 					/>
+				</div>
+				{/* --------------------- Species Codes --------------------------*/}
+				<div className="form-group">
+					<div id='species-codes'>
+						<table className='speciesBox'>
+							<thead>
+								<td></td>
+								<td id='mild-bold'>Species Codes</td>
+
+
+								<th></th>
+								<th></th>
+
+							</thead>
+							<tbody >
+								<tr key='species-codes-row1' className='speciesBox'>
+
+									<td className='pushLeft'>Bald Eagle</td>
+									<td className='pushLeft'>BAEA</td>
+									<td className='pushLeft'>Red-Tailed Hawk</td>
+									<td className='pushLeft pushRight'>RTHA</td>
+								</tr>
+								<tr key="species-codes-row2" className='speciesBox'>
+									<td className='pushLeft'>Golden Eagle</td>
+									<td className='pushLeft'>GOEA</td>
+									<td className='pushLeft'>Red-shouldered Hawk</td>
+									<td className='pushLeft pushRight'>RSHA</td>
+								</tr>
+								<tr key='species-codes-row3' className='speciesBox'>
+									<td className='pushLeft'>Osprey</td>
+									<td className='pushLeft'>OSPR</td>
+									<td className='pushLeft'>Broad-winged Hawk</td>
+									<td className='pushLeft pushRight'>BWHA</td>
+								</tr>
+								<tr key='species-codes-row4' className='speciesBox'>
+									<td className='pushLeft'>Northern Harrier</td>
+									<td className='pushLeft'>NOHA</td>
+									<td className='pushLeft'>Peregrine Falcon</td>
+									<td className='pushLeft pushRight'>PEFA</td>
+								</tr>
+								<tr key='species-codes-row5' className='speciesBox'>
+									<td className='pushLeft'>Northern Goshawk</td>
+									<td className='pushLeft'>NOGO</td>
+									<td className='pushLeft'>Merlin</td>
+									<td className='pushLeft pushRight'>MERL</td>
+								</tr>
+								<tr key='species-codes-row6' className='speciesBox'>
+									<td className='pushLeft'>Cooper's Hawk</td>
+									<td className='pushLeft'>COHA</td>
+									<td className='pushLeft'>American Kestrel</td>
+									<td className='pushLeft pushRight'>AMKE</td>
+								</tr>
+								<tr key='species-codes-row7' className='speciesBox'>
+									<td className='pushLeft'>Sharp-shinned Hawk</td>
+									<td className='pushLeft'>SSHA</td>
+									<td className='pushLeft'>Common Raven</td>
+									<td className='pushLeft pushRight'>CORA</td>
+								</tr>
+
+								<tr key='species-codes-row8' className='speciesBox'>
+									<td className='pushLeft'>Turkey Vulture</td>
+									<td className='pushLeft'>TUVU</td>
+									<td className='pushLeft'>American Crow</td>
+									<td className='pushLeft pushRight'>AMCR</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+					</div>
+
 				</div>
 				{/* --------------------------Submit-------------------------------- */}
 				<button type="submit" value="Submit Form" className="btn btn-primary" >Submit Form</button>

@@ -211,3 +211,22 @@
 .container {
 	padding-right: 0;
 }
+
+.speciesBox{
+	border: 1px black solid;
+	font-size: .85em;
+	margin: 2rem 0
+}
+
+.pushLeft{
+	padding-left: 1rem
+}
+
+.pushRight{
+	padding-right: 1rem
+}
+
+#mild-bold{
+	font-weight: 600;
+	padding-left: 2.5rem
+}
