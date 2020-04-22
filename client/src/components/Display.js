@@ -70,8 +70,7 @@ export default function Display(props) {
                             </div>
                             <input
                                 type="text"
-                                id='site-add'
-                                required
+                                id='site-add'                                
                                 className="form-control"
                                 value={props.nestingSite}
                                 onChange={props.nestingSiteChange}
@@ -103,6 +102,22 @@ export default function Display(props) {
                                 <option>2019</option>
                                 <option>2018</option>
                                 <option>2017</option>
+                                <option>2016</option>
+                                <option>2015</option>
+                                <option>2014</option>
+                                <option>2013</option>
+                                <option>2012</option>
+                                <option>2011</option>
+                                <option>2010</option>
+                                <option>2009</option>
+                                <option>2008</option>
+                                <option>2007</option>
+                                <option>2006</option>
+                                <option>2005</option>
+                                <option>2004</option>
+                                <option>2003</option>
+                                <option>2002</option>
+                                <option>2001</option>
                             </Form.Control>
 
                         </Form.Group>
@@ -126,7 +141,7 @@ export default function Display(props) {
                                         <tr key={data._id}>
                                             <th scope="column" >{data.season}</th>
                                             <td >{data.location}</td>
-                                            <td >{data.date_visited}</td>
+                                            <td >{data.date_visited.toString().slice(0, 15)}</td>
                                             <td >
                                                 <Link to={`/report_modal/${data.bird}/${data._id}`} className="btn btn-primary" style={{ cursor: 'pointer' }}>click here</Link>
                                             </td>
@@ -138,6 +153,7 @@ export default function Display(props) {
                         )) : <em>Loading...</em>}
 
                     </div>
+                    
                 </div >
             </div>
             : <div id="login-message">Log in to see this page</div>
