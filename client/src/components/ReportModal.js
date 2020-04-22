@@ -17,7 +17,7 @@ class ReportModal extends Component {
         let _id = this.props.match.params._id
 
         // gets report info from database using id
-
+        window.scrollTo(0, 0)
         axios.get('/reportModal/' + bird + '/' + _id)
             .then(response => {
                 this.setState({

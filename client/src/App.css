@@ -123,7 +123,7 @@
 }
 
 .report_page {
-	padding-top: 2rem;
+	padding-top: 1rem;
 }
 
 #image-wrapper {
@@ -133,7 +133,7 @@
 }
 
 #report-image {
-	width: 250px;
+	width: calc(10vw + 250px);
 	border-radius: 5%
 }
 
@@ -171,7 +171,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-bottom: 2rem
+	padding-bottom: 2rem;
+	padding-top:0;
 }
 
 .label-button-container {
@@ -212,21 +213,21 @@
 	padding-right: 0;
 }
 
-.speciesBox{
+.speciesBox {
 	border: 1px black solid;
 	font-size: .85em;
 	margin: 2rem 0
 }
 
-.pushLeft{
+.pushLeft {
 	padding-left: 1rem
 }
 
-.pushRight{
+.pushRight {
 	padding-right: 1rem
 }
 
-#mild-bold{
+#mild-bold {
 	font-weight: 600;
 	padding-left: 2.5rem
 }
