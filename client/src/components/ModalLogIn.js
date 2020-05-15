@@ -6,7 +6,7 @@ class ModalLogIn extends Component {
     return (
       <>
         <span className="link" variant="primary" onClick={this.props.setModalShow}>
-          Log In
+          | For Admin
       </span>
         <Modal
           show={this.props.modalShow}
