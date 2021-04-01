@@ -70,7 +70,7 @@ export default function Display(props) {
                             </div>
                             <input
                                 type="text"
-                                id='site-add'                                
+                                id='site-add'
                                 className="form-control"
                                 value={props.nestingSite}
                                 onChange={props.nestingSiteChange}
@@ -97,7 +97,7 @@ export default function Display(props) {
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Label>Please select a season (leave blank to retrieve multiple years):</Form.Label>
                             <Form.Control as="select" custom value={props.season} onChange={props.seasonChange}>
-                                <option></option>
+                                <option>2021</option>
                                 <option>2020</option>
                                 <option>2019</option>
                                 <option>2018</option>
@@ -153,7 +153,7 @@ export default function Display(props) {
                         )) : <em>Loading...</em>}
 
                     </div>
-                    
+
                 </div >
             </div>
             : <div id="login-message">Log in to see this page</div>

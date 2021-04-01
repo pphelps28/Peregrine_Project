@@ -75,7 +75,7 @@ const birdSchema = new mongoose.Schema({
     monitor_name: String,
     email: mongoose.SchemaTypes.Email,
     location: { type: String, require: true },
-    date_visited: { type: String, require: true },
+    date_visited: Date,
     season: { type: String, require: true },
     mileage: String,
     travel_time: String,
